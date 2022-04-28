@@ -7,6 +7,46 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="700" Width="1300">
     <Window.Resources>
+        <ControlTemplate TargetType="Button" x:Key="labelTemplate">
+            <Border
+                BorderBrush="{TemplateBinding BorderBrush}"
+                BorderThickness="{TemplateBinding BorderThickness}"
+                Background="{TemplateBinding Background}"
+                Height="{TemplateBinding Height}"
+                Width="{TemplateBinding Width}" >
+                <ContentControl Margin="{TemplateBinding Padding}"
+                        HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                        VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                        Content="{TemplateBinding Content}"
+                        Foreground="{TemplateBinding Foreground}"/>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="true">
+                    <Setter Property="Foreground" Value="#FF2E2222" />
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+        <ControlTemplate TargetType="Button" x:Key="loginTemplate">
+            <Border
+                BorderBrush="{TemplateBinding BorderBrush}"
+                BorderThickness="{TemplateBinding BorderThickness}"
+                Background="{TemplateBinding Background}"
+                Height="{TemplateBinding Height}"
+                Width="{TemplateBinding Width}" >
+                <ContentControl Margin="{TemplateBinding Padding}"
+                        HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                        VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                        Content="{TemplateBinding Content}" />
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="true">
+                    <Setter Property="Background" Value="#FFE0B500" />
+                </Trigger>
+                <Trigger Property="IsPressed" Value="true">
+                    <Setter Property="Background" Value="#FFB99600" />
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
         <ControlTemplate TargetType="Button" x:Key="btTemplate">
             <Border
                 BorderBrush="{TemplateBinding BorderBrush}"
@@ -20,6 +60,13 @@
                         Content="{TemplateBinding Content}" />
             </Border>
         </ControlTemplate>
+        <Style TargetType="Button" x:Key="ActionLabel">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Foreground" Value="Blue"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Margin" Value="1"/>
+            <Setter Property="BorderThickness" Value="0"/>
+        </Style>
         <Style TargetType="Button" x:Key="ActionTop">
             <Setter Property="Background" Value="White"/>
             <Setter Property="FontSize" Value="14"/>
@@ -51,6 +98,17 @@
             <Style.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="0 10 10 0" />
+                </Style>
+            </Style.Resources>
+        </Style>
+        <Style TargetType="Button" x:Key="ButtonLogin">
+            <Setter Property="Background" Value="#FFF9C900"/>
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="Margin" Value="0"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Style.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5 5 5 5" />
                 </Style>
             </Style.Resources>
         </Style>
@@ -103,7 +161,7 @@
                     <ColumnDefinition Width="162*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
 
-                <Button Style="{StaticResource ActionTop}" Template="{StaticResource btTemplate}" Foreground="Blue" Content="Заказать звонок" Grid.Column="0"/>
+                <Button Style="{StaticResource ActionLabel}" Template="{StaticResource labelTemplate}" Content="Заказать звонок" Grid.Column="0"/>
                 <Button Style="{StaticResource ActionTop}" Template="{StaticResource btTemplate}" Content="Кредит" Grid.Column="1"/>
                 <Button Style="{StaticResource ActionTop}" Template="{StaticResource btTemplate}" Content="Сервисный центр" Grid.Column="2" />
                 <Button Style="{StaticResource ActionTop}" Template="{StaticResource btTemplate}" Content="Акции" Grid.Column="3" />
@@ -155,9 +213,6 @@
             <Button Style="{StaticResource ActionButtonRigth}" Template="{StaticResource btTemplate}" x:Name="Appliances" Content="Бытовая техника" Grid.Column="6"/>
         </Grid>
         <Grid Grid.Row="2" x:Name="Catalog">
-            <Grid.Background>
-                <ImageBrush ImageSource="Resources/Ukraine.png" Stretch="Uniform"/>
-            </Grid.Background>
             <ListBox x:Name="apple" Visibility="Hidden"/>
             <ListBox x:Name="smartphones" Visibility="Hidden"/>
             <ListBox x:Name="laptops_and_pcs" Visibility="Hidden"/>
@@ -165,6 +220,190 @@
             <ListBox x:Name="tvs" Visibility="Hidden"/>
             <ListBox x:Name="gadgets" Visibility="Hidden"/>
             <ListBox x:Name="appliances" Visibility="Hidden"/>
+        </Grid>
+        <Grid Grid.Row="2">
+            <!--Main-->
+            <Grid x:Name="Main" Visibility="Hidden">
+                <Grid.Background>
+                    <ImageBrush ImageSource="Resources/Ukraine.png" Stretch="Uniform"/>
+                </Grid.Background>
+            </Grid>
+            <!--Login-->
+            <Grid x:Name="Login" Visibility="Hidden">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0" Margin="20">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="103*"></RowDefinition>
+                        <RowDefinition Height="59*"></RowDefinition>
+                        <RowDefinition Height="182*"></RowDefinition>
+                        <RowDefinition Height="114*"></RowDefinition>
+                    </Grid.RowDefinitions>
+
+                    <Label Grid.Row="0" Content="Страница авторизации" FontSize="42"/>
+                    <Label Grid.Row="1" Content="Новые клиенты" FontSize="28"  VerticalAlignment="Bottom"/>
+                    <Grid Grid.Row="2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition Height="1"></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.Row="0" VerticalAlignment="Center" Text="Создав учётную запись на нашем сайте, вы будете тратить меньше времени на оформление заказа, сможете хранить несколько адресов доставки, отслеживать состояние заказов, а также многое другое." FontSize="16" TextWrapping="Wrap"/>
+                        <Grid Grid.Row="1" Background="#FFF9C900"/>
+                        <Button Grid.Row="2" Template="{StaticResource loginTemplate}" Style="{StaticResource ButtonLogin}" Padding="8" Content="Создать учётную запись"  HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                    </Grid>
+                </Grid>
+                <Grid Grid.Column="1" Margin="20">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="162*"></RowDefinition>
+                        <RowDefinition Height="182*"></RowDefinition>
+                        <RowDefinition Height="65*"></RowDefinition>
+                        <RowDefinition Height="50*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Label Grid.Row="0" Content="Зарегистрированные клиенты" FontSize="28" VerticalAlignment="Bottom"/>
+                    <Grid Grid.Row="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="48*"></RowDefinition>
+                            <RowDefinition Height="133*"></RowDefinition>
+                            <RowDefinition Height="1"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.Row="0" VerticalAlignment="Center" Text="Если у вас есть учётная запись на нашем сайте, пожалуйста, авторизируйтесь." FontSize="16" TextWrapping="Wrap"/>
+                        <Grid Grid.Row="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="89*"></ColumnDefinition>
+                                <ColumnDefinition Width="224*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid Grid.Column="0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="60*"></RowDefinition>
+                                    <RowDefinition Height="1*"></RowDefinition>
+                                    <RowDefinition Height="60*"></RowDefinition>
+                                    <RowDefinition Height="1*"></RowDefinition>
+                                    <RowDefinition Height="30*"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Label Grid.Row="0" FontSize="16" Content="Email*" VerticalAlignment="Bottom"/>
+                                <Label Grid.Row="2" FontSize="16" Content="Пароль*" VerticalAlignment="Bottom"/>
+                            </Grid>
+                            <Grid Grid.Column="1">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="60*"></RowDefinition>
+                                    <RowDefinition Height="1*"></RowDefinition>
+                                    <RowDefinition Height="60*"></RowDefinition>
+                                    <RowDefinition Height="1*"></RowDefinition>
+                                    <RowDefinition Height="30*"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <TextBox x:Name="email" Grid.Row="0" FontSize="16" Padding="0 5" BorderThickness="0" VerticalAlignment="Bottom"/>
+                                <Grid Grid.Row="1" Background="#FFE6E6E6"/>
+                                <TextBox x:Name="parol" Grid.Row="2" FontSize="16" Padding="0 5" BorderThickness="0" VerticalAlignment="Bottom"/>
+                                <Grid Grid.Row="3" Background="#FFE6E6E6"/>
+                            </Grid>
+                        </Grid>
+                        <Grid Grid.Row="2" Background="#FFF9C900"/>
+                    </Grid>
+                    <Grid Grid.Row="2" >
+                        <Button Template="{StaticResource labelTemplate}" Style="{StaticResource ActionLabel}" Content="Забыли пароль?"  HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                        <Button Template="{StaticResource loginTemplate}" Style="{StaticResource ButtonLogin}" Padding="50, 8" Content="Войти"  HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                    </Grid>
+                </Grid>
+            </Grid>
+            <!--Registration-->
+            <Grid x:Name="Registration" Visibility="Hidden">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0"  Margin="20">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="29*"></RowDefinition>
+                        <RowDefinition Height="29*"></RowDefinition>
+                        <RowDefinition Height="64*"></RowDefinition>
+                        <RowDefinition Height="13*"></RowDefinition>
+                        <RowDefinition Height="18*"></RowDefinition>
+                        <RowDefinition Height="41*"></RowDefinition>
+                        <RowDefinition Height="1"></RowDefinition>
+                        <RowDefinition Height="34*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Label Grid.Row="0" Content="Создать учётную запись" FontSize="42"/>
+                    <Label Grid.Row="1" Content="Личная информация" FontSize="28" VerticalAlignment="Bottom" Height="47"/>
+                    <Grid Grid.Row="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="89*"></ColumnDefinition>
+                            <ColumnDefinition Width="224*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="30*"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                                <RowDefinition Height="30*"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                                <RowDefinition Height="30*"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                                <RowDefinition Height="10*"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Label Grid.Row="0" FontSize="16" Content="Имя*" VerticalAlignment="Bottom"/>
+                            <Label Grid.Row="2" FontSize="16" Content="Фамилия*" VerticalAlignment="Bottom"/>
+                            <Label Grid.Row="4" FontSize="16" Content="Email*" VerticalAlignment="Bottom"/>
+                        </Grid>
+                        <Grid Grid.Column="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="30*"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                                <RowDefinition Height="30*"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                                <RowDefinition Height="30*"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                                <RowDefinition Height="10*"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <TextBox x:Name="firstname_registration" Grid.Row="0" FontSize="16" Padding="0 5" BorderThickness="0" VerticalAlignment="Bottom"/>
+                            <Grid Grid.Row="1" Background="#FFE6E6E6"/>
+                            <TextBox x:Name="lastname_registration" Grid.Row="2" FontSize="16" Padding="0 5" BorderThickness="0" VerticalAlignment="Bottom"/>
+                            <Grid Grid.Row="3" Background="#FFE6E6E6"/>
+                            <TextBox x:Name="email_registration" Grid.Row="4" FontSize="16" Padding="0 5" BorderThickness="0" VerticalAlignment="Bottom"/>
+                            <Grid Grid.Row="5" Background="#FFE6E6E6"/>
+                        </Grid>
+                    </Grid>
+                    <CheckBox Grid.Row="3" BorderThickness="3" BorderBrush="#FFE6E6E6" FontSize="16" VerticalAlignment="Center" Content="Подписаться на рассылку" Height="20" Margin="0,0,0,6"/>
+                    <Label Grid.Row="3" Content="Информация для авторизации" FontSize="28" VerticalAlignment="Bottom" Height="47" Grid.RowSpan="2"/>
+                    <Grid Grid.Row="5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="89*"></ColumnDefinition>
+                            <ColumnDefinition Width="224*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="30*"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                                <RowDefinition Height="30*"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                                <RowDefinition Height="10*"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Label Grid.Row="0" FontSize="16" Content="Пароль*" VerticalAlignment="Bottom"/>
+                            <Label Grid.Row="2" FontSize="16" Content="Подтвердите пароль*" VerticalAlignment="Bottom"/>
+                        </Grid>
+                        <Grid Grid.Column="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="30*"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                                <RowDefinition Height="30*"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                                <RowDefinition Height="10*"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <TextBox x:Name="parol_registration" Grid.Row="0" FontSize="16" Padding="0 5" BorderThickness="0" VerticalAlignment="Bottom"/>
+                            <Grid Grid.Row="1" Background="#FFE6E6E6"/>
+                            <TextBox x:Name="parol_verification_registration" Grid.Row="2" FontSize="16" Padding="0 5" BorderThickness="0" VerticalAlignment="Bottom"/>
+                            <Grid Grid.Row="3" Background="#FFE6E6E6"/>
+                        </Grid>
+                    </Grid>
+
+                    <Grid Grid.Row="6" Background="#FFF9C900"/>
+                    <Grid Grid.Row="7" >
+                        <Button Template="{StaticResource labelTemplate}" Style="{StaticResource ActionLabel}" Content="←Вернуться"  HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                        <Button Template="{StaticResource loginTemplate}" Style="{StaticResource ButtonLogin}" Padding="50, 8" Content="Отправить"  HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                    </Grid>
+                </Grid>
+            </Grid>
         </Grid>
     </Grid>
 </Window>
