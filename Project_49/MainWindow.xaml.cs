@@ -20,17 +20,37 @@ namespace Project_49
     /// </summary>
     public partial class MainWindow : Window
     {
+        public List<string> top_Apple = new List<string>();
         public MainWindow()
         {
             InitializeComponent();
             Categorys();
-            apple.Items.Add("valik1");
-            smartphones.Items.Add("valik2");
-            laptops_and_pcs.Items.Add("valik3");
-            photo_audio_ps5.Items.Add("valik4");
-            tvs.Items.Add("valik5");
-            gadgets.Items.Add("valik6");
-            appliances.Items.Add("valik7");
+            
+            top_Apple.Add("Apple");
+            top_Apple.Add("iPhone 13");
+            top_Apple.Add("iPhone 13 Pro");
+            top_Apple.Add("Apple");
+            top_Apple.Add("Apple");
+            top_Apple.Add("Apple");
+            top_Apple.Add("Apple");
+            top_Apple.Add("Apple");
+            top_Apple.Add("Apple");
+            top_Apple.Add("Apple");
+
+            top_iPhone.ItemsSource = top_Apple;
+            top_iMac.ItemsSource = top_Apple;
+            apple.MouseEnter += Apple_MouseEnter1;
+            apple.MouseLeave += Apple_MouseLeave1;
+        }
+
+        private void Apple_MouseLeave1(object sender, MouseEventArgs e)
+        {
+            apple.Visibility = Visibility.Hidden;
+        }
+
+        private void Apple_MouseEnter1(object sender, MouseEventArgs e)
+        {
+            apple.Visibility = Visibility.Visible;
         }
         #region - Categorys -
         private void Categorys()
@@ -64,11 +84,11 @@ namespace Project_49
         private void LaptopsAndPCs_MouseEnter(object sender, MouseEventArgs e) { VisibleCategory(laptops_and_pcs); }
         private void Smartphones_MouseEnter(object sender, MouseEventArgs e) { VisibleCategory(smartphones); }
         private void Apple_MouseEnter(object sender, MouseEventArgs e) { VisibleCategory(apple); }
-        private void VisibleCategory(ListBox list)
+        private void VisibleCategory(Grid grid)
         {
-            foreach (ListBox it in Catalog.Children)
+            foreach (Grid it in Catalog.Children)
             {
-                if (it == list) it.Visibility = Visibility.Visible;
+                if (it == grid) it.Visibility = Visibility.Visible;
                 else it.Visibility = Visibility.Hidden;
             }
         }
