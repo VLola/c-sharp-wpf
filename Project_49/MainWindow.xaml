@@ -98,9 +98,11 @@
             </Border>
         </ControlTemplate>
         <Style TargetType="ListView" x:Key="ActionListCategory">
+            <Setter Property="Margin" Value="0 20"/>
             <Setter Property="FontSize" Value="12"/>
             <Setter Property="BorderThickness" Value="0"/>
             <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Hidden"/>
         </Style>
         <Style TargetType="Button" x:Key="ActionLabelBottom">
             <Setter Property="Background" Value="Black"/>

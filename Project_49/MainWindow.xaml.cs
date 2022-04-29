@@ -21,7 +21,6 @@ namespace Project_49
     /// </summary>
     public partial class MainWindow : Window
     {
-        public List<string> top_Apple = new List<string>();
         public MainWindow()
         {
             InitializeComponent();
