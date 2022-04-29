@@ -25,7 +25,30 @@ namespace Project_49
         {
             InitializeComponent();
             Categorys();
+            PageCenter();
         }
+
+        #region - PageCenter -
+        private void PageCenter()
+        {
+            ButtonLogin.Click += ButtonLogin_Click;
+            ButtonRegestration.Click += ButtonRegestration_Click;
+            ButtonRegistrationReturn.Click += ButtonRegistrationReturn_Click;
+            ButtonMain.Click += ButtonMain_Click;
+        }
+        private void ButtonMain_Click(object sender, RoutedEventArgs e) { ChangeMain(MainBackground); }
+        private void ButtonRegistrationReturn_Click(object sender, RoutedEventArgs e) { ChangeMain(Login); }
+        private void ButtonRegestration_Click(object sender, RoutedEventArgs e) { ChangeMain(Registration); }
+        private void ButtonLogin_Click(object sender, RoutedEventArgs e) { ChangeMain(Login); }
+        private void ChangeMain(Grid grid)
+        {
+            foreach(Grid it in Main.Children)
+            {
+                if (it == grid) it.Visibility = Visibility.Visible;
+                else it.Visibility = Visibility.Hidden;
+            }
+        }
+        #endregion
 
         #region - Categorys -
         private void Categorys()

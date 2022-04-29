@@ -179,7 +179,7 @@
                 <ColumnDefinition Width="61*"></ColumnDefinition>
                 <ColumnDefinition Width="164*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Button Style="{DynamicResource ActionTop}" Template="{StaticResource btTemplate}" Grid.Column="0" BorderBrush="{x:Null}" Foreground="{x:Null}" Background="{x:Null}" >
+            <Button x:Name="ButtonMain" Style="{DynamicResource ActionTop}" Template="{StaticResource btTemplate}" Grid.Column="0" BorderBrush="{x:Null}" Foreground="{x:Null}" Background="{x:Null}" >
                 <Image Source="Resources/logo.png"/>
             </Button>
             <ComboBox Name="combo_box" Grid.Column="1" VerticalContentAlignment="Center" HorizontalContentAlignment="Center">
@@ -234,7 +234,7 @@
                 <Button Style="{StaticResource ActionTop}" Template="{StaticResource btTemplate}"  Grid.Row="1" Grid.Column="0" BorderBrush="{x:Null}" Foreground="{x:Null}">
                     <Image Source="Resources/search.png"/>
                 </Button>
-                <Button Style="{StaticResource ActionTop}" Template="{StaticResource btTemplate}" Grid.Row="1" Grid.Column="1" BorderBrush="{x:Null}" Foreground="{x:Null}" >
+                <Button x:Name="ButtonLogin" Style="{StaticResource ActionTop}" Template="{StaticResource btTemplate}" Grid.Row="1" Grid.Column="1" BorderBrush="{x:Null}" Foreground="{x:Null}" >
                     <Image Source="Resources/account.png"/>
                 </Button>
                 <Button Style="{StaticResource ActionTop}" Template="{StaticResource btTemplate}" Grid.Row="1" Grid.Column="2" BorderBrush="{x:Null}" Foreground="{x:Null}" >
@@ -264,16 +264,16 @@
             <Button Style="{StaticResource ActionButton}" Template="{StaticResource btTemplate}" x:Name="Gadgets" Content="Гаджеты" Grid.Column="5"/>
             <Button Style="{StaticResource ActionButtonRigth}" Template="{StaticResource btTemplate}" x:Name="Appliances" Content="Бытовая техника" Grid.Column="6"/>
         </Grid>
-        
-        <Grid Grid.Row="2">
+
+        <Grid x:Name="Main" Grid.Row="2">
             <!--Main-->
-            <Grid x:Name="Main" Visibility="Visible">
+            <Grid x:Name="MainBackground" Visibility="Visible">
                 <Grid.Background>
                     <ImageBrush ImageSource="Resources/Ukraine.png" Stretch="Uniform"/>
                 </Grid.Background>
             </Grid>
             <!--Login-->
-            <Grid x:Name="Login" Visibility="Hidden" Margin="100 0">
+            <Grid x:Name="Login" Visibility="Hidden" Margin="100 0" Background="White">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition></ColumnDefinition>
                     <ColumnDefinition></ColumnDefinition>
@@ -296,7 +296,7 @@
                         </Grid.RowDefinitions>
                         <TextBlock Grid.Row="0" VerticalAlignment="Center" Text="Создав учётную запись на нашем сайте, вы будете тратить меньше времени на оформление заказа, сможете хранить несколько адресов доставки, отслеживать состояние заказов, а также многое другое." FontSize="14" TextWrapping="Wrap"/>
                         <Grid Grid.Row="1" Background="#FFF9C900"/>
-                        <Button Grid.Row="2" Template="{StaticResource loginTemplate}" Style="{StaticResource ButtonLogin}" Padding="8" Content="Создать учётную запись"  HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                        <Button x:Name="ButtonRegestration" Grid.Row="2" Template="{StaticResource loginTemplate}" Style="{StaticResource ButtonLogin}" Padding="8" Content="Создать учётную запись"  HorizontalAlignment="Left" VerticalAlignment="Center"/>
                     </Grid>
                 </Grid>
                 <Grid Grid.Column="1" Margin="20">
@@ -353,7 +353,7 @@
                 </Grid>
             </Grid>
             <!--Registration-->
-            <Grid x:Name="Registration" Visibility="Hidden" Margin="100 0">
+            <Grid x:Name="Registration" Visibility="Hidden" Margin="100 0" Background="White">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition></ColumnDefinition>
                     <ColumnDefinition></ColumnDefinition>
@@ -361,16 +361,16 @@
                 <Grid Grid.Column="0"  Margin="20">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="48*"></RowDefinition>
-                        <RowDefinition Height="48*"></RowDefinition>
-                        <RowDefinition Height="94*"></RowDefinition>
+                        <RowDefinition Height="41*"></RowDefinition>
+                        <RowDefinition Height="101*"></RowDefinition>
                         <RowDefinition Height="25*"></RowDefinition>
-                        <RowDefinition Height="31*"></RowDefinition>
+                        <RowDefinition Height="44*"></RowDefinition>
                         <RowDefinition Height="76*"></RowDefinition>
                         <RowDefinition Height="1"></RowDefinition>
                         <RowDefinition Height="56*"></RowDefinition>
                     </Grid.RowDefinitions>
                     <Label Grid.Row="0" Content="Создать учётную запись" FontSize="30"/>
-                    <Label Grid.Row="1" Content="Личная информация" FontSize="20" VerticalAlignment="Bottom" Height="47"/>
+                    <Label Grid.Row="1" Content="Личная информация" FontSize="20" VerticalAlignment="Bottom"/>
                     <Grid Grid.Row="2">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="86*"></ColumnDefinition>
@@ -408,8 +408,8 @@
                             <Grid Grid.Row="5" Background="#FFE6E6E6"/>
                         </Grid>
                     </Grid>
-                    <CheckBox Grid.Row="3" BorderThickness="3" BorderBrush="#FFE6E6E6" FontSize="16" VerticalAlignment="Center" Content="Подписаться на рассылку" Height="20" Margin="0,3,0,2"/>
-                    <Label Grid.Row="3" Content="Информация для авторизации" FontSize="20" VerticalAlignment="Bottom" Height="32" Grid.RowSpan="2"/>
+                    <CheckBox Grid.Row="3" BorderThickness="3" BorderBrush="#FFE6E6E6" FontSize="16" VerticalAlignment="Center" Content="Подписаться на рассылку" Margin="0,3,0,2"/>
+                    <Label Grid.Row="4" Content="Информация для авторизации" FontSize="20" VerticalAlignment="Center" Margin="0,3"/>
                     <Grid Grid.Row="5">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="86*"></ColumnDefinition>
@@ -443,7 +443,7 @@
 
                     <Grid Grid.Row="6" Background="#FFF9C900"/>
                     <Grid Grid.Row="7" >
-                        <Button Template="{StaticResource labelTemplate}" Style="{StaticResource ActionLabel}" Content="←Вернуться"  HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                        <Button x:Name="ButtonRegistrationReturn" Template="{StaticResource labelTemplate}" Style="{StaticResource ActionLabel}" Content="←Вернуться"  HorizontalAlignment="Left" VerticalAlignment="Center"/>
                         <Button Template="{StaticResource loginTemplate}" Style="{StaticResource ButtonLogin}" Padding="50, 8" Content="Отправить"  HorizontalAlignment="Right" VerticalAlignment="Center"/>
                     </Grid>
                 </Grid>
