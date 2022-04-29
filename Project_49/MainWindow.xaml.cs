@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Project_49.Control;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,33 +26,8 @@ namespace Project_49
         {
             InitializeComponent();
             Categorys();
-            
-            top_Apple.Add("Apple");
-            top_Apple.Add("iPhone 13");
-            top_Apple.Add("iPhone 13 Pro");
-            top_Apple.Add("Apple");
-            top_Apple.Add("Apple");
-            top_Apple.Add("Apple");
-            top_Apple.Add("Apple");
-            top_Apple.Add("Apple");
-            top_Apple.Add("Apple");
-            top_Apple.Add("Apple");
-
-            top_iPhone.ItemsSource = top_Apple;
-            top_iMac.ItemsSource = top_Apple;
-            apple.MouseEnter += Apple_MouseEnter1;
-            apple.MouseLeave += Apple_MouseLeave1;
         }
 
-        private void Apple_MouseLeave1(object sender, MouseEventArgs e)
-        {
-            apple.Visibility = Visibility.Hidden;
-        }
-
-        private void Apple_MouseEnter1(object sender, MouseEventArgs e)
-        {
-            apple.Visibility = Visibility.Visible;
-        }
         #region - Categorys -
         private void Categorys()
         {
@@ -69,6 +45,21 @@ namespace Project_49
             TVs.MouseLeave += TVs_MouseLeave;
             Gadgets.MouseLeave += Gadgets_MouseLeave;
             Appliances.MouseLeave += Appliances_MouseLeave;
+
+            apple.MouseEnter += Apple_MouseEnter1;
+            smartphones.MouseEnter += Smartphones_MouseEnter1;
+            laptops_and_pcs.MouseEnter += Laptops_and_pcs_MouseEnter;
+            photo_audio_ps5.MouseEnter += Photo_audio_ps5_MouseEnter;
+            tvs.MouseEnter += Tvs_MouseEnter;
+            gadgets.MouseEnter += Gadgets_MouseEnter1;
+            appliances.MouseEnter += Appliances_MouseEnter1;
+            apple.MouseLeave += Apple_MouseLeave1;
+            smartphones.MouseLeave += Smartphones_MouseLeave1;
+            laptops_and_pcs.MouseLeave += Laptops_and_pcs_MouseLeave;
+            photo_audio_ps5.MouseLeave += Photo_audio_ps5_MouseLeave;
+            tvs.MouseLeave += Tvs_MouseLeave;
+            gadgets.MouseLeave += Gadgets_MouseLeave1;
+            appliances.MouseLeave += Appliances_MouseLeave1;
         }
         private void Appliances_MouseLeave(object sender, MouseEventArgs e) { appliances.Visibility = Visibility.Hidden; }
         private void Gadgets_MouseLeave(object sender, MouseEventArgs e) { gadgets.Visibility = Visibility.Hidden; }
@@ -91,7 +82,32 @@ namespace Project_49
                 if (it == grid) it.Visibility = Visibility.Visible;
                 else it.Visibility = Visibility.Hidden;
             }
+            foreach(ListView it in grid.Children)
+            {
+                List<string> list = new List<string>();
+                it.ItemsSource = list;
+                foreach (TopCatalog iterator in ConnectTopCatalog.GetTopCatalog())
+                {
+                    if (it.Name.ToString() == iterator.Catalog) list.Add(iterator.Resources);
+                }
+                it.Items.Refresh();
+            }
         }
+
+        private void Appliances_MouseLeave1(object sender, MouseEventArgs e) { appliances.Visibility = Visibility.Hidden; }
+        private void Gadgets_MouseLeave1(object sender, MouseEventArgs e) { gadgets.Visibility = Visibility.Hidden; }
+        private void Tvs_MouseLeave(object sender, MouseEventArgs e) { tvs.Visibility = Visibility.Hidden; }
+        private void Photo_audio_ps5_MouseLeave(object sender, MouseEventArgs e) { photo_audio_ps5.Visibility = Visibility.Hidden; }
+        private void Laptops_and_pcs_MouseLeave(object sender, MouseEventArgs e) { laptops_and_pcs.Visibility = Visibility.Hidden; }
+        private void Smartphones_MouseLeave1(object sender, MouseEventArgs e) { smartphones.Visibility = Visibility.Hidden; }
+        private void Apple_MouseLeave1(object sender, MouseEventArgs e) { apple.Visibility = Visibility.Hidden; }
+        private void Appliances_MouseEnter1(object sender, MouseEventArgs e) { appliances.Visibility = Visibility.Visible; }
+        private void Gadgets_MouseEnter1(object sender, MouseEventArgs e) { gadgets.Visibility = Visibility.Visible; }
+        private void Tvs_MouseEnter(object sender, MouseEventArgs e) { tvs.Visibility = Visibility.Visible; }
+        private void Photo_audio_ps5_MouseEnter(object sender, MouseEventArgs e) { photo_audio_ps5.Visibility = Visibility.Visible; }
+        private void Laptops_and_pcs_MouseEnter(object sender, MouseEventArgs e) { laptops_and_pcs.Visibility = Visibility.Visible; }
+        private void Smartphones_MouseEnter1(object sender, MouseEventArgs e) { smartphones.Visibility = Visibility.Visible; }
+        private void Apple_MouseEnter1(object sender, MouseEventArgs e) { apple.Visibility = Visibility.Visible; }
         #endregion
     }
 }

@@ -97,12 +97,10 @@
                         Content="{TemplateBinding Content}" />
             </Border>
         </ControlTemplate>
-        <Style TargetType="ListView" x:Key="ActionButtonCategory">
-            <Setter Property="Background" Value="White"/>
-            <Setter Property="Foreground" Value="Black"/>
-            <Setter Property="FontSize" Value="14"/>
-            <Setter Property="Margin" Value="1"/>
+        <Style TargetType="ListView" x:Key="ActionListCategory">
+            <Setter Property="FontSize" Value="12"/>
             <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
         </Style>
         <Style TargetType="Button" x:Key="ActionLabelBottom">
             <Setter Property="Background" Value="Black"/>
@@ -264,35 +262,10 @@
             <Button Style="{StaticResource ActionButton}" Template="{StaticResource btTemplate}" x:Name="Gadgets" Content="Гаджеты" Grid.Column="5"/>
             <Button Style="{StaticResource ActionButtonRigth}" Template="{StaticResource btTemplate}" x:Name="Appliances" Content="Бытовая техника" Grid.Column="6"/>
         </Grid>
-        <Grid Grid.Row="2" x:Name="Catalog">
-            <Grid x:Name="apple" Background="White" Visibility="Visible" Margin="100 0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                </Grid.ColumnDefinitions>
-                <ListView Grid.Column="0" x:Name="top_iPhone" FontSize="16" HorizontalAlignment="Center" BorderThickness="0"/>
-                <ListView Grid.Column="1" x:Name="top_iPad" FontSize="16"  HorizontalAlignment="Center" BorderThickness="0"/>
-                <ListView Grid.Column="2" x:Name="top_macbook" FontSize="16"  HorizontalAlignment="Center" BorderThickness="0"/>
-                <ListView Grid.Column="3" x:Name="top_iMac" FontSize="16"  HorizontalAlignment="Center" BorderThickness="0"/>
-                <ListView Grid.Column="4" x:Name="top_apple_watch" FontSize="16"  HorizontalAlignment="Center" BorderThickness="0"/>
-                <ListView Grid.Column="5" x:Name="top_accessories" FontSize="16"  HorizontalAlignment="Center" BorderThickness="0"/>
-                <ListView Grid.Column="6" x:Name="top_cases" FontSize="16"  HorizontalAlignment="Center" BorderThickness="0"/>
-            </Grid>
-            <Grid x:Name="smartphones" Visibility="Hidden"/>
-            <Grid x:Name="laptops_and_pcs" Visibility="Hidden"/>
-            <Grid x:Name="photo_audio_ps5" Visibility="Hidden"/>
-            <Grid x:Name="tvs" Visibility="Hidden"/>
-            <Grid x:Name="gadgets" Visibility="Hidden"/>
-            <Grid x:Name="appliances" Visibility="Hidden"/>
-        </Grid>
+        
         <Grid Grid.Row="2">
             <!--Main-->
-            <Grid x:Name="Main" Visibility="Hidden">
+            <Grid x:Name="Main" Visibility="Visible">
                 <Grid.Background>
                     <ImageBrush ImageSource="Resources/Ukraine.png" Stretch="Uniform"/>
                 </Grid.Background>
@@ -474,6 +447,116 @@
                 </Grid>
             </Grid>
         </Grid>
+        <Grid Grid.Row="2" x:Name="Catalog">
+            <Grid x:Name="apple" Background="White" Visibility="Hidden" Margin="100 0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <ListView Grid.Column="0" Style="{StaticResource ActionListCategory}" x:Name="top_iPhone"/>
+                <ListView Grid.Column="1" Style="{StaticResource ActionListCategory}" x:Name="top_iPad"/>
+                <ListView Grid.Column="2" Style="{StaticResource ActionListCategory}" x:Name="top_macbook"/>
+                <ListView Grid.Column="3" Style="{StaticResource ActionListCategory}" x:Name="top_iMac"/>
+                <ListView Grid.Column="4" Style="{StaticResource ActionListCategory}" x:Name="top_apple_watch"/>
+                <ListView Grid.Column="5" Style="{StaticResource ActionListCategory}" x:Name="top_accessories_apple"/>
+                <ListView Grid.Column="6" Style="{StaticResource ActionListCategory}" x:Name="top_cases"/>
+            </Grid>
+            <Grid x:Name="smartphones" Visibility="Hidden" Background="White" Margin="100 0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <ListView Grid.Column="0" Style="{StaticResource ActionListCategory}" x:Name="top_samsung_s"/>
+                <ListView Grid.Column="1" Style="{StaticResource ActionListCategory}" x:Name="top_samsung_z"/>
+                <ListView Grid.Column="2" Style="{StaticResource ActionListCategory}" x:Name="top_smartphones"/>
+                <ListView Grid.Column="3" Style="{StaticResource ActionListCategory}" x:Name="top_xiaomi_mi"/>
+                <ListView Grid.Column="4" Style="{StaticResource ActionListCategory}" x:Name="top_xiaomi_poco"/>
+                <ListView Grid.Column="5" Style="{StaticResource ActionListCategory}" x:Name="top_smart_clock"/>
+                <ListView Grid.Column="6" Style="{StaticResource ActionListCategory}" x:Name="top_cases_samsung"/>
+            </Grid>
+            <Grid x:Name="laptops_and_pcs" Visibility="Hidden" Background="White" Margin="100 0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <ListView Grid.Column="0" Style="{StaticResource ActionListCategory}" x:Name="top_monitors"/>
+                <ListView Grid.Column="1" Style="{StaticResource ActionListCategory}" x:Name="top_pc"/>
+                <ListView Grid.Column="2" Style="{StaticResource ActionListCategory}" x:Name="top_laptops"/>
+                <ListView Grid.Column="3" Style="{StaticResource ActionListCategory}" x:Name="top_notebooks"/>
+                <ListView Grid.Column="4" Style="{StaticResource ActionListCategory}" x:Name="top_tablets"/>
+                <ListView Grid.Column="5" Style="{StaticResource ActionListCategory}" x:Name="top_accessories"/>
+            </Grid>
+            <Grid x:Name="photo_audio_ps5" Visibility="Hidden"  Background="White" Margin="100 0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <ListView Grid.Column="0" Style="{StaticResource ActionListCategory}" x:Name="top_cameras"/>
+                <ListView Grid.Column="1" Style="{StaticResource ActionListCategory}" x:Name="top_sony_playstation"/>
+                <ListView Grid.Column="2" Style="{StaticResource ActionListCategory}" x:Name="top_action_cameras"/>
+                <ListView Grid.Column="3" Style="{StaticResource ActionListCategory}" x:Name="top_portable_acoustic"/>
+                <ListView Grid.Column="4" Style="{StaticResource ActionListCategory}" x:Name="top_headphones"/>
+            </Grid>
+            <Grid x:Name="tvs" Visibility="Hidden" Background="White" Margin="100 0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <ListView Grid.Column="0" Style="{StaticResource ActionListCategory}" x:Name="top_tv_samsung"/>
+                <ListView Grid.Column="1" Style="{StaticResource ActionListCategory}" x:Name="top_tv_lg"/>
+                <ListView Grid.Column="2" Style="{StaticResource ActionListCategory}" x:Name="top_tv_sony"/>
+                <ListView Grid.Column="3" Style="{StaticResource ActionListCategory}" x:Name="top_tv_philips"/>
+                <ListView Grid.Column="4" Style="{StaticResource ActionListCategory}" x:Name="top_tv_projectors"/>
+                <ListView Grid.Column="5" Style="{StaticResource ActionListCategory}" x:Name="top_tv_soundbars"/>
+            </Grid>
+            <Grid x:Name="gadgets" Visibility="Hidden" Background="White" Margin="100 0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <ListView Grid.Column="0" Style="{StaticResource ActionListCategory}" x:Name="top_quadcopters"/>
+                <ListView Grid.Column="1" Style="{StaticResource ActionListCategory}" x:Name="top_electric_transport"/>
+                <ListView Grid.Column="2" Style="{StaticResource ActionListCategory}" x:Name="top_smart_house"/>
+                <ListView Grid.Column="3" Style="{StaticResource ActionListCategory}" x:Name="top_cables"/>
+                <ListView Grid.Column="4" Style="{StaticResource ActionListCategory}" x:Name="top_chsrgers"/>
+            </Grid>
+            <Grid x:Name="appliances" Visibility="Hidden" Background="White" Margin="100 0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <ListView Grid.Column="0" Style="{StaticResource ActionListCategory}" x:Name="top_vacuum_cleaners"/>
+                <ListView Grid.Column="1" Style="{StaticResource ActionListCategory}" x:Name="top_air_conditioners"/>
+                <ListView Grid.Column="2" Style="{StaticResource ActionListCategory}" x:Name="top_large_home_appliances"/>
+                <ListView Grid.Column="3" Style="{StaticResource ActionListCategory}" x:Name="top_small_household_apliances"/>
+            </Grid>
+        </Grid>
         <Grid Grid.Row="3" Background="Black">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="25*"></ColumnDefinition>
@@ -501,7 +584,7 @@
             <Button Grid.Column="1" Grid.Row="5" Template="{StaticResource labelBottomTemplate}" Style="{StaticResource ActionLabelBottom}" Content="(063) 233 49 50" HorizontalAlignment="Left"/>
             <Button Grid.Column="1" Grid.Row="6" Template="{StaticResource labelBottomTemplate}" Style="{StaticResource ActionLabelBottom}" Content="Заказать звонок" HorizontalAlignment="Left"/>
 
-            <Button Grid.Column="2" Grid.Row="0" FontWeight="Bold" Template="{StaticResource labelBottomTemplate}" Style="{StaticResource ActionLabelBottom}" Content="Покупателю" HorizontalAlignment="Left"/>
+            <Label Grid.Column="2" Grid.Row="0" Foreground="White" FontWeight="Bold" Content="Покупателю" HorizontalAlignment="Left"/>
             <Button Grid.Column="2" Grid.Row="2" Template="{StaticResource labelBottomTemplate}" Style="{StaticResource ActionLabelBottom}" Content="Услуги и Сервисы" HorizontalAlignment="Left"/>
             <Button Grid.Column="2" Grid.Row="3" Template="{StaticResource labelBottomTemplate}" Style="{StaticResource ActionLabelBottom}" Content="Карта сайта" HorizontalAlignment="Left"/>
             <Button Grid.Column="2" Grid.Row="4" Template="{StaticResource labelBottomTemplate}" Style="{StaticResource ActionLabelBottom}" Content="Пользовательское соглашение" HorizontalAlignment="Left"/>
