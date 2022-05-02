@@ -77,50 +77,60 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Admin.cs">
+    <Compile Include="Controls\LatestProductControl.xaml.cs">
+      <DependentUpon>LatestProductControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Admin.cs">
       <DependentUpon>ModelAdmin.tt</DependentUpon>
     </Compile>
-    <Compile Include="ModelAdmin.Context.cs">
+    <Compile Include="Models\ModelAdmin.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ModelAdmin.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="ModelAdmin.cs">
+    <Compile Include="Models\ModelAdmin.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ModelAdmin.tt</DependentUpon>
     </Compile>
-    <Compile Include="ModelAdmin.Designer.cs">
+    <Compile Include="Models\ModelAdmin.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ModelAdmin.edmx</DependentUpon>
     </Compile>
-    <Compile Include="ModelTopCatalog.cs">
+    <Compile Include="Models\ModelProduct.cs" />
+    <Compile Include="Models\ModelTopCatalog.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ModelTopCatalog.tt</DependentUpon>
     </Compile>
-    <Compile Include="ModelUser.Context.cs">
+    <Compile Include="Models\ModelUser.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ModelUser.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="ModelUser.cs">
+    <Compile Include="Models\ModelUser.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ModelUser.tt</DependentUpon>
     </Compile>
-    <Compile Include="ModelUser.Designer.cs">
+    <Compile Include="Models\ModelUser.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ModelUser.edmx</DependentUpon>
     </Compile>
-    <Compile Include="TopCatalog.cs">
+    <Compile Include="Models\Product.cs" />
+    <Compile Include="Product.cs" />
+    <Compile Include="Models\TopCatalog.cs">
       <DependentUpon>ModelTopCatalog.tt</DependentUpon>
     </Compile>
-    <Compile Include="User.cs">
+    <Compile Include="Models\User.cs">
       <DependentUpon>ModelUser.tt</DependentUpon>
     </Compile>
+    <Page Include="Controls\LatestProductControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -129,21 +139,21 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Control\Connect.cs" />
-    <Compile Include="Control\ConnectTopCatalog.cs" />
-    <Compile Include="Control\Crypt.cs" />
+    <Compile Include="ConnectDB\Connect.cs" />
+    <Compile Include="ConnectDB\ConnectTopCatalog.cs" />
+    <Compile Include="ConnectDB\Crypt.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ModelTopCatalog.Context.cs">
+    <Compile Include="Models\ModelTopCatalog.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ModelTopCatalog.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="ModelTopCatalog.Designer.cs">
+    <Compile Include="Models\ModelTopCatalog.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ModelTopCatalog.edmx</DependentUpon>
@@ -165,25 +175,25 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EntityDeploy Include="ModelTopCatalog.edmx">
+    <EntityDeploy Include="Models\ModelTopCatalog.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>ModelTopCatalog.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <EntityDeploy Include="ModelAdmin.edmx">
+    <EntityDeploy Include="Models\ModelAdmin.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>ModelAdmin.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="ModelAdmin.edmx.diagram">
+    <None Include="Models\ModelAdmin.edmx.diagram">
       <DependentUpon>ModelAdmin.edmx</DependentUpon>
     </None>
-    <None Include="ModelTopCatalog.edmx.diagram">
+    <None Include="Models\ModelTopCatalog.edmx.diagram">
       <DependentUpon>ModelTopCatalog.edmx</DependentUpon>
     </None>
-    <EntityDeploy Include="ModelUser.edmx">
+    <EntityDeploy Include="Models\ModelUser.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>ModelUser.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="ModelUser.edmx.diagram">
+    <None Include="Models\ModelUser.edmx.diagram">
       <DependentUpon>ModelUser.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
@@ -215,37 +225,47 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ModelAdmin.Context.tt">
+    <Content Include="Models\ModelAdmin.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ModelAdmin.edmx</DependentUpon>
       <LastGenOutput>ModelAdmin.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="ModelAdmin.tt">
+    <Content Include="Models\ModelAdmin.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ModelAdmin.edmx</DependentUpon>
       <LastGenOutput>ModelAdmin.cs</LastGenOutput>
     </Content>
-    <Content Include="ModelTopCatalog.Context.tt">
+    <Content Include="Models\ModelTopCatalog.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ModelTopCatalog.edmx</DependentUpon>
       <LastGenOutput>ModelTopCatalog.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="ModelTopCatalog.tt">
+    <Content Include="Models\ModelTopCatalog.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ModelTopCatalog.edmx</DependentUpon>
       <LastGenOutput>ModelTopCatalog.cs</LastGenOutput>
     </Content>
-    <Content Include="ModelUser.Context.tt">
+    <Content Include="Models\ModelUser.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ModelUser.edmx</DependentUpon>
       <LastGenOutput>ModelUser.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="ModelUser.tt">
+    <Content Include="Models\ModelUser.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ModelUser.edmx</DependentUpon>
       <LastGenOutput>ModelUser.cs</LastGenOutput>
     </Content>
+    <Resource Include="Resources\Products\Samsung Galaxy S22.png" />
+    <Resource Include="Resources\Categorys\Acoustics.png" />
+    <Resource Include="Resources\Categorys\Apple Watch.png" />
+    <Resource Include="Resources\Categorys\iPhone 13 Pro.png" />
+    <Resource Include="Resources\Categorys\Macbook Pro M1.png" />
+    <Resource Include="Resources\Categorys\Samsung.png" />
+    <Resource Include="Resources\Categorys\TV 4K.png" />
+    <Resource Include="Resources\Categorys\Used iPhone.png" />
+    <Resource Include="Resources\Categorys\Xiaomi.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

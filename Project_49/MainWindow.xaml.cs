@@ -1,4 +1,6 @@
 ﻿using Project_49.Control;
+using Project_49.Controls;
+using Project_49.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,6 +28,66 @@ namespace Project_49
             InitializeComponent();
             Categorys();
             PageCenter();
+            SetCatalogProductListOne();
+            //SetCatalogProductListTwo();
+            SetLatestProduct();
+        }
+        private void SetCatalogProductListOne()
+        {
+            int count = 0;
+            List<string> list_product = new List<string>();
+            list_product.Add("iPhone 13 Pro");
+            list_product.Add("Macbook Pro M1");
+            list_product.Add("Used iPhone");
+            list_product.Add("Apple Watch");
+            foreach (var it in list_product)
+            {
+                Product product = new Product(it);
+                Grid.SetColumn(product, count++);
+                ProductListOne.Children.Add(product);
+            }
+        }
+        private void SetLatestProduct()
+        {
+            int i = 1, j = 1;
+            ModelProduct modelProduct = new ModelProduct();
+            foreach(var it in modelProduct.Products)
+            {
+                Apple.Content = it.Name;
+                LatestProductControl latestProduct = new LatestProductControl(it.Name, it.Image);
+                Grid.SetColumn(latestProduct, i++);
+                Grid.SetRow(latestProduct, j);
+                LatestProduct.Children.Add(latestProduct);
+                if (i > 2)
+                {
+                    i = 1;
+                    j++;
+                }
+            }
+        }
+        //private void SetCatalogProductListTwo()
+        //{
+        //    int count = 0;
+        //    List<string> list_product = new List<string>();
+        //    list_product.Add("iPhone 13 Pro");
+        //    list_product.Add("iPhone 13 Pro");
+        //    list_product.Add("iPhone 13 Pro");
+        //    list_product.Add("iPhone 13 Pro");
+        //    foreach (var it in list_product)
+        //    {
+        //        Product product = new Product(it);
+        //        Grid.SetColumn(product, count);
+        //        ProductListTwo.Children.Add(product);
+        //        count++;
+        //    }
+        //}
+
+        private void ButtonAddRow_Click(object sender, RoutedEventArgs e)
+        {
+            //ProductListOne.Height = ProductListOne.ActualHeight + ProductListOne.RowDefinitions[0].ActualHeight;
+            //ProductListOne.RowDefinitions.Add(new RowDefinition());
+            //ProductListOne.Children.Clear();
+            //SetCatalogProductListOne();
         }
 
         #region - PageCenter -
@@ -83,20 +145,20 @@ namespace Project_49
             gadgets.MouseLeave += Gadgets_MouseLeave1;
             appliances.MouseLeave += Appliances_MouseLeave1;
         }
-        private void Appliances_MouseLeave(object sender, MouseEventArgs e) { appliances.Visibility = Visibility.Hidden; }
-        private void Gadgets_MouseLeave(object sender, MouseEventArgs e) { gadgets.Visibility = Visibility.Hidden; }
-        private void TVs_MouseLeave(object sender, MouseEventArgs e) { tvs.Visibility = Visibility.Hidden; }
-        private void PhotoAudioPS5_MouseLeave(object sender, MouseEventArgs e) { photo_audio_ps5.Visibility = Visibility.Hidden; }
-        private void LaptopsAndPCs_MouseLeave(object sender, MouseEventArgs e) { laptops_and_pcs.Visibility = Visibility.Hidden; }
-        private void Smartphones_MouseLeave(object sender, MouseEventArgs e) { smartphones.Visibility = Visibility.Hidden; }
-        private void Apple_MouseLeave(object sender, MouseEventArgs e) { apple.Visibility = Visibility.Hidden; }
-        private void Appliances_MouseEnter(object sender, MouseEventArgs e) { VisibleCategory(appliances); }
-        private void Gadgets_MouseEnter(object sender, MouseEventArgs e) { VisibleCategory(gadgets); }
-        private void TVs_MouseEnter(object sender, MouseEventArgs e) { VisibleCategory(tvs); }
-        private void PhotoAudioPS5_MouseEnter(object sender, MouseEventArgs e) { VisibleCategory(photo_audio_ps5); }
-        private void LaptopsAndPCs_MouseEnter(object sender, MouseEventArgs e) { VisibleCategory(laptops_and_pcs); }
-        private void Smartphones_MouseEnter(object sender, MouseEventArgs e) { VisibleCategory(smartphones); }
-        private void Apple_MouseEnter(object sender, MouseEventArgs e) { VisibleCategory(apple); }
+        private void Appliances_MouseLeave(object sender, MouseEventArgs e) { appliances.Visibility = Visibility.Hidden; yellow_main.Background = Brushes.White; }
+        private void Gadgets_MouseLeave(object sender, MouseEventArgs e) { gadgets.Visibility = Visibility.Hidden; yellow_main.Background = Brushes.White; }
+        private void TVs_MouseLeave(object sender, MouseEventArgs e) { tvs.Visibility = Visibility.Hidden; yellow_main.Background = Brushes.White; }
+        private void PhotoAudioPS5_MouseLeave(object sender, MouseEventArgs e) { photo_audio_ps5.Visibility = Visibility.Hidden; yellow_main.Background = Brushes.White; }
+        private void LaptopsAndPCs_MouseLeave(object sender, MouseEventArgs e) { laptops_and_pcs.Visibility = Visibility.Hidden; yellow_main.Background = Brushes.White; }
+        private void Smartphones_MouseLeave(object sender, MouseEventArgs e) { smartphones.Visibility = Visibility.Hidden; yellow_main.Background = Brushes.White; }
+        private void Apple_MouseLeave(object sender, MouseEventArgs e) { apple.Visibility = Visibility.Hidden; yellow_main.Background = Brushes.White; }
+        private void Appliances_MouseEnter(object sender, MouseEventArgs e) { VisibleCategory(appliances); yellow_main.Background = new SolidColorBrush(Color.FromRgb(229, 229, 229)); }
+        private void Gadgets_MouseEnter(object sender, MouseEventArgs e) { VisibleCategory(gadgets); yellow_main.Background = new SolidColorBrush(Color.FromRgb(229, 229, 229)); }
+        private void TVs_MouseEnter(object sender, MouseEventArgs e) { VisibleCategory(tvs); yellow_main.Background = new SolidColorBrush(Color.FromRgb(229, 229, 229)); }
+        private void PhotoAudioPS5_MouseEnter(object sender, MouseEventArgs e) { VisibleCategory(photo_audio_ps5); yellow_main.Background = new SolidColorBrush(Color.FromRgb(229, 229, 229)); }
+        private void LaptopsAndPCs_MouseEnter(object sender, MouseEventArgs e) { VisibleCategory(laptops_and_pcs); yellow_main.Background = new SolidColorBrush(Color.FromRgb(229, 229, 229)); }
+        private void Smartphones_MouseEnter(object sender, MouseEventArgs e) { VisibleCategory(smartphones); yellow_main.Background = new SolidColorBrush(Color.FromRgb(229, 229, 229)); }
+        private void Apple_MouseEnter(object sender, MouseEventArgs e) { VisibleCategory(apple); yellow_main.Background = new SolidColorBrush(Color.FromRgb(229, 229, 229)); }
         private void VisibleCategory(Grid grid)
         {
             foreach (Grid it in Catalog.Children)

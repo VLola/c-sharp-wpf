@@ -7,12 +7,12 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Project_49
+namespace Project_49.Models
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class User
+    public partial class Admin
     {
         public int Id { get; set; }
         public string Email { get; set; }

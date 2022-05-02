@@ -112,14 +112,14 @@
             <Setter Property="BorderThickness" Value="0"/>
         </Style>
         <Style TargetType="Button" x:Key="ActionLabel">
-            <Setter Property="Background" Value="White"/>
+            <Setter Property="Background" Value="Transparent"/>
             <Setter Property="Foreground" Value="Blue"/>
             <Setter Property="FontSize" Value="14"/>
             <Setter Property="Margin" Value="1"/>
             <Setter Property="BorderThickness" Value="0"/>
         </Style>
         <Style TargetType="Button" x:Key="ActionTop">
-            <Setter Property="Background" Value="White"/>
+            <Setter Property="Background" Value="Transparent"/>
             <Setter Property="FontSize" Value="14"/>
             <Setter Property="Margin" Value="1"/>
             <Setter Property="BorderThickness" Value="0"/>
@@ -164,445 +164,479 @@
             </Style.Resources>
         </Style>
     </Window.Resources>
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="41*"></RowDefinition>
-            <RowDefinition Height="58*"></RowDefinition>
-            <RowDefinition Height="406*"></RowDefinition>
-            <RowDefinition Height="164*"></RowDefinition>
-        </Grid.RowDefinitions>
-        <Grid Grid.Row="0" Margin="100 0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="118*"></ColumnDefinition>
-                <ColumnDefinition Width="125*"></ColumnDefinition>
-                <ColumnDefinition Width="624*"></ColumnDefinition>
-                <ColumnDefinition Width="61*"></ColumnDefinition>
-                <ColumnDefinition Width="164*"></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-            <Button x:Name="ButtonMain" Style="{DynamicResource ActionTop}" Template="{StaticResource btTemplate}" Grid.Column="0" BorderBrush="{x:Null}" Foreground="{x:Null}" Background="{x:Null}" >
-                <Image Source="Resources/logo.png"/>
-            </Button>
-            <ComboBox Name="combo_box" Grid.Column="1" VerticalContentAlignment="Center" HorizontalContentAlignment="Center">
-                <ComboBoxItem IsSelected="True">
+    <ScrollViewer>
+        <Grid x:Name="yellow_main" Background="White">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="41*"></RowDefinition>
+                <RowDefinition Height="58*"></RowDefinition>
+                <RowDefinition Height="406*"></RowDefinition>
+                <RowDefinition Height="164*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" Margin="100 0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="118*"></ColumnDefinition>
+                    <ColumnDefinition Width="125*"></ColumnDefinition>
+                    <ColumnDefinition Width="624*"></ColumnDefinition>
+                    <ColumnDefinition Width="61*"></ColumnDefinition>
+                    <ColumnDefinition Width="164*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Button x:Name="ButtonMain" Style="{DynamicResource ActionTop}" Template="{StaticResource btTemplate}" Grid.Column="0" BorderBrush="{x:Null}" Foreground="{x:Null}" Background="{x:Null}" >
+                    <Image Source="Resources/logo.png"/>
+                </Button>
+                <ComboBox Name="combo_box" Grid.Column="1" VerticalContentAlignment="Center" HorizontalContentAlignment="Center">
+                    <ComboBoxItem IsSelected="True">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock>0 800 210 186</TextBlock>
+                        </StackPanel>
+                    </ComboBoxItem>
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock>0 800 210 186</TextBlock>
+                        <TextBlock>0 44 333 63 52</TextBlock>
                     </StackPanel>
-                </ComboBoxItem>
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock>0 44 333 63 52</TextBlock>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock>(066) 731 32 71</TextBlock>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock>(067) 153 05 08</TextBlock>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock>(063) 233 49 50</TextBlock>
-                </StackPanel>
-            </ComboBox>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock>(066) 731 32 71</TextBlock>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock>(067) 153 05 08</TextBlock>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock>(063) 233 49 50</TextBlock>
+                    </StackPanel>
+                </ComboBox>
 
-            <Grid Grid.Column="2">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="126*"></ColumnDefinition>
-                    <ColumnDefinition Width="54*"></ColumnDefinition>
-                    <ColumnDefinition Width="121*"></ColumnDefinition>
-                    <ColumnDefinition Width="52*"></ColumnDefinition>
-                    <ColumnDefinition Width="45*"></ColumnDefinition>
-                    <ColumnDefinition Width="67*"></ColumnDefinition>
-                    <ColumnDefinition Width="159*"></ColumnDefinition>
-                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="126*"></ColumnDefinition>
+                        <ColumnDefinition Width="54*"></ColumnDefinition>
+                        <ColumnDefinition Width="121*"></ColumnDefinition>
+                        <ColumnDefinition Width="52*"></ColumnDefinition>
+                        <ColumnDefinition Width="45*"></ColumnDefinition>
+                        <ColumnDefinition Width="67*"></ColumnDefinition>
+                        <ColumnDefinition Width="159*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
 
-                <Button Style="{StaticResource ActionLabel}" Template="{StaticResource labelTemplate}" Content="Заказать звонок" Grid.Column="0"/>
-                <Button Style="{StaticResource ActionTop}" Template="{StaticResource btTemplate}" Content="Кредит" Grid.Column="1"/>
-                <Button Style="{StaticResource ActionTop}" Template="{StaticResource btTemplate}" Content="Сервисный центр" Grid.Column="2" />
-                <Button Style="{StaticResource ActionTop}" Template="{StaticResource btTemplate}" Content="Акции" Grid.Column="3" />
-                <Button Style="{StaticResource ActionTop}" Template="{StaticResource btTemplate}" Content="Блог" Grid.Column="4" />
-                <Button Style="{StaticResource ActionTop}" Template="{StaticResource btTemplate}" Content="Контакты" Grid.Column="5" />
-                <Button Style="{StaticResource ActionTop}" Template="{StaticResource btTemplate}" Content="Расширенная гарантия" Grid.Column="6"/>
+                    <Button Style="{StaticResource ActionLabel}" Template="{StaticResource labelTemplate}" Content="Заказать звонок" Grid.Column="0"/>
+                    <Button Style="{StaticResource ActionTop}" Template="{StaticResource btTemplate}" Content="Кредит" Grid.Column="1"/>
+                    <Button Style="{StaticResource ActionTop}" Template="{StaticResource btTemplate}" Content="Сервисный центр" Grid.Column="2" />
+                    <Button Style="{StaticResource ActionTop}" Template="{StaticResource btTemplate}" Content="Акции" Grid.Column="3" />
+                    <Button Style="{StaticResource ActionTop}" Template="{StaticResource btTemplate}" Content="Блог" Grid.Column="4" />
+                    <Button Style="{StaticResource ActionTop}" Template="{StaticResource btTemplate}" Content="Контакты" Grid.Column="5" />
+                    <Button Style="{StaticResource ActionTop}" Template="{StaticResource btTemplate}" Content="Расширенная гарантия" Grid.Column="6"/>
+                </Grid>
+
+
+                <Grid Grid.Column="4">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <Button Style="{StaticResource ActionTop}" Template="{StaticResource btTemplate}"  Grid.Row="1" Grid.Column="0" BorderBrush="{x:Null}" Foreground="{x:Null}">
+                        <Image Source="Resources/search.png"/>
+                    </Button>
+                    <Button x:Name="ButtonLogin" Style="{StaticResource ActionTop}" Template="{StaticResource btTemplate}" Grid.Row="1" Grid.Column="1" BorderBrush="{x:Null}" Foreground="{x:Null}" >
+                        <Image Source="Resources/account.png"/>
+                    </Button>
+                    <Button Style="{StaticResource ActionTop}" Template="{StaticResource btTemplate}" Grid.Row="1" Grid.Column="2" BorderBrush="{x:Null}" Foreground="{x:Null}" >
+                        <Image Source="Resources/compare.png"/>
+                    </Button>
+                    <Button Style="{StaticResource ActionTop}" Template="{StaticResource btTemplate}" Grid.Row="1" Grid.Column="3"  BorderBrush="{x:Null}" Foreground="{x:Null}" >
+                        <Image Source="Resources/basket.png"/>
+                    </Button>
+                </Grid>
+
             </Grid>
-
-
-            <Grid Grid.Column="4">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                </Grid.ColumnDefinitions>
-
-                <Button Style="{StaticResource ActionTop}" Template="{StaticResource btTemplate}"  Grid.Row="1" Grid.Column="0" BorderBrush="{x:Null}" Foreground="{x:Null}">
-                    <Image Source="Resources/search.png"/>
-                </Button>
-                <Button x:Name="ButtonLogin" Style="{StaticResource ActionTop}" Template="{StaticResource btTemplate}" Grid.Row="1" Grid.Column="1" BorderBrush="{x:Null}" Foreground="{x:Null}" >
-                    <Image Source="Resources/account.png"/>
-                </Button>
-                <Button Style="{StaticResource ActionTop}" Template="{StaticResource btTemplate}" Grid.Row="1" Grid.Column="2" BorderBrush="{x:Null}" Foreground="{x:Null}" >
-                    <Image Source="Resources/compare.png"/>
-                </Button>
-                <Button Style="{StaticResource ActionTop}" Template="{StaticResource btTemplate}" Grid.Row="1" Grid.Column="3"  BorderBrush="{x:Null}" Foreground="{x:Null}" >
-                    <Image Source="Resources/basket.png"/>
-                </Button>
-            </Grid>
-
-        </Grid>
-        <Grid Grid.Row="1"  Margin="100 10 100 0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-            <Button Style="{StaticResource ActionButtonLeft}" Template="{StaticResource btTemplate}" x:Name="Apple" Content="Apple" Grid.Column="0"/>
-            <Button Style="{StaticResource ActionButton}" Template="{StaticResource btTemplate}" x:Name="Smartphones" Content="Смартфоны" Grid.Column="1"/>
-            <Button Style="{StaticResource ActionButton}" Template="{StaticResource btTemplate}" x:Name="LaptopsAndPCs" Content="Ноутбуки и ПК" Grid.Column="2"/>
-            <Button Style="{StaticResource ActionButton}" Template="{StaticResource btTemplate}" x:Name="PhotoAudioPS5" Content="Фото Аудио PS5" Grid.Column="3"/>
-            <Button Style="{StaticResource ActionButton}" Template="{StaticResource btTemplate}" x:Name="TVs" Content="Телевизоры" Grid.Column="4"/>
-            <Button Style="{StaticResource ActionButton}" Template="{StaticResource btTemplate}" x:Name="Gadgets" Content="Гаджеты" Grid.Column="5"/>
-            <Button Style="{StaticResource ActionButtonRigth}" Template="{StaticResource btTemplate}" x:Name="Appliances" Content="Бытовая техника" Grid.Column="6"/>
-        </Grid>
-
-        <Grid x:Name="Main" Grid.Row="2">
-            <!--Main-->
-            <Grid x:Name="MainBackground" Visibility="Visible">
-                <Grid.Background>
-                    <ImageBrush ImageSource="Resources/Ukraine.png" Stretch="Uniform"/>
-                </Grid.Background>
-            </Grid>
-            <!--Login-->
-            <Grid x:Name="Login" Visibility="Hidden" Margin="100 0" Background="White">
+            <Grid Grid.Row="1"  Margin="100 10 100 0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition></ColumnDefinition>
                     <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <Grid Grid.Column="0" Margin="20">
+                <Button Padding="20" Style="{StaticResource ActionButtonLeft}" Template="{StaticResource btTemplate}" x:Name="Apple" Content="Apple" Grid.Column="0"/>
+                <Button Padding="20" Style="{StaticResource ActionButton}" Template="{StaticResource btTemplate}" x:Name="Smartphones" Content="Смартфоны" Grid.Column="1"/>
+                <Button Padding="20" Style="{StaticResource ActionButton}" Template="{StaticResource btTemplate}" x:Name="LaptopsAndPCs" Content="Ноутбуки и ПК" Grid.Column="2"/>
+                <Button Padding="20" Style="{StaticResource ActionButton}" Template="{StaticResource btTemplate}" x:Name="PhotoAudioPS5" Content="Фото Аудио PS5" Grid.Column="3"/>
+                <Button Padding="20" Style="{StaticResource ActionButton}" Template="{StaticResource btTemplate}" x:Name="TVs" Content="Телевизоры" Grid.Column="4"/>
+                <Button Padding="20" Style="{StaticResource ActionButton}" Template="{StaticResource btTemplate}" x:Name="Gadgets" Content="Гаджеты" Grid.Column="5"/>
+                <Button Padding="20" Style="{StaticResource ActionButtonRigth}" Template="{StaticResource btTemplate}" x:Name="Appliances" Content="Бытовая техника" Grid.Column="6"/>
+            </Grid>
+
+            <Grid x:Name="Main" Grid.Row="2">
+                <Grid Margin="100 0">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="103*"></RowDefinition>
-                        <RowDefinition Height="59*"></RowDefinition>
-                        <RowDefinition Height="182*"></RowDefinition>
-                        <RowDefinition Height="114*"></RowDefinition>
+                        <RowDefinition Height="100*"></RowDefinition>
+                        <RowDefinition Height="100*"></RowDefinition>
+                        <RowDefinition Height="10*"></RowDefinition>
                     </Grid.RowDefinitions>
-
-                    <Label Grid.Row="0" Content="Страница авторизации" FontSize="42"/>
-                    <Label Grid.Row="1" Content="Новые клиенты" FontSize="28"  VerticalAlignment="Bottom"/>
-                    <Grid Grid.Row="2">
+                    <Grid x:Name="ProductListOne" Grid.Row="0" Background="White" Margin="0 20">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                    </Grid>
+                    <Grid x:Name="LatestProduct" Grid.Row="1" Margin="0 20">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="25*"></ColumnDefinition>
+                            <ColumnDefinition Width="50*"></ColumnDefinition>
+                            <ColumnDefinition Width="50*"></ColumnDefinition>
+                            <ColumnDefinition Width="25*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
-                            <RowDefinition></RowDefinition>
-                            <RowDefinition Height="1"></RowDefinition>
-                            <RowDefinition></RowDefinition>
+                            <RowDefinition Height="30*"></RowDefinition>
+                            <RowDefinition Height="30*"></RowDefinition>
+                            <RowDefinition Height="30*"></RowDefinition>
                         </Grid.RowDefinitions>
-                        <TextBlock Grid.Row="0" VerticalAlignment="Center" Text="Создав учётную запись на нашем сайте, вы будете тратить меньше времени на оформление заказа, сможете хранить несколько адресов доставки, отслеживать состояние заказов, а также многое другое." FontSize="14" TextWrapping="Wrap"/>
-                        <Grid Grid.Row="1" Background="#FFF9C900"/>
-                        <Button x:Name="ButtonRegestration" Grid.Row="2" Template="{StaticResource loginTemplate}" Style="{StaticResource ButtonLogin}" Padding="8" Content="Создать учётную запись"  HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                        <Label Grid.ColumnSpan="4" Content="Новинки" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="28"/>
+                        
+                    </Grid>
+                    <Button Content="Добавить" Padding="20 5" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center" Click="ButtonAddRow_Click" Style="{DynamicResource ButtonLogin}"/>
+                </Grid>
+                <!--Main-->
+                <Grid x:Name="MainBackground" Visibility="Hidden">
+                    <Grid.Background>
+                        <ImageBrush ImageSource="Resources/Ukraine.png" Stretch="Uniform"/>
+                    </Grid.Background>
+                </Grid>
+                <!--Login-->
+                <Grid x:Name="Login" Visibility="Hidden" Margin="100 0" Background="White">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="0" Margin="20">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="103*"></RowDefinition>
+                            <RowDefinition Height="59*"></RowDefinition>
+                            <RowDefinition Height="182*"></RowDefinition>
+                            <RowDefinition Height="114*"></RowDefinition>
+                        </Grid.RowDefinitions>
+
+                        <Label Grid.Row="0" Content="Страница авторизации" FontSize="42"/>
+                        <Label Grid.Row="1" Content="Новые клиенты" FontSize="28"  VerticalAlignment="Bottom"/>
+                        <Grid Grid.Row="2">
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition Height="1"></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <TextBlock Grid.Row="0" VerticalAlignment="Center" Text="Создав учётную запись на нашем сайте, вы будете тратить меньше времени на оформление заказа, сможете хранить несколько адресов доставки, отслеживать состояние заказов, а также многое другое." FontSize="14" TextWrapping="Wrap"/>
+                            <Grid Grid.Row="1" Background="#FFF9C900"/>
+                            <Button x:Name="ButtonRegestration" Grid.Row="2" Template="{StaticResource loginTemplate}" Style="{StaticResource ButtonLogin}" Padding="8" Content="Создать учётную запись"  HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                        </Grid>
+                    </Grid>
+                    <Grid Grid.Column="1" Margin="20">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="162*"></RowDefinition>
+                            <RowDefinition Height="182*"></RowDefinition>
+                            <RowDefinition Height="65*"></RowDefinition>
+                            <RowDefinition Height="50*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Label Grid.Row="0" Content="Зарегистрированные клиенты" FontSize="28" VerticalAlignment="Bottom"/>
+                        <Grid Grid.Row="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="48*"></RowDefinition>
+                                <RowDefinition Height="133*"></RowDefinition>
+                                <RowDefinition Height="1"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <TextBlock Grid.Row="0" VerticalAlignment="Center" Text="Если у вас есть учётная запись на нашем сайте, пожалуйста, авторизируйтесь." FontSize="14" TextWrapping="Wrap"/>
+                            <Grid Grid.Row="1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="89*"></ColumnDefinition>
+                                    <ColumnDefinition Width="224*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Grid Grid.Column="0">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="60*"></RowDefinition>
+                                        <RowDefinition Height="1*"></RowDefinition>
+                                        <RowDefinition Height="60*"></RowDefinition>
+                                        <RowDefinition Height="1*"></RowDefinition>
+                                        <RowDefinition Height="30*"></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <Label Grid.Row="0" FontSize="16" Content="Email*" VerticalAlignment="Bottom"/>
+                                    <Label Grid.Row="2" FontSize="16" Content="Пароль*" VerticalAlignment="Bottom"/>
+                                </Grid>
+                                <Grid Grid.Column="1">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="60*"></RowDefinition>
+                                        <RowDefinition Height="1*"></RowDefinition>
+                                        <RowDefinition Height="60*"></RowDefinition>
+                                        <RowDefinition Height="1*"></RowDefinition>
+                                        <RowDefinition Height="30*"></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <TextBox x:Name="email" Grid.Row="0" FontSize="16" Padding="0 5" BorderThickness="0" VerticalAlignment="Bottom"/>
+                                    <Grid Grid.Row="1" Background="#FFE6E6E6"/>
+                                    <TextBox x:Name="parol" Grid.Row="2" FontSize="16" Padding="0 5" BorderThickness="0" VerticalAlignment="Bottom"/>
+                                    <Grid Grid.Row="3" Background="#FFE6E6E6"/>
+                                </Grid>
+                            </Grid>
+                            <Grid Grid.Row="2" Background="#FFF9C900"/>
+                        </Grid>
+                        <Grid Grid.Row="2" >
+                            <Button Template="{StaticResource labelTemplate}" Style="{StaticResource ActionLabel}" Content="Забыли пароль?"  HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                            <Button Template="{StaticResource loginTemplate}" Style="{StaticResource ButtonLogin}" Padding="50, 8" Content="Войти"  HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                        </Grid>
                     </Grid>
                 </Grid>
-                <Grid Grid.Column="1" Margin="20">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="162*"></RowDefinition>
-                        <RowDefinition Height="182*"></RowDefinition>
-                        <RowDefinition Height="65*"></RowDefinition>
-                        <RowDefinition Height="50*"></RowDefinition>
-                    </Grid.RowDefinitions>
-                    <Label Grid.Row="0" Content="Зарегистрированные клиенты" FontSize="28" VerticalAlignment="Bottom"/>
-                    <Grid Grid.Row="1">
+                <!--Registration-->
+                <Grid x:Name="Registration" Visibility="Hidden" Margin="100 0" Background="White">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="0"  Margin="20">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="48*"></RowDefinition>
-                            <RowDefinition Height="133*"></RowDefinition>
+                            <RowDefinition Height="41*"></RowDefinition>
+                            <RowDefinition Height="101*"></RowDefinition>
+                            <RowDefinition Height="25*"></RowDefinition>
+                            <RowDefinition Height="44*"></RowDefinition>
+                            <RowDefinition Height="76*"></RowDefinition>
                             <RowDefinition Height="1"></RowDefinition>
+                            <RowDefinition Height="56*"></RowDefinition>
                         </Grid.RowDefinitions>
-                        <TextBlock Grid.Row="0" VerticalAlignment="Center" Text="Если у вас есть учётная запись на нашем сайте, пожалуйста, авторизируйтесь." FontSize="14" TextWrapping="Wrap"/>
-                        <Grid Grid.Row="1">
+                        <Label Grid.Row="0" Content="Создать учётную запись" FontSize="30"/>
+                        <Label Grid.Row="1" Content="Личная информация" FontSize="20" VerticalAlignment="Bottom"/>
+                        <Grid Grid.Row="2">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="89*"></ColumnDefinition>
-                                <ColumnDefinition Width="224*"></ColumnDefinition>
+                                <ColumnDefinition Width="86*"></ColumnDefinition>
+                                <ColumnDefinition Width="167*"></ColumnDefinition>
                             </Grid.ColumnDefinitions>
                             <Grid Grid.Column="0">
                                 <Grid.RowDefinitions>
-                                    <RowDefinition Height="60*"></RowDefinition>
-                                    <RowDefinition Height="1*"></RowDefinition>
-                                    <RowDefinition Height="60*"></RowDefinition>
+                                    <RowDefinition Height="30*"></RowDefinition>
                                     <RowDefinition Height="1*"></RowDefinition>
                                     <RowDefinition Height="30*"></RowDefinition>
+                                    <RowDefinition Height="1*"></RowDefinition>
+                                    <RowDefinition Height="30*"></RowDefinition>
+                                    <RowDefinition Height="1*"></RowDefinition>
+                                    <RowDefinition Height="10*"></RowDefinition>
                                 </Grid.RowDefinitions>
-                                <Label Grid.Row="0" FontSize="16" Content="Email*" VerticalAlignment="Bottom"/>
-                                <Label Grid.Row="2" FontSize="16" Content="Пароль*" VerticalAlignment="Bottom"/>
+                                <Label Grid.Row="0" FontSize="16" Content="Имя*" VerticalAlignment="Bottom"/>
+                                <Label Grid.Row="2" FontSize="16" Content="Фамилия*" VerticalAlignment="Bottom"/>
+                                <Label Grid.Row="4" FontSize="16" Content="Email*" VerticalAlignment="Bottom"/>
                             </Grid>
                             <Grid Grid.Column="1">
                                 <Grid.RowDefinitions>
-                                    <RowDefinition Height="60*"></RowDefinition>
-                                    <RowDefinition Height="1*"></RowDefinition>
-                                    <RowDefinition Height="60*"></RowDefinition>
+                                    <RowDefinition Height="30*"></RowDefinition>
                                     <RowDefinition Height="1*"></RowDefinition>
                                     <RowDefinition Height="30*"></RowDefinition>
+                                    <RowDefinition Height="1*"></RowDefinition>
+                                    <RowDefinition Height="30*"></RowDefinition>
+                                    <RowDefinition Height="1*"></RowDefinition>
+                                    <RowDefinition Height="10*"></RowDefinition>
                                 </Grid.RowDefinitions>
-                                <TextBox x:Name="email" Grid.Row="0" FontSize="16" Padding="0 5" BorderThickness="0" VerticalAlignment="Bottom"/>
+                                <TextBox x:Name="firstname_registration" Grid.Row="0" FontSize="16" Padding="0 5" BorderThickness="0" VerticalAlignment="Bottom"/>
                                 <Grid Grid.Row="1" Background="#FFE6E6E6"/>
-                                <TextBox x:Name="parol" Grid.Row="2" FontSize="16" Padding="0 5" BorderThickness="0" VerticalAlignment="Bottom"/>
+                                <TextBox x:Name="lastname_registration" Grid.Row="2" FontSize="16" Padding="0 5" BorderThickness="0" VerticalAlignment="Bottom"/>
+                                <Grid Grid.Row="3" Background="#FFE6E6E6"/>
+                                <TextBox x:Name="email_registration" Grid.Row="4" FontSize="16" Padding="0 5" BorderThickness="0" VerticalAlignment="Bottom"/>
+                                <Grid Grid.Row="5" Background="#FFE6E6E6"/>
+                            </Grid>
+                        </Grid>
+                        <CheckBox Grid.Row="3" BorderThickness="3" BorderBrush="#FFE6E6E6" FontSize="16" VerticalAlignment="Center" Content="Подписаться на рассылку" Margin="0,3,0,2"/>
+                        <Label Grid.Row="4" Content="Информация для авторизации" FontSize="20" VerticalAlignment="Center" Margin="0,3"/>
+                        <Grid Grid.Row="5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="86*"></ColumnDefinition>
+                                <ColumnDefinition Width="167*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid Grid.Column="0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="30*"></RowDefinition>
+                                    <RowDefinition Height="1*"></RowDefinition>
+                                    <RowDefinition Height="30*"></RowDefinition>
+                                    <RowDefinition Height="1*"></RowDefinition>
+                                    <RowDefinition Height="10*"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Label Grid.Row="0" FontSize="16" Content="Пароль*" VerticalAlignment="Bottom"/>
+                                <Label Grid.Row="2" FontSize="16" Content="Подтвердите пароль*" VerticalAlignment="Bottom"/>
+                            </Grid>
+                            <Grid Grid.Column="1">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="30*"></RowDefinition>
+                                    <RowDefinition Height="1*"></RowDefinition>
+                                    <RowDefinition Height="30*"></RowDefinition>
+                                    <RowDefinition Height="1*"></RowDefinition>
+                                    <RowDefinition Height="10*"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <TextBox x:Name="parol_registration" Grid.Row="0" FontSize="16" Padding="0 5" BorderThickness="0" VerticalAlignment="Bottom"/>
+                                <Grid Grid.Row="1" Background="#FFE6E6E6"/>
+                                <TextBox x:Name="parol_verification_registration" Grid.Row="2" FontSize="16" Padding="0 5" BorderThickness="0" VerticalAlignment="Bottom"/>
                                 <Grid Grid.Row="3" Background="#FFE6E6E6"/>
                             </Grid>
                         </Grid>
-                        <Grid Grid.Row="2" Background="#FFF9C900"/>
-                    </Grid>
-                    <Grid Grid.Row="2" >
-                        <Button Template="{StaticResource labelTemplate}" Style="{StaticResource ActionLabel}" Content="Забыли пароль?"  HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                        <Button Template="{StaticResource loginTemplate}" Style="{StaticResource ButtonLogin}" Padding="50, 8" Content="Войти"  HorizontalAlignment="Right" VerticalAlignment="Center"/>
+
+                        <Grid Grid.Row="6" Background="#FFF9C900"/>
+                        <Grid Grid.Row="7" >
+                            <Button x:Name="ButtonRegistrationReturn" Template="{StaticResource labelTemplate}" Style="{StaticResource ActionLabel}" Content="←Вернуться"  HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                            <Button Template="{StaticResource loginTemplate}" Style="{StaticResource ButtonLogin}" Padding="50, 8" Content="Отправить"  HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                        </Grid>
                     </Grid>
                 </Grid>
             </Grid>
-            <!--Registration-->
-            <Grid x:Name="Registration" Visibility="Hidden" Margin="100 0" Background="White">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                </Grid.ColumnDefinitions>
-                <Grid Grid.Column="0"  Margin="20">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="48*"></RowDefinition>
-                        <RowDefinition Height="41*"></RowDefinition>
-                        <RowDefinition Height="101*"></RowDefinition>
-                        <RowDefinition Height="25*"></RowDefinition>
-                        <RowDefinition Height="44*"></RowDefinition>
-                        <RowDefinition Height="76*"></RowDefinition>
-                        <RowDefinition Height="1"></RowDefinition>
-                        <RowDefinition Height="56*"></RowDefinition>
-                    </Grid.RowDefinitions>
-                    <Label Grid.Row="0" Content="Создать учётную запись" FontSize="30"/>
-                    <Label Grid.Row="1" Content="Личная информация" FontSize="20" VerticalAlignment="Bottom"/>
-                    <Grid Grid.Row="2">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="86*"></ColumnDefinition>
-                            <ColumnDefinition Width="167*"></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
-                        <Grid Grid.Column="0">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="30*"></RowDefinition>
-                                <RowDefinition Height="1*"></RowDefinition>
-                                <RowDefinition Height="30*"></RowDefinition>
-                                <RowDefinition Height="1*"></RowDefinition>
-                                <RowDefinition Height="30*"></RowDefinition>
-                                <RowDefinition Height="1*"></RowDefinition>
-                                <RowDefinition Height="10*"></RowDefinition>
-                            </Grid.RowDefinitions>
-                            <Label Grid.Row="0" FontSize="16" Content="Имя*" VerticalAlignment="Bottom"/>
-                            <Label Grid.Row="2" FontSize="16" Content="Фамилия*" VerticalAlignment="Bottom"/>
-                            <Label Grid.Row="4" FontSize="16" Content="Email*" VerticalAlignment="Bottom"/>
-                        </Grid>
-                        <Grid Grid.Column="1">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="30*"></RowDefinition>
-                                <RowDefinition Height="1*"></RowDefinition>
-                                <RowDefinition Height="30*"></RowDefinition>
-                                <RowDefinition Height="1*"></RowDefinition>
-                                <RowDefinition Height="30*"></RowDefinition>
-                                <RowDefinition Height="1*"></RowDefinition>
-                                <RowDefinition Height="10*"></RowDefinition>
-                            </Grid.RowDefinitions>
-                            <TextBox x:Name="firstname_registration" Grid.Row="0" FontSize="16" Padding="0 5" BorderThickness="0" VerticalAlignment="Bottom"/>
-                            <Grid Grid.Row="1" Background="#FFE6E6E6"/>
-                            <TextBox x:Name="lastname_registration" Grid.Row="2" FontSize="16" Padding="0 5" BorderThickness="0" VerticalAlignment="Bottom"/>
-                            <Grid Grid.Row="3" Background="#FFE6E6E6"/>
-                            <TextBox x:Name="email_registration" Grid.Row="4" FontSize="16" Padding="0 5" BorderThickness="0" VerticalAlignment="Bottom"/>
-                            <Grid Grid.Row="5" Background="#FFE6E6E6"/>
-                        </Grid>
-                    </Grid>
-                    <CheckBox Grid.Row="3" BorderThickness="3" BorderBrush="#FFE6E6E6" FontSize="16" VerticalAlignment="Center" Content="Подписаться на рассылку" Margin="0,3,0,2"/>
-                    <Label Grid.Row="4" Content="Информация для авторизации" FontSize="20" VerticalAlignment="Center" Margin="0,3"/>
-                    <Grid Grid.Row="5">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="86*"></ColumnDefinition>
-                            <ColumnDefinition Width="167*"></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
-                        <Grid Grid.Column="0">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="30*"></RowDefinition>
-                                <RowDefinition Height="1*"></RowDefinition>
-                                <RowDefinition Height="30*"></RowDefinition>
-                                <RowDefinition Height="1*"></RowDefinition>
-                                <RowDefinition Height="10*"></RowDefinition>
-                            </Grid.RowDefinitions>
-                            <Label Grid.Row="0" FontSize="16" Content="Пароль*" VerticalAlignment="Bottom"/>
-                            <Label Grid.Row="2" FontSize="16" Content="Подтвердите пароль*" VerticalAlignment="Bottom"/>
-                        </Grid>
-                        <Grid Grid.Column="1">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="30*"></RowDefinition>
-                                <RowDefinition Height="1*"></RowDefinition>
-                                <RowDefinition Height="30*"></RowDefinition>
-                                <RowDefinition Height="1*"></RowDefinition>
-                                <RowDefinition Height="10*"></RowDefinition>
-                            </Grid.RowDefinitions>
-                            <TextBox x:Name="parol_registration" Grid.Row="0" FontSize="16" Padding="0 5" BorderThickness="0" VerticalAlignment="Bottom"/>
-                            <Grid Grid.Row="1" Background="#FFE6E6E6"/>
-                            <TextBox x:Name="parol_verification_registration" Grid.Row="2" FontSize="16" Padding="0 5" BorderThickness="0" VerticalAlignment="Bottom"/>
-                            <Grid Grid.Row="3" Background="#FFE6E6E6"/>
-                        </Grid>
-                    </Grid>
-
-                    <Grid Grid.Row="6" Background="#FFF9C900"/>
-                    <Grid Grid.Row="7" >
-                        <Button x:Name="ButtonRegistrationReturn" Template="{StaticResource labelTemplate}" Style="{StaticResource ActionLabel}" Content="←Вернуться"  HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                        <Button Template="{StaticResource loginTemplate}" Style="{StaticResource ButtonLogin}" Padding="50, 8" Content="Отправить"  HorizontalAlignment="Right" VerticalAlignment="Center"/>
-                    </Grid>
+            <Grid Grid.Row="2" x:Name="Catalog">
+                <Grid x:Name="apple" Background="White" Visibility="Hidden" Margin="100 0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <ListView Grid.Column="0" Style="{StaticResource ActionListCategory}" x:Name="top_iPhone"/>
+                    <ListView Grid.Column="1" Style="{StaticResource ActionListCategory}" x:Name="top_iPad"/>
+                    <ListView Grid.Column="2" Style="{StaticResource ActionListCategory}" x:Name="top_macbook"/>
+                    <ListView Grid.Column="3" Style="{StaticResource ActionListCategory}" x:Name="top_iMac"/>
+                    <ListView Grid.Column="4" Style="{StaticResource ActionListCategory}" x:Name="top_apple_watch"/>
+                    <ListView Grid.Column="5" Style="{StaticResource ActionListCategory}" x:Name="top_accessories_apple"/>
+                    <ListView Grid.Column="6" Style="{StaticResource ActionListCategory}" x:Name="top_cases"/>
+                </Grid>
+                <Grid x:Name="smartphones" Visibility="Hidden" Background="White" Margin="100 0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <ListView Grid.Column="0" Style="{StaticResource ActionListCategory}" x:Name="top_samsung_s"/>
+                    <ListView Grid.Column="1" Style="{StaticResource ActionListCategory}" x:Name="top_samsung_z"/>
+                    <ListView Grid.Column="2" Style="{StaticResource ActionListCategory}" x:Name="top_smartphones"/>
+                    <ListView Grid.Column="3" Style="{StaticResource ActionListCategory}" x:Name="top_xiaomi_mi"/>
+                    <ListView Grid.Column="4" Style="{StaticResource ActionListCategory}" x:Name="top_xiaomi_poco"/>
+                    <ListView Grid.Column="5" Style="{StaticResource ActionListCategory}" x:Name="top_smart_clock"/>
+                    <ListView Grid.Column="6" Style="{StaticResource ActionListCategory}" x:Name="top_cases_samsung"/>
+                </Grid>
+                <Grid x:Name="laptops_and_pcs" Visibility="Hidden" Background="White" Margin="100 0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <ListView Grid.Column="0" Style="{StaticResource ActionListCategory}" x:Name="top_monitors"/>
+                    <ListView Grid.Column="1" Style="{StaticResource ActionListCategory}" x:Name="top_pc"/>
+                    <ListView Grid.Column="2" Style="{StaticResource ActionListCategory}" x:Name="top_laptops"/>
+                    <ListView Grid.Column="3" Style="{StaticResource ActionListCategory}" x:Name="top_notebooks"/>
+                    <ListView Grid.Column="4" Style="{StaticResource ActionListCategory}" x:Name="top_tablets"/>
+                    <ListView Grid.Column="5" Style="{StaticResource ActionListCategory}" x:Name="top_accessories"/>
+                </Grid>
+                <Grid x:Name="photo_audio_ps5" Visibility="Hidden"  Background="White" Margin="100 0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <ListView Grid.Column="0" Style="{StaticResource ActionListCategory}" x:Name="top_cameras"/>
+                    <ListView Grid.Column="1" Style="{StaticResource ActionListCategory}" x:Name="top_sony_playstation"/>
+                    <ListView Grid.Column="2" Style="{StaticResource ActionListCategory}" x:Name="top_action_cameras"/>
+                    <ListView Grid.Column="3" Style="{StaticResource ActionListCategory}" x:Name="top_portable_acoustic"/>
+                    <ListView Grid.Column="4" Style="{StaticResource ActionListCategory}" x:Name="top_headphones"/>
+                </Grid>
+                <Grid x:Name="tvs" Visibility="Hidden" Background="White" Margin="100 0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <ListView Grid.Column="0" Style="{StaticResource ActionListCategory}" x:Name="top_tv_samsung"/>
+                    <ListView Grid.Column="1" Style="{StaticResource ActionListCategory}" x:Name="top_tv_lg"/>
+                    <ListView Grid.Column="2" Style="{StaticResource ActionListCategory}" x:Name="top_tv_sony"/>
+                    <ListView Grid.Column="3" Style="{StaticResource ActionListCategory}" x:Name="top_tv_philips"/>
+                    <ListView Grid.Column="4" Style="{StaticResource ActionListCategory}" x:Name="top_tv_projectors"/>
+                    <ListView Grid.Column="5" Style="{StaticResource ActionListCategory}" x:Name="top_tv_soundbars"/>
+                </Grid>
+                <Grid x:Name="gadgets" Visibility="Hidden" Background="White" Margin="100 0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <ListView Grid.Column="0" Style="{StaticResource ActionListCategory}" x:Name="top_quadcopters"/>
+                    <ListView Grid.Column="1" Style="{StaticResource ActionListCategory}" x:Name="top_electric_transport"/>
+                    <ListView Grid.Column="2" Style="{StaticResource ActionListCategory}" x:Name="top_smart_house"/>
+                    <ListView Grid.Column="3" Style="{StaticResource ActionListCategory}" x:Name="top_cables"/>
+                    <ListView Grid.Column="4" Style="{StaticResource ActionListCategory}" x:Name="top_chsrgers"/>
+                </Grid>
+                <Grid x:Name="appliances" Visibility="Hidden" Background="White" Margin="100 0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <ListView Grid.Column="0" Style="{StaticResource ActionListCategory}" x:Name="top_vacuum_cleaners"/>
+                    <ListView Grid.Column="1" Style="{StaticResource ActionListCategory}" x:Name="top_air_conditioners"/>
+                    <ListView Grid.Column="2" Style="{StaticResource ActionListCategory}" x:Name="top_large_home_appliances"/>
+                    <ListView Grid.Column="3" Style="{StaticResource ActionListCategory}" x:Name="top_small_household_apliances"/>
                 </Grid>
             </Grid>
-        </Grid>
-        <Grid Grid.Row="2" x:Name="Catalog">
-            <Grid x:Name="apple" Background="White" Visibility="Hidden" Margin="100 0">
+            <Grid Grid.Row="3" Background="Black">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition Width="25*"></ColumnDefinition>
+                    <ColumnDefinition Width="69*"></ColumnDefinition>
+                    <ColumnDefinition Width="69*"></ColumnDefinition>
+                    <ColumnDefinition Width="69*"></ColumnDefinition>
+                    <ColumnDefinition Width="69*"></ColumnDefinition>
+                    <ColumnDefinition Width="25*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <ListView Grid.Column="0" Style="{StaticResource ActionListCategory}" x:Name="top_iPhone"/>
-                <ListView Grid.Column="1" Style="{StaticResource ActionListCategory}" x:Name="top_iPad"/>
-                <ListView Grid.Column="2" Style="{StaticResource ActionListCategory}" x:Name="top_macbook"/>
-                <ListView Grid.Column="3" Style="{StaticResource ActionListCategory}" x:Name="top_iMac"/>
-                <ListView Grid.Column="4" Style="{StaticResource ActionListCategory}" x:Name="top_apple_watch"/>
-                <ListView Grid.Column="5" Style="{StaticResource ActionListCategory}" x:Name="top_accessories_apple"/>
-                <ListView Grid.Column="6" Style="{StaticResource ActionListCategory}" x:Name="top_cases"/>
-            </Grid>
-            <Grid x:Name="smartphones" Visibility="Hidden" Background="White" Margin="100 0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                </Grid.ColumnDefinitions>
-                <ListView Grid.Column="0" Style="{StaticResource ActionListCategory}" x:Name="top_samsung_s"/>
-                <ListView Grid.Column="1" Style="{StaticResource ActionListCategory}" x:Name="top_samsung_z"/>
-                <ListView Grid.Column="2" Style="{StaticResource ActionListCategory}" x:Name="top_smartphones"/>
-                <ListView Grid.Column="3" Style="{StaticResource ActionListCategory}" x:Name="top_xiaomi_mi"/>
-                <ListView Grid.Column="4" Style="{StaticResource ActionListCategory}" x:Name="top_xiaomi_poco"/>
-                <ListView Grid.Column="5" Style="{StaticResource ActionListCategory}" x:Name="top_smart_clock"/>
-                <ListView Grid.Column="6" Style="{StaticResource ActionListCategory}" x:Name="top_cases_samsung"/>
-            </Grid>
-            <Grid x:Name="laptops_and_pcs" Visibility="Hidden" Background="White" Margin="100 0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                </Grid.ColumnDefinitions>
-                <ListView Grid.Column="0" Style="{StaticResource ActionListCategory}" x:Name="top_monitors"/>
-                <ListView Grid.Column="1" Style="{StaticResource ActionListCategory}" x:Name="top_pc"/>
-                <ListView Grid.Column="2" Style="{StaticResource ActionListCategory}" x:Name="top_laptops"/>
-                <ListView Grid.Column="3" Style="{StaticResource ActionListCategory}" x:Name="top_notebooks"/>
-                <ListView Grid.Column="4" Style="{StaticResource ActionListCategory}" x:Name="top_tablets"/>
-                <ListView Grid.Column="5" Style="{StaticResource ActionListCategory}" x:Name="top_accessories"/>
-            </Grid>
-            <Grid x:Name="photo_audio_ps5" Visibility="Hidden"  Background="White" Margin="100 0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                </Grid.ColumnDefinitions>
-                <ListView Grid.Column="0" Style="{StaticResource ActionListCategory}" x:Name="top_cameras"/>
-                <ListView Grid.Column="1" Style="{StaticResource ActionListCategory}" x:Name="top_sony_playstation"/>
-                <ListView Grid.Column="2" Style="{StaticResource ActionListCategory}" x:Name="top_action_cameras"/>
-                <ListView Grid.Column="3" Style="{StaticResource ActionListCategory}" x:Name="top_portable_acoustic"/>
-                <ListView Grid.Column="4" Style="{StaticResource ActionListCategory}" x:Name="top_headphones"/>
-            </Grid>
-            <Grid x:Name="tvs" Visibility="Hidden" Background="White" Margin="100 0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                </Grid.ColumnDefinitions>
-                <ListView Grid.Column="0" Style="{StaticResource ActionListCategory}" x:Name="top_tv_samsung"/>
-                <ListView Grid.Column="1" Style="{StaticResource ActionListCategory}" x:Name="top_tv_lg"/>
-                <ListView Grid.Column="2" Style="{StaticResource ActionListCategory}" x:Name="top_tv_sony"/>
-                <ListView Grid.Column="3" Style="{StaticResource ActionListCategory}" x:Name="top_tv_philips"/>
-                <ListView Grid.Column="4" Style="{StaticResource ActionListCategory}" x:Name="top_tv_projectors"/>
-                <ListView Grid.Column="5" Style="{StaticResource ActionListCategory}" x:Name="top_tv_soundbars"/>
-            </Grid>
-            <Grid x:Name="gadgets" Visibility="Hidden" Background="White" Margin="100 0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                </Grid.ColumnDefinitions>
-                <ListView Grid.Column="0" Style="{StaticResource ActionListCategory}" x:Name="top_quadcopters"/>
-                <ListView Grid.Column="1" Style="{StaticResource ActionListCategory}" x:Name="top_electric_transport"/>
-                <ListView Grid.Column="2" Style="{StaticResource ActionListCategory}" x:Name="top_smart_house"/>
-                <ListView Grid.Column="3" Style="{StaticResource ActionListCategory}" x:Name="top_cables"/>
-                <ListView Grid.Column="4" Style="{StaticResource ActionListCategory}" x:Name="top_chsrgers"/>
-            </Grid>
-            <Grid x:Name="appliances" Visibility="Hidden" Background="White" Margin="100 0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                </Grid.ColumnDefinitions>
-                <ListView Grid.Column="0" Style="{StaticResource ActionListCategory}" x:Name="top_vacuum_cleaners"/>
-                <ListView Grid.Column="1" Style="{StaticResource ActionListCategory}" x:Name="top_air_conditioners"/>
-                <ListView Grid.Column="2" Style="{StaticResource ActionListCategory}" x:Name="top_large_home_appliances"/>
-                <ListView Grid.Column="3" Style="{StaticResource ActionListCategory}" x:Name="top_small_household_apliances"/>
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <Image Grid.Column="1" Grid.Row="0" Source="Resources/logo_bottom.png" HorizontalAlignment="Left"></Image>
+                <Button Grid.Column="1" Grid.Row="1" Template="{StaticResource labelBottomTemplate}" Style="{StaticResource ActionLabelBottom}" Content="0 800 210 186" HorizontalAlignment="Left"/>
+                <Button Grid.Column="1" Grid.Row="2" Template="{StaticResource labelBottomTemplate}" Style="{StaticResource ActionLabelBottom}" Content="044 333-63-52" HorizontalAlignment="Left"/>
+                <Button Grid.Column="1" Grid.Row="3" Template="{StaticResource labelBottomTemplate}" Style="{StaticResource ActionLabelBottom}" Content="(066) 731-32-71" HorizontalAlignment="Left"/>
+                <Button Grid.Column="1" Grid.Row="4" Template="{StaticResource labelBottomTemplate}" Style="{StaticResource ActionLabelBottom}" Content="(067) 153-05-08" HorizontalAlignment="Left"/>
+                <Button Grid.Column="1" Grid.Row="5" Template="{StaticResource labelBottomTemplate}" Style="{StaticResource ActionLabelBottom}" Content="(063) 233 49 50" HorizontalAlignment="Left"/>
+                <Button Grid.Column="1" Grid.Row="6" Template="{StaticResource labelBottomTemplate}" Style="{StaticResource ActionLabelBottom}" Content="Заказать звонок" HorizontalAlignment="Left"/>
+
+                <Label Grid.Column="2" Grid.Row="0" Foreground="White" FontWeight="Bold" Content="Покупателю" HorizontalAlignment="Left"/>
+                <Button Grid.Column="2" Grid.Row="2" Template="{StaticResource labelBottomTemplate}" Style="{StaticResource ActionLabelBottom}" Content="Услуги и Сервисы" HorizontalAlignment="Left"/>
+                <Button Grid.Column="2" Grid.Row="3" Template="{StaticResource labelBottomTemplate}" Style="{StaticResource ActionLabelBottom}" Content="Карта сайта" HorizontalAlignment="Left"/>
+                <Button Grid.Column="2" Grid.Row="4" Template="{StaticResource labelBottomTemplate}" Style="{StaticResource ActionLabelBottom}" Content="Пользовательское соглашение" HorizontalAlignment="Left"/>
+                <Button Grid.Column="2" Grid.Row="5" Template="{StaticResource labelBottomTemplate}" Style="{StaticResource ActionLabelBottom}" Content="Гарантия и возврат товара" HorizontalAlignment="Left"/>
+                <Button Grid.Column="2" Grid.Row="6" Template="{StaticResource labelBottomTemplate}" Style="{StaticResource ActionLabelBottom}" Content="Доставка и оплата" HorizontalAlignment="Left"/>
+
+                <Label Grid.Column="3" Grid.Row="0" Foreground="White" FontWeight="Bold" Content="Ждем Вас" HorizontalAlignment="Left"/>
+                <Label Grid.Column="3" Grid.Row="2" Foreground="White" FontWeight="Bold" Content="г. Днепр" HorizontalAlignment="Left"/>
+                <Label Grid.Column="3" Grid.Row="3" Foreground="White" Content="ТРК «Апполо 2» магазин «Yellow» ул.Титова, 36" HorizontalAlignment="Left"/>
+                <Label Grid.Column="3" Grid.Row="5" Foreground="White" FontWeight="Bold" Content="г. Днепр" HorizontalAlignment="Left"/>
+                <Label Grid.Column="3" Grid.Row="6" Foreground="White" Content="ТЦ Neo Plaza ул. Марии Кюри 5" HorizontalAlignment="Left"/>
+
+                <Label Grid.Column="4" Grid.Row="2" Foreground="White" FontWeight="Bold" Content="г. Днепр" HorizontalAlignment="Left"/>
+                <Label Grid.Column="4" Grid.Row="3" Foreground="White" Content="проспект Д. Яворницкого, 34" HorizontalAlignment="Left"/>
+                <Label Grid.Column="4" Grid.Row="5" Foreground="White" FontWeight="Bold" Content="г. Днепр" HorizontalAlignment="Left"/>
+                <Label Grid.Column="4" Grid.Row="6" Foreground="White" Content="ул.Жилянская 146, 1 этаж, Шоу-рум «Yellow»" HorizontalAlignment="Left"/>
             </Grid>
         </Grid>
-        <Grid Grid.Row="3" Background="Black">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="25*"></ColumnDefinition>
-                <ColumnDefinition Width="69*"></ColumnDefinition>
-                <ColumnDefinition Width="69*"></ColumnDefinition>
-                <ColumnDefinition Width="69*"></ColumnDefinition>
-                <ColumnDefinition Width="69*"></ColumnDefinition>
-                <ColumnDefinition Width="25*"></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
-            </Grid.RowDefinitions>
-
-            <Image Grid.Column="1" Grid.Row="0" Source="Resources/logo_bottom.png" HorizontalAlignment="Left"></Image>
-            <Button Grid.Column="1" Grid.Row="1" Template="{StaticResource labelBottomTemplate}" Style="{StaticResource ActionLabelBottom}" Content="0 800 210 186" HorizontalAlignment="Left"/>
-            <Button Grid.Column="1" Grid.Row="2" Template="{StaticResource labelBottomTemplate}" Style="{StaticResource ActionLabelBottom}" Content="044 333-63-52" HorizontalAlignment="Left"/>
-            <Button Grid.Column="1" Grid.Row="3" Template="{StaticResource labelBottomTemplate}" Style="{StaticResource ActionLabelBottom}" Content="(066) 731-32-71" HorizontalAlignment="Left"/>
-            <Button Grid.Column="1" Grid.Row="4" Template="{StaticResource labelBottomTemplate}" Style="{StaticResource ActionLabelBottom}" Content="(067) 153-05-08" HorizontalAlignment="Left"/>
-            <Button Grid.Column="1" Grid.Row="5" Template="{StaticResource labelBottomTemplate}" Style="{StaticResource ActionLabelBottom}" Content="(063) 233 49 50" HorizontalAlignment="Left"/>
-            <Button Grid.Column="1" Grid.Row="6" Template="{StaticResource labelBottomTemplate}" Style="{StaticResource ActionLabelBottom}" Content="Заказать звонок" HorizontalAlignment="Left"/>
-
-            <Label Grid.Column="2" Grid.Row="0" Foreground="White" FontWeight="Bold" Content="Покупателю" HorizontalAlignment="Left"/>
-            <Button Grid.Column="2" Grid.Row="2" Template="{StaticResource labelBottomTemplate}" Style="{StaticResource ActionLabelBottom}" Content="Услуги и Сервисы" HorizontalAlignment="Left"/>
-            <Button Grid.Column="2" Grid.Row="3" Template="{StaticResource labelBottomTemplate}" Style="{StaticResource ActionLabelBottom}" Content="Карта сайта" HorizontalAlignment="Left"/>
-            <Button Grid.Column="2" Grid.Row="4" Template="{StaticResource labelBottomTemplate}" Style="{StaticResource ActionLabelBottom}" Content="Пользовательское соглашение" HorizontalAlignment="Left"/>
-            <Button Grid.Column="2" Grid.Row="5" Template="{StaticResource labelBottomTemplate}" Style="{StaticResource ActionLabelBottom}" Content="Гарантия и возврат товара" HorizontalAlignment="Left"/>
-            <Button Grid.Column="2" Grid.Row="6" Template="{StaticResource labelBottomTemplate}" Style="{StaticResource ActionLabelBottom}" Content="Доставка и оплата" HorizontalAlignment="Left"/>
-
-            <Label Grid.Column="3" Grid.Row="0" Foreground="White" FontWeight="Bold" Content="Ждем Вас" HorizontalAlignment="Left"/>
-            <Label Grid.Column="3" Grid.Row="2" Foreground="White" FontWeight="Bold" Content="г. Днепр" HorizontalAlignment="Left"/>
-            <Label Grid.Column="3" Grid.Row="3" Foreground="White" Content="ТРК «Апполо 2» магазин «Yellow» ул.Титова, 36" HorizontalAlignment="Left"/>
-            <Label Grid.Column="3" Grid.Row="5" Foreground="White" FontWeight="Bold" Content="г. Днепр" HorizontalAlignment="Left"/>
-            <Label Grid.Column="3" Grid.Row="6" Foreground="White" Content="ТЦ Neo Plaza ул. Марии Кюри 5" HorizontalAlignment="Left"/>
-
-            <Label Grid.Column="4" Grid.Row="2" Foreground="White" FontWeight="Bold" Content="г. Днепр" HorizontalAlignment="Left"/>
-            <Label Grid.Column="4" Grid.Row="3" Foreground="White" Content="проспект Д. Яворницкого, 34" HorizontalAlignment="Left"/>
-            <Label Grid.Column="4" Grid.Row="5" Foreground="White" FontWeight="Bold" Content="г. Днепр" HorizontalAlignment="Left"/>
-            <Label Grid.Column="4" Grid.Row="6" Foreground="White" Content="ул.Жилянская 146, 1 этаж, Шоу-рум «Yellow»" HorizontalAlignment="Left"/>
-        </Grid>
-    </Grid>
+    </ScrollViewer>
+    
 </Window>
