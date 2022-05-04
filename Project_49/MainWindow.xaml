@@ -269,11 +269,11 @@
             <Grid x:Name="Main" Grid.Row="2">
                 <Grid Margin="100 0">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="100*"></RowDefinition>
-                        <RowDefinition Height="100*"></RowDefinition>
-                        <RowDefinition Height="10*"></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
                     </Grid.RowDefinitions>
-                    <Grid x:Name="ProductListOne" Grid.Row="0" Background="White" Margin="0 20">
+                    <Grid x:Name="ProductListOne" Grid.Row="0" Margin="0 20">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition></ColumnDefinition>
                             <ColumnDefinition></ColumnDefinition>
@@ -281,22 +281,36 @@
                             <ColumnDefinition></ColumnDefinition>
                         </Grid.ColumnDefinitions>
                     </Grid>
-                    <Grid x:Name="LatestProduct" Grid.Row="1" Margin="0 20">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="25*"></ColumnDefinition>
-                            <ColumnDefinition Width="50*"></ColumnDefinition>
-                            <ColumnDefinition Width="50*"></ColumnDefinition>
-                            <ColumnDefinition Width="25*"></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
+                    <Grid Grid.Row="1" Margin="0 20">
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="30*"></RowDefinition>
-                            <RowDefinition Height="30*"></RowDefinition>
-                            <RowDefinition Height="30*"></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
                         </Grid.RowDefinitions>
-                        <Label Grid.ColumnSpan="4" Content="Новинки" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="28"/>
-                        
+                        <Label Grid.Row="0" Content="Новинки" Margin="0 30 0 10" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="40"/>
+                        <Grid x:Name="LatestProduct" Grid.Row="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+                        </Grid>
+                        <Label Grid.Row="2" Content="Акции" Margin="0 30 0 10" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="40"/>
+                        <Grid x:Name="StockProduct" Grid.Row="3">
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+                        </Grid>
                     </Grid>
-                    <Button Content="Добавить" Padding="20 5" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center" Click="ButtonAddRow_Click" Style="{DynamicResource ButtonLogin}"/>
+                    <Grid x:Name="ProductListTwo" Grid.Row="2" Margin="0 20">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                    </Grid>
                 </Grid>
                 <!--Main-->
                 <Grid x:Name="MainBackground" Visibility="Hidden">

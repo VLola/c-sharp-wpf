@@ -24,7 +24,7 @@
         </Style>
         <Style TargetType="Label" x:Key="styleLabel">
             <Setter Property="Foreground" Value="Black"/>
-            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontSize" Value="20"/>
             <Setter Property="VerticalAlignment" Value="Stretch"/>
             <Setter Property="HorizontalAlignment" Value="Stretch"/>
             <Setter Property="VerticalContentAlignment" Value="Bottom"/>
@@ -49,7 +49,7 @@
     <Grid Margin="10">
         <Border x:Name="border_product" BorderThickness="2" BorderBrush="White" CornerRadius="5">
             <Border BorderThickness="1" BorderBrush="LightGray" CornerRadius="4">
-                <Grid x:Name="grid_main" Margin="10">
+                <Grid x:Name="grid_main" Margin="10" Background="White">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="70*"/>
                         <ColumnDefinition Width="50*"/>
@@ -69,10 +69,10 @@
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
                         <Button Content="Купить" Style="{DynamicResource styleButton}" Grid.Column="0"/>
-                        <Image Grid.Column="1" Source="/Project_49;component/Resources/compare.png" Stretch="None" HorizontalAlignment="Left"/>
+                        <Image x:Name="image_compare" Visibility="Hidden" Grid.Column="1" Source="/Project_49;component/Resources/compare.png" Stretch="None" HorizontalAlignment="Left"/>
                     </Grid>
                     <Grid  Grid.Column="1" Grid.Row="1" Grid.RowSpan="2">
-                        <Image x:Name="image" Source="/Project_49;component/Resources/compare.png" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
+                        <Image x:Name="image" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
                     </Grid>
                 </Grid>
             </Border>

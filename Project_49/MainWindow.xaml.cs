@@ -29,9 +29,12 @@ namespace Project_49
             Categorys();
             PageCenter();
             SetCatalogProductListOne();
-            //SetCatalogProductListTwo();
+            SetCatalogProductListTwo();
             SetLatestProduct();
+            SetStockProduct();
         }
+
+        #region - Load Catalog product -
         private void SetCatalogProductListOne()
         {
             int count = 0;
@@ -47,48 +50,81 @@ namespace Project_49
                 ProductListOne.Children.Add(product);
             }
         }
+        private void SetCatalogProductListTwo()
+        {
+            int count = 0;
+            List<string> list_product = new List<string>();
+            list_product.Add("TV 4K");
+            list_product.Add("Xiaomi");
+            list_product.Add("Samsung");
+            list_product.Add("Acoustics");
+            foreach (var it in list_product)
+            {
+                Product product = new Product(it);
+                Grid.SetColumn(product, count);
+                ProductListTwo.Children.Add(product);
+                count++;
+            }
+        }
+        #endregion
+
+        #region - Load Latest product -
         private void SetLatestProduct()
         {
-            int i = 1, j = 1;
+            int i = 0, j = 0, k = 0;
             ModelProduct modelProduct = new ModelProduct();
-            foreach(var it in modelProduct.Products)
+            List<Models.Product> list = new List<Models.Product>();
+            foreach (var it in modelProduct.Products) list.Add(it);
+            list.Reverse();
+            foreach (var it in list)
             {
-                Apple.Content = it.Name;
-                LatestProductControl latestProduct = new LatestProductControl(it.Name, it.Image);
-                Grid.SetColumn(latestProduct, i++);
-                Grid.SetRow(latestProduct, j);
-                LatestProduct.Children.Add(latestProduct);
-                if (i > 2)
+                if (k < 6)
                 {
-                    i = 1;
-                    j++;
+                    if (j == 0) LatestProduct.ColumnDefinitions.Add(new ColumnDefinition());
+                    LatestProductControl latestProduct = new LatestProductControl(it.Name, it.Image);
+                    Grid.SetColumn(latestProduct, i);
+                    Grid.SetRow(latestProduct, j++);
+                    LatestProduct.Children.Add(latestProduct);
+                    if (j == 2)
+                    {
+                        i++;
+                        j = 0;
+                    }
+                    k++;
                 }
             }
         }
-        //private void SetCatalogProductListTwo()
-        //{
-        //    int count = 0;
-        //    List<string> list_product = new List<string>();
-        //    list_product.Add("iPhone 13 Pro");
-        //    list_product.Add("iPhone 13 Pro");
-        //    list_product.Add("iPhone 13 Pro");
-        //    list_product.Add("iPhone 13 Pro");
-        //    foreach (var it in list_product)
-        //    {
-        //        Product product = new Product(it);
-        //        Grid.SetColumn(product, count);
-        //        ProductListTwo.Children.Add(product);
-        //        count++;
-        //    }
-        //}
+        #endregion
 
-        private void ButtonAddRow_Click(object sender, RoutedEventArgs e)
+        #region - Load Stock product -
+        private void SetStockProduct()
         {
-            //ProductListOne.Height = ProductListOne.ActualHeight + ProductListOne.RowDefinitions[0].ActualHeight;
-            //ProductListOne.RowDefinitions.Add(new RowDefinition());
-            //ProductListOne.Children.Clear();
-            //SetCatalogProductListOne();
+            int i = 0, j = 0, k = 0;
+            ModelProduct modelProduct = new ModelProduct();
+            List<Models.Product> list = new List<Models.Product>();
+            foreach (var it in modelProduct.Products) {
+                if (it.Latest) list.Add(it);
+            }
+            list.Reverse();
+            foreach (var it in list)
+            {
+                if (k < 6)
+                {
+                    if (j == 0) StockProduct.ColumnDefinitions.Add(new ColumnDefinition());
+                    LatestProductControl latestProduct = new LatestProductControl(it.Name, it.Image);
+                    Grid.SetColumn(latestProduct, i);
+                    Grid.SetRow(latestProduct, j++);
+                    StockProduct.Children.Add(latestProduct);
+                    if (j == 2)
+                    {
+                        i++;
+                        j = 0;
+                    }
+                    k++;
+                }
+            }
         }
+        #endregion
 
         #region - PageCenter -
         private void PageCenter()
