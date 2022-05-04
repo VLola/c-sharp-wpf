@@ -32,14 +32,12 @@ namespace Project_49.Controls
 
         private void Border_product_MouseLeave(object sender, MouseEventArgs e)
         {
-            //border_product.BorderThickness = new Thickness(2);
             border_product.BorderBrush = Brushes.White;
             image_compare.Visibility = Visibility.Hidden;
         }
 
         private void Border_product_MouseEnter(object sender, MouseEventArgs e)
         {
-            //border_product.BorderThickness = new Thickness(2);
             border_product.BorderBrush = Brushes.LightGray;
             image_compare.Visibility = Visibility.Visible;
         }

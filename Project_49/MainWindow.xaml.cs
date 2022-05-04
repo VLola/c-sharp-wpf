@@ -28,124 +28,24 @@ namespace Project_49
             InitializeComponent();
             Categorys();
             PageCenter();
-            SetCatalogProductListOne();
-            SetCatalogProductListTwo();
-            SetLatestProduct();
-            SetStockProduct();
+            FullMain.Children.Add(new PageMain(FullMain));
         }
-
-        #region - Load Catalog product -
-        private void SetCatalogProductListOne()
-        {
-            int count = 0;
-            List<string> list_product = new List<string>();
-            list_product.Add("iPhone 13 Pro");
-            list_product.Add("Macbook Pro M1");
-            list_product.Add("Used iPhone");
-            list_product.Add("Apple Watch");
-            foreach (var it in list_product)
-            {
-                Product product = new Product(it);
-                Grid.SetColumn(product, count++);
-                ProductListOne.Children.Add(product);
-            }
-        }
-        private void SetCatalogProductListTwo()
-        {
-            int count = 0;
-            List<string> list_product = new List<string>();
-            list_product.Add("TV 4K");
-            list_product.Add("Xiaomi");
-            list_product.Add("Samsung");
-            list_product.Add("Acoustics");
-            foreach (var it in list_product)
-            {
-                Product product = new Product(it);
-                Grid.SetColumn(product, count);
-                ProductListTwo.Children.Add(product);
-                count++;
-            }
-        }
-        #endregion
-
-        #region - Load Latest product -
-        private void SetLatestProduct()
-        {
-            int i = 0, j = 0, k = 0;
-            ModelProduct modelProduct = new ModelProduct();
-            List<Models.Product> list = new List<Models.Product>();
-            foreach (var it in modelProduct.Products) list.Add(it);
-            list.Reverse();
-            foreach (var it in list)
-            {
-                if (k < 6)
-                {
-                    if (j == 0) LatestProduct.ColumnDefinitions.Add(new ColumnDefinition());
-                    LatestProductControl latestProduct = new LatestProductControl(it.Name, it.Image);
-                    Grid.SetColumn(latestProduct, i);
-                    Grid.SetRow(latestProduct, j++);
-                    LatestProduct.Children.Add(latestProduct);
-                    if (j == 2)
-                    {
-                        i++;
-                        j = 0;
-                    }
-                    k++;
-                }
-            }
-        }
-        #endregion
-
-        #region - Load Stock product -
-        private void SetStockProduct()
-        {
-            int i = 0, j = 0, k = 0;
-            ModelProduct modelProduct = new ModelProduct();
-            List<Models.Product> list = new List<Models.Product>();
-            foreach (var it in modelProduct.Products) {
-                if (it.Latest) list.Add(it);
-            }
-            list.Reverse();
-            foreach (var it in list)
-            {
-                if (k < 6)
-                {
-                    if (j == 0) StockProduct.ColumnDefinitions.Add(new ColumnDefinition());
-                    LatestProductControl latestProduct = new LatestProductControl(it.Name, it.Image);
-                    Grid.SetColumn(latestProduct, i);
-                    Grid.SetRow(latestProduct, j++);
-                    StockProduct.Children.Add(latestProduct);
-                    if (j == 2)
-                    {
-                        i++;
-                        j = 0;
-                    }
-                    k++;
-                }
-            }
-        }
-        #endregion
 
         #region - PageCenter -
         private void PageCenter()
         {
             ButtonLogin.Click += ButtonLogin_Click;
-            ButtonRegestration.Click += ButtonRegestration_Click;
-            ButtonRegistrationReturn.Click += ButtonRegistrationReturn_Click;
             ButtonMain.Click += ButtonMain_Click;
         }
-        private void ButtonMain_Click(object sender, RoutedEventArgs e) { ChangeMain(MainBackground); }
-        private void ButtonRegistrationReturn_Click(object sender, RoutedEventArgs e) { ChangeMain(Login); }
-        private void ButtonRegestration_Click(object sender, RoutedEventArgs e) { ChangeMain(Registration); }
-        private void ButtonLogin_Click(object sender, RoutedEventArgs e) { ChangeMain(Login); }
-        private void ChangeMain(Grid grid)
-        {
-            foreach(Grid it in Main.Children)
-            {
-                if (it == grid) it.Visibility = Visibility.Visible;
-                else it.Visibility = Visibility.Hidden;
-            }
+        private void ButtonMain_Click(object sender, RoutedEventArgs e) {
+            FullMain.Children.Clear();
+            FullMain.Children.Add(new PageMain(FullMain)); 
         }
+        private void ButtonLogin_Click(object sender, RoutedEventArgs e) {
+            FullMain.Children.Clear();
+            FullMain.Children.Add(new PageLogin(FullMain));
+        }
+        
         #endregion
 
         #region - Categorys -

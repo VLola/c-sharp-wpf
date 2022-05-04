@@ -80,6 +80,15 @@
     <Compile Include="Controls\LatestProductControl.xaml.cs">
       <DependentUpon>LatestProductControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\PageLogin.xaml.cs">
+      <DependentUpon>PageLogin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\PageMain.xaml.cs">
+      <DependentUpon>PageMain.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\PageRegestration.xaml.cs">
+      <DependentUpon>PageRegestration.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Models\Admin.cs">
       <DependentUpon>ModelAdmin.tt</DependentUpon>
     </Compile>
@@ -128,6 +137,18 @@
       <DependentUpon>ModelUser.tt</DependentUpon>
     </Compile>
     <Page Include="Controls\LatestProductControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\PageLogin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\PageMain.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\PageRegestration.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
