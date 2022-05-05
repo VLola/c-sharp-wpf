@@ -21,7 +21,7 @@ namespace Project_49.Controls
     /// </summary>
     public partial class PageMain : UserControl
     {
-        public PageMain(Grid grid)
+        public PageMain()
         {
             InitializeComponent();
 
@@ -109,7 +109,7 @@ namespace Project_49.Controls
                 if (k < 6)
                 {
                     if (j == 0) DiscountedProduct.ColumnDefinitions.Add(new ColumnDefinition());
-                    LatestProductControl discountProduct = new LatestProductControl(it.Name, it.Image);
+                    DiscountedProductControl discountProduct = new DiscountedProductControl(it.Name, it.Image);
                     Grid.SetColumn(discountProduct, i);
                     Grid.SetRow(discountProduct, j++);
                     DiscountedProduct.Children.Add(discountProduct);

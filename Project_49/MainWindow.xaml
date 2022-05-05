@@ -169,6 +169,7 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="41*"></RowDefinition>
                 <RowDefinition Height="58*"></RowDefinition>
+                <RowDefinition Height="1*"></RowDefinition>
                 <RowDefinition Height="406*"></RowDefinition>
                 <RowDefinition Height="164*"></RowDefinition>
             </Grid.RowDefinitions>
@@ -266,10 +267,10 @@
                 <Button Padding="20" Style="{StaticResource ActionButtonRigth}" Template="{StaticResource btTemplate}" x:Name="Appliances" Content="Бытовая техника" Grid.Column="6"/>
             </Grid>
             <!--Main-->
-            <Grid x:Name="FullMain" Grid.Row="2" Margin ="100 0"/>
+            <Grid x:Name="FullMain" Grid.Row="2" Grid.RowSpan="2" Margin ="100 0"/>
             
             <Grid Grid.Row="2" x:Name="Catalog">
-                <Grid x:Name="apple" Background="White" Visibility="Hidden" Margin="100 0">
+                <Grid x:Name="apple" Background="White" Visibility="Hidden"  Margin="100 0"  VerticalAlignment="Top">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition></ColumnDefinition>
                         <ColumnDefinition></ColumnDefinition>
@@ -287,7 +288,7 @@
                     <ListView Grid.Column="5" Style="{StaticResource ActionListCategory}" x:Name="top_accessories_apple"/>
                     <ListView Grid.Column="6" Style="{StaticResource ActionListCategory}" x:Name="top_cases"/>
                 </Grid>
-                <Grid x:Name="smartphones" Visibility="Hidden" Background="White" Margin="100 0">
+                <Grid x:Name="smartphones" Visibility="Hidden" Background="White" Margin="100 0"  VerticalAlignment="Top">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition></ColumnDefinition>
                         <ColumnDefinition></ColumnDefinition>
@@ -305,7 +306,7 @@
                     <ListView Grid.Column="5" Style="{StaticResource ActionListCategory}" x:Name="top_smart_clock"/>
                     <ListView Grid.Column="6" Style="{StaticResource ActionListCategory}" x:Name="top_cases_samsung"/>
                 </Grid>
-                <Grid x:Name="laptops_and_pcs" Visibility="Hidden" Background="White" Margin="100 0">
+                <Grid x:Name="laptops_and_pcs" Visibility="Hidden" Background="White" Margin="100 0"  VerticalAlignment="Top">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition></ColumnDefinition>
                         <ColumnDefinition></ColumnDefinition>
@@ -321,7 +322,7 @@
                     <ListView Grid.Column="4" Style="{StaticResource ActionListCategory}" x:Name="top_tablets"/>
                     <ListView Grid.Column="5" Style="{StaticResource ActionListCategory}" x:Name="top_accessories"/>
                 </Grid>
-                <Grid x:Name="photo_audio_ps5" Visibility="Hidden"  Background="White" Margin="100 0">
+                <Grid x:Name="photo_audio_ps5" Visibility="Hidden"  Background="White" Margin="100 0"  VerticalAlignment="Top">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition></ColumnDefinition>
                         <ColumnDefinition></ColumnDefinition>
@@ -335,7 +336,7 @@
                     <ListView Grid.Column="3" Style="{StaticResource ActionListCategory}" x:Name="top_portable_acoustic"/>
                     <ListView Grid.Column="4" Style="{StaticResource ActionListCategory}" x:Name="top_headphones"/>
                 </Grid>
-                <Grid x:Name="tvs" Visibility="Hidden" Background="White" Margin="100 0">
+                <Grid x:Name="tvs" Visibility="Hidden" Background="White" Margin="100 0"  VerticalAlignment="Top">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition></ColumnDefinition>
                         <ColumnDefinition></ColumnDefinition>
@@ -351,7 +352,7 @@
                     <ListView Grid.Column="4" Style="{StaticResource ActionListCategory}" x:Name="top_tv_projectors"/>
                     <ListView Grid.Column="5" Style="{StaticResource ActionListCategory}" x:Name="top_tv_soundbars"/>
                 </Grid>
-                <Grid x:Name="gadgets" Visibility="Hidden" Background="White" Margin="100 0">
+                <Grid x:Name="gadgets" Visibility="Hidden" Background="White" Margin="100 0"  VerticalAlignment="Top">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition></ColumnDefinition>
                         <ColumnDefinition></ColumnDefinition>
@@ -365,7 +366,7 @@
                     <ListView Grid.Column="3" Style="{StaticResource ActionListCategory}" x:Name="top_cables"/>
                     <ListView Grid.Column="4" Style="{StaticResource ActionListCategory}" x:Name="top_chsrgers"/>
                 </Grid>
-                <Grid x:Name="appliances" Visibility="Hidden" Background="White" Margin="100 0">
+                <Grid x:Name="appliances" Visibility="Hidden" Background="White" Margin="100 0"  VerticalAlignment="Top">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition></ColumnDefinition>
                         <ColumnDefinition></ColumnDefinition>
@@ -378,7 +379,7 @@
                     <ListView Grid.Column="3" Style="{StaticResource ActionListCategory}" x:Name="top_small_household_apliances"/>
                 </Grid>
             </Grid>
-            <Grid Grid.Row="3" Background="Black">
+            <Grid Grid.Row="4" Background="Black">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="25*"></ColumnDefinition>
                     <ColumnDefinition Width="69*"></ColumnDefinition>

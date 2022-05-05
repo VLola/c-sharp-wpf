@@ -23,29 +23,47 @@ namespace Project_49
     /// </summary>
     public partial class MainWindow : Window
     {
+        public AccountInfoUser user_info;
+        public PageMain page_main;
+        public PageLogin page_login;
+        public PageRegestration page_regestration;
         public MainWindow()
         {
             InitializeComponent();
             Categorys();
             PageCenter();
-            FullMain.Children.Add(new PageMain(FullMain));
         }
 
         #region - PageCenter -
         private void PageCenter()
         {
+            page_main = new PageMain();
+            page_login = new PageLogin();
+            page_regestration = new PageRegestration();
+            user_info = new AccountInfoUser(true);
+            FullMain.Children.Add(page_main);
+            page_login.ButtonRegestration.Click += ButtonRegestration_Click;
+            page_regestration.ButtonRegistrationReturn.Click += ButtonRegistrationReturn_Click;
             ButtonLogin.Click += ButtonLogin_Click;
             ButtonMain.Click += ButtonMain_Click;
         }
         private void ButtonMain_Click(object sender, RoutedEventArgs e) {
             FullMain.Children.Clear();
-            FullMain.Children.Add(new PageMain(FullMain)); 
+            FullMain.Children.Add(page_main); 
         }
         private void ButtonLogin_Click(object sender, RoutedEventArgs e) {
             FullMain.Children.Clear();
-            FullMain.Children.Add(new PageLogin(FullMain));
+            FullMain.Children.Add(page_login);
         }
-        
+        private void ButtonRegestration_Click(object sender, RoutedEventArgs e)
+        {
+            FullMain.Children.Clear();
+            FullMain.Children.Add(page_regestration);
+        }
+        private void ButtonRegistrationReturn_Click(object sender, RoutedEventArgs e) {
+            FullMain.Children.Clear();
+            FullMain.Children.Add(page_login);
+        }
         #endregion
 
         #region - Categorys -

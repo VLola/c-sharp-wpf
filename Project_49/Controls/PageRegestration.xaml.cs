@@ -23,8 +23,6 @@ namespace Project_49.Controls
         public PageRegestration()
         {
             InitializeComponent();
-            ButtonRegistrationReturn.Click += ButtonRegistrationReturn_Click;
         }
-        private void ButtonRegistrationReturn_Click(object sender, RoutedEventArgs e) { }
     }
 }

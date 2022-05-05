@@ -93,8 +93,8 @@
         </Grid>
         <Grid Grid.Column="1" Margin="20">
             <Grid.RowDefinitions>
-                <RowDefinition Height="162*"></RowDefinition>
-                <RowDefinition Height="182*"></RowDefinition>
+                <RowDefinition Height="100*"></RowDefinition>
+                <RowDefinition Height="200*"></RowDefinition>
                 <RowDefinition Height="80*"></RowDefinition>
                 <RowDefinition Height="10*"></RowDefinition>
             </Grid.RowDefinitions>
@@ -117,10 +117,12 @@
                             <RowDefinition Height="1*"></RowDefinition>
                             <RowDefinition Height="60*"></RowDefinition>
                             <RowDefinition Height="1*"></RowDefinition>
+                            <RowDefinition Height="100*"></RowDefinition>
                             <RowDefinition Height="30*"></RowDefinition>
                         </Grid.RowDefinitions>
                         <Label Grid.Row="0" FontSize="16" Content="Email*" VerticalAlignment="Bottom"/>
                         <Label Grid.Row="2" FontSize="16" Content="Пароль*" VerticalAlignment="Bottom"/>
+                        <Label Grid.Row="4" FontSize="16" Content="Администратор*" VerticalAlignment="Center"/>
                     </Grid>
                     <Grid Grid.Column="1">
                         <Grid.RowDefinitions>
@@ -128,12 +130,21 @@
                             <RowDefinition Height="1*"></RowDefinition>
                             <RowDefinition Height="60*"></RowDefinition>
                             <RowDefinition Height="1*"></RowDefinition>
+                            <RowDefinition Height="100*"></RowDefinition>
                             <RowDefinition Height="30*"></RowDefinition>
                         </Grid.RowDefinitions>
                         <TextBox x:Name="email" Grid.Row="0" FontSize="16" Padding="0 5" BorderThickness="0" VerticalAlignment="Bottom"/>
                         <Grid Grid.Row="1" Background="#FFE6E6E6"/>
                         <TextBox x:Name="parol" Grid.Row="2" FontSize="16" Padding="0 5" BorderThickness="0" VerticalAlignment="Bottom"/>
                         <Grid Grid.Row="3" Background="#FFE6E6E6"/>
+                        <Grid Grid.Row="4">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <RadioButton x:Name="administrator" GroupName="Admin" Grid.Column="0" Content="Да" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            <RadioButton GroupName="Admin" IsChecked="True" Grid.Column="1" Content="Нет" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        </Grid>
                     </Grid>
                 </Grid>
                 <Grid Grid.Row="2" Background="#FFF9C900"/>

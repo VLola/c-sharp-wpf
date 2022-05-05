@@ -16,14 +16,14 @@ using System.Windows.Shapes;
 namespace Project_49.Controls
 {
     /// <summary>
-    /// Логика взаимодействия для PageLogin.xaml
+    /// Логика взаимодействия для AccountInfoUser.xaml
     /// </summary>
-    public partial class PageLogin : UserControl
+    public partial class AccountInfoUser : UserControl
     {
-        public PageLogin()
+        public AccountInfoUser(bool admin)
         {
             InitializeComponent();
+            if (admin) added_product.Visibility = Visibility.Visible;
         }
-        
     }
 }
