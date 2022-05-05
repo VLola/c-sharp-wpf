@@ -127,8 +127,8 @@
                             <ColumnDefinition/>
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
-                        <RadioButton x:Name="administrator" GroupName="Admin" Grid.Column="0" Content="Да" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                        <RadioButton GroupName="Admin" IsChecked="True" Grid.Column="1" Content="Нет" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        <RadioButton x:Name="administrator" IsChecked="True" GroupName="admin_regestration" Grid.Column="0" Content="Да" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        <RadioButton GroupName="admin_regestration" Grid.Column="1" Content="Нет" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                     </Grid>
                 </Grid>
             </Grid>
@@ -168,7 +168,7 @@
             <Grid Grid.Row="6" Background="#FFF9C900"/>
             <Grid Grid.Row="7" Margin="0 20" >
                 <Button x:Name="ButtonRegistrationReturn" Template="{StaticResource labelTemplate}" Style="{StaticResource ActionLabel}" Content="←Вернуться"  HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                <Button Template="{StaticResource loginTemplate}" Style="{StaticResource ButtonLogin}" Padding="50, 8" Content="Отправить"  HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                <Button x:Name="ButtonRegistration" Template="{StaticResource loginTemplate}" Style="{StaticResource ButtonLogin}" Padding="50, 8" Content="Отправить"  HorizontalAlignment="Right" VerticalAlignment="Center"/>
             </Grid>
         </Grid>
     </Grid>

@@ -142,8 +142,8 @@
                                 <ColumnDefinition/>
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
-                            <RadioButton x:Name="administrator" GroupName="Admin" Grid.Column="0" Content="Да" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                            <RadioButton GroupName="Admin" IsChecked="True" Grid.Column="1" Content="Нет" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            <RadioButton x:Name="administrator" GroupName="admin_login" Grid.Column="0" Content="Да" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            <RadioButton GroupName="admin_login" IsChecked="True" Grid.Column="1" Content="Нет" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                         </Grid>
                     </Grid>
                 </Grid>
@@ -151,7 +151,7 @@
             </Grid>
             <Grid Grid.Row="2" >
                 <Button Template="{StaticResource labelTemplate}" Style="{StaticResource ActionLabel}" Content="Забыли пароль?"  HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                <Button Template="{StaticResource loginTemplate}" Style="{StaticResource ButtonLogin}" Padding="50, 8" Content="Войти"  HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                <Button x:Name="button_login" Template="{StaticResource loginTemplate}" Style="{StaticResource ButtonLogin}" Padding="50, 8" Content="Войти"  HorizontalAlignment="Right" VerticalAlignment="Center"/>
             </Grid>
         </Grid>
     </Grid>

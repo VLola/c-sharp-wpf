@@ -173,7 +173,7 @@
                 <RowDefinition Height="406*"></RowDefinition>
                 <RowDefinition Height="164*"></RowDefinition>
             </Grid.RowDefinitions>
-            <Grid Grid.Row="0" Margin="100 0">
+            <Grid x:Name="top_buttons" Grid.Row="0" Margin="100 0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="118*"></ColumnDefinition>
                     <ColumnDefinition Width="125*"></ColumnDefinition>
@@ -184,25 +184,9 @@
                 <Button x:Name="ButtonMain" Style="{DynamicResource ActionTop}" Template="{StaticResource btTemplate}" Grid.Column="0" BorderBrush="{x:Null}" Foreground="{x:Null}" Background="{x:Null}" >
                     <Image Source="Resources/logo.png"/>
                 </Button>
-                <ComboBox Name="combo_box" Grid.Column="1" VerticalContentAlignment="Center" HorizontalContentAlignment="Center">
-                    <ComboBoxItem IsSelected="True">
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock>0 800 210 186</TextBlock>
-                        </StackPanel>
-                    </ComboBoxItem>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock>0 44 333 63 52</TextBlock>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock>(066) 731 32 71</TextBlock>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock>(067) 153 05 08</TextBlock>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock>(063) 233 49 50</TextBlock>
-                    </StackPanel>
-                </ComboBox>
+                <Grid Grid.Column="1" VerticalAlignment="Center">
+                    <Button x:Name="phones" Content="0 800 210 186" Style="{StaticResource ActionLabel}" Template="{StaticResource labelTemplate}"/>
+                </Grid>
 
                 <Grid Grid.Column="2">
                     <Grid.ColumnDefinitions>
@@ -398,7 +382,7 @@
                     <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
 
-                <Image Grid.Column="1" Grid.Row="0" Source="Resources/logo_bottom.png" HorizontalAlignment="Left"></Image>
+                <Image Grid.Column="1" Grid.Row="0" Source="Resources/logo_bottom.png" Stretch="None" HorizontalAlignment="Left"></Image>
                 <Button Grid.Column="1" Grid.Row="1" Template="{StaticResource labelBottomTemplate}" Style="{StaticResource ActionLabelBottom}" Content="0 800 210 186" HorizontalAlignment="Left"/>
                 <Button Grid.Column="1" Grid.Row="2" Template="{StaticResource labelBottomTemplate}" Style="{StaticResource ActionLabelBottom}" Content="044 333-63-52" HorizontalAlignment="Left"/>
                 <Button Grid.Column="1" Grid.Row="3" Template="{StaticResource labelBottomTemplate}" Style="{StaticResource ActionLabelBottom}" Content="(066) 731-32-71" HorizontalAlignment="Left"/>

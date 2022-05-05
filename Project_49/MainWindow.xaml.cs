@@ -23,10 +23,11 @@ namespace Project_49
     /// </summary>
     public partial class MainWindow : Window
     {
-        public AccountInfoUser user_info;
+        public bool login = false;
+        public PageUserInfo page_user_info;
         public PageMain page_main;
         public PageLogin page_login;
-        public PageRegestration page_regestration;
+        public PageRegestration page_registration;
         public MainWindow()
         {
             InitializeComponent();
@@ -39,26 +40,75 @@ namespace Project_49
         {
             page_main = new PageMain();
             page_login = new PageLogin();
-            page_regestration = new PageRegestration();
-            user_info = new AccountInfoUser(true);
+            page_registration = new PageRegestration();
             FullMain.Children.Add(page_main);
             page_login.ButtonRegestration.Click += ButtonRegestration_Click;
-            page_regestration.ButtonRegistrationReturn.Click += ButtonRegistrationReturn_Click;
+            page_login.button_login.Click += Button_login_Click;
+            page_registration.ButtonRegistrationReturn.Click += ButtonRegistrationReturn_Click;
+            page_registration.ButtonRegistration.Click += ButtonRegistration_Click;
             ButtonLogin.Click += ButtonLogin_Click;
             ButtonMain.Click += ButtonMain_Click;
         }
+        private void ButtonAccountReturn_Click(object sender, RoutedEventArgs e)
+        {
+            login = false;
+            FullMain.Children.Clear();
+            FullMain.Children.Add(page_login);
+        }
+
+        private void Button_login_Click(object sender, RoutedEventArgs e)
+        {
+            if(page_login.email.Text != "" && page_login.parol.Text != "")
+            {
+                if (page_login.administrator.IsChecked == true)
+                {
+                    if (Connect.LoginAdmin(page_login.email.Text, page_login.parol.Text))
+                    {
+                        login = true;
+                        page_user_info = new PageUserInfo(true, page_login.email.Text);
+                        page_user_info.ButtonAccountReturn.Click += ButtonAccountReturn_Click;
+                        FullMain.Children.Clear();
+                        FullMain.Children.Add(page_user_info);
+                    }
+                    else login = false;
+                }
+                else
+                {
+                    if (Connect.LoginUser(page_login.email.Text, page_login.parol.Text))
+                    {
+                        login = true;
+                        page_user_info = new PageUserInfo(false, page_login.email.Text);
+                        page_user_info.ButtonAccountReturn.Click += ButtonAccountReturn_Click;
+                        FullMain.Children.Clear();
+                        FullMain.Children.Add(page_user_info);
+                    }
+                    else login = false;
+                }
+            }
+               
+        }
+
+        private void ButtonRegistration_Click(object sender, RoutedEventArgs e)
+        {
+            if (page_registration.parol_registration.Text == page_registration.parol_verification_registration.Text)
+                if (page_registration.email_registration.Text != "" && page_registration.parol_registration.Text != "")
+                    if (page_registration.administrator.IsChecked == true) Connect.RegistrationAdmin(page_registration.email_registration.Text, page_registration.parol_registration.Text);
+                    else Connect.RegistrationUser(page_registration.email_registration.Text, page_registration.parol_registration.Text);
+        }
+
         private void ButtonMain_Click(object sender, RoutedEventArgs e) {
             FullMain.Children.Clear();
             FullMain.Children.Add(page_main); 
         }
         private void ButtonLogin_Click(object sender, RoutedEventArgs e) {
             FullMain.Children.Clear();
-            FullMain.Children.Add(page_login);
+            if(login) FullMain.Children.Add(page_user_info);
+            else FullMain.Children.Add(page_login);
         }
         private void ButtonRegestration_Click(object sender, RoutedEventArgs e)
         {
             FullMain.Children.Clear();
-            FullMain.Children.Add(page_regestration);
+            FullMain.Children.Add(page_registration);
         }
         private void ButtonRegistrationReturn_Click(object sender, RoutedEventArgs e) {
             FullMain.Children.Clear();

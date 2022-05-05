@@ -77,9 +77,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Controls\AccountInfoUser.xaml.cs">
-      <DependentUpon>AccountInfoUser.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Controls\DiscountedProductControl.xaml.cs">
       <DependentUpon>DiscountedProductControl.xaml</DependentUpon>
     </Compile>
@@ -94,6 +91,9 @@
     </Compile>
     <Compile Include="Controls\PageRegestration.xaml.cs">
       <DependentUpon>PageRegestration.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\PageUserInfo.xaml.cs">
+      <DependentUpon>PageUserInfo.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\Admin.cs">
       <DependentUpon>ModelAdmin.tt</DependentUpon>
@@ -142,10 +142,6 @@
     <Compile Include="Models\User.cs">
       <DependentUpon>ModelUser.tt</DependentUpon>
     </Compile>
-    <Page Include="Controls\AccountInfoUser.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Controls\DiscountedProductControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -163,6 +159,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\PageRegestration.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\PageUserInfo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

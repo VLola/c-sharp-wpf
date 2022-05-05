@@ -24,5 +24,6 @@ namespace Project_49.Controls
         {
             InitializeComponent();
         }
+
     }
 }
