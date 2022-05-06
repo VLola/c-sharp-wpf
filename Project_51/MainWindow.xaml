@@ -6,7 +6,117 @@
         xmlns:local="clr-namespace:Project_51"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+    <Window.Resources>
+        <Style TargetType="Button" x:Key="styleButton">
+            <Setter Property="Background" Value="#FF19718E"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Padding" Value="17 3"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Style.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="3" />
+                </Style>
+            </Style.Resources>
+        </Style>
+        <Style TargetType="TextBlock" x:Key="styleTextBlock">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="24"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="VerticalAlignment" Value="Bottom"/>
+        </Style>
+        <Style TargetType="TextBlock" x:Key="styleTextBlockWrap">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="11"/>
+            <Setter Property="Margin" Value="0 0 10 0"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+        <Style TargetType="TextBox" x:Key="styleTextBox">
+            <Setter Property="Foreground" Value="LightGray"/>
+            <Setter Property="Margin" Value="5 0"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+        <Style TargetType="CheckBox" x:Key="styleCheckBox">
+            <Setter Property="Background" Value="#FFD6E47E"/>
+            <Setter Property="Margin" Value="5 0"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Style.Triggers>
+                <Trigger Property="IsChecked" Value="True">
+                    <Setter Property="Background" Value="#FFD6E47E"/>
+                </Trigger>
+                <Trigger Property="IsChecked" Value="False">
+                    <Setter Property="Background" Value="White"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
     <Grid>
-        
+        <Grid.Background>
+            <ImageBrush ImageSource="Resources/background.png"/>
+        </Grid.Background>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="49*"/>
+            <ColumnDefinition Width="39*"/>
+            <ColumnDefinition Width="68*"/>
+            <ColumnDefinition Width="68*"/>
+            <ColumnDefinition Width="172*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100*"/>
+            <RowDefinition Height="50*"/>
+            <RowDefinition Height="50*"/>
+            <RowDefinition Height="60*"/>
+            <RowDefinition Height="60*"/>
+            <RowDefinition Height="50*"/>
+            <RowDefinition Height="120*"/>
+            <RowDefinition Height="120*"/>
+            <RowDefinition Height="60*"/>
+            <RowDefinition Height="40*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2" Text="Cake Order Form" Style="{DynamicResource styleTextBlock}"/>
+        <TextBlock Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="3" Text="Please fill in you information and we`ll be sending your order in no time." Style="{DynamicResource styleTextBlockWrap}"/>
+        <TextBlock Grid.Column="1" Grid.Row="2" Text="Name" Style="{DynamicResource styleTextBlockWrap}"/>
+        <TextBox Grid.Column="2" Grid.Row="2" Text="First Name" Style="{DynamicResource styleTextBox}"/>
+        <TextBox Grid.Column="3" Grid.Row="2" Text="Last Name" Style="{DynamicResource styleTextBox}"/>
+        <TextBlock Grid.Column="1" Grid.Row="3" Text="Email" Style="{DynamicResource styleTextBlockWrap}"/>
+        <TextBox Grid.Column="2" Grid.Row="3" Style="{DynamicResource styleTextBox}"/>
+        <Grid  Grid.Column="3" Grid.Row="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="0" Text="Quantity" HorizontalAlignment="Center" Style="{DynamicResource styleTextBlockWrap}"/>
+            <TextBox Grid.Column="1" Style="{DynamicResource styleTextBox}"/>
+        </Grid>
+
+        <TextBlock Grid.Column="1" Grid.Row="4" Text="Shipping Address" Style="{DynamicResource styleTextBlockWrap}"/>
+        <TextBox Grid.Column="2" Grid.Row="4" Grid.ColumnSpan="2" Style="{DynamicResource styleTextBox}"/>
+        <TextBox Grid.Column="2" Grid.Row="5" Text="City" Style="{DynamicResource styleTextBox}"/>
+        <TextBox Grid.Column="3" Grid.Row="5" Text="Country" Style="{DynamicResource styleTextBox}"/>
+        <TextBlock Grid.Column="1" Grid.Row="6" Text="Select your products" Style="{DynamicResource styleTextBlockWrap}"/>
+        <StackPanel Grid.Column="2" Grid.Row="6" Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Center">
+            <CheckBox IsChecked="True" Style="{DynamicResource styleCheckBox}"/>
+            <Image Source="Resources/cake1.png"/>
+        </StackPanel>
+        <StackPanel Grid.Column="3" Grid.Row="6" Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Center">
+            <CheckBox Style="{DynamicResource styleCheckBox}"/>
+            <Image Source="Resources/cake2.png"/>
+        </StackPanel>
+        <StackPanel Grid.Column="2" Grid.Row="7" Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Center">
+            <CheckBox Style="{DynamicResource styleCheckBox}"/>
+            <Image Source="Resources/cake3.png"/>
+        </StackPanel>
+        <StackPanel Grid.Column="3" Grid.Row="7" Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Center">
+            <CheckBox Style="{DynamicResource styleCheckBox}"/>
+            <Image Source="Resources/cake4.png"/>
+        </StackPanel>
+        <Button Content="PURCHASE" Grid.Column="1" Grid.Row="8" Grid.ColumnSpan="2" Style="{DynamicResource styleButton}" />
     </Grid>
 </Window>
