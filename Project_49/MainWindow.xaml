@@ -184,10 +184,7 @@
                 <Button x:Name="ButtonMain" Style="{DynamicResource ActionTop}" Template="{StaticResource btTemplate}" Grid.Column="0" BorderBrush="{x:Null}" Foreground="{x:Null}" Background="{x:Null}" >
                     <Image Source="Resources/logo.png"/>
                 </Button>
-                <Grid Grid.Column="1" VerticalAlignment="Center">
-                    <Button x:Name="phones" Content="0 800 210 186" Style="{StaticResource ActionLabel}" Template="{StaticResource labelTemplate}"/>
-                </Grid>
-
+                <Button Grid.Column="1" x:Name="phones" Content="0 800 210 186" Style="{StaticResource ActionLabel}" Template="{StaticResource labelTemplate}"/>
                 <Grid Grid.Column="2">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="126*"></ColumnDefinition>

@@ -27,7 +27,8 @@ namespace Project_49
         public PageUserInfo page_user_info;
         public PageMain page_main;
         public PageLogin page_login;
-        public PageRegestration page_registration;
+        public PageRegistration page_registration;
+        public PageProducts page_products;
         public MainWindow()
         {
             InitializeComponent();
@@ -40,8 +41,9 @@ namespace Project_49
         {
             page_main = new PageMain();
             page_login = new PageLogin();
-            page_registration = new PageRegestration();
-            FullMain.Children.Add(page_main);
+            page_registration = new PageRegistration();
+            page_products = new PageProducts();
+            FullMain.Children.Add(page_products);
             page_login.ButtonRegestration.Click += ButtonRegestration_Click;
             page_login.button_login.Click += Button_login_Click;
             page_registration.ButtonRegistrationReturn.Click += ButtonRegistrationReturn_Click;

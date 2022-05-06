@@ -89,11 +89,17 @@
     <Compile Include="Controls\PageMain.xaml.cs">
       <DependentUpon>PageMain.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\PageRegestration.xaml.cs">
-      <DependentUpon>PageRegestration.xaml</DependentUpon>
+    <Compile Include="Controls\PageProducts.xaml.cs">
+      <DependentUpon>PageProducts.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\PageRegistration.xaml.cs">
+      <DependentUpon>PageRegistration.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\PageUserInfo.xaml.cs">
       <DependentUpon>PageUserInfo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ProductControl.xaml.cs">
+      <DependentUpon>ProductControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\Admin.cs">
       <DependentUpon>ModelAdmin.tt</DependentUpon>
@@ -158,11 +164,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\PageRegestration.xaml">
+    <Page Include="Controls\PageProducts.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\PageRegistration.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\PageUserInfo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\ProductControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -290,6 +304,7 @@
       <DependentUpon>ModelUser.edmx</DependentUpon>
       <LastGenOutput>ModelUser.cs</LastGenOutput>
     </Content>
+    <Resource Include="Resources\compare_product.png" />
     <Resource Include="Resources\Products\Samsung Galaxy S22.png" />
     <Resource Include="Resources\Categorys\Acoustics.png" />
     <Resource Include="Resources\Categorys\Apple Watch.png" />

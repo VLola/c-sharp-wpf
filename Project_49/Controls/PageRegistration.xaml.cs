@@ -16,14 +16,13 @@ using System.Windows.Shapes;
 namespace Project_49.Controls
 {
     /// <summary>
-    /// Логика взаимодействия для PageRegestration.xaml
+    /// Логика взаимодействия для PageRegistration.xaml
     /// </summary>
-    public partial class PageRegestration : UserControl
+    public partial class PageRegistration : UserControl
     {
-        public PageRegestration()
+        public PageRegistration()
         {
             InitializeComponent();
         }
-
     }
 }
