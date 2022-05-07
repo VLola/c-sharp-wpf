@@ -20,12 +20,14 @@ namespace Project_49.Controls
     /// </summary>
     public partial class DiscountedProductControl : UserControl
     {
-        private const string path = "pack://application:,,,/Project_49;component/Resources/Products/";
-        public DiscountedProductControl(string name_product, string image_product)
+        public DiscountedProductControl(Models.Product product)
         {
             InitializeComponent(); 
-            product.Text = name_product;
-            image.Source = new BitmapImage(new Uri(path + image_product));
+            product_name.Text = product.Name;
+            product_image.Source = new BitmapImage(new Uri(product.Image));
+            product_discount.Content = $"-{product.Discount}%";
+            product_price.Text = $"{product.Price} грн";
+            product_price_discount.Text = $"{product.Price - (product.Price / 100 * product.Discount)} грн";
             grid_main.MouseEnter += Border_product_MouseEnter;
             grid_main.MouseLeave += Border_product_MouseLeave;
         }

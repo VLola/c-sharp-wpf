@@ -71,14 +71,14 @@ namespace Project_49.Controls
             int i = 0, j = 0, k = 0;
             ModelProduct modelProduct = new ModelProduct();
             List<Models.Product> list = new List<Models.Product>();
-            foreach (var it in modelProduct.Products) list.Add(it);
+            foreach (var it in modelProduct.Products) if(it.Latest == true)list.Add(it);
             list.Reverse();
             foreach (var it in list)
             {
                 if (k < 6)
                 {
                     if (j == 0) LatestProduct.ColumnDefinitions.Add(new ColumnDefinition());
-                    LatestProductControl latestProduct = new LatestProductControl(it.Name, it.Image);
+                    LatestProductControl latestProduct = new LatestProductControl(it);
                     Grid.SetColumn(latestProduct, i);
                     Grid.SetRow(latestProduct, j++);
                     LatestProduct.Children.Add(latestProduct);
@@ -101,7 +101,7 @@ namespace Project_49.Controls
             List<Models.Product> list = new List<Models.Product>();
             foreach (var it in modelProduct.Products)
             {
-                if (it.Latest) list.Add(it);
+                if (it.Discount > 0) list.Add(it);
             }
             list.Reverse();
             foreach (var it in list)
@@ -109,7 +109,7 @@ namespace Project_49.Controls
                 if (k < 6)
                 {
                     if (j == 0) DiscountedProduct.ColumnDefinitions.Add(new ColumnDefinition());
-                    DiscountedProductControl discountProduct = new DiscountedProductControl(it.Name, it.Image);
+                    DiscountedProductControl discountProduct = new DiscountedProductControl(it);
                     Grid.SetColumn(discountProduct, i);
                     Grid.SetRow(discountProduct, j++);
                     DiscountedProduct.Children.Add(discountProduct);

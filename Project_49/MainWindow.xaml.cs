@@ -35,22 +35,41 @@ namespace Project_49
             Categorys();
             PageCenter();
         }
-
+        
         #region - PageCenter -
         private void PageCenter()
         {
             page_main = new PageMain();
             page_login = new PageLogin();
             page_registration = new PageRegistration();
-            page_products = new PageProducts();
-            FullMain.Children.Add(page_products);
+            FullMain.Children.Add(page_main);
             page_login.ButtonRegestration.Click += ButtonRegestration_Click;
             page_login.button_login.Click += Button_login_Click;
             page_registration.ButtonRegistrationReturn.Click += ButtonRegistrationReturn_Click;
             page_registration.ButtonRegistration.Click += ButtonRegistration_Click;
             ButtonLogin.Click += ButtonLogin_Click;
             ButtonMain.Click += ButtonMain_Click;
+            foreach (Product it in page_main.ProductListOne.Children)
+            {
+                it.PreviewMouseLeftButtonDown += It_PreviewMouseLeftButtonDown;
+            }
+            foreach (Product it in page_main.ProductListTwo.Children)
+            {
+                it.PreviewMouseLeftButtonDown += It_PreviewMouseLeftButtonDown;
+            }
         }
+
+        private void It_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            var item = (sender as Product).name;
+            if (item != null)
+            {
+                page_products = new PageProducts(item);
+                FullMain.Children.Clear();
+                FullMain.Children.Add(page_products);
+            }
+        }
+
         private void ButtonAccountReturn_Click(object sender, RoutedEventArgs e)
         {
             login = false;
@@ -119,6 +138,16 @@ namespace Project_49
         #endregion
 
         #region - Categorys -
+        private void listView_Click(object sender, RoutedEventArgs e)
+        {
+            var item = (sender as ListView).SelectedItem;
+            if (item != null)
+            {
+                page_products = new PageProducts(item.ToString());
+                FullMain.Children.Clear();
+                FullMain.Children.Add(page_products);
+            }
+        }
         private void Categorys()
         {
             Apple.MouseEnter += Apple_MouseEnter;

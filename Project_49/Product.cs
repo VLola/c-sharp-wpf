@@ -25,6 +25,8 @@ namespace Project_49
             ImageProduct();
             BorderProduct();
         }
+
+
         public void BorderProduct()
         {
             border = new Border();

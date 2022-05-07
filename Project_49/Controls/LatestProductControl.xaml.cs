@@ -20,12 +20,12 @@ namespace Project_49.Controls
     /// </summary>
     public partial class LatestProductControl : UserControl
     {
-        private const string path = "pack://application:,,,/Project_49;component/Resources/Products/";
-        public LatestProductControl(string name_product, string image_product)
+        public LatestProductControl(Models.Product product)
         {
             InitializeComponent();
-            product.Text = name_product;
-            image.Source = new BitmapImage(new Uri(path + image_product));
+            product_name.Text = product.Name;
+            product_image.Source = new BitmapImage(new Uri(product.Image));
+            product_price.Content = $"{product.Price} грн";
             grid_main.MouseEnter += Border_product_MouseEnter;
             grid_main.MouseLeave += Border_product_MouseLeave;
         }

@@ -261,13 +261,13 @@
                         <ColumnDefinition></ColumnDefinition>
                         <ColumnDefinition></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <ListView Grid.Column="0" Style="{StaticResource ActionListCategory}" x:Name="top_iPhone"/>
-                    <ListView Grid.Column="1" Style="{StaticResource ActionListCategory}" x:Name="top_iPad"/>
-                    <ListView Grid.Column="2" Style="{StaticResource ActionListCategory}" x:Name="top_macbook"/>
-                    <ListView Grid.Column="3" Style="{StaticResource ActionListCategory}" x:Name="top_iMac"/>
-                    <ListView Grid.Column="4" Style="{StaticResource ActionListCategory}" x:Name="top_apple_watch"/>
-                    <ListView Grid.Column="5" Style="{StaticResource ActionListCategory}" x:Name="top_accessories_apple"/>
-                    <ListView Grid.Column="6" Style="{StaticResource ActionListCategory}" x:Name="top_cases"/>
+                    <ListView Grid.Column="0" Style="{StaticResource ActionListCategory}" x:Name="top_iPhone" PreviewMouseLeftButtonUp="listView_Click"/>
+                    <ListView Grid.Column="1" Style="{StaticResource ActionListCategory}" x:Name="top_iPad" PreviewMouseLeftButtonUp="listView_Click"/>
+                    <ListView Grid.Column="2" Style="{StaticResource ActionListCategory}" x:Name="top_macbook" PreviewMouseLeftButtonUp="listView_Click"/>
+                    <ListView Grid.Column="3" Style="{StaticResource ActionListCategory}" x:Name="top_iMac" PreviewMouseLeftButtonUp="listView_Click"/>
+                    <ListView Grid.Column="4" Style="{StaticResource ActionListCategory}" x:Name="top_apple_watch" PreviewMouseLeftButtonUp="listView_Click"/>
+                    <ListView Grid.Column="5" Style="{StaticResource ActionListCategory}" x:Name="top_accessories_apple" PreviewMouseLeftButtonUp="listView_Click"/>
+                    <ListView Grid.Column="6" Style="{StaticResource ActionListCategory}" x:Name="top_cases" PreviewMouseLeftButtonUp="listView_Click"/>
                 </Grid>
                 <Grid x:Name="smartphones" Visibility="Hidden" Background="White" Margin="100 0"  VerticalAlignment="Top">
                     <Grid.ColumnDefinitions>
@@ -279,13 +279,13 @@
                         <ColumnDefinition></ColumnDefinition>
                         <ColumnDefinition></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <ListView Grid.Column="0" Style="{StaticResource ActionListCategory}" x:Name="top_samsung_s"/>
-                    <ListView Grid.Column="1" Style="{StaticResource ActionListCategory}" x:Name="top_samsung_z"/>
-                    <ListView Grid.Column="2" Style="{StaticResource ActionListCategory}" x:Name="top_smartphones"/>
-                    <ListView Grid.Column="3" Style="{StaticResource ActionListCategory}" x:Name="top_xiaomi_mi"/>
-                    <ListView Grid.Column="4" Style="{StaticResource ActionListCategory}" x:Name="top_xiaomi_poco"/>
-                    <ListView Grid.Column="5" Style="{StaticResource ActionListCategory}" x:Name="top_smart_clock"/>
-                    <ListView Grid.Column="6" Style="{StaticResource ActionListCategory}" x:Name="top_cases_samsung"/>
+                    <ListView Grid.Column="0" Style="{StaticResource ActionListCategory}" x:Name="top_samsung_s" PreviewMouseLeftButtonUp="listView_Click"/>
+                    <ListView Grid.Column="1" Style="{StaticResource ActionListCategory}" x:Name="top_samsung_z" PreviewMouseLeftButtonUp="listView_Click"/>
+                    <ListView Grid.Column="2" Style="{StaticResource ActionListCategory}" x:Name="top_smartphones" PreviewMouseLeftButtonUp="listView_Click"/>
+                    <ListView Grid.Column="3" Style="{StaticResource ActionListCategory}" x:Name="top_xiaomi_mi" PreviewMouseLeftButtonUp="listView_Click"/>
+                    <ListView Grid.Column="4" Style="{StaticResource ActionListCategory}" x:Name="top_xiaomi_poco" PreviewMouseLeftButtonUp="listView_Click"/>
+                    <ListView Grid.Column="5" Style="{StaticResource ActionListCategory}" x:Name="top_smart_clock" PreviewMouseLeftButtonUp="listView_Click"/>
+                    <ListView Grid.Column="6" Style="{StaticResource ActionListCategory}" x:Name="top_cases_samsung" PreviewMouseLeftButtonUp="listView_Click"/>
                 </Grid>
                 <Grid x:Name="laptops_and_pcs" Visibility="Hidden" Background="White" Margin="100 0"  VerticalAlignment="Top">
                     <Grid.ColumnDefinitions>
@@ -296,12 +296,12 @@
                         <ColumnDefinition></ColumnDefinition>
                         <ColumnDefinition></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <ListView Grid.Column="0" Style="{StaticResource ActionListCategory}" x:Name="top_monitors"/>
-                    <ListView Grid.Column="1" Style="{StaticResource ActionListCategory}" x:Name="top_pc"/>
-                    <ListView Grid.Column="2" Style="{StaticResource ActionListCategory}" x:Name="top_laptops"/>
-                    <ListView Grid.Column="3" Style="{StaticResource ActionListCategory}" x:Name="top_notebooks"/>
-                    <ListView Grid.Column="4" Style="{StaticResource ActionListCategory}" x:Name="top_tablets"/>
-                    <ListView Grid.Column="5" Style="{StaticResource ActionListCategory}" x:Name="top_accessories"/>
+                    <ListView Grid.Column="0" Style="{StaticResource ActionListCategory}" x:Name="top_monitors" PreviewMouseLeftButtonUp="listView_Click"/>
+                    <ListView Grid.Column="1" Style="{StaticResource ActionListCategory}" x:Name="top_pc" PreviewMouseLeftButtonUp="listView_Click"/>
+                    <ListView Grid.Column="2" Style="{StaticResource ActionListCategory}" x:Name="top_laptops" PreviewMouseLeftButtonUp="listView_Click"/>
+                    <ListView Grid.Column="3" Style="{StaticResource ActionListCategory}" x:Name="top_notebooks" PreviewMouseLeftButtonUp="listView_Click"/>
+                    <ListView Grid.Column="4" Style="{StaticResource ActionListCategory}" x:Name="top_tablets" PreviewMouseLeftButtonUp="listView_Click"/>
+                    <ListView Grid.Column="5" Style="{StaticResource ActionListCategory}" x:Name="top_accessories" PreviewMouseLeftButtonUp="listView_Click"/>
                 </Grid>
                 <Grid x:Name="photo_audio_ps5" Visibility="Hidden"  Background="White" Margin="100 0"  VerticalAlignment="Top">
                     <Grid.ColumnDefinitions>
@@ -311,11 +311,11 @@
                         <ColumnDefinition></ColumnDefinition>
                         <ColumnDefinition></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <ListView Grid.Column="0" Style="{StaticResource ActionListCategory}" x:Name="top_cameras"/>
-                    <ListView Grid.Column="1" Style="{StaticResource ActionListCategory}" x:Name="top_sony_playstation"/>
-                    <ListView Grid.Column="2" Style="{StaticResource ActionListCategory}" x:Name="top_action_cameras"/>
-                    <ListView Grid.Column="3" Style="{StaticResource ActionListCategory}" x:Name="top_portable_acoustic"/>
-                    <ListView Grid.Column="4" Style="{StaticResource ActionListCategory}" x:Name="top_headphones"/>
+                    <ListView Grid.Column="0" Style="{StaticResource ActionListCategory}" x:Name="top_cameras" PreviewMouseLeftButtonUp="listView_Click"/>
+                    <ListView Grid.Column="1" Style="{StaticResource ActionListCategory}" x:Name="top_sony_playstation" PreviewMouseLeftButtonUp="listView_Click"/>
+                    <ListView Grid.Column="2" Style="{StaticResource ActionListCategory}" x:Name="top_action_cameras" PreviewMouseLeftButtonUp="listView_Click"/>
+                    <ListView Grid.Column="3" Style="{StaticResource ActionListCategory}" x:Name="top_portable_acoustic" PreviewMouseLeftButtonUp="listView_Click"/>
+                    <ListView Grid.Column="4" Style="{StaticResource ActionListCategory}" x:Name="top_headphones" PreviewMouseLeftButtonUp="listView_Click"/>
                 </Grid>
                 <Grid x:Name="tvs" Visibility="Hidden" Background="White" Margin="100 0"  VerticalAlignment="Top">
                     <Grid.ColumnDefinitions>
@@ -326,12 +326,12 @@
                         <ColumnDefinition></ColumnDefinition>
                         <ColumnDefinition></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <ListView Grid.Column="0" Style="{StaticResource ActionListCategory}" x:Name="top_tv_samsung"/>
-                    <ListView Grid.Column="1" Style="{StaticResource ActionListCategory}" x:Name="top_tv_lg"/>
-                    <ListView Grid.Column="2" Style="{StaticResource ActionListCategory}" x:Name="top_tv_sony"/>
-                    <ListView Grid.Column="3" Style="{StaticResource ActionListCategory}" x:Name="top_tv_philips"/>
-                    <ListView Grid.Column="4" Style="{StaticResource ActionListCategory}" x:Name="top_tv_projectors"/>
-                    <ListView Grid.Column="5" Style="{StaticResource ActionListCategory}" x:Name="top_tv_soundbars"/>
+                    <ListView Grid.Column="0" Style="{StaticResource ActionListCategory}" x:Name="top_tv_samsung" PreviewMouseLeftButtonUp="listView_Click"/>
+                    <ListView Grid.Column="1" Style="{StaticResource ActionListCategory}" x:Name="top_tv_lg" PreviewMouseLeftButtonUp="listView_Click"/>
+                    <ListView Grid.Column="2" Style="{StaticResource ActionListCategory}" x:Name="top_tv_sony" PreviewMouseLeftButtonUp="listView_Click"/>
+                    <ListView Grid.Column="3" Style="{StaticResource ActionListCategory}" x:Name="top_tv_philips" PreviewMouseLeftButtonUp="listView_Click"/>
+                    <ListView Grid.Column="4" Style="{StaticResource ActionListCategory}" x:Name="top_tv_projectors" PreviewMouseLeftButtonUp="listView_Click"/>
+                    <ListView Grid.Column="5" Style="{StaticResource ActionListCategory}" x:Name="top_tv_soundbars" PreviewMouseLeftButtonUp="listView_Click"/>
                 </Grid>
                 <Grid x:Name="gadgets" Visibility="Hidden" Background="White" Margin="100 0"  VerticalAlignment="Top">
                     <Grid.ColumnDefinitions>
@@ -341,11 +341,11 @@
                         <ColumnDefinition></ColumnDefinition>
                         <ColumnDefinition></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <ListView Grid.Column="0" Style="{StaticResource ActionListCategory}" x:Name="top_quadcopters"/>
-                    <ListView Grid.Column="1" Style="{StaticResource ActionListCategory}" x:Name="top_electric_transport"/>
-                    <ListView Grid.Column="2" Style="{StaticResource ActionListCategory}" x:Name="top_smart_house"/>
-                    <ListView Grid.Column="3" Style="{StaticResource ActionListCategory}" x:Name="top_cables"/>
-                    <ListView Grid.Column="4" Style="{StaticResource ActionListCategory}" x:Name="top_chsrgers"/>
+                    <ListView Grid.Column="0" Style="{StaticResource ActionListCategory}" x:Name="top_quadcopters" PreviewMouseLeftButtonUp="listView_Click"/>
+                    <ListView Grid.Column="1" Style="{StaticResource ActionListCategory}" x:Name="top_electric_transport" PreviewMouseLeftButtonUp="listView_Click"/>
+                    <ListView Grid.Column="2" Style="{StaticResource ActionListCategory}" x:Name="top_smart_house" PreviewMouseLeftButtonUp="listView_Click"/>
+                    <ListView Grid.Column="3" Style="{StaticResource ActionListCategory}" x:Name="top_cables" PreviewMouseLeftButtonUp="listView_Click"/>
+                    <ListView Grid.Column="4" Style="{StaticResource ActionListCategory}" x:Name="top_chsrgers" PreviewMouseLeftButtonUp="listView_Click"/>
                 </Grid>
                 <Grid x:Name="appliances" Visibility="Hidden" Background="White" Margin="100 0"  VerticalAlignment="Top">
                     <Grid.ColumnDefinitions>
@@ -354,10 +354,10 @@
                         <ColumnDefinition></ColumnDefinition>
                         <ColumnDefinition></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <ListView Grid.Column="0" Style="{StaticResource ActionListCategory}" x:Name="top_vacuum_cleaners"/>
-                    <ListView Grid.Column="1" Style="{StaticResource ActionListCategory}" x:Name="top_air_conditioners"/>
-                    <ListView Grid.Column="2" Style="{StaticResource ActionListCategory}" x:Name="top_large_home_appliances"/>
-                    <ListView Grid.Column="3" Style="{StaticResource ActionListCategory}" x:Name="top_small_household_apliances"/>
+                    <ListView Grid.Column="0" Style="{StaticResource ActionListCategory}" x:Name="top_vacuum_cleaners" PreviewMouseLeftButtonUp="listView_Click"/>
+                    <ListView Grid.Column="1" Style="{StaticResource ActionListCategory}" x:Name="top_air_conditioners" PreviewMouseLeftButtonUp="listView_Click"/>
+                    <ListView Grid.Column="2" Style="{StaticResource ActionListCategory}" x:Name="top_large_home_appliances" PreviewMouseLeftButtonUp="listView_Click"/>
+                    <ListView Grid.Column="3" Style="{StaticResource ActionListCategory}" x:Name="top_small_household_apliances" PreviewMouseLeftButtonUp="listView_Click"/>
                 </Grid>
             </Grid>
             <Grid Grid.Row="4" Background="Black">

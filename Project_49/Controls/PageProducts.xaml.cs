@@ -21,10 +21,11 @@ namespace Project_49.Controls
     /// </summary>
     public partial class PageProducts : UserControl
     {
-        private const string path = "pack://application:,,,/Project_49;component/Resources/Products/";
-        public PageProducts()
+        private string search;
+        public PageProducts(string search)
         {
             InitializeComponent();
+            this.search = search;
             SetProduct();
         }
         private void SetProduct()
@@ -34,13 +35,13 @@ namespace Project_49.Controls
             List<Models.Product> list = new List<Models.Product>();
             foreach (var it in modelProduct.Products)
             {
-                if (it.Latest) list.Add(it);
+                if (it.Name.Contains(search)) list.Add(it);
             }
             list.Reverse();
             foreach (var it in list)
             {
                 if (j == 0) products.RowDefinitions.Add(new RowDefinition());
-                ProductControl Product = new ProductControl(it.Name, it.Image);
+                ProductControl Product = new ProductControl(it);
                 Grid.SetColumn(Product, j);
                 Grid.SetRow(Product, i);
                 products.Children.Add(Product);

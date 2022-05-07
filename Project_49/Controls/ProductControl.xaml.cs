@@ -21,27 +21,21 @@ namespace Project_49.Controls
     /// </summary>
     public partial class ProductControl : UserControl
     {
-        private const string path = "pack://application:,,,/Project_49;component/Resources/Products/";
-        public ProductControl(string name_product, string image_product)
+        public ProductControl(Models.Product product)
         {
             InitializeComponent();
-            this.name_product.Text = name_product;
-            this.image_product.Source = new BitmapImage(new Uri(path + image_product));
+            name_product.Text = product.Name;
+            image_product.Source = new BitmapImage(new Uri(product.Image));
 
-            int discount_number = 0;
-            bool is_latest = true;
-            bool is_discount = false;
-            bool is_availability = true;
-            int id_product = 123456;
-            int price = 20899;
 
-            string discount_text = "-" + discount_number + "%";
+            string discount_text = "-" + product.Discount + "%";
 
-            if (is_latest) { grid_latest.Visibility = Visibility.Visible; }
-            else grid_latest.Visibility = Visibility.Hidden;
+            bool latest = (bool)product.Latest;
+            
 
-            if (is_discount)
+            if (product.Discount > 0)
             {
+                latest = false;
                 discount.Content = discount_text;
                 grid_discount.Visibility = Visibility.Visible;
                 price_discount.Visibility = Visibility.Visible;
@@ -51,11 +45,15 @@ namespace Project_49.Controls
                 grid_discount.Visibility = Visibility.Hidden;
                 price_discount.Visibility = Visibility.Hidden;
             }
-            if (is_availability) availability.Content = "Есть в наличии";
+
+            if (latest == true) { grid_latest.Visibility = Visibility.Visible; }
+            else grid_latest.Visibility = Visibility.Hidden;
+
+            if (product.Availability == true) availability.Content = "Есть в наличии";
             else availability.Content = "Нет в наличии";
-            id.Content = $"код: {IdProduct(id_product)}";
-            price_discount.Text = $"{price} грн";
-            price_product.Text = $"{Price(price, discount_number)} грн";
+            id.Content = $"код: {IdProduct(product.Id)}";
+            price_discount.Text = $"{product.Price} грн";
+            price_product.Text = $"{Price(product.Price, (int)product.Discount)} грн";
         }
         private string IdProduct(int id_product)
         {

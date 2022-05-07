@@ -61,8 +61,8 @@
                         <RowDefinition Height="40*"/>
                     </Grid.RowDefinitions>
                     <Label Content="NEW" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Style="{DynamicResource styleLabelNew}"/>
-                    <TextBlock x:Name="product" Text="Product" Style="{DynamicResource styleTextBlock}" Grid.Column="0" Grid.Row="1"/>
-                    <Label Content="20 499 грн" Style="{DynamicResource styleLabel}" Grid.Column="0" Grid.Row="2"/>
+                    <TextBlock x:Name="product_name" Style="{DynamicResource styleTextBlock}" Grid.Column="0" Grid.Row="1"/>
+                    <Label x:Name="product_price" Style="{DynamicResource styleLabel}" Grid.Column="0" Grid.Row="2"/>
                     <Grid Grid.Column="0" Grid.Row="3">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition/>
@@ -72,7 +72,7 @@
                         <Image x:Name="image_compare" Visibility="Hidden" Grid.Column="1" Source="/Project_49;component/Resources/compare.png" Stretch="None" HorizontalAlignment="Left"/>
                     </Grid>
                     <Grid  Grid.Column="1" Grid.Row="1" Grid.RowSpan="2">
-                        <Image x:Name="image" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
+                        <Image x:Name="product_image" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
                     </Grid>
                 </Grid>
             </Border>

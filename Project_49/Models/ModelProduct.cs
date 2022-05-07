@@ -16,7 +16,6 @@ namespace Project_49.Models
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-
         }
     }
 }
