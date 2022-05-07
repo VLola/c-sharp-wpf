@@ -158,9 +158,9 @@
                         <RowDefinition Height="1*"></RowDefinition>
                         <RowDefinition Height="5*"></RowDefinition>
                     </Grid.RowDefinitions>
-                    <TextBox x:Name="parol_registration" Grid.Row="0" FontSize="16" BorderThickness="0" VerticalAlignment="Bottom"/>
+                    <PasswordBox PasswordChar="*" x:Name="parol_registration" Grid.Row="0" FontSize="16" BorderThickness="0" VerticalAlignment="Bottom"/>
                     <Grid Grid.Row="1" Background="#FFE6E6E6"/>
-                    <TextBox x:Name="parol_verification_registration" Grid.Row="2" FontSize="16" BorderThickness="0" VerticalAlignment="Bottom"/>
+                    <PasswordBox PasswordChar="*" x:Name="parol_verification_registration" Grid.Row="2" FontSize="16" BorderThickness="0" VerticalAlignment="Bottom"/>
                     <Grid Grid.Row="3" Background="#FFE6E6E6"/>
                 </Grid>
             </Grid>

@@ -1,4 +1,5 @@
 ﻿using Dapper.Contrib.Extensions;
+using System.Data;
 using System.Data.SqlClient;
 using System.Windows;
 
@@ -20,6 +21,14 @@ namespace Project_49.ConnectDB
                 product.Latest = latest;
                 connection.Insert(product);
                 MessageBox.Show("Product added!");
+            }
+        }
+        public static void DeleteProduct(Models.Product product)
+        {
+            using (IDbConnection connection = new SqlConnection(connectionStringProduct))
+            {
+                connection.Delete<Models.Product>(product);
+                MessageBox.Show("Product removed!");
             }
         }
     }

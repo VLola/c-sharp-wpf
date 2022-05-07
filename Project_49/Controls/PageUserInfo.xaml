@@ -147,9 +147,9 @@
                         <RowDefinition Height="1*"></RowDefinition>
                         <RowDefinition Height="5*"></RowDefinition>
                     </Grid.RowDefinitions>
-                    <TextBox x:Name="parol_registration" Grid.Row="0" FontSize="16" BorderThickness="0" VerticalAlignment="Bottom"/>
+                    <PasswordBox PasswordChar="*" x:Name="parol_registration" Grid.Row="0" FontSize="16" BorderThickness="0" VerticalAlignment="Bottom"/>
                     <Grid Grid.Row="1" Background="#FFE6E6E6"/>
-                    <TextBox x:Name="parol_verification_registration" Grid.Row="2" FontSize="16" BorderThickness="0" VerticalAlignment="Bottom"/>
+                    <PasswordBox PasswordChar="*" x:Name="parol_verification_registration" Grid.Row="2" FontSize="16" BorderThickness="0" VerticalAlignment="Bottom"/>
                     <Grid Grid.Row="3" Background="#FFE6E6E6"/>
                 </Grid>
             </Grid>
@@ -160,7 +160,7 @@
                 <Button Template="{StaticResource loginTemplate}" Style="{StaticResource ButtonLogin}" Padding="50, 8" Content="Сохранить"  HorizontalAlignment="Right" VerticalAlignment="Center"/>
             </Grid>
         </Grid>
-        <Grid x:Name="added_product" Grid.Column="1"  Margin="20"  Visibility="Visible">
+        <Grid x:Name="added_product" Grid.Column="1"  Margin="20"  Visibility="Hidden">
             <Grid.RowDefinitions>
                 <RowDefinition Height="48*"></RowDefinition>
                 <RowDefinition Height="101*"></RowDefinition>
@@ -168,6 +168,7 @@
                 <RowDefinition Height="25*"></RowDefinition>
                 <RowDefinition Height="1"></RowDefinition>
                 <RowDefinition Height="56*"></RowDefinition>
+                <RowDefinition Height="1"></RowDefinition>
                 <RowDefinition Height="50*"></RowDefinition>
             </Grid.RowDefinitions>
             <Label Grid.Row="0" Margin="0 10" Content="Добавление нового товара" FontSize="30"/>
@@ -221,6 +222,15 @@
             <Grid Grid.Row="4" Background="#FFF9C900"/>
             <Grid Grid.Row="5" Margin="0 20" >
                 <Button x:Name="added_product_button" Template="{StaticResource loginTemplate}" Style="{StaticResource ButtonLogin}" Padding="50, 8" Content="Добавить"  HorizontalAlignment="Right" VerticalAlignment="Center"/>
+            </Grid>
+            <Grid Grid.Row="6" Background="#FFF9C900"/>
+            <Grid Grid.Row="7">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <ComboBox Name="list_product" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <Button x:Name="delete_product_button" Grid.Column="1" Template="{StaticResource loginTemplate}" Style="{StaticResource ButtonLogin}" Padding="50, 8" Content="Удалить"  HorizontalAlignment="Right" VerticalAlignment="Center"/>
             </Grid>
         </Grid>
     </Grid>

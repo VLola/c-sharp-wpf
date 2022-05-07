@@ -40,13 +40,11 @@ namespace Project_49
         private void PageCenter()
         {
             page_main = new PageMain();
-            page_login = new PageLogin();
-            page_registration = new PageRegistration();
+            NewLogin();
+            NewRegistration();
             FullMain.Children.Add(page_main);
-            page_login.ButtonRegestration.Click += ButtonRegestration_Click;
-            page_login.button_login.Click += Button_login_Click;
-            page_registration.ButtonRegistrationReturn.Click += ButtonRegistrationReturn_Click;
-            page_registration.ButtonRegistration.Click += ButtonRegistration_Click;
+            
+            
             ButtonLogin.Click += ButtonLogin_Click;
             ButtonMain.Click += ButtonMain_Click;
             foreach (Product it in page_main.ProductListOne.Children)
@@ -58,7 +56,19 @@ namespace Project_49
                 it.PreviewMouseLeftButtonDown += It_PreviewMouseLeftButtonDown;
             }
         }
-
+        private void NewLogin()
+        {
+            login = false;
+            page_login = new PageLogin();
+            page_login.ButtonRegestration.Click += ButtonRegestration_Click;
+            page_login.button_login.Click += Button_login_Click;
+        }
+        private void NewRegistration()
+        {
+            page_registration = new PageRegistration();
+            page_registration.ButtonRegistrationReturn.Click += ButtonRegistrationReturn_Click;
+            page_registration.ButtonRegistration.Click += ButtonRegistration_Click;
+        }
         private void It_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             var item = (sender as Product).name;
@@ -72,18 +82,18 @@ namespace Project_49
 
         private void ButtonAccountReturn_Click(object sender, RoutedEventArgs e)
         {
-            login = false;
+            NewLogin();
             FullMain.Children.Clear();
             FullMain.Children.Add(page_login);
         }
-
+        
         private void Button_login_Click(object sender, RoutedEventArgs e)
         {
-            if(page_login.email.Text != "" && page_login.parol.Text != "")
+            if(page_login.email.Text != "" && page_login.parol.Password != "")
             {
                 if (page_login.administrator.IsChecked == true)
                 {
-                    if (Connect.LoginAdmin(page_login.email.Text, page_login.parol.Text))
+                    if (Connect.LoginAdmin(page_login.email.Text, page_login.parol.Password))
                     {
                         login = true;
                         page_user_info = new PageUserInfo(true, page_login.email.Text);
@@ -95,7 +105,7 @@ namespace Project_49
                 }
                 else
                 {
-                    if (Connect.LoginUser(page_login.email.Text, page_login.parol.Text))
+                    if (Connect.LoginUser(page_login.email.Text, page_login.parol.Password))
                     {
                         login = true;
                         page_user_info = new PageUserInfo(false, page_login.email.Text);
@@ -111,10 +121,10 @@ namespace Project_49
 
         private void ButtonRegistration_Click(object sender, RoutedEventArgs e)
         {
-            if (page_registration.parol_registration.Text == page_registration.parol_verification_registration.Text)
-                if (page_registration.email_registration.Text != "" && page_registration.parol_registration.Text != "")
-                    if (page_registration.administrator.IsChecked == true) Connect.RegistrationAdmin(page_registration.email_registration.Text, page_registration.parol_registration.Text);
-                    else Connect.RegistrationUser(page_registration.email_registration.Text, page_registration.parol_registration.Text);
+            if (page_registration.parol_registration.Password == page_registration.parol_verification_registration.Password)
+                if (page_registration.email_registration.Text != "" && page_registration.parol_registration.Password != "")
+                    if (page_registration.administrator.IsChecked == true) Connect.RegistrationAdmin(page_registration.email_registration.Text, page_registration.parol_registration.Password);
+                    else Connect.RegistrationUser(page_registration.email_registration.Text, page_registration.parol_registration.Password);
         }
 
         private void ButtonMain_Click(object sender, RoutedEventArgs e) {

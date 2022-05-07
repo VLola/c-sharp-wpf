@@ -135,7 +135,7 @@
                         </Grid.RowDefinitions>
                         <TextBox x:Name="email" Grid.Row="0" FontSize="16" Padding="0 5" BorderThickness="0" VerticalAlignment="Bottom"/>
                         <Grid Grid.Row="1" Background="#FFE6E6E6"/>
-                        <TextBox x:Name="parol" Grid.Row="2" FontSize="16" Padding="0 5" BorderThickness="0" VerticalAlignment="Bottom"/>
+                        <PasswordBox PasswordChar="*" x:Name="parol" Grid.Row="2" FontSize="16" Padding="0 5" BorderThickness="0" VerticalAlignment="Bottom"/>
                         <Grid Grid.Row="3" Background="#FFE6E6E6"/>
                         <Grid Grid.Row="4">
                             <Grid.ColumnDefinitions>
