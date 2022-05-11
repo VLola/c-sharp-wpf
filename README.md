@@ -1,8 +1,17 @@
 # Project 50.
 
+In accordance with the layout, implement the layout cake order form.
+
+![Image text](https://raw.githubusercontent.com/VLola/c-sharp-wpf/master/Project_51/Resources/Menu_Main.png)
+
+___
+
+# Project 50.
+
 Implement the layout of the Windows 10 calculator.
 
-![Image text](https://raw.githubusercontent.com/VLola/c-sharp-wpf/master/Project_49/Resources/Menu_Calculator.png)
+![Image text](https://raw.githubusercontent.com/VLola/c-sharp-wpf/master/Project_50/Resources/Menu_Calculator.png)
+
 ___
 # Project 49.
 
