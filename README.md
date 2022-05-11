@@ -1,4 +1,12 @@
-# Project 50.
+# Project 52.
+
+In accordance with the layout, implement the layout of the audio player.
+
+![Image text](https://raw.githubusercontent.com/VLola/c-sharp-wpf/master/Project_52/Resources/Menu_Main.png)
+
+___
+
+# Project 51.
 
 In accordance with the layout, implement the layout cake order form.
 
