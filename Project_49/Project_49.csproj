@@ -305,6 +305,7 @@
       <DependentUpon>ModelUser.edmx</DependentUpon>
       <LastGenOutput>ModelUser.cs</LastGenOutput>
     </Content>
+    <Resource Include="Resources\Menu_Main.png" />
     <Resource Include="Resources\compare_product.png" />
     <Resource Include="Resources\Products\Samsung Galaxy S22.png" />
     <Resource Include="Resources\Categorys\Acoustics.png" />
