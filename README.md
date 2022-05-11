@@ -1,11 +1,21 @@
+# Project 50.
+
+Implement the layout of the Windows 10 calculator.
+
+![Image text](https://raw.githubusercontent.com/VLola/c-sharp-wpf/master/Project_49/Resources/Menu_Calculator.png)
 ___
 # Project 49.
 
 Implement the output of goods from the database in WPF. 
+
 Use UserControl for a specific product. 
+
 Implement search and CRUD architecture in the application. 
+
 The data source must be MsSql. 
+
 Process data from C# using Entity Framework.
+
 Source: yellow.ua
 
 Menu main:
@@ -30,6 +40,10 @@ Shares:
 
 ![Image text](https://raw.githubusercontent.com/VLola/c-sharp-wpf/master/Project_49/Resources/Menu_Shares.png)
 
+List product:
+
+![Image text](https://raw.githubusercontent.com/VLola/c-sharp-wpf/master/Project_49/Resources/Menu_List_Product.png)
+
 Footer:
 
 ![Image text](https://raw.githubusercontent.com/VLola/c-sharp-wpf/master/Project_49/Resources/Menu_Footer.png)
@@ -45,8 +59,3 @@ Registration:
 Add and delete product:
 
 ![Image text](https://raw.githubusercontent.com/VLola/c-sharp-wpf/master/Project_49/Resources/Menu_Add_Delete_Product.png)
-
-List product:
-
-![Image text](https://raw.githubusercontent.com/VLola/c-sharp-wpf/master/Project_49/Resources/Menu_List_Product.png)
-
