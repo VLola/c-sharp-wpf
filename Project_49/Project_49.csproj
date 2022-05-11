@@ -305,6 +305,16 @@
       <DependentUpon>ModelUser.edmx</DependentUpon>
       <LastGenOutput>ModelUser.cs</LastGenOutput>
     </Content>
+    <Resource Include="Resources\Menu_Add_Delete_Product.png" />
+    <Resource Include="Resources\Menu_Authorization.png" />
+    <Resource Include="Resources\Menu_Catalog.png" />
+    <Resource Include="Resources\Menu_Footer.png" />
+    <Resource Include="Resources\Menu_Hot_Category1.png" />
+    <Resource Include="Resources\Menu_Hot_Category2.png" />
+    <Resource Include="Resources\Menu_List_Product.png" />
+    <Resource Include="Resources\Menu_Novelty.png" />
+    <Resource Include="Resources\Menu_Registration.png" />
+    <Resource Include="Resources\Menu_Shares.png" />
     <Resource Include="Resources\Menu_Main.png" />
     <Resource Include="Resources\compare_product.png" />
     <Resource Include="Resources\Products\Samsung Galaxy S22.png" />
