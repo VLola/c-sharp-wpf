@@ -63,6 +63,25 @@
                 </Trigger>
             </ControlTemplate.Triggers>
         </ControlTemplate>
+        <ControlTemplate TargetType="Button" x:Key="phoneTemplate">
+            <Border
+                BorderBrush="{TemplateBinding BorderBrush}"
+                BorderThickness="{TemplateBinding BorderThickness}"
+                Background="{TemplateBinding Background}"
+                Height="{TemplateBinding Height}"
+                Width="{TemplateBinding Width}" >
+                <ContentControl Margin="{TemplateBinding Padding}"
+                        HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                        VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                        Content="{TemplateBinding Content}"
+                        Foreground="{TemplateBinding Foreground}"/>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="true">
+                    <Setter Property="Foreground" Value="Blue" />
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
         <ControlTemplate TargetType="Button" x:Key="loginTemplate">
             <Border
                 BorderBrush="{TemplateBinding BorderBrush}"
@@ -107,6 +126,13 @@
         <Style TargetType="Button" x:Key="ActionLabelBottom">
             <Setter Property="Background" Value="Black"/>
             <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Margin" Value="1"/>
+            <Setter Property="BorderThickness" Value="0"/>
+        </Style>
+        <Style TargetType="Button" x:Key="PhoneButton">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="Black"/>
             <Setter Property="FontSize" Value="14"/>
             <Setter Property="Margin" Value="1"/>
             <Setter Property="BorderThickness" Value="0"/>
@@ -173,7 +199,34 @@
                 <RowDefinition Height="406*"></RowDefinition>
                 <RowDefinition Height="164*"></RowDefinition>
             </Grid.RowDefinitions>
-            <Grid x:Name="top_buttons" Grid.Row="0" Margin="100 0">
+            <Grid x:Name="phones_grid" Visibility="Hidden" Panel.ZIndex="3" Grid.Row="0" Grid.RowSpan="2" Margin="100 0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="118*"></ColumnDefinition>
+                    <ColumnDefinition Width="125*"></ColumnDefinition>
+                    <ColumnDefinition Width="624*"></ColumnDefinition>
+                    <ColumnDefinition Width="61*"></ColumnDefinition>
+                    <ColumnDefinition Width="164*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                
+                <Grid Grid.Column="1" x:Name="phones" Background="White" HorizontalAlignment="Stretch" VerticalAlignment="Center">
+                    <Border BorderThickness="1" CornerRadius="5" BorderBrush="Black">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Button Grid.Row="0" Content="0 800 210 186" Style="{StaticResource PhoneButton}" Template="{StaticResource phoneTemplate}"/>
+                            <Button Grid.Row="1" Content="044 333-63-52" Style="{StaticResource PhoneButton}" Template="{StaticResource phoneTemplate}"/>
+                            <Button Grid.Row="2" Content="(066) 731 32 71" Style="{StaticResource PhoneButton}" Template="{StaticResource phoneTemplate}"/>
+                            <Button Grid.Row="3" Content="(067) 153-05-08" Style="{StaticResource PhoneButton}" Template="{StaticResource phoneTemplate}"/>
+                        </Grid>
+                    </Border>
+                </Grid>
+            </Grid>
+            <Grid x:Name="top_buttons" Panel.ZIndex="1" Grid.Row="0" Margin="100 0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="118*"></ColumnDefinition>
                     <ColumnDefinition Width="125*"></ColumnDefinition>
@@ -184,7 +237,8 @@
                 <Button x:Name="ButtonMain" Style="{DynamicResource ActionTop}" Template="{StaticResource btTemplate}" Grid.Column="0" BorderBrush="{x:Null}" Foreground="{x:Null}" Background="{x:Null}" >
                     <Image Source="Resources/logo.png"/>
                 </Button>
-                <Button Grid.Column="1" x:Name="phones" Content="0 800 210 186" Style="{StaticResource ActionLabel}" Template="{StaticResource labelTemplate}"/>
+                <Button Grid.Column="1" x:Name="phone" Content="0 800 210 186" Style="{StaticResource PhoneButton}" Template="{StaticResource phoneTemplate}"/>
+                
                 <Grid Grid.Column="2">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="126*"></ColumnDefinition>
@@ -229,7 +283,7 @@
                 </Grid>
 
             </Grid>
-            <Grid Grid.Row="1"  Margin="100 10 100 0">
+            <Grid Grid.Row="1"  Margin="100 10 100 0" Panel.ZIndex="2">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition></ColumnDefinition>
                     <ColumnDefinition></ColumnDefinition>

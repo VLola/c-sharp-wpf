@@ -25,8 +25,22 @@ namespace Project_49
             InitializeComponent();
             Categorys();
             PageCenter();
+            phone.MouseEnter += Phone_MouseEnter;
+            phones.MouseLeave += Phones_MouseLeave;
         }
-        
+
+        private void Phones_MouseLeave(object sender, MouseEventArgs e)
+        {
+            phone.Visibility = Visibility.Visible;
+            phones_grid.Visibility = Visibility.Hidden;
+        }
+
+        private void Phone_MouseEnter(object sender, MouseEventArgs e)
+        {
+            phone.Visibility = Visibility.Hidden;
+            phones_grid.Visibility = Visibility.Visible;
+        }
+
         #region - PageCenter -
         private void PageCenter()
         {
