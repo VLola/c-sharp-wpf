@@ -120,7 +120,9 @@
   <ItemGroup>
     <Resource Include="Resources\Images\clip.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Resources\Menu_Main.png" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\users\user_1.png" />
     <Resource Include="Resources\users\user_10.png" />

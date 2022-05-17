@@ -1,3 +1,10 @@
+# Project 53.
+
+In accordance with the layout, implement the layout of the Telegram.
+
+![Image text](https://raw.githubusercontent.com/VLola/c-sharp-wpf/master/Project_53/Resources/Menu_Main.png)
+
+___
 # Project 52.
 
 In accordance with the layout, implement the layout of the audio player.

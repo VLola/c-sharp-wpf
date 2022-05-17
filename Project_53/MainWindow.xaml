@@ -70,7 +70,7 @@
             <Setter Property="Margin" Value="10 0"/>
         </Style>
     </Window.Resources>
-    <Grid ShowGridLines="True">
+    <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition MinWidth="200" Width="30*"/>
             <ColumnDefinition Width="100*"/>
@@ -90,7 +90,7 @@
             </Border>
         </Grid>
 
-        <ListBox Grid.Column="0" Grid.Row="1" >
+        <ListBox Grid.Column="0" Grid.Row="1" BorderThickness="0">
             <ListBoxItem  HorizontalContentAlignment="Stretch">
                 <control:ListBoxItemNew icon_user="Resources/Images/icon_client.png" text_title="Saved Messages" text_time="19:25" text_gray="Eat Something!" image_double_tick="True" image_clip="True"/>
             </ListBoxItem>
