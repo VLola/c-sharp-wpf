@@ -5,8 +5,221 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Project_53"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="MainWindow" Height="800" Width="1400">
+    <Window.Resources>
+        <Style x:Key="styleImage" TargetType="Image">
+            <Setter Property="Stretch" Value="Uniform"/>
+        </Style>
+        <Style x:Key="styleImageIcon" TargetType="Image">
+            <Setter Property="Stretch" Value="Uniform"/>
+        </Style>
+        <Style x:Key="styleTextBlockLeftBold" TargetType="TextBlock">
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="TextAlignment" Value="Left"/>
+        </Style>
+        <Style x:Key="styleTextBlockGray" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="LightGray"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+        <Style x:Key="styleTextBlockBlack" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+        <Style x:Key="styleTextBlockRight" TargetType="TextBlock">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="TextAlignment" Value="Right"/>
+        </Style>
+        <Style x:Key="styleBorder" TargetType="Border">
+            <Setter Property="Background" Value="#FFF5F5F7"/>
+            <Setter Property="CornerRadius" Value="10"/>
+            <Setter Property="BorderBrush" Value="#FFF5F5F7"/>
+            <Setter Property="BorderThickness" Value="4"/>
+            <Setter Property="Margin" Value="3"/>
+        </Style>
+        <Style x:Key="styleLabelCountGreen" TargetType="Label">
+            <Setter Property="Background" Value="#FF05CF4F"/>
+            <Setter Property="Padding" Value="5 0"/>
+            <Style.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="8" />
+                </Style>
+            </Style.Resources>
+        </Style>
+        <Style x:Key="styleLabelCountGray" TargetType="Label">
+            <Setter Property="Background" Value="#FFC5CACC"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Padding" Value="5 0"/>
+            <Style.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="8" />
+                </Style>
+            </Style.Resources>
+        </Style>
+        <Style x:Key="styleTextBox" TargetType="TextBox">
+            <Setter Property="Background" Value="#FFF5F5F7"/>
+            <Setter Property="Foreground" Value="Gray"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="Margin" Value="10 0"/>
+        </Style>
+    </Window.Resources>
+    <Grid ShowGridLines="True">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition MinWidth="200" Width="30*"/>
+            <ColumnDefinition Width="100*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="100*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Column="0" Grid.Row="0" Margin="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="10*"/>
+                <ColumnDefinition Width="50*"/>
+            </Grid.ColumnDefinitions>
+            <Image Grid.Column="0" Source="Resources/Images/menu.png" Margin="8" />
+            <Border Grid.Column="1" Style="{StaticResource styleBorder}">
+                <TextBox Text="Search" Style="{StaticResource styleTextBox}"/>
+            </Border>
+        </Grid>
         
+        <ListBox Grid.Column="0" Grid.Row="1" >
+            <ListBoxItem HorizontalContentAlignment="Stretch">
+                <DockPanel>
+                    <Image Source="Resources/Images/icon_client.png" Style="{StaticResource styleImage}"/>
+                    <DockPanel>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <DockPanel Grid.Row="0">
+                                <TextBlock DockPanel.Dock="Right" Text="19:25" Style="{StaticResource styleTextBlockGray}"/>
+                                <Image DockPanel.Dock="Right" Source="Resources/Images/icon_double_tick.png" Stretch="Uniform" Height="20" Width="20" VerticalAlignment="Center"/>
+                                <TextBlock DockPanel.Dock="Right" Text="Saved Messages" Style="{StaticResource styleTextBlockLeftBold}"/>
+                            </DockPanel>
+                            <DockPanel Grid.Row="1">
+                                <Image DockPanel.Dock="Right" Source="Resources/Images/clip.png" Stretch="Uniform" Height="20" Width="20" VerticalAlignment="Center"/>
+                                <TextBlock DockPanel.Dock="Right" Text="Eat Somethingl" Style="{StaticResource styleTextBlockGray}"/>
+                            </DockPanel>
+                        </Grid>
+                    </DockPanel>
+                </DockPanel>
+            </ListBoxItem>
+            <ListBoxItem HorizontalContentAlignment="Stretch">
+                <DockPanel>
+                    <Image Source="Resources/Images/icon_client.png" Style="{StaticResource styleImage}"/>
+                    <DockPanel>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <DockPanel Grid.Row="0">
+                                <TextBlock DockPanel.Dock="Right" Text="13:02" Style="{StaticResource styleTextBlockGray}"/>
+                                <TextBlock DockPanel.Dock="Right" Text="Alicia Torreaux" Style="{StaticResource styleTextBlockLeftBold}"/>
+                            </DockPanel>
+                            <DockPanel Grid.Row="1">
+                                <StackPanel DockPanel.Dock="Right" VerticalAlignment="Center">
+                                    <Label Content="2" Style="{StaticResource styleLabelCountGreen}"/>
+                                </StackPanel>
+                                <TextBlock DockPanel.Dock="Right" Text="Bob says hi." Style="{StaticResource styleTextBlockGray}"/>
+                            </DockPanel>
+                        </Grid>
+                    </DockPanel>
+                </DockPanel>
+            </ListBoxItem>
+            <ListBoxItem Background="LightGray" Height="2"/>
+            <ListBoxItem HorizontalContentAlignment="Stretch">
+                <DockPanel>
+                    <Image Source="Resources/Images/icon_client.png" Style="{StaticResource styleImage}"/>
+                    <DockPanel>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <DockPanel Grid.Row="0">
+                                <TextBlock DockPanel.Dock="Right" Text="21:48" Style="{StaticResource styleTextBlockGray}"/>
+                                <TextBlock DockPanel.Dock="Right" Text="Roberto" Style="{StaticResource styleTextBlockLeftBold}"/>
+                            </DockPanel>
+                            <DockPanel Grid.Row="1">
+                                <StackPanel DockPanel.Dock="Right" VerticalAlignment="Center">
+                                    <Label Content="1" Style="{StaticResource styleLabelCountGreen}"/>
+                                </StackPanel>
+                                <TextBlock DockPanel.Dock="Right" Text="Say hello to Alice" Style="{StaticResource styleTextBlockGray}"/>
+                            </DockPanel>
+                        </Grid>
+                    </DockPanel>
+                </DockPanel>
+            </ListBoxItem>
+            <ListBoxItem HorizontalContentAlignment="Stretch">
+                <DockPanel>
+                    <Image Source="Resources/Images/icon_client.png" Style="{StaticResource styleImage}"/>
+                    <DockPanel>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <DockPanel Grid.Row="0">
+                                <TextBlock DockPanel.Dock="Right" Text="16:38" Style="{StaticResource styleTextBlockGray}"/>
+                                <TextBlock DockPanel.Dock="Right" Text="Campus Party" Style="{StaticResource styleTextBlockLeftBold}"/>
+                            </DockPanel>
+                            <DockPanel Grid.Row="1">
+                                <TextBlock DockPanel.Dock="Left" Text="Denny: " Style="{StaticResource styleTextBlockBlack}"/>
+                                <TextBlock DockPanel.Dock="Left" Text="Wow, aimost 2,500 members!" Style="{StaticResource styleTextBlockGray}"/>
+                            </DockPanel>
+                        </Grid>
+                    </DockPanel>
+                </DockPanel>
+            </ListBoxItem>
+            <ListBoxItem HorizontalContentAlignment="Stretch">
+                <DockPanel>
+                    <Image Source="Resources/Images/icon_client.png" Style="{StaticResource styleImage}"/>
+                    <DockPanel>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <DockPanel Grid.Row="0">
+                                <TextBlock DockPanel.Dock="Right" Text="16:11" Style="{StaticResource styleTextBlockGray}"/>
+                                <TextBlock DockPanel.Dock="Right" Text="Karen Stanford" Style="{StaticResource styleTextBlockLeftBold}"/>
+                            </DockPanel>
+                            <DockPanel Grid.Row="1">
+                                <TextBlock DockPanel.Dock="Left" Text="Seville" Style="{StaticResource styleTextBlockGray}"/>
+                            </DockPanel>
+                        </Grid>
+                    </DockPanel>
+                </DockPanel>
+            </ListBoxItem>
+            <ListBoxItem HorizontalContentAlignment="Stretch">
+                <DockPanel>
+                    <Image Source="Resources/Images/icon_client.png" Style="{StaticResource styleImage}"/>
+                    <DockPanel>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <DockPanel Grid.Row="0">
+                                <TextBlock DockPanel.Dock="Right" Text="14:50" Style="{StaticResource styleTextBlockGray}"/>
+                                <TextBlock DockPanel.Dock="Right" Text="Cat Videos" Style="{StaticResource styleTextBlockLeftBold}"/>
+                            </DockPanel>
+                            <DockPanel Grid.Row="1">
+                                <StackPanel DockPanel.Dock="Right" VerticalAlignment="Center">
+                                    <Label Content="27" Style="{StaticResource styleLabelCountGray}"/>
+                                </StackPanel>
+                                <TextBlock DockPanel.Dock="Right" Text="Video" Style="{StaticResource styleTextBlockGray}"/>
+                            </DockPanel>
+                        </Grid>
+                    </DockPanel>
+                </DockPanel>
+            </ListBoxItem>
+        </ListBox>
     </Grid>
 </Window>
