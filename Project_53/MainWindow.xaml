@@ -3,12 +3,16 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Project_53"
+        xmlns:local="clr-namespace:Project_53" xmlns:control="clr-namespace:Project_53.Control"
         mc:Ignorable="d"
         Title="MainWindow" Height="800" Width="1400">
     <Window.Resources>
         <Style x:Key="styleImage" TargetType="Image">
             <Setter Property="Stretch" Value="Uniform"/>
+        </Style>
+        <Style x:Key="styleImageIconUser" TargetType="Image">
+            <Setter Property="Stretch" Value="Uniform"/>
+            <Setter Property="Source" Value="Resources/Images/icon_client.png"/>
         </Style>
         <Style x:Key="styleImageIcon" TargetType="Image">
             <Setter Property="Stretch" Value="Uniform"/>
@@ -85,140 +89,44 @@
                 <TextBox Text="Search" Style="{StaticResource styleTextBox}"/>
             </Border>
         </Grid>
-        
+
         <ListBox Grid.Column="0" Grid.Row="1" >
-            <ListBoxItem HorizontalContentAlignment="Stretch">
-                <DockPanel>
-                    <Image Source="Resources/Images/icon_client.png" Style="{StaticResource styleImage}"/>
-                    <DockPanel>
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                            </Grid.RowDefinitions>
-                            <DockPanel Grid.Row="0">
-                                <TextBlock DockPanel.Dock="Right" Text="19:25" Style="{StaticResource styleTextBlockGray}"/>
-                                <Image DockPanel.Dock="Right" Source="Resources/Images/icon_double_tick.png" Stretch="Uniform" Height="20" Width="20" VerticalAlignment="Center"/>
-                                <TextBlock DockPanel.Dock="Right" Text="Saved Messages" Style="{StaticResource styleTextBlockLeftBold}"/>
-                            </DockPanel>
-                            <DockPanel Grid.Row="1">
-                                <Image DockPanel.Dock="Right" Source="Resources/Images/clip.png" Stretch="Uniform" Height="20" Width="20" VerticalAlignment="Center"/>
-                                <TextBlock DockPanel.Dock="Right" Text="Eat Somethingl" Style="{StaticResource styleTextBlockGray}"/>
-                            </DockPanel>
-                        </Grid>
-                    </DockPanel>
-                </DockPanel>
+            <ListBoxItem  HorizontalContentAlignment="Stretch">
+                <control:ListBoxItemNew icon_user="Resources/Images/icon_client.png" text_title="Saved Messages" text_time="19:25" text_gray="Eat Something!" image_double_tick="True" image_clip="True"/>
             </ListBoxItem>
-            <ListBoxItem HorizontalContentAlignment="Stretch">
-                <DockPanel>
-                    <Image Source="Resources/Images/icon_client.png" Style="{StaticResource styleImage}"/>
-                    <DockPanel>
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                            </Grid.RowDefinitions>
-                            <DockPanel Grid.Row="0">
-                                <TextBlock DockPanel.Dock="Right" Text="13:02" Style="{StaticResource styleTextBlockGray}"/>
-                                <TextBlock DockPanel.Dock="Right" Text="Alicia Torreaux" Style="{StaticResource styleTextBlockLeftBold}"/>
-                            </DockPanel>
-                            <DockPanel Grid.Row="1">
-                                <StackPanel DockPanel.Dock="Right" VerticalAlignment="Center">
-                                    <Label Content="2" Style="{StaticResource styleLabelCountGreen}"/>
-                                </StackPanel>
-                                <TextBlock DockPanel.Dock="Right" Text="Bob says hi." Style="{StaticResource styleTextBlockGray}"/>
-                            </DockPanel>
-                        </Grid>
-                    </DockPanel>
-                </DockPanel>
+            <ListBoxItem  HorizontalContentAlignment="Stretch">
+                <control:ListBoxItemNew icon_user="Resources/users/user_1.png" online="True" text_title="Alicia Torreaux" text_time="13:02" text_gray="Bob says hi." label_green="True" label_green_content="2"/>
             </ListBoxItem>
             <ListBoxItem Background="LightGray" Height="2"/>
-            <ListBoxItem HorizontalContentAlignment="Stretch">
-                <DockPanel>
-                    <Image Source="Resources/Images/icon_client.png" Style="{StaticResource styleImage}"/>
-                    <DockPanel>
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                            </Grid.RowDefinitions>
-                            <DockPanel Grid.Row="0">
-                                <TextBlock DockPanel.Dock="Right" Text="21:48" Style="{StaticResource styleTextBlockGray}"/>
-                                <TextBlock DockPanel.Dock="Right" Text="Roberto" Style="{StaticResource styleTextBlockLeftBold}"/>
-                            </DockPanel>
-                            <DockPanel Grid.Row="1">
-                                <StackPanel DockPanel.Dock="Right" VerticalAlignment="Center">
-                                    <Label Content="1" Style="{StaticResource styleLabelCountGreen}"/>
-                                </StackPanel>
-                                <TextBlock DockPanel.Dock="Right" Text="Say hello to Alice" Style="{StaticResource styleTextBlockGray}"/>
-                            </DockPanel>
-                        </Grid>
-                    </DockPanel>
-                </DockPanel>
+            <ListBoxItem  HorizontalContentAlignment="Stretch">
+                <control:ListBoxItemNew icon_user="Resources/users/user_2.png" text_title="Roberto" text_time="21:48" text_gray="Say hello to Alice" label_green="True" label_green_content="1"/>
             </ListBoxItem>
-            <ListBoxItem HorizontalContentAlignment="Stretch">
-                <DockPanel>
-                    <Image Source="Resources/Images/icon_client.png" Style="{StaticResource styleImage}"/>
-                    <DockPanel>
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                            </Grid.RowDefinitions>
-                            <DockPanel Grid.Row="0">
-                                <TextBlock DockPanel.Dock="Right" Text="16:38" Style="{StaticResource styleTextBlockGray}"/>
-                                <TextBlock DockPanel.Dock="Right" Text="Campus Party" Style="{StaticResource styleTextBlockLeftBold}"/>
-                            </DockPanel>
-                            <DockPanel Grid.Row="1">
-                                <TextBlock DockPanel.Dock="Left" Text="Denny: " Style="{StaticResource styleTextBlockBlack}"/>
-                                <TextBlock DockPanel.Dock="Left" Text="Wow, aimost 2,500 members!" Style="{StaticResource styleTextBlockGray}"/>
-                            </DockPanel>
-                        </Grid>
-                    </DockPanel>
-                </DockPanel>
+            <ListBoxItem  HorizontalContentAlignment="Stretch">
+                <control:ListBoxItemNew icon_user="Resources/users/user_3.png" text_title="Campus Party" text_time="16:38" text_black="Denny: " text_gray="Wow, almost 2,500 members!"/>
             </ListBoxItem>
-            <ListBoxItem HorizontalContentAlignment="Stretch">
-                <DockPanel>
-                    <Image Source="Resources/Images/icon_client.png" Style="{StaticResource styleImage}"/>
-                    <DockPanel>
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                            </Grid.RowDefinitions>
-                            <DockPanel Grid.Row="0">
-                                <TextBlock DockPanel.Dock="Right" Text="16:11" Style="{StaticResource styleTextBlockGray}"/>
-                                <TextBlock DockPanel.Dock="Right" Text="Karen Stanford" Style="{StaticResource styleTextBlockLeftBold}"/>
-                            </DockPanel>
-                            <DockPanel Grid.Row="1">
-                                <TextBlock DockPanel.Dock="Left" Text="Seville" Style="{StaticResource styleTextBlockGray}"/>
-                            </DockPanel>
-                        </Grid>
-                    </DockPanel>
-                </DockPanel>
+            <ListBoxItem  HorizontalContentAlignment="Stretch">
+                <control:ListBoxItemNew icon_user="Resources/users/user_4.png" online="True" text_title="Karen Stanford" text_time="16:11" text_gray="Seville"/>
             </ListBoxItem>
-            <ListBoxItem HorizontalContentAlignment="Stretch">
-                <DockPanel>
-                    <Image Source="Resources/Images/icon_client.png" Style="{StaticResource styleImage}"/>
-                    <DockPanel>
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                            </Grid.RowDefinitions>
-                            <DockPanel Grid.Row="0">
-                                <TextBlock DockPanel.Dock="Right" Text="14:50" Style="{StaticResource styleTextBlockGray}"/>
-                                <TextBlock DockPanel.Dock="Right" Text="Cat Videos" Style="{StaticResource styleTextBlockLeftBold}"/>
-                            </DockPanel>
-                            <DockPanel Grid.Row="1">
-                                <StackPanel DockPanel.Dock="Right" VerticalAlignment="Center">
-                                    <Label Content="27" Style="{StaticResource styleLabelCountGray}"/>
-                                </StackPanel>
-                                <TextBlock DockPanel.Dock="Right" Text="Video" Style="{StaticResource styleTextBlockGray}"/>
-                            </DockPanel>
-                        </Grid>
-                    </DockPanel>
-                </DockPanel>
+            <ListBoxItem  HorizontalContentAlignment="Stretch">
+                <control:ListBoxItemNew icon_user="Resources/users/user_5.png" text_title="Cat Videos" text_time="14:50" text_gray="Video" label_gray="True" label_gray_content="27"/>
+            </ListBoxItem>
+            <ListBoxItem  HorizontalContentAlignment="Stretch">
+                <control:ListBoxItemNew icon_user="Resources/users/user_6.png" text_title="Little Sister" text_time="14:44" text_gray="I got the job at NASA!"/>
+            </ListBoxItem>
+            <ListBoxItem  HorizontalContentAlignment="Stretch">
+                <control:ListBoxItemNew icon_user="Resources/users/user_7.png" text_title="Monika Parker" text_time="14:20" text_gray="I don't remember anything"/>
+            </ListBoxItem>
+            <ListBoxItem  HorizontalContentAlignment="Stretch">
+                <control:ListBoxItemNew icon_user="Resources/users/user_8.png" text_title="Surfers" text_time="11:00" text_black="Denny: " text_gray="Meet you at the beach"/>
+            </ListBoxItem>
+            <ListBoxItem  HorizontalContentAlignment="Stretch">
+                <control:ListBoxItemNew icon_user="Resources/users/user_9.png" online="True" text_title="Deveeprasad Acharya" text_time="10:34" text_gray="typing..."/>
+            </ListBoxItem>
+            <ListBoxItem  HorizontalContentAlignment="Stretch">
+                <control:ListBoxItemNew icon_user="Resources/users/user_10.png" text_title="Xian Zhou" text_time="10:44" text_gray="Washington D.C."/>
+            </ListBoxItem>
+            <ListBoxItem  HorizontalContentAlignment="Stretch">
+                <control:ListBoxItemNew icon_user="Resources/users/user_11.png" text_title="Karl Kalagin" text_time="10:27" text_gray="Halifax"/>
             </ListBoxItem>
         </ListBox>
     </Grid>

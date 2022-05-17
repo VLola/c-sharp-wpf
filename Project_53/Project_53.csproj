@@ -56,6 +56,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Control\ListBoxItemNew.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -63,6 +67,9 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Control\ListBoxItemNew.xaml.cs">
+      <DependentUpon>ListBoxItemNew.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -99,13 +106,33 @@
     <Resource Include="Resources\Images\menu.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Images\icon_client.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Resources\Images\icon_double_tick.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Resources\Images\online.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\user.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\icon_client.png" />
+  </ItemGroup>
+  <ItemGroup>
     <Resource Include="Resources\Images\clip.png" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Resources\users\user_1.png" />
+    <Resource Include="Resources\users\user_10.png" />
+    <Resource Include="Resources\users\user_11.png" />
+    <Resource Include="Resources\users\user_2.png" />
+    <Resource Include="Resources\users\user_3.png" />
+    <Resource Include="Resources\users\user_4.png" />
+    <Resource Include="Resources\users\user_5.png" />
+    <Resource Include="Resources\users\user_6.png" />
+    <Resource Include="Resources\users\user_7.png" />
+    <Resource Include="Resources\users\user_8.png" />
+    <Resource Include="Resources\users\user_9.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
