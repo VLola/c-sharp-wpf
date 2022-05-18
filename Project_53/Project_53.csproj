@@ -60,6 +60,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Control\ListBoxMessages.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Control\TextBoxTelegram.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -70,6 +78,12 @@
     </Compile>
     <Compile Include="Control\ListBoxItemNew.xaml.cs">
       <DependentUpon>ListBoxItemNew.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\ListBoxMessages.xaml.cs">
+      <DependentUpon>ListBoxMessages.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\TextBoxTelegram.xaml.cs">
+      <DependentUpon>TextBoxTelegram.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -135,6 +149,20 @@
     <Resource Include="Resources\users\user_7.png" />
     <Resource Include="Resources\users\user_8.png" />
     <Resource Include="Resources\users\user_9.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\background.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\attach.png" />
+    <Resource Include="Resources\Images\microphone.png" />
+    <Resource Include="Resources\Images\smile.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\balloons.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\photo.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

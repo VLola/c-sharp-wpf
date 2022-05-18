@@ -7,14 +7,6 @@
              mc:Ignorable="d" 
              d:DesignHeight="100" d:DesignWidth="600">
     <UserControl.Resources>
-        <Style x:Key="styleStackPanelGreen" TargetType="StackPanel">
-            <Setter Property = "Visibility" Value="Hidden"/>
-            <Style.Triggers>
-                <DataTrigger Binding="{Binding panel_green}" Value="True">
-                    <Setter Property = "Visibility" Value="Visible"/>
-                </DataTrigger>
-            </Style.Triggers>
-        </Style>
         <Style x:Key="styleImageClip" TargetType="Image">
             <Setter Property="Stretch" Value="Uniform"/>
             <Setter Property="Height" Value="20"/>
@@ -48,9 +40,6 @@
                 </DataTrigger>
             </Style.Triggers>
         </Style>
-        <Style x:Key="styleImageIcon" TargetType="Image">
-            <Setter Property="Stretch" Value="Uniform"/>
-        </Style>
         <Style x:Key="styleTextBlockLeftBold" TargetType="TextBlock">
             <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
@@ -64,17 +53,6 @@
         <Style x:Key="styleTextBlockBlack" TargetType="TextBlock">
             <Setter Property="Foreground" Value="Black"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
-        </Style>
-        <Style x:Key="styleTextBlockRight" TargetType="TextBlock">
-            <Setter Property="VerticalAlignment" Value="Center"/>
-            <Setter Property="TextAlignment" Value="Right"/>
-        </Style>
-        <Style x:Key="styleBorder" TargetType="Border">
-            <Setter Property="Background" Value="#FFF5F5F7"/>
-            <Setter Property="CornerRadius" Value="10"/>
-            <Setter Property="BorderBrush" Value="#FFF5F5F7"/>
-            <Setter Property="BorderThickness" Value="4"/>
-            <Setter Property="Margin" Value="3"/>
         </Style>
         <Style x:Key="styleLabelCountGreen" TargetType="Label">
             <Setter Property="Background" Value="#FF05CF4F"/>
@@ -108,14 +86,6 @@
                     <Setter Property = "Visibility" Value="Visible"/>
                 </DataTrigger>
             </Style.Triggers>
-        </Style>
-        <Style x:Key="styleTextBox" TargetType="TextBox">
-            <Setter Property="Background" Value="#FFF5F5F7"/>
-            <Setter Property="Foreground" Value="Gray"/>
-            <Setter Property="BorderThickness" Value="0"/>
-            <Setter Property="VerticalAlignment" Value="Center"/>
-            <Setter Property="HorizontalAlignment" Value="Stretch"/>
-            <Setter Property="Margin" Value="10 0"/>
         </Style>
     </UserControl.Resources>
     <DockPanel x:Name="DOCK_PANEL">

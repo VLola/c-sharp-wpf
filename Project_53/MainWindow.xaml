@@ -5,61 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Project_53" xmlns:control="clr-namespace:Project_53.Control"
         mc:Ignorable="d"
-        Title="MainWindow" Height="800" Width="1400">
+        Title="MainWindow" Height="900" Width="1400">
     <Window.Resources>
-        <Style x:Key="styleImage" TargetType="Image">
-            <Setter Property="Stretch" Value="Uniform"/>
-        </Style>
-        <Style x:Key="styleImageIconUser" TargetType="Image">
-            <Setter Property="Stretch" Value="Uniform"/>
-            <Setter Property="Source" Value="Resources/Images/icon_client.png"/>
-        </Style>
-        <Style x:Key="styleImageIcon" TargetType="Image">
-            <Setter Property="Stretch" Value="Uniform"/>
-        </Style>
-        <Style x:Key="styleTextBlockLeftBold" TargetType="TextBlock">
-            <Setter Property="FontWeight" Value="Bold"/>
-            <Setter Property="VerticalAlignment" Value="Center"/>
-            <Setter Property="HorizontalAlignment" Value="Stretch"/>
-            <Setter Property="TextAlignment" Value="Left"/>
-        </Style>
-        <Style x:Key="styleTextBlockGray" TargetType="TextBlock">
-            <Setter Property="Foreground" Value="LightGray"/>
-            <Setter Property="VerticalAlignment" Value="Center"/>
-        </Style>
-        <Style x:Key="styleTextBlockBlack" TargetType="TextBlock">
-            <Setter Property="Foreground" Value="Black"/>
-            <Setter Property="VerticalAlignment" Value="Center"/>
-        </Style>
-        <Style x:Key="styleTextBlockRight" TargetType="TextBlock">
-            <Setter Property="VerticalAlignment" Value="Center"/>
-            <Setter Property="TextAlignment" Value="Right"/>
-        </Style>
         <Style x:Key="styleBorder" TargetType="Border">
             <Setter Property="Background" Value="#FFF5F5F7"/>
             <Setter Property="CornerRadius" Value="10"/>
             <Setter Property="BorderBrush" Value="#FFF5F5F7"/>
             <Setter Property="BorderThickness" Value="4"/>
             <Setter Property="Margin" Value="3"/>
-        </Style>
-        <Style x:Key="styleLabelCountGreen" TargetType="Label">
-            <Setter Property="Background" Value="#FF05CF4F"/>
-            <Setter Property="Padding" Value="5 0"/>
-            <Style.Resources>
-                <Style TargetType="Border">
-                    <Setter Property="CornerRadius" Value="8" />
-                </Style>
-            </Style.Resources>
-        </Style>
-        <Style x:Key="styleLabelCountGray" TargetType="Label">
-            <Setter Property="Background" Value="#FFC5CACC"/>
-            <Setter Property="Foreground" Value="White"/>
-            <Setter Property="Padding" Value="5 0"/>
-            <Style.Resources>
-                <Style TargetType="Border">
-                    <Setter Property="CornerRadius" Value="8" />
-                </Style>
-            </Style.Resources>
         </Style>
         <Style x:Key="styleTextBox" TargetType="TextBox">
             <Setter Property="Background" Value="#FFF5F5F7"/>
@@ -114,7 +67,7 @@
                 <control:ListBoxItemNew icon_user="Resources/users/user_6.png" text_title="Little Sister" text_time="14:44" text_gray="I got the job at NASA!"/>
             </ListBoxItem>
             <ListBoxItem  HorizontalContentAlignment="Stretch">
-                <control:ListBoxItemNew icon_user="Resources/users/user_7.png" text_title="Monika Parker" text_time="14:20" text_gray="I don't remember anything"/>
+                <control:ListBoxItemNew online="True" icon_user="Resources/users/user_7.png" text_title="Monika Parker" text_time="14:20" text_gray="I don't remember anything"/>
             </ListBoxItem>
             <ListBoxItem  HorizontalContentAlignment="Stretch">
                 <control:ListBoxItemNew icon_user="Resources/users/user_8.png" text_title="Surfers" text_time="11:00" text_black="Denny: " text_gray="Meet you at the beach"/>
@@ -129,5 +82,21 @@
                 <control:ListBoxItemNew icon_user="Resources/users/user_11.png" text_title="Karl Kalagin" text_time="10:27" text_gray="Halifax"/>
             </ListBoxItem>
         </ListBox>
+        <Grid Grid.Column="1" Grid.Row="1">
+            <Grid.Background>
+                <ImageBrush ImageSource="Resources/Images/background.jpg"/>
+            </Grid.Background>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100*"/>
+                <RowDefinition Height="20*"/>
+            </Grid.RowDefinitions>
+            <control:ListBoxMessages Grid.Column="1" Grid.Row="0" />
+            <control:TextBoxTelegram Grid.Column="1" Grid.Row="1"/>
+        </Grid>
     </Grid>
 </Window>
