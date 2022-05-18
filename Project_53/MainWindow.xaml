@@ -29,10 +29,10 @@
             <ColumnDefinition Width="100*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="35"/>
+            <RowDefinition Height="45"/>
             <RowDefinition Height="100*"/>
         </Grid.RowDefinitions>
-        <Grid Grid.Column="0" Grid.Row="0" Margin="2">
+        <Grid Grid.Column="0" Grid.Row="0" Margin="0 5">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="10*"/>
                 <ColumnDefinition Width="50*"/>
@@ -82,6 +82,32 @@
                 <control:ListBoxItemNew icon_user="Resources/users/user_11.png" text_title="Karl Kalagin" text_time="10:27" text_gray="Halifax"/>
             </ListBoxItem>
         </ListBox>
+        <Grid Grid.Column="1" Grid.Row="0" Margin="5">
+            <DockPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Grid Height="42" Width="42" VerticalAlignment="Center">
+                        <Border BorderThickness="7" CornerRadius="30" BorderBrush="Transparent">
+                            <Border.Background>
+                                <ImageBrush ImageSource="/Project_53;component/Resources/users/user_3.png"/>
+                            </Border.Background>
+                        </Border>
+                    </Grid>
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Text="Campus Party" FontWeight="Bold"/>
+                        <TextBlock Text="2,500 members, 746 online" Foreground="LightGray"/>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Grid Width="2" Background="LightGray" Margin="5 0"/>
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Text="Pinned message" Foreground="LightBlue"/>
+                        <TextBlock Text="See you tomorrow at 18:00..."/>
+                    </StackPanel>
+                    <Image Source="/Project_53;component/Resources/Images/search.png" Stretch="None" Margin="20 0 0 0"/>
+                    <Image Source="/Project_53;component/Resources/Images/menu_vertical.png" Stretch="None" Margin="20 0"/>
+                </StackPanel>
+            </DockPanel>
+        </Grid>
         <Grid Grid.Column="1" Grid.Row="1">
             <Grid.Background>
                 <ImageBrush ImageSource="Resources/Images/background.jpg"/>

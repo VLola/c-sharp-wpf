@@ -135,9 +135,6 @@
     <Resource Include="Resources\Images\clip.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Menu_Main.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Resources\users\user_1.png" />
     <Resource Include="Resources\users\user_10.png" />
     <Resource Include="Resources\users\user_11.png" />
@@ -163,6 +160,15 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Images\photo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\search.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\menu_vertical.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Menu_Main.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
