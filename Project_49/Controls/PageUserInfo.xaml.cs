@@ -45,6 +45,8 @@ namespace Project_49.Controls
                 name_product.Text = "";
                 price_product.Text = "";
                 image_product.Text = "";
+                list_name_product.Clear();
+                LoadListProduct();
             }
         }
 

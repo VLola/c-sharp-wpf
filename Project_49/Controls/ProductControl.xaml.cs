@@ -21,39 +21,38 @@ namespace Project_49.Controls
     /// </summary>
     public partial class ProductControl : UserControl
     {
+        public bool Availability { get; set; }
+        public bool Discount { get; set; }
+        public bool Latest { get; set; }
+        public string id{ get; set; }
+        public string name_product { get; set; }
+        public string availability { get; set; }
+        public string button_content { get; set; }
+        public string discount_text { get; set; }
+        public string price_discount { get; set; }
+        public ImageSource image_product { get; set; }
+        public string price_product { get; set; }
+
         public ProductControl(Models.Product product)
         {
             InitializeComponent();
-            name_product.Text = product.Name;
-            image_product.Source = new BitmapImage(new Uri(product.Image));
-
-
-            string discount_text = "-" + product.Discount + "%";
-
-            bool latest = (bool)product.Latest;
-            
+            name_product = product.Name;
+            image_product = new BitmapImage(new Uri(product.Image));
+            Availability = (bool)product.Availability;
+            id = $"код: {IdProduct(product.Id)}";
+            price_discount = $"{product.Price} грн";
+            discount_text = "-" + product.Discount + "%";
+            Latest = (bool)product.Latest;
 
             if (product.Discount > 0)
             {
-                latest = false;
-                discount.Content = discount_text;
-                grid_discount.Visibility = Visibility.Visible;
-                price_discount.Visibility = Visibility.Visible;
+                Latest = false;
+                Discount = true;
             }
-            else
-            {
-                grid_discount.Visibility = Visibility.Hidden;
-                price_discount.Visibility = Visibility.Hidden;
-            }
+            else Discount = false;
 
-            if (latest == true) { grid_latest.Visibility = Visibility.Visible; }
-            else grid_latest.Visibility = Visibility.Hidden;
-
-            if (product.Availability == true) availability.Content = "Есть в наличии";
-            else availability.Content = "Нет в наличии";
-            id.Content = $"код: {IdProduct(product.Id)}";
-            price_discount.Text = $"{product.Price} грн";
-            price_product.Text = $"{Price(product.Price, (int)product.Discount)} грн";
+            price_product = $"{Price(product.Price, (int)product.Discount)} грн";
+            this.DataContext = this;
         }
         private string IdProduct(int id_product)
         {

@@ -37,7 +37,7 @@ namespace Project_49.Controls
             {
                 if (it.Name.Contains(search)) list.Add(it);
             }
-            list.Reverse();
+            //list.Reverse();
             foreach (var it in list)
             {
                 if (j == 0) products.RowDefinitions.Add(new RowDefinition());
