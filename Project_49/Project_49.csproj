@@ -102,6 +102,9 @@
     <Compile Include="Controls\ProductControl.xaml.cs">
       <DependentUpon>ProductControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\RangeSlider.xaml.cs">
+      <DependentUpon>RangeSlider.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Models\Admin.cs">
       <DependentUpon>ModelAdmin.tt</DependentUpon>
     </Compile>
@@ -178,6 +181,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\ProductControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\RangeSlider.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -305,6 +312,7 @@
       <DependentUpon>ModelUser.edmx</DependentUpon>
       <LastGenOutput>ModelUser.cs</LastGenOutput>
     </Content>
+    <Resource Include="Resources\Menu_Filter.jpg" />
     <Resource Include="Resources\Menu_Add_Delete_Product.png" />
     <Resource Include="Resources\Menu_Authorization.png" />
     <Resource Include="Resources\Menu_Catalog.png" />

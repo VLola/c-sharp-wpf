@@ -64,11 +64,13 @@
             <Setter Property="Foreground" Value="LightGray"/>
             <Setter Property="FontSize" Value="8"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Right"/>
         </Style>
         <Style TargetType="Label" x:Key="styleLabelAvailability">
             <Setter Property="Foreground" Value="LightGreen"/>
             <Setter Property="FontSize" Value="8"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
             <Setter Property = "Content" Value="Нет в наличии"/>
             <Style.Triggers>
                 <DataTrigger Binding="{Binding Path=Availability}" Value="True">
@@ -180,8 +182,8 @@
 
                     <Button Style="{DynamicResource styleButton}" Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="3"/>
                     <Grid Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="3">
-                        <Label HorizontalAlignment="Left" Style="{DynamicResource styleLabelAvailability}"/>
-                        <Label Content="{Binding Path=id}" HorizontalAlignment="Right" Style="{DynamicResource styleLabelIdProduct}"/>
+                        <Label Style="{DynamicResource styleLabelAvailability}"/>
+                        <Label Content="{Binding Path=id}" Style="{DynamicResource styleLabelIdProduct}"/>
                     </Grid>
                 </Grid>
             </Border>

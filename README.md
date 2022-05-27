@@ -68,6 +68,10 @@ List product:
 
 ![Image text](https://raw.githubusercontent.com/VLola/c-sharp-wpf/master/Project_49/Resources/Menu_List_Product.png)
 
+Product filter:
+
+![Image text](https://raw.githubusercontent.com/VLola/c-sharp-wpf/master/Project_49/Resources/Menu_Filter.jpg)
+
 Footer:
 
 ![Image text](https://raw.githubusercontent.com/VLola/c-sharp-wpf/master/Project_49/Resources/Menu_Footer.png)
@@ -83,3 +87,4 @@ Registration:
 Add and delete product:
 
 ![Image text](https://raw.githubusercontent.com/VLola/c-sharp-wpf/master/Project_49/Resources/Menu_Add_Delete_Product.png)
+

@@ -5,13 +5,128 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Project_49.Controls"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="800" d:DesignWidth="800">
+    <UserControl.Resources>
+        <Style TargetType="Label" x:Key="styleLabelSearch">
+            <Setter Property="Margin" Value="0 40 0 0"/>
+            <Setter Property="FontSize" Value="36"/>
+        </Style>
+        <Style TargetType="Grid" x:Key="styleGridSplit">
+            <Setter Property="Background" Value="LightGray"/>
+            <Setter Property="Height" Value="1"/>
+            <Setter Property="Margin" Value="0 10"/>
+        </Style>
+        <Style TargetType="TextBlock" x:Key="styleTextBlockGrayBold">
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Margin" Value="0 0 0 10"/>
+            <Setter Property="Foreground" Value="Gray"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+        </Style>
+        <Style TargetType="TextBlock" x:Key="styleTextBlockGray">
+            <Setter Property="FontSize" Value="10"/>
+            <Setter Property="Foreground" Value="Gray"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+        </Style>
+        <Style TargetType="TextBlock" x:Key="styleTextBlockLightGray">
+            <Setter Property="FontSize" Value="10"/>
+            <Setter Property="Foreground" Value="LightGray"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+        </Style>
+        <ControlTemplate x:Key="simpleSlider" TargetType="{x:Type Slider}">
+            <Border SnapsToDevicePixels="true" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto" MinHeight="{TemplateBinding MinHeight}"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Track x:Name="PART_Track" Grid.Row="1">
+                        <Track.Thumb>
+                            <Thumb x:Name="Thumb">
+                                <Thumb.Template>
+                                    <ControlTemplate TargetType="Thumb">
+                                        <Rectangle Fill="White" Stroke="#FFFFCE00" StrokeThickness="2" Width="14" Height="14" RadiusX="14" RadiusY="14" SnapsToDevicePixels="True"/>
+                                    </ControlTemplate>
+                                </Thumb.Template>
+                            </Thumb>
+                        </Track.Thumb>
+                    </Track>
+                </Grid>
+            </Border>
+        </ControlTemplate>
+    </UserControl.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="4*"/>
         </Grid.ColumnDefinitions>
-        <Grid x:Name="products" Grid.Column="1">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Content="{Binding Path=search}" Style="{DynamicResource styleLabelSearch}"/>
+        <Grid Grid.Column="0" Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="10*"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+            <Grid x:Name="settings" Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="100*"/>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="0" Text="Цена" Style="{DynamicResource styleTextBlockGrayBold}"/>
+                <StackPanel Grid.Row="1">
+                    <Grid VerticalAlignment="Top">
+                        <Border BorderThickness="0,3,0,0" BorderBrush="#FFFFCE00" VerticalAlignment="Center" Height="3" Margin="5,1,5,0"/>
+                        <Slider x:Name="LowerSlider" Minimum="{Binding Path=Minimum}" Maximum="{Binding Path=Maximum}" Value="{Binding Path=LowerValue}" ValueChanged="LowerSlider_ValueChanged" PreviewMouseLeftButtonUp="LowerSlider_PreviewMouseLeftButtonUp"  Template="{StaticResource simpleSlider}" Margin="0,0,10,0" />
+                        <Slider x:Name="UpperSlider" Minimum="{Binding Path=Minimum}" Maximum="{Binding Path=Maximum}" Value="{Binding Path=UpperValue}" ValueChanged="UpperSlider_ValueChanged" PreviewMouseLeftButtonUp="UpperSlider_PreviewMouseLeftButtonUp"  Template="{StaticResource simpleSlider}" Margin="10,0,0,0" />
+                    </Grid>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Text="{Binding Path=MinimumPrice, UpdateSourceTrigger=PropertyChanged}" Style="{DynamicResource styleTextBlockLightGray}"/>
+                        <TextBlock Grid.Column="1" Text="{Binding ElementName=LowerSlider, Path=Value, UpdateSourceTrigger=PropertyChanged}" Style="{DynamicResource styleTextBlockGray}"/>
+                        <TextBlock Grid.Column="1" Text="-" Style="{DynamicResource styleTextBlockGray}" HorizontalAlignment="Right"/>
+                        <TextBlock Grid.Column="2" Text="{Binding ElementName=UpperSlider, Path=Value, UpdateSourceTrigger=PropertyChanged}" Style="{DynamicResource styleTextBlockGray}"/>
+                        <TextBlock Grid.Column="3" Text="{Binding Path=MaximumPrice, UpdateSourceTrigger=PropertyChanged}" Style="{DynamicResource styleTextBlockLightGray}"/>
+                    </Grid>
+                    <Grid Style="{DynamicResource styleGridSplit}"/>
+                </StackPanel>
+                <StackPanel Grid.Row="2">
+                    <TextBlock Text="Встроенная память" Style="{DynamicResource styleTextBlockGrayBold}"/>
+                    <CheckBox Content="128Gb" IsChecked="{Binding Path=Ram128}" Click="Ram128_Click"/>
+                    <CheckBox Content="256Gb" IsChecked="{Binding Path=Ram256}" Click="Ram256_Click"/>
+                    <CheckBox Content="512Gb" IsChecked="{Binding Path=Ram512}" Click="Ram512_Click"/>
+                    <Grid Style="{DynamicResource styleGridSplit}"/>
+                </StackPanel>
+                <StackPanel Grid.Row="3">
+                    <TextBlock Text="Количество SIM-карт" Style="{DynamicResource styleTextBlockGrayBold}"/>
+                    <CheckBox Content="1 SIM" IsChecked="{Binding Path=OneSim}" Click="OneSim_Click"/>
+                    <CheckBox Content="2 SIM" IsChecked="{Binding Path=TwoSim}" Click="TwoSim_Click"/>
+                    <Grid Style="{DynamicResource styleGridSplit}"/>
+                </StackPanel>
+                <StackPanel Grid.Row="4">
+                    <TextBlock Text="Цвет" Style="{DynamicResource styleTextBlockGrayBold}"/>
+                    <CheckBox Content="Pacific Blue" IsChecked="{Binding Path=PacificBlue}" Click="PacificBlue_Click"/>
+                    <CheckBox Content="Silver" IsChecked="{Binding Path=Silver}" Click="Silver_Click"/>
+                    <CheckBox Content="Gold" IsChecked="{Binding Path=Gold}" Click="Gold_Click"/>
+                    <CheckBox Content="Graphite" IsChecked="{Binding Path=Graphite}" Click="Graphite_Click"/>
+                </StackPanel>
+            </Grid>
+        </Grid>
+        <Grid x:Name="products" Grid.Column="1" Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
