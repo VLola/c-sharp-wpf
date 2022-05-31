@@ -1,0 +1,171 @@
+﻿<UserControl x:Class="Project_54.Controls.ImageControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Project_54.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <Style TargetType="Image" x:Key="styleImage">
+            <Setter Property="Source" Value="/Project_54;component/Resources/logo_1.jpg"/>
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding number_logo}" Value="0">
+                    <Setter Property="Source" Value="/Project_54;component/Resources/logo_1.jpg"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding number_logo}" Value="1">
+                    <Setter Property="Source" Value="/Project_54;component/Resources/logo_2.jpg"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding number_logo}" Value="2">
+                    <Setter Property="Source" Value="/Project_54;component/Resources/logo_3.jpg"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding number_logo}" Value="3">
+                    <Setter Property="Source" Value="/Project_54;component/Resources/logo_4.jpg"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding number_logo}" Value="4">
+                    <Setter Property="Source" Value="/Project_54;component/Resources/logo_5.jpg"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding number_logo}" Value="5">
+                    <Setter Property="Source" Value="/Project_54;component/Resources/logo_6.jpg"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+        <Style TargetType="Button" x:Key="styleButtonBigImage">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="BorderThickness" Value="0" />
+        </Style>
+        <Style TargetType="Button" x:Key="styleButton1">
+            <Setter Property="Background" Value="LightGray"/>
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="Height" Value="20" />
+            <Setter Property="Width" Value="20" />
+            <Setter Property="Margin" Value="10" />
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding number_logo}" Value="0">
+                    <Setter Property="Background" Value="LightGreen"/>
+                </DataTrigger>
+            </Style.Triggers>
+            <Style.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Style.Resources>
+        </Style>
+        <Style TargetType="Button" x:Key="styleButton2">
+            <Setter Property="Background" Value="LightGray"/>
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="Height" Value="20" />
+            <Setter Property="Width" Value="20" />
+            <Setter Property="Margin" Value="10" />
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding number_logo}" Value="1">
+                    <Setter Property="Background" Value="LightGreen"/>
+                </DataTrigger>
+            </Style.Triggers>
+            <Style.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Style.Resources>
+        </Style>
+        <Style TargetType="Button" x:Key="styleButton3">
+            <Setter Property="Background" Value="LightGray"/>
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="Height" Value="20" />
+            <Setter Property="Width" Value="20" />
+            <Setter Property="Margin" Value="10" />
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding number_logo}" Value="2">
+                    <Setter Property="Background" Value="LightGreen"/>
+                </DataTrigger>
+            </Style.Triggers>
+            <Style.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Style.Resources>
+        </Style>
+        <Style TargetType="Button" x:Key="styleButton4">
+            <Setter Property="Background" Value="LightGray"/>
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="Height" Value="20" />
+            <Setter Property="Width" Value="20" />
+            <Setter Property="Margin" Value="10" />
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding number_logo}" Value="3">
+                    <Setter Property="Background" Value="LightGreen"/>
+                </DataTrigger>
+            </Style.Triggers>
+            <Style.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Style.Resources>
+        </Style>
+        <Style TargetType="Button" x:Key="styleButton5">
+            <Setter Property="Background" Value="LightGray"/>
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="Height" Value="20" />
+            <Setter Property="Width" Value="20" />
+            <Setter Property="Margin" Value="10" />
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding number_logo}" Value="4">
+                    <Setter Property="Background" Value="LightGreen"/>
+                </DataTrigger>
+            </Style.Triggers>
+            <Style.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Style.Resources>
+        </Style>
+        <Style TargetType="Button" x:Key="styleButton6">
+            <Setter Property="Background" Value="LightGray"/>
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="Height" Value="20" />
+            <Setter Property="Width" Value="20" />
+            <Setter Property="Margin" Value="10" />
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding number_logo}" Value="5">
+                    <Setter Property="Background" Value="LightGreen"/>
+                </DataTrigger>
+            </Style.Triggers>
+            <Style.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Style.Resources>
+        </Style>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+
+            <Button Grid.Column="0" Content="влево" Click="Left_Click" Style="{StaticResource styleButtonBigImage}"/>
+            <Image Grid.Column="1" Style="{DynamicResource styleImage}"/>
+            <Button Grid.Column="2" Content="вправо" Click="Rigth_Click" Style="{StaticResource styleButtonBigImage}"/>
+
+        </Grid>
+        <Grid Grid.Row="2" HorizontalAlignment="Center">
+            <DockPanel>
+                <Button Click="But_1_Click" Style="{StaticResource styleButton1}"/>
+                <Button Click="But_2_Click" Style="{StaticResource styleButton2}"/>
+                <Button Click="But_3_Click" Style="{StaticResource styleButton3}"/>
+                <Button Click="But_4_Click" Style="{StaticResource styleButton4}"/>
+                <Button Click="But_5_Click" Style="{StaticResource styleButton5}"/>
+                <Button Click="But_6_Click" Style="{StaticResource styleButton6}"/>
+            </DockPanel>
+        </Grid>
+    </Grid>
+</UserControl>

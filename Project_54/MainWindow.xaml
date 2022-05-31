@@ -1,0 +1,56 @@
+﻿<Window x:Class="Project_54.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Project_54" xmlns:control="clr-namespace:Project_54.Controls"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="800" Width="1200">
+    <Window.Resources>
+        <Style TargetType="Label" x:Key="styleLabelBig">
+            <Setter Property="FontSize" Value="32"/>
+        </Style>
+        <Style TargetType="Image" x:Key="styleImage">
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Opacity" Value="0.6" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+    <ScrollViewer>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Label Grid.Row="0" Content="Компьютеры и ноутбуки" Style="{StaticResource styleLabelBig}"/>
+            <control:ImageControl Grid.Row="1"/>
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Image Grid.Column="0" Source="Resources/Firms/apple.png" Style="{DynamicResource styleImage}"/>
+                <Image Grid.Column="1" Source="Resources/Firms/asus.png" Style="{DynamicResource styleImage}"/>
+                <Image Grid.Column="2" Source="Resources/Firms/hp.png" Style="{DynamicResource styleImage}"/>
+                <Image Grid.Column="3" Source="Resources/Firms/acer.png" Style="{DynamicResource styleImage}"/>
+                <Image Grid.Column="4" Source="Resources/Firms/lenovo.png" Style="{DynamicResource styleImage}"/>
+                <Image Grid.Column="5" Source="Resources/Firms/samsung.png" Style="{DynamicResource styleImage}"/>
+                <Image Grid.Column="6" Source="Resources/Firms/dell.png" Style="{DynamicResource styleImage}"/>
+                <Image Grid.Column="7" Source="Resources/Firms/tp-link.png" Style="{DynamicResource styleImage}"/>
+                <Image Grid.Column="8" Source="Resources/Firms/logitech.jpg" Style="{DynamicResource styleImage}"/>
+            </Grid>
+        </Grid>
+    </ScrollViewer>
+</Window>
