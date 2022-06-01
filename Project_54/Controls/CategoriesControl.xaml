@@ -56,54 +56,60 @@
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
         <Grid Grid.Row="0" Margin="20">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
-                <ColumnDefinition Width="auto"/>
                 <ColumnDefinition/>
-                <ColumnDefinition Width="auto"/>
                 <ColumnDefinition/>
-                <ColumnDefinition Width="auto"/>
                 <ColumnDefinition/>
-                <ColumnDefinition Width="auto"/>
                 <ColumnDefinition/>
-                <ColumnDefinition Width="auto"/>
                 <ColumnDefinition/>
-                <ColumnDefinition Width="auto"/>
             </Grid.ColumnDefinitions>
-            <StackPanel Grid.Column="0" >
-                <Image Source="/Project_54;component/Resources/Categorys/noutbuki.png"/>
-                <TextBlock Text="Ноутбуки" Style="{StaticResource styleTextBlock}"/>
-            </StackPanel>
-            <Grid Grid.Column="1" Style="{StaticResource styleGrid}"/>
-            <StackPanel Grid.Column="2" >
-                <Image Source="/Project_54;component/Resources/Categorys/kompyutery.png"/>
-                <TextBlock Text="Компьютеры" Style="{StaticResource styleTextBlock}"/>
-            </StackPanel>
-            <Grid Grid.Column="3" Style="{StaticResource styleGrid}"/>
-            <StackPanel Grid.Column="4" >
-                <Image Source="/Project_54;component/Resources/Categorys/monitory.png"/>
-                <TextBlock Text="Мониторы" Style="{StaticResource styleTextBlock}"/>
-            </StackPanel>
-            <Grid Grid.Column="5" Style="{StaticResource styleGrid}"/>
-            <StackPanel Grid.Column="6" >
-                <Image Source="/Project_54;component/Resources/Categorys/tovary-dlya-gejmerov.png"/>
-                <TextBlock Text="Gaming" Style="{StaticResource styleTextBlock}"/>
-            </StackPanel>
-            <Grid Grid.Column="7" Style="{StaticResource styleGrid}"/>
-            <StackPanel Grid.Column="8" >
-                <Image Source="/Project_54;component/Resources/Categorys/planshety.png"/>
-                <TextBlock Text="Планшеты" Style="{StaticResource styleTextBlock}"/>
-            </StackPanel>
-            <Grid Grid.Column="9" Style="{StaticResource styleGrid}"/>
-            <StackPanel Grid.Column="10" >
-                <Image Source="/Project_54;component/Resources/Categorys/kabeli-i-perekhodniki.png"/>
-                <TextBlock Text="Кабели и переходники" Style="{StaticResource styleTextBlock}"/>
-            </StackPanel>
-            <Grid Grid.Column="11" Style="{StaticResource styleGrid}"/>
+            <local:CategoryControl Grid.Column="0" img="/Project_54;component/Resources/Categorys/noutbuki.png" text="Ноутбуки"/>
+            <local:CategoryControl Grid.Column="1" img="/Project_54;component/Resources/Categorys/kompyutery.png" text="Компьютеры"/>
+            <local:CategoryControl Grid.Column="2" img="/Project_54;component/Resources/Categorys/monitory.png" text="Мониторы"/>
+            <local:CategoryControl Grid.Column="3" img="/Project_54;component/Resources/Categorys/tovary-dlya-gejmerov.png" text="Gaming"/>
+            <local:CategoryControl Grid.Column="4" img="/Project_54;component/Resources/Categorys/planshety.png" text="Планшеты"/>
+            <local:CategoryControl Grid.Column="5" img="/Project_54;component/Resources/Categorys/kabeli-i-perekhodniki.png" text="Кабели и переходники"/>
         </Grid>
         <Grid Grid.Row="1" Margin="20">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <local:BigCategoryControl Grid.Column="0" 
+                                      img="/Project_54;component/Resources/Categorys/kompyuternye-komplektuyushchie.png" 
+                                      text="Компьютерные комплектующие" 
+                                      categoris="SSD_Системы охлаждения_Видеокарты_Оперативная память_Процессоры_Материнские платы_Жесткие диски и дисковые массивы_Блоки питания"/>
+            <local:BigCategoryControl Grid.Column="1" 
+                                      img="/Project_54;component/Resources/Categorys/setevoe-oborudovanie.png" 
+                                      text="Сетевое оборудование" 
+                                      categoris="Маршрутизаторы_Коммутаторы_Серевые адаптеры_Пассивное сетевое оборудование_Беспроводные точки доступа_Ретрансляторы WI-FI_Патч-корды"/>
+            <local:BigCategoryControl Grid.Column="2" 
+                                      img="/Project_54;component/Resources/Categorys/naushniki-i-aksessuary.png" 
+                                      text="Наушники и аксессуары" 
+                                      categoris="Наушники_Усилители для наушников_Аксессуары для наушников"/>
+            <local:BigCategoryControl Grid.Column="3" 
+                                      img="/Project_54;component/Resources/Categorys/klaviatury-i-myshi.png" 
+                                      text="Клавиатуры и мыши" 
+                                      categoris="Компьютерные мыши_Игровые поверхности_Клавиатуры_Комплект: клавиатура и мышь_Аксессуары для клавиатур и мышек"/>
+            <local:BigCategoryControl Grid.Column="4" 
+                                      img="/Project_54;component/Resources/Categorys/aksessuari-dlia-elektronyky.png" 
+                                      text="Аксессуары для электроники" 
+                                      categoris="Флеш память USB_Хабы и картридеры_Аксессуары для ПК и ноутбуков_Комплектующие для ноутбуков_Сетевые фильтры, адаптеры и удленители_Чехлы для планшетов_Сумки, рюкзаки и чехлы для ноутбуков_Чистящие средства"/>
+            <local:BigCategoryControl Grid.Column="5" 
+                                      img="/Project_54;component/Resources/Categorys/ofisnaya-tekhnika.png" 
+                                      text="Оргтехника" 
+                                      categoris="МФУ/Принтеры_Сканеры_Расходные материалы для принтеров_Доски, флипчарты"/>
+        </Grid>
+        <!--<Grid Grid.Row="1" Margin="20">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition Width="auto"/>
@@ -183,52 +189,24 @@
                 <TextBlock Text="Доски, флипчарты" Style="{StaticResource styleTextBlockLeftMin}"/>
             </StackPanel>
             <Grid Grid.Column="11" Style="{StaticResource styleGrid}"/>
-        </Grid>
+        </Grid>-->
         <Grid Grid.Row="2" Margin="20">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
-                <ColumnDefinition Width="auto"/>
                 <ColumnDefinition/>
-                <ColumnDefinition Width="auto"/>
                 <ColumnDefinition/>
-                <ColumnDefinition Width="auto"/>
                 <ColumnDefinition/>
-                <ColumnDefinition Width="auto"/>
                 <ColumnDefinition/>
-                <ColumnDefinition Width="auto"/>
                 <ColumnDefinition/>
-                <ColumnDefinition Width="auto"/>
             </Grid.ColumnDefinitions>
-            <StackPanel Grid.Column="0" >
-                <Image Source="/Project_54;component/Resources/Categorys/noutbuki.png"/>
-                <TextBlock Text="Ноутбуки" Style="{StaticResource styleTextBlock}"/>
-            </StackPanel>
-            <Grid Grid.Column="1" Style="{StaticResource styleGrid}"/>
-            <StackPanel Grid.Column="2" >
-                <Image Source="/Project_54;component/Resources/Categorys/kompyutery.png"/>
-                <TextBlock Text="Компьютеры" Style="{StaticResource styleTextBlock}"/>
-            </StackPanel>
-            <Grid Grid.Column="3" Style="{StaticResource styleGrid}"/>
-            <StackPanel Grid.Column="4" >
-                <Image Source="/Project_54;component/Resources/Categorys/monitory.png"/>
-                <TextBlock Text="Мониторы" Style="{StaticResource styleTextBlock}"/>
-            </StackPanel>
-            <Grid Grid.Column="5" Style="{StaticResource styleGrid}"/>
-            <StackPanel Grid.Column="6" >
-                <Image Source="/Project_54;component/Resources/Categorys/tovary-dlya-gejmerov.png"/>
-                <TextBlock Text="Gaming" Style="{StaticResource styleTextBlock}"/>
-            </StackPanel>
-            <Grid Grid.Column="7" Style="{StaticResource styleGrid}"/>
-            <StackPanel Grid.Column="8" >
-                <Image Source="/Project_54;component/Resources/Categorys/planshety.png"/>
-                <TextBlock Text="Планшеты" Style="{StaticResource styleTextBlock}"/>
-            </StackPanel>
-            <Grid Grid.Column="9" Style="{StaticResource styleGrid}"/>
-            <StackPanel Grid.Column="10" >
-                <Image Source="/Project_54;component/Resources/Categorys/kabeli-i-perekhodniki.png"/>
-                <TextBlock Text="Кабели и переходники" Style="{StaticResource styleTextBlock}"/>
-            </StackPanel>
-            <Grid Grid.Column="11" Style="{StaticResource styleGrid}"/>
+            <local:CategoryControl Grid.Column="0" img="/Project_54;component/Resources/Categorys/akusticheskie-sistemy.png" text="Акустические системы"/>
+            <local:CategoryControl Grid.Column="1" img="/Project_54;component/Resources/Categorys/programmnoe-obespechenie.png" text="Програмное обеспечение"/>
+            <local:CategoryControl Grid.Column="2" img="/Project_54;component/Resources/Categorys/graficheskie-planshety.png" text="Графические планшеты"/>
+            <local:CategoryControl Grid.Column="3" img="/Project_54;component/Resources/Categorys/mikrofony.png" text="Микрофоны"/>
+            <local:CategoryControl Grid.Column="4" img="/Project_54;component/Resources/Categorys/setevoe-oborudovanie.png" text="Серверное оборудование"/>
+            <local:CategoryControl Grid.Column="5" img="/Project_54;component/Resources/Categorys/interaktivnoe-oborudovanie.png" text="Интерактивное оборудование"/>
         </Grid>
+        
+
     </Grid>
 </UserControl>

@@ -10,7 +10,6 @@
         <Style TargetType="Label" x:Key="styleLabelBig">
             <Setter Property="FontSize" Value="32"/>
         </Style>
-        
     </Window.Resources>
     <ScrollViewer>
         <Grid Margin="50 0">

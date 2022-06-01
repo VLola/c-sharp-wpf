@@ -56,7 +56,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Controls\BigCategoryControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\CategoriesControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\CategoryControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -76,8 +84,14 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Controls\BigCategoryControl.xaml.cs">
+      <DependentUpon>BigCategoryControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\CategoriesControl.xaml.cs">
       <DependentUpon>CategoriesControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\CategoryControl.xaml.cs">
+      <DependentUpon>CategoryControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\FirmsControl.xaml.cs">
       <DependentUpon>FirmsControl.xaml</DependentUpon>
@@ -92,6 +106,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Objects\Logo_Model.cs" />
+    <Compile Include="Objects\SubCategoris.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -156,6 +171,14 @@
     <Resource Include="Resources\Categorys\naushniki-i-aksessuary.png" />
     <Resource Include="Resources\Categorys\ofisnaya-tekhnika.png" />
     <Resource Include="Resources\Categorys\setevoe-oborudovanie.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Categorys\akusticheskie-sistemy.png" />
+    <Resource Include="Resources\Categorys\graficheskie-planshety.png" />
+    <Resource Include="Resources\Categorys\interaktivnoe-oborudovanie.png" />
+    <Resource Include="Resources\Categorys\mikrofony.png" />
+    <Resource Include="Resources\Categorys\programmnoe-obespechenie.png" />
+    <Resource Include="Resources\Categorys\servernoe-oborudovanie.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
