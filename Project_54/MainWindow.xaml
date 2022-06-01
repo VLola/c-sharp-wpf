@@ -10,47 +10,22 @@
         <Style TargetType="Label" x:Key="styleLabelBig">
             <Setter Property="FontSize" Value="32"/>
         </Style>
-        <Style TargetType="Image" x:Key="styleImage">
-            <Style.Triggers>
-                <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Opacity" Value="0.6" />
-                </Trigger>
-            </Style.Triggers>
-        </Style>
+        
     </Window.Resources>
     <ScrollViewer>
-        <Grid>
+        <Grid Margin="50 0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <Label Grid.Row="0" Content="Компьютеры и ноутбуки" Style="{StaticResource styleLabelBig}"/>
             <control:ImageControl Grid.Row="1"/>
-            <Grid Grid.Row="2">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-                <Image Grid.Column="0" Source="Resources/Firms/apple.png" Style="{DynamicResource styleImage}"/>
-                <Image Grid.Column="1" Source="Resources/Firms/asus.png" Style="{DynamicResource styleImage}"/>
-                <Image Grid.Column="2" Source="Resources/Firms/hp.png" Style="{DynamicResource styleImage}"/>
-                <Image Grid.Column="3" Source="Resources/Firms/acer.png" Style="{DynamicResource styleImage}"/>
-                <Image Grid.Column="4" Source="Resources/Firms/lenovo.png" Style="{DynamicResource styleImage}"/>
-                <Image Grid.Column="5" Source="Resources/Firms/samsung.png" Style="{DynamicResource styleImage}"/>
-                <Image Grid.Column="6" Source="Resources/Firms/dell.png" Style="{DynamicResource styleImage}"/>
-                <Image Grid.Column="7" Source="Resources/Firms/tp-link.png" Style="{DynamicResource styleImage}"/>
-                <Image Grid.Column="8" Source="Resources/Firms/logitech.jpg" Style="{DynamicResource styleImage}"/>
-            </Grid>
+            <control:FirmsControl Grid.Row="2"/>
+            <control:CategoriesControl Grid.Row="3"/>
         </Grid>
     </ScrollViewer>
 </Window>

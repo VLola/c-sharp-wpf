@@ -1,0 +1,42 @@
+﻿<UserControl x:Class="Project_54.Controls.FirmsControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Project_54.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <Style TargetType="Image" x:Key="styleImage">
+            <Setter Property="Opacity" Value="0.4" />
+            <Setter Property="Margin" Value="20" />
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Opacity" Value="1" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Image Grid.Column="0" Source="/Project_54;component/Resources/Firms/apple.png" Style="{DynamicResource styleImage}"/>
+        <Image Grid.Column="1" Source="/Project_54;component/Resources/Firms/asus.png" Style="{DynamicResource styleImage}"/>
+        <Image Grid.Column="2" Source="/Project_54;component/Resources/Firms/hp.png" Style="{DynamicResource styleImage}"/>
+        <Image Grid.Column="3" Source="/Project_54;component/Resources/Firms/acer.png" Style="{DynamicResource styleImage}"/>
+        <Image Grid.Column="4" Source="/Project_54;component/Resources/Firms/lenovo.png" Style="{DynamicResource styleImage}"/>
+        <Image Grid.Column="5" Source="/Project_54;component/Resources/Firms/samsung.png" Style="{DynamicResource styleImage}"/>
+        <Image Grid.Column="6" Source="/Project_54;component/Resources/Firms/dell.png" Style="{DynamicResource styleImage}"/>
+        <Image Grid.Column="7" Source="/Project_54;component/Resources/Firms/tp-link.png" Style="{DynamicResource styleImage}"/>
+        <Image Grid.Column="8" Source="/Project_54;component/Resources/Firms/logitech.jpg" Style="{DynamicResource styleImage}"/>
+    </Grid>
+</UserControl>

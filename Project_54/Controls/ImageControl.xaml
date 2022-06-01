@@ -6,6 +6,7 @@
              xmlns:local="clr-namespace:Project_54.Controls"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+    
     <UserControl.Resources>
         <Style TargetType="Image" x:Key="styleImage">
             <Setter Property="Source" Value="/Project_54;component/Resources/logo_1.jpg"/>
@@ -138,7 +139,7 @@
             </Style.Resources>
         </Style>
     </UserControl.Resources>
-    <Grid>
+    <Grid Margin="150 0">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="auto"/>
@@ -152,9 +153,19 @@
                 <ColumnDefinition Width="auto"/>
             </Grid.ColumnDefinitions>
 
-            <Button Grid.Column="0" Content="влево" Click="Left_Click" Style="{StaticResource styleButtonBigImage}"/>
-            <Image Grid.Column="1" Style="{DynamicResource styleImage}"/>
-            <Button Grid.Column="2" Content="вправо" Click="Rigth_Click" Style="{StaticResource styleButtonBigImage}"/>
+
+            <Image Grid.Column="0" Grid.ColumnSpan="3" Style="{DynamicResource styleImage}"  x:Name="blackStop">
+            </Image>
+            <Grid Grid.Column="0" MouseLeftButtonDown="Left_Click" Width="50" VerticalAlignment="Stretch">
+                <Grid.Background>
+                    <ImageBrush ImageSource="/Project_54;component/Resources/Buttons/left.png" Stretch="None"/>
+                </Grid.Background>
+            </Grid>
+            <Grid Grid.Column="2" MouseLeftButtonDown="Rigth_Click" Width="50" VerticalAlignment="Stretch">
+                <Grid.Background>
+                    <ImageBrush ImageSource="/Project_54;component/Resources/Buttons/rigth.png" Stretch="None"/>
+                </Grid.Background>
+            </Grid>
 
         </Grid>
         <Grid Grid.Row="2" HorizontalAlignment="Center">

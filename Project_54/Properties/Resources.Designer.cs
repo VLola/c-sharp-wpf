@@ -63,6 +63,16 @@ namespace Project_54.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap left {
+            get {
+                object obj = ResourceManager.GetObject("left", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap logo_1 {
             get {
                 object obj = ResourceManager.GetObject("logo_1", resourceCulture);
@@ -116,6 +126,16 @@ namespace Project_54.Properties {
         internal static System.Drawing.Bitmap logo_6 {
             get {
                 object obj = ResourceManager.GetObject("logo_6", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap rigth {
+            get {
+                object obj = ResourceManager.GetObject("rigth", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

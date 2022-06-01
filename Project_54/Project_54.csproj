@@ -56,6 +56,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Controls\CategoriesControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\FirmsControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\ImageControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -67,6 +75,12 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controls\CategoriesControl.xaml.cs">
+      <DependentUpon>CategoriesControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\FirmsControl.xaml.cs">
+      <DependentUpon>FirmsControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\ImageControl.xaml.cs">
       <DependentUpon>ImageControl.xaml</DependentUpon>
@@ -122,6 +136,18 @@
     <Resource Include="Resources\Firms\logitech.jpg" />
     <Resource Include="Resources\Firms\samsung.png" />
     <Resource Include="Resources\Firms\tp-link.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Buttons\left.png" />
+    <Resource Include="Resources\Buttons\rigth.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Categorys\kabeli-i-perekhodniki.png" />
+    <Resource Include="Resources\Categorys\kompyutery.png" />
+    <Resource Include="Resources\Categorys\monitory.png" />
+    <Resource Include="Resources\Categorys\noutbuki.png" />
+    <Resource Include="Resources\Categorys\planshety.png" />
+    <Resource Include="Resources\Categorys\tovary-dlya-gejmerov.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
