@@ -13,6 +13,7 @@
             <Setter Property="Margin" Value="10 0" />
         </Style>
         <Style TargetType="TextBlock" x:Key="styleTextBlock">
+            <Setter Property="TextWrapping" Value="Wrap" />
             <Setter Property="Foreground" Value="Blue" />
             <Setter Property="FontSize" Value="14" />
             <Setter Property="HorizontalAlignment" Value="Center" />
@@ -24,51 +25,210 @@
                 </Trigger>
             </Style.Triggers>
         </Style>
+        <Style TargetType="TextBlock" x:Key="styleTextBlockLeft">
+            <Setter Property="TextWrapping" Value="Wrap" />
+            <Setter Property="Foreground" Value="Blue" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="HorizontalAlignment" Value="Left" />
+            <Setter Property="Margin" Value="0 10" />
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Foreground" Value="Red"/>
+                    <Setter Property="TextDecorations" Value="Baseline" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style TargetType="TextBlock" x:Key="styleTextBlockLeftMin">
+            <Setter Property="TextWrapping" Value="Wrap" />
+            <Setter Property="Foreground" Value="Blue" />
+            <Setter Property="HorizontalAlignment" Value="Left" />
+            <Setter Property="Margin" Value="0 3" />
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Foreground" Value="Red"/>
+                    <Setter Property="TextDecorations" Value="Baseline" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
     </UserControl.Resources>
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition/>
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition/>
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition/>
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition/>
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition/>
-            <ColumnDefinition Width="auto"/>
-        </Grid.ColumnDefinitions>
-        <StackPanel Grid.Column="0" >
-            <Image Source="/Project_54;component/Resources/Categorys/noutbuki.png"/>
-            <TextBlock Text="Ноутбуки" Style="{StaticResource styleTextBlock}"/>
-        </StackPanel>
-        <Grid Grid.Column="1" Style="{StaticResource styleGrid}"/>
-        <StackPanel Grid.Column="2" >
-            <Image Source="/Project_54;component/Resources/Categorys/kompyutery.png"/>
-            <TextBlock Text="Компьютеры" Style="{StaticResource styleTextBlock}"/>
-        </StackPanel>
-        <Grid Grid.Column="3" Style="{StaticResource styleGrid}"/>
-        <StackPanel Grid.Column="4" >
-            <Image Source="/Project_54;component/Resources/Categorys/monitory.png"/>
-            <TextBlock Text="Мониторы" Style="{StaticResource styleTextBlock}"/>
-        </StackPanel>
-        <Grid Grid.Column="5" Style="{StaticResource styleGrid}"/>
-        <StackPanel Grid.Column="6" >
-            <Image Source="/Project_54;component/Resources/Categorys/tovary-dlya-gejmerov.png"/>
-            <TextBlock Text="Gaming" Style="{StaticResource styleTextBlock}"/>
-        </StackPanel>
-        <Grid Grid.Column="7" Style="{StaticResource styleGrid}"/>
-        <StackPanel Grid.Column="8" >
-            <Image Source="/Project_54;component/Resources/Categorys/planshety.png"/>
-            <TextBlock Text="Планшеты" Style="{StaticResource styleTextBlock}"/>
-        </StackPanel>
-        <Grid Grid.Column="9" Style="{StaticResource styleGrid}"/>
-        <StackPanel Grid.Column="10" >
-            <Image Source="/Project_54;component/Resources/Categorys/kabeli-i-perekhodniki.png"/>
-            <TextBlock Text="Кабели и переходники" Style="{StaticResource styleTextBlock}"/>
-        </StackPanel>
-        <Grid Grid.Column="11" Style="{StaticResource styleGrid}"/>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Margin="20">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0" >
+                <Image Source="/Project_54;component/Resources/Categorys/noutbuki.png"/>
+                <TextBlock Text="Ноутбуки" Style="{StaticResource styleTextBlock}"/>
+            </StackPanel>
+            <Grid Grid.Column="1" Style="{StaticResource styleGrid}"/>
+            <StackPanel Grid.Column="2" >
+                <Image Source="/Project_54;component/Resources/Categorys/kompyutery.png"/>
+                <TextBlock Text="Компьютеры" Style="{StaticResource styleTextBlock}"/>
+            </StackPanel>
+            <Grid Grid.Column="3" Style="{StaticResource styleGrid}"/>
+            <StackPanel Grid.Column="4" >
+                <Image Source="/Project_54;component/Resources/Categorys/monitory.png"/>
+                <TextBlock Text="Мониторы" Style="{StaticResource styleTextBlock}"/>
+            </StackPanel>
+            <Grid Grid.Column="5" Style="{StaticResource styleGrid}"/>
+            <StackPanel Grid.Column="6" >
+                <Image Source="/Project_54;component/Resources/Categorys/tovary-dlya-gejmerov.png"/>
+                <TextBlock Text="Gaming" Style="{StaticResource styleTextBlock}"/>
+            </StackPanel>
+            <Grid Grid.Column="7" Style="{StaticResource styleGrid}"/>
+            <StackPanel Grid.Column="8" >
+                <Image Source="/Project_54;component/Resources/Categorys/planshety.png"/>
+                <TextBlock Text="Планшеты" Style="{StaticResource styleTextBlock}"/>
+            </StackPanel>
+            <Grid Grid.Column="9" Style="{StaticResource styleGrid}"/>
+            <StackPanel Grid.Column="10" >
+                <Image Source="/Project_54;component/Resources/Categorys/kabeli-i-perekhodniki.png"/>
+                <TextBlock Text="Кабели и переходники" Style="{StaticResource styleTextBlock}"/>
+            </StackPanel>
+            <Grid Grid.Column="11" Style="{StaticResource styleGrid}"/>
+        </Grid>
+        <Grid Grid.Row="1" Margin="20">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0" >
+                <Image Source="/Project_54;component/Resources/Categorys/kompyuternye-komplektuyushchie.png"/>
+                <TextBlock Text="Компьютерные комплектующие" Style="{StaticResource styleTextBlockLeft}"/>
+                <TextBlock Text="SSD" Style="{StaticResource styleTextBlockLeftMin}"/>
+                <TextBlock Text="Системы охлаждения" Style="{StaticResource styleTextBlockLeftMin}"/>
+                <TextBlock Text="Видеокарты" Style="{StaticResource styleTextBlockLeftMin}"/>
+                <TextBlock Text="Оперативная память" Style="{StaticResource styleTextBlockLeftMin}"/>
+                <TextBlock Text="Процессоры" Style="{StaticResource styleTextBlockLeftMin}"/>
+                <TextBlock Text="Материнские платы" Style="{StaticResource styleTextBlockLeftMin}"/>
+                <TextBlock Text="Жесткие диски и дисковые массивы" Style="{StaticResource styleTextBlockLeftMin}"/>
+                <TextBlock Text="Блоки питания" Style="{StaticResource styleTextBlockLeftMin}"/>
+            </StackPanel>
+            <Grid Grid.Column="1" Style="{StaticResource styleGrid}"/>
+            <StackPanel Grid.Column="2" >
+                <Image Source="/Project_54;component/Resources/Categorys/setevoe-oborudovanie.png"/>
+                <TextBlock Text="Сетевое оборудование" Style="{StaticResource styleTextBlockLeft}"/>
+                <TextBlock Text="Маршрутизаторы" Style="{StaticResource styleTextBlockLeftMin}"/>
+                <TextBlock Text="Коммутаторы" Style="{StaticResource styleTextBlockLeftMin}"/>
+                <TextBlock Text="Серевые адаптеры" Style="{StaticResource styleTextBlockLeftMin}"/>
+                <TextBlock Text="Пассивное сетевое оборудование" Style="{StaticResource styleTextBlockLeftMin}"/>
+                <TextBlock Text="Беспроводные точки доступа" Style="{StaticResource styleTextBlockLeftMin}"/>
+                <TextBlock Text="Ретрансляторы WI-FI" Style="{StaticResource styleTextBlockLeftMin}"/>
+                <TextBlock Text="Патч-корды" Style="{StaticResource styleTextBlockLeftMin}"/>
+            </StackPanel>
+            <Grid Grid.Column="3" Style="{StaticResource styleGrid}"/>
+            <StackPanel Grid.Column="4" >
+                <Image Source="/Project_54;component/Resources/Categorys/naushniki-i-aksessuary.png"/>
+                <TextBlock Text="Наушники и аксессуары" Style="{StaticResource styleTextBlockLeft}"/>
+                <TextBlock Text="Наушники" Style="{StaticResource styleTextBlockLeftMin}"/>
+                <TextBlock Text="Усилители для наушников" Style="{StaticResource styleTextBlockLeftMin}"/>
+                <TextBlock Text="Аксессуары для наушников" Style="{StaticResource styleTextBlockLeftMin}"/>
+            </StackPanel>
+            <Grid Grid.Column="5" Style="{StaticResource styleGrid}"/>
+            <StackPanel Grid.Column="6" >
+                <Image Source="/Project_54;component/Resources/Categorys/klaviatury-i-myshi.png"/>
+                <TextBlock Text="Клавиатуры и мыши" Style="{StaticResource styleTextBlockLeft}"/>
+                <TextBlock Text="Компьютерные мыши" Style="{StaticResource styleTextBlockLeftMin}"/>
+                <TextBlock Text="Игровые поверхности" Style="{StaticResource styleTextBlockLeftMin}"/>
+                <TextBlock Text="Клавиатуры" Style="{StaticResource styleTextBlockLeftMin}"/>
+                <TextBlock Text="Комплект: клавиатура и мышь" Style="{StaticResource styleTextBlockLeftMin}"/>
+                <TextBlock Text="Аксессуары для клавиатур и мышек" Style="{StaticResource styleTextBlockLeftMin}"/>
+            </StackPanel>
+            <Grid Grid.Column="7" Style="{StaticResource styleGrid}"/>
+            <StackPanel Grid.Column="8" >
+                <Image Source="/Project_54;component/Resources/Categorys/aksessuari-dlia-elektronyky.png"/>
+                <TextBlock Text="Аксессуары для электроники" Style="{StaticResource styleTextBlockLeft}"/>
+                <TextBlock Text="Флеш память USB" Style="{StaticResource styleTextBlockLeftMin}"/>
+                <TextBlock Text="Хабы и картридеры" Style="{StaticResource styleTextBlockLeftMin}"/>
+                <TextBlock Text="Аксессуары для ПК и ноутбуков" Style="{StaticResource styleTextBlockLeftMin}"/>
+                <TextBlock Text="Комплектующие для ноутбуков" Style="{StaticResource styleTextBlockLeftMin}"/>
+                <TextBlock Text="Сетевые фильтры, адаптеры и удленители" Style="{StaticResource styleTextBlockLeftMin}"/>
+                <TextBlock Text="Чехлы для планшетов" Style="{StaticResource styleTextBlockLeftMin}"/>
+                <TextBlock Text="Сумки, рюкзаки и чехлы для ноутбуков" Style="{StaticResource styleTextBlockLeftMin}"/>
+                <TextBlock Text="Чистящие средства" Style="{StaticResource styleTextBlockLeftMin}"/>
+            </StackPanel>
+            <Grid Grid.Column="9" Style="{StaticResource styleGrid}"/>
+            <StackPanel Grid.Column="10" >
+                <Image Source="/Project_54;component/Resources/Categorys/ofisnaya-tekhnika.png"/>
+                <TextBlock Text="Оргтехника" Style="{StaticResource styleTextBlockLeft}"/>
+                <TextBlock Text="МФУ/Принтеры" Style="{StaticResource styleTextBlockLeftMin}"/>
+                <TextBlock Text="Сканеры" Style="{StaticResource styleTextBlockLeftMin}"/>
+                <TextBlock Text="Расходные материалы для принтеров" Style="{StaticResource styleTextBlockLeftMin}"/>
+                <TextBlock Text="Доски, флипчарты" Style="{StaticResource styleTextBlockLeftMin}"/>
+            </StackPanel>
+            <Grid Grid.Column="11" Style="{StaticResource styleGrid}"/>
+        </Grid>
+        <Grid Grid.Row="2" Margin="20">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0" >
+                <Image Source="/Project_54;component/Resources/Categorys/noutbuki.png"/>
+                <TextBlock Text="Ноутбуки" Style="{StaticResource styleTextBlock}"/>
+            </StackPanel>
+            <Grid Grid.Column="1" Style="{StaticResource styleGrid}"/>
+            <StackPanel Grid.Column="2" >
+                <Image Source="/Project_54;component/Resources/Categorys/kompyutery.png"/>
+                <TextBlock Text="Компьютеры" Style="{StaticResource styleTextBlock}"/>
+            </StackPanel>
+            <Grid Grid.Column="3" Style="{StaticResource styleGrid}"/>
+            <StackPanel Grid.Column="4" >
+                <Image Source="/Project_54;component/Resources/Categorys/monitory.png"/>
+                <TextBlock Text="Мониторы" Style="{StaticResource styleTextBlock}"/>
+            </StackPanel>
+            <Grid Grid.Column="5" Style="{StaticResource styleGrid}"/>
+            <StackPanel Grid.Column="6" >
+                <Image Source="/Project_54;component/Resources/Categorys/tovary-dlya-gejmerov.png"/>
+                <TextBlock Text="Gaming" Style="{StaticResource styleTextBlock}"/>
+            </StackPanel>
+            <Grid Grid.Column="7" Style="{StaticResource styleGrid}"/>
+            <StackPanel Grid.Column="8" >
+                <Image Source="/Project_54;component/Resources/Categorys/planshety.png"/>
+                <TextBlock Text="Планшеты" Style="{StaticResource styleTextBlock}"/>
+            </StackPanel>
+            <Grid Grid.Column="9" Style="{StaticResource styleGrid}"/>
+            <StackPanel Grid.Column="10" >
+                <Image Source="/Project_54;component/Resources/Categorys/kabeli-i-perekhodniki.png"/>
+                <TextBlock Text="Кабели и переходники" Style="{StaticResource styleTextBlock}"/>
+            </StackPanel>
+            <Grid Grid.Column="11" Style="{StaticResource styleGrid}"/>
+        </Grid>
     </Grid>
 </UserControl>

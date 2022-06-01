@@ -149,5 +149,13 @@
     <Resource Include="Resources\Categorys\planshety.png" />
     <Resource Include="Resources\Categorys\tovary-dlya-gejmerov.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Categorys\aksessuari-dlia-elektronyky.png" />
+    <Resource Include="Resources\Categorys\klaviatury-i-myshi.png" />
+    <Resource Include="Resources\Categorys\kompyuternye-komplektuyushchie.png" />
+    <Resource Include="Resources\Categorys\naushniki-i-aksessuary.png" />
+    <Resource Include="Resources\Categorys\ofisnaya-tekhnika.png" />
+    <Resource Include="Resources\Categorys\setevoe-oborudovanie.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
