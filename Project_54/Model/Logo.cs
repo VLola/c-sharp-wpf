@@ -2,9 +2,9 @@
 using System.Runtime.CompilerServices;
 using System.Windows.Media;
 
-namespace Project_54.Objects
+namespace Project_54.Model
 {
-    public class Logo_Model : INotifyPropertyChanged
+    public class Logo : INotifyPropertyChanged
     {
         private int _number_logo;
         public int number_logo
@@ -16,7 +16,7 @@ namespace Project_54.Objects
                 OnPropertyChanged("number_logo");
             }
         }
-        public Logo_Model()
+        public Logo()
         {
         }
 

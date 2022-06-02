@@ -13,19 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Project_54.Controls
+namespace Project_54.Control
 {
     /// <summary>
-    /// Логика взаимодействия для CategoryControl.xaml
+    /// Логика взаимодействия для ProductControl.xaml
     /// </summary>
-    public partial class CategoryControl : UserControl
+    public partial class ProductControl : UserControl
     {
-        public ImageSource img { get; set; }
-        public string text { get; set; }
-        public CategoryControl()
+        public ProductControl()
         {
             InitializeComponent();
-            this.DataContext = this;
         }
     }
 }

@@ -56,23 +56,27 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="Controls\BigCategoryControl.xaml">
+    <Page Include="Control\BigCategoryControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\CategoriesControl.xaml">
+    <Page Include="Control\CategoriesControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\CategoryControl.xaml">
+    <Page Include="Control\CategoryControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\FirmsControl.xaml">
+    <Page Include="Control\FirmsControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\ImageControl.xaml">
+    <Page Include="Control\ImageControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Control\ProductControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -84,20 +88,23 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Controls\BigCategoryControl.xaml.cs">
+    <Compile Include="Control\BigCategoryControl.xaml.cs">
       <DependentUpon>BigCategoryControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\CategoriesControl.xaml.cs">
+    <Compile Include="Control\CategoriesControl.xaml.cs">
       <DependentUpon>CategoriesControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\CategoryControl.xaml.cs">
+    <Compile Include="Control\CategoryControl.xaml.cs">
       <DependentUpon>CategoryControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\FirmsControl.xaml.cs">
+    <Compile Include="Control\FirmsControl.xaml.cs">
       <DependentUpon>FirmsControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\ImageControl.xaml.cs">
+    <Compile Include="Control\ImageControl.xaml.cs">
       <DependentUpon>ImageControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\ProductControl.xaml.cs">
+      <DependentUpon>ProductControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -105,8 +112,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Objects\Logo_Model.cs" />
-    <Compile Include="Objects\SubCategoris.cs" />
+    <Compile Include="Model\Logo.cs" />
+    <Compile Include="Model\SubCategoris.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

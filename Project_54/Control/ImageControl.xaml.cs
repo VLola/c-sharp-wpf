@@ -1,25 +1,18 @@
-﻿using Project_54.Objects;
+﻿using Project_54.Model;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
-namespace Project_54.Controls
+namespace Project_54.Control
 {
+    /// <summary>
+    /// Логика взаимодействия для ImageControl.xaml
+    /// </summary>
     public partial class ImageControl : UserControl
     {
-        public Logo_Model logo_model = new Logo_Model();
+        public Logo logo_model = new Logo();
         public ImageControl()
         {
             InitializeComponent();
@@ -28,20 +21,20 @@ namespace Project_54.Controls
         }
         private void NewLogo()
         {
-            for(; ; )
+            for (; ; )
             {
-                Dispatcher.Invoke(new Action(()=> { 
-                    if (logo_model.number_logo == 5) logo_model.number_logo = 0; 
-                    else logo_model.number_logo++; 
+                Dispatcher.Invoke(new Action(() => {
+                    if (logo_model.number_logo == 5) logo_model.number_logo = 0;
+                    else logo_model.number_logo++;
                 }));
-                
+
                 Thread.Sleep(5000);
             }
         }
 
         private void Left_Click(object sender, MouseButtonEventArgs e)
         {
-            if(logo_model.number_logo != 0) logo_model.number_logo--;
+            if (logo_model.number_logo != 0) logo_model.number_logo--;
         }
         private void Rigth_Click(object sender, MouseButtonEventArgs e)
         {

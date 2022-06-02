@@ -6,7 +6,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Project_54.Objects
+namespace Project_54.Model
 {
     public class SubCategoris : INotifyPropertyChanged
     {

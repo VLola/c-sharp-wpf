@@ -1,14 +1,11 @@
-﻿using Project_54.Objects;
+﻿using Project_54.Model;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 
-namespace Project_54.Controls
+namespace Project_54.Control
 {
-    /// <summary>
-    /// Логика взаимодействия для BigCategoryControl.xaml
-    /// </summary>
     public partial class BigCategoryControl : UserControl
     {
         public SubCategoris sub_categoris { get; set; } = new SubCategoris();
@@ -17,7 +14,7 @@ namespace Project_54.Controls
         public string text { get; set; }
         public BigCategoryControl()
         {
-            InitializeComponent(); 
+            InitializeComponent();
             this.DataContext = this;
             Loaded += BigCategoryControl_Loaded;
         }
@@ -32,7 +29,8 @@ namespace Project_54.Controls
                 {
                     sub_categoris.list.Add(category);
                     category = "";
-                }else category += it;
+                }
+                else category += it;
             }
         }
     }
