@@ -4,9 +4,136 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Project_54.Control"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-            
+             mc:Ignorable="d" >
+    <UserControl.Resources>
+        <Style TargetType="Image" x:Key="styleImageItem">
+            <Setter Property="Stretch" Value="Uniform"/>
+            <Setter Property="Margin" Value="20"/>
+            <Setter Property="Source" Value="{Binding Path=logo_one}"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Source" Value="{Binding Path=logo_two}"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style TargetType="Image" x:Key="styleImageLike">
+            <Setter Property="Stretch" Value="None"/>
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+            <Setter Property="Source" Value="/Project_54;component/Resources/like_1.png"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Source" Value="/Project_54;component/Resources/like_2.png"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style TargetType="Image" x:Key="styleImageCart">
+            <Setter Property="Stretch" Value="None"/>
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Source" Value="/Project_54;component/Resources/cart_1.png"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Source" Value="/Project_54;component/Resources/cart_2.png"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style TargetType="TextBlock" x:Key="styleTextBlock">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Text" Value="{Binding Path=name}"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Foreground" Value="Red"/>
+                    <Setter Property="TextDecorations" Value="Baseline" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style TargetType="TextBlock" x:Key="styleTextBlockReview">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="FontSize" Value="10"/>
+            <Setter Property="Foreground" Value="Blue" />
+            <Setter Property="Text" Value="{Binding Path=review}"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Foreground" Value="Red"/>
+                    <Setter Property="TextDecorations" Value="Baseline" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style TargetType="TextBlock" x:Key="styleTextBlockStock">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="TextDecorations" Value="StrikeThrough"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Text" Value="{Binding Path=discount}"/>
+        </Style>
+        <Style TargetType="TextBlock" x:Key="styleTextBlockPrice">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Text" Value="{Binding Path=price}"/>
+        </Style>
+        <Style TargetType="TextBlock" x:Key="styleTextBlockAvailability">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="10"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Foreground" Value="LightGreen"/>
+        </Style>
+        <Style TargetType="Grid" x:Key="styleGridHorisontal">
+            <Setter Property="Background" Value="LightGray" />
+            <Setter Property="Margin" Value="0 0" />
+            <Setter Property="Height" Value="1" />
+        </Style>
+        <Style TargetType="Grid" x:Key="styleGridVertical">
+            <Setter Property="Background" Value="LightGray" />
+            <Setter Property="Margin" Value="10 0" />
+            <Setter Property="Width" Value="1" />
+        </Style>
+    </UserControl.Resources>
+    <Grid Margin="0 10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="200"/>
+            <RowDefinition Height="40*"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="20*"/>
+            <RowDefinition Height="20*"/>
+            <RowDefinition Height="20*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="auto"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Row="0">
+            <Image Style="{StaticResource styleImageItem}"/>
+            <Image Style="{StaticResource styleImageLike}"/>
+        </Grid>
+        <Grid Grid.Row="1">
+            <TextBlock Style="{StaticResource styleTextBlock}"/>
+        </Grid>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid Background="Orange">
+                <Image Grid.Column="0" Source="/Project_54;component/Resources/stars.png" Stretch="Fill" Margin="-1"/>
+            </Grid>
+            <TextBlock Grid.Column="1" Style="{StaticResource styleTextBlockReview}"/>
+        </Grid>
+        <Grid Grid.Row="3">
+            <TextBlock Style="{StaticResource styleTextBlockStock}"/>
+        </Grid>
+        <Grid Grid.Row="4">
+            <TextBlock Style="{StaticResource styleTextBlockPrice}"/>
+            <Image Style="{StaticResource styleImageCart}"/>
+        </Grid>
+        <Grid Grid.Row="5">
+            <TextBlock Text="Есть в наличии" Style="{StaticResource styleTextBlockAvailability}"/>
+        </Grid>
+        <Grid Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource styleGridHorisontal}"/>
+        <Grid Grid.Column="1" Grid.RowSpan="6" Style="{StaticResource styleGridVertical}"/>
     </Grid>
 </UserControl>

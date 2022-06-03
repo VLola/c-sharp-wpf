@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Project_54" xmlns:control="clr-namespace:Project_54.Control"
         mc:Ignorable="d"
-        Title="MainWindow" Height="800" Width="1200">
+        Title="MainWindow" Height="600" Width="1200">
     <Window.Resources>
         <Style TargetType="Label" x:Key="styleLabelBig">
             <Setter Property="FontSize" Value="32"/>
@@ -25,6 +25,30 @@
             <control:ImageControl Grid.Row="1"/>
             <control:FirmsControl Grid.Row="2"/>
             <control:CategoriesControl Grid.Row="3"/>
+            <Label Grid.Row="4" Content="Популярные товары" Style="{StaticResource styleLabelBig}" FontSize="20"/>
+            <ScrollViewer Grid.Row="5" VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Auto" Margin="0 0 0 20">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+                    <control:ProductControl Grid.Column="0" name="KVM-переключатель ATEN CS22U-A7 2-портовый USB" review="44 отзыва" logo_one="/Resources/Items/logo_1.jpg" logo_two="/Resources/Items/logo_2.jpg" price="719 ₴" discount="946 ₴"/>
+                    <control:ProductControl Grid.Column="1" name="Монитор 27 Dell S2722DC (210-BBRR) 75Hz  8-Bit " review="14 отзывов" logo_one="/Resources/Items/logo_3.jpg" logo_two="/Resources/Items/logo_4.jpg" price="12499 ₴"/>
+                    <control:ProductControl Grid.Column="2" name="Компьютер ARTLINE Gaming X33 v14" review="23 отзыва" logo_one="/Resources/Items/logo_5.png" logo_two="/Resources/Items/logo_6.jpg" price="25299 ₴" discount="27099 ₴"/>
+                    <control:ProductControl Grid.Column="3" name="KVM-переключатель ATEN CS22U-A7 2-портовый USB" review="44 отзыва" logo_one="/Resources/Items/logo_1.jpg" logo_two="/Resources/Items/logo_2.jpg" price="719 ₴" discount="946 ₴"/>
+                    <control:ProductControl Grid.Column="4" name="Монитор 27 Dell S2722DC (210-BBRR) 75Hz  8-Bit " review="14 отзывов" logo_one="/Resources/Items/logo_3.jpg" logo_two="/Resources/Items/logo_4.jpg" price="12499 ₴"/>
+                    <control:ProductControl Grid.Column="5" name="Компьютер ARTLINE Gaming X33 v14" review="23 отзыва" logo_one="/Resources/Items/logo_5.png" logo_two="/Resources/Items/logo_6.jpg" price="25299 ₴" discount="27099 ₴"/>
+                    <control:ProductControl Grid.Column="6" name="KVM-переключатель ATEN CS22U-A7 2-портовый USB" review="44 отзыва" logo_one="/Resources/Items/logo_1.jpg" logo_two="/Resources/Items/logo_2.jpg" price="719 ₴" discount="946 ₴"/>
+                    <control:ProductControl Grid.Column="7" name="Монитор 27 Dell S2722DC (210-BBRR) 75Hz  8-Bit " review="14 отзывов" logo_one="/Resources/Items/logo_3.jpg" logo_two="/Resources/Items/logo_4.jpg" price="12499 ₴"/>
+                </Grid>
+            </ScrollViewer>
+            
         </Grid>
     </ScrollViewer>
 </Window>

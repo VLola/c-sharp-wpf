@@ -187,5 +187,20 @@
     <Resource Include="Resources\Categorys\programmnoe-obespechenie.png" />
     <Resource Include="Resources\Categorys\servernoe-oborudovanie.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\cart_1.png" />
+    <Resource Include="Resources\cart_2.png" />
+    <Resource Include="Resources\like_1.png" />
+    <Resource Include="Resources\like_2.png" />
+    <Resource Include="Resources\stars.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Items\logo_1.jpg" />
+    <Resource Include="Resources\Items\logo_2.jpg" />
+    <Resource Include="Resources\Items\logo_3.jpg" />
+    <Resource Include="Resources\Items\logo_4.jpg" />
+    <Resource Include="Resources\Items\logo_5.png" />
+    <Resource Include="Resources\Items\logo_6.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
