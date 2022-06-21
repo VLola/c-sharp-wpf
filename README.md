@@ -88,3 +88,33 @@ Add and delete product:
 
 ![Image text](https://raw.githubusercontent.com/VLola/c-sharp-wpf/master/Project_49/Resources/Menu_Add_Delete_Product.png)
 
+___
+# Project 40.
+
+Develop the Tamagotchi app.
+
+The life cycle of a character is 1-2 minutes.
+The character randomly issues requests (but the same request is not issued in a row).
+
+Requests can be the following: Feed, Walk, Put to bed, Treat, Play.
+If requests are not granted three times,
+the character "gets sick" and asks him to be treated.
+If it fails, it "dies".
+
+The character is displayed in the console window using pseudo-graphics.
+
+The dialogue with the character is carried out by calling the Show() method of the MessageBox class from the System.Windows.Forms namespace.
+
+For more information on working with this method, contact your instructor or MSDN.
+
+To solve this problem, you will need the Timer class from the System.Timers namespace, whose event is Elapsed,
+delegate type ElapsedEventHandler, occurs after a certain time interval,
+which is set in the Interval property.
+
+The Start() and Stop() methods start and stop the timer, respectively.
+
+You may also want to pause the application,
+in this case, you can call the Sleep() method of the Thread class from the System.
+
+Threading namespace, transferring the required number of milliseconds to it.
+___
