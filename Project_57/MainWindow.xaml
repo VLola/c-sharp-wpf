@@ -1,0 +1,69 @@
+﻿<Window x:Class="Project_57.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Project_57"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0">
+            <Button Content="End the process tree" Click="Click_KillAll"/>
+            <Button Content="End the process" Click="Click_Kill"/>
+        </StackPanel>
+        <ListView Grid.Row="1" ItemsSource="{Binding Path=all_list_process}" SelectedItem="{Binding Path=SelectedListProcess}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Expander Grid.Column="0">
+                            <StackPanel>
+                                <ListView ItemsSource="{Binding Path=list_processes}" SelectedItem="{Binding Path=SelectedProcess}">
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="{Binding Path=Id,StringFormat=Id: {0}}" Margin="5" VerticalAlignment="Center"/>
+                                                <TextBlock Text="{Binding Path=StartTime,StringFormat=StartTime: {0}}" Margin="5" VerticalAlignment="Center"/>
+                                                <Expander Header="Threads" MaxHeight="200" MaxWidth="300">
+                                                    <ListView ItemsSource="{Binding Path=Threads}">
+                                                        <ListView.View>
+                                                            <GridView>
+                                                                <GridViewColumn DisplayMemberBinding="{Binding Path=Id}" Header="Id"/>
+                                                                <GridViewColumn DisplayMemberBinding="{Binding Path=CurrentPriority}" Header="CurrentPriority"/>
+                                                            </GridView>
+                                                        </ListView.View>
+                                                    </ListView>
+                                                </Expander>
+                                                <Expander Header="Modules" MaxHeight="200" MaxWidth="300">
+                                                    <ListView ItemsSource="{Binding Path=Modules}">
+                                                        <ListView.View>
+                                                            <GridView>
+                                                                <GridViewColumn DisplayMemberBinding="{Binding Path=ModuleName}" Header="ModuleName"/>
+                                                                <GridViewColumn DisplayMemberBinding="{Binding Path=FileName}" Header="FileName"/>
+                                                            </GridView>
+                                                        </ListView.View>
+                                                    </ListView>
+                                                </Expander>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>
+                            </StackPanel>
+                        </Expander>
+                        <TextBlock Grid.Column="1" Text="{Binding Path=ProcessName,StringFormat=Name: {0}}" Margin="5" VerticalAlignment="Center"/>
+                        <TextBlock Grid.Column="2" Text="{Binding Path=CountProcess,StringFormat=Processes: {0}}" Margin="5" VerticalAlignment="Center"/>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</Window>
