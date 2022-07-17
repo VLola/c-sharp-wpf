@@ -7,6 +7,14 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Button Grid.Row="0" Content="Add" Click="Button_Click"/>
+        <ScrollViewer Grid.Row="1">
+            <Grid x:Name="ListProgram">
+            </Grid>
+        </ScrollViewer>
     </Grid>
 </Window>

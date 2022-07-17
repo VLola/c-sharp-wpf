@@ -1,5 +1,8 @@
-﻿using System;
+﻿using Project_61.MyControl;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,9 +23,44 @@ namespace Project_61
     /// </summary>
     public partial class MainWindow : Window
     {
+        private List<string> _list = new List<string>();
+        private List<Program> _programs = new List<Program>();
+        private int Count { get; set; } = 0;
+        public ObservableCollection<ProgramControl> _collection { get; set; } = new ObservableCollection<ProgramControl>();
         public MainWindow()
         {
             InitializeComponent();
+            this.DataContext = this;
+        }
+
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            foreach (var item in Process.GetProcesses())
+            {
+                if (!_list.Contains(item.ProcessName))
+                {
+                    _list.Add(item.ProcessName);
+                    _programs.Add(new Program(item.ProcessName, item.StartTime));
+                }
+            }
+            foreach (var item in _programs)
+            {
+                ProgramControl programmControl = new ProgramControl(item);
+                ListProgram.RowDefinitions.Add(new RowDefinition());
+                Grid.SetRow(programmControl, Count++);
+                ListProgram.Children.Add(programmControl);
+            }
+        }
+        public class Program
+        {
+            public string Name { get; set; }
+            public DateTime StartTime { get; set; }
+            public Program(string Name, DateTime StartTime)
+            {
+                this.Name = Name;
+                this.StartTime = StartTime;
+            }
         }
     }
 }
