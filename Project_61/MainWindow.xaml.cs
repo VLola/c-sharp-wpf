@@ -24,7 +24,7 @@ namespace Project_61
     public partial class MainWindow : Window
     {
         private List<string> _list = new List<string>();
-        private List<Program> _programs = new List<Program>();
+        private List<Process> _programs = new List<Process>();
         private int Count { get; set; } = 0;
         public ObservableCollection<ProgramControl> _collection { get; set; } = new ObservableCollection<ProgramControl>();
         public MainWindow()
@@ -36,12 +36,12 @@ namespace Project_61
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            foreach (var item in Process.GetProcesses())
+            foreach (Process item in Process.GetProcesses())
             {
                 if (!_list.Contains(item.ProcessName))
                 {
                     _list.Add(item.ProcessName);
-                    _programs.Add(new Program(item.ProcessName, item.StartTime));
+                    _programs.Add(item);
                 }
             }
             foreach (var item in _programs)

@@ -41,7 +41,7 @@ namespace Project_61.MyModel
                 OnPropertyChanged("FinishTime");
             }
         }
-        private DateTime _StartTime { get; set; }
+        private DateTime _StartTime { get; set; } = DateTime.Now;
         public DateTime StartTime
         {
             get { return _StartTime; }
