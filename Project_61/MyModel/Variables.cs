@@ -11,7 +11,7 @@ namespace Project_61.MyModel
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
         }
-        private string _ProgramName { get; set; } = "deasgrearea";
+        private string _ProgramName { get; set; }
         public string ProgramName
         {
             get { return _ProgramName; }
@@ -21,8 +21,18 @@ namespace Project_61.MyModel
                 OnPropertyChanged("ProgramName");
             }
         }
-        private static int _TimeRun { get; set; } = 1;
-        public int TimeRun
+        private string _FullName { get; set; }
+        public string FullName
+        {
+            get { return _FullName; }
+            set
+            {
+                _FullName = value;
+                OnPropertyChanged("FullName");
+            }
+        }
+        private double _TimeRun { get; set; } = 200;
+        public double TimeRun
         {
             get { return _TimeRun; }
             set
@@ -31,14 +41,14 @@ namespace Project_61.MyModel
                 OnPropertyChanged("TimeRun");
             }
         }
-        private DateTime _FinishTime { get; set; } = DateTime.Now + TimeSpan.FromMinutes(_TimeRun);
-        public DateTime FinishTime
+        private double _WorkTime { get; set; }
+        public double WorkTime
         {
-            get { return _FinishTime; }
+            get { return _WorkTime; }
             set
             {
-                _FinishTime = value;
-                OnPropertyChanged("FinishTime");
+                _WorkTime = value;
+                OnPropertyChanged("WorkTime");
             }
         }
         private DateTime _StartTime { get; set; } = DateTime.Now;

@@ -12,23 +12,27 @@ namespace Project_61.MyControl
     /// </summary>
     public partial class ProgramControl : UserControl
     {
-        public Variables _variables { get; set; } = new Variables();
+        public Variables Variables { get; set; } = new Variables();
         private DispatcherTimer dispatcherTimer = new DispatcherTimer();
-        private Process process;
-        public ProgramControl(Process process)
+        public ProgramControl(string name, string fullname, DateTime startTime)
         {
             InitializeComponent();
             this.DataContext = this;
-            _variables.ProgramName = process.ProcessName;
+            Variables.ProgramName = name;
+            Variables.FullName = fullname;
+            Variables.StartTime = startTime;
             dispatcherTimer.Tick += DispatcherTimer_Tick;
             dispatcherTimer.Interval = TimeSpan.FromSeconds(1);
             dispatcherTimer.Start();
-            this.process = process;
         }
 
         private void DispatcherTimer_Tick(object sender, EventArgs e)
         {
-            //if (DateTime.Now > _variables.FinishTime) ProcessKill(process.ProcessName);
+            Variables.WorkTime = Math.Round((DateTime.Now - Variables.StartTime).TotalMinutes);
+            if(Variables.WorkTime > Variables.TimeRun)
+            {
+                ProcessKill(Variables.ProgramName);
+            }
         }
         private void ProcessKill(string name)
         {
@@ -39,9 +43,9 @@ namespace Project_61.MyControl
         }
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (_variables.TimeRun > 0)
+            if (Variables.TimeRun > 0)
             {
-                _variables.FinishTime = DateTime.Now + TimeSpan.FromMinutes(_variables.TimeRun);
+                //Variables.TimeRun = DateTime.Now + TimeSpan.FromMinutes(Variables.TimeRun);
             }
         }
     }

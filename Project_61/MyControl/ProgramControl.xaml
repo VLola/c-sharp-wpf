@@ -12,12 +12,15 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
             <ColumnDefinition/>
+            <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <TextBlock Grid.Column="0" Text="{Binding Path=_variables.ProgramName,StringFormat=Program: {0}}" VerticalAlignment="Center"/>
-        <Label Grid.Column="1" Content="Отключить через:" VerticalAlignment="Center"/>
-        <TextBox Grid.Column="2" Text="{Binding Path=_variables.TimeRun}" TextChanged="TextBox_TextChanged" VerticalAlignment="Center"/>
+        <TextBlock Grid.Column="0" Text="{Binding Path=Variables.StartTime}" VerticalAlignment="Center"/>
+        <TextBlock Grid.Column="1" Text="{Binding Path=Variables.FullName}" VerticalAlignment="Center"/>
+        <TextBlock Grid.Column="2" Text="{Binding Path=Variables.WorkTime}" VerticalAlignment="Center"/>
+        <Label Grid.Column="3" Content="Отключить через:" VerticalAlignment="Center"/>
+        <TextBox Grid.Column="4" Text="{Binding Path=Variables.TimeRun}" TextChanged="TextBox_TextChanged" VerticalAlignment="Center"/>
     </Grid>
 </UserControl>

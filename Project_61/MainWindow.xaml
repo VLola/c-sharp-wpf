@@ -8,11 +8,13 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Button Grid.Row="0" Content="Add" Click="Button_Click"/>
-        <ScrollViewer Grid.Row="1">
+        <TextBox Grid.Row="0" Text="{Binding Path=VariablesName.ProgramName}"/>
+        <Button Grid.Row="1" Content="Start" Click="Button_Click"/>
+        <ScrollViewer Grid.Row="2">
             <Grid x:Name="ListProgram">
             </Grid>
         </ScrollViewer>
