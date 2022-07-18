@@ -41,6 +41,16 @@ namespace Project_61.MyModel
                 OnPropertyChanged("WorkingTime");
             }
         }
+        private double _SelectedWorkingTime { get; set; }
+        public double SelectedWorkingTime
+        {
+            get { return _SelectedWorkingTime; }
+            set
+            {
+                _SelectedWorkingTime = value;
+                OnPropertyChanged("SelectedWorkingTime");
+            }
+        }
         private DateTime _StartTime { get; set; } = DateTime.Now;
         public DateTime StartTime
         {

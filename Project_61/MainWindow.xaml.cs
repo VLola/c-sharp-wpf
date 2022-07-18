@@ -18,6 +18,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace Project_61
 {
@@ -26,6 +27,9 @@ namespace Project_61
     /// </summary>
     public partial class MainWindow : Window
     {
+        private RegistryKey _registryCurrentUser = Registry.CurrentUser;
+        private RegistryKey _registryLocalMachine = Registry.LocalMachine;
+        private DispatcherTimer _dispatcherTimer = new DispatcherTimer();
         public Variables VariablesName { get; set; } = new Variables();
         private List<string> _list = new List<string>();
         private List<Process> _programs = new List<Process>();
@@ -34,11 +38,17 @@ namespace Project_61
         {
             InitializeComponent();
             this.DataContext = this;
-            RegistryKey registryCurrentUser = Registry.CurrentUser;
-            Start(registryCurrentUser);
-            RegistryKey registryLocalMachine = Registry.LocalMachine;
-            Start(registryLocalMachine);
+            _dispatcherTimer.Tick += _dispatcherTimer_Tick;
+            _dispatcherTimer.Interval = TimeSpan.FromSeconds(1);
+            _dispatcherTimer.Start();
         }
+
+        private void _dispatcherTimer_Tick(object sender, EventArgs e)
+        {
+            Start(_registryCurrentUser);
+            Start(_registryLocalMachine);
+        }
+
         private void Start(RegistryKey registry)
         {
             RegistryKey myAppKey = registry.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall");
@@ -66,28 +76,6 @@ namespace Project_61
                     }
                 }
             }
-        }
-        public class Program
-        {
-            public string Name { get; set; }
-            public DateTime StartTime { get; set; }
-            public Program(string Name, DateTime StartTime)
-            {
-                this.Name = Name;
-                this.StartTime = StartTime;
-            }
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            foreach (var it in Process.GetProcesses())
-            {
-                if (it.ProcessName == VariablesName.ProgramName)
-                {
-                    it.Kill();
-                }
-            }
-            //Process.Start(VariablesName.ProgramName);
         }
     }
 }
