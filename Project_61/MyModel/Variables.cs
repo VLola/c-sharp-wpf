@@ -31,24 +31,14 @@ namespace Project_61.MyModel
                 OnPropertyChanged("FullName");
             }
         }
-        private double _TimeRun { get; set; } = 200;
-        public double TimeRun
+        private TimeSpan _WorkingTime { get; set; }
+        public TimeSpan WorkingTime
         {
-            get { return _TimeRun; }
+            get { return _WorkingTime; }
             set
             {
-                _TimeRun = value;
-                OnPropertyChanged("TimeRun");
-            }
-        }
-        private double _WorkTime { get; set; }
-        public double WorkTime
-        {
-            get { return _WorkTime; }
-            set
-            {
-                _WorkTime = value;
-                OnPropertyChanged("WorkTime");
+                _WorkingTime = value;
+                OnPropertyChanged("WorkingTime");
             }
         }
         private DateTime _StartTime { get; set; } = DateTime.Now;
@@ -59,6 +49,26 @@ namespace Project_61.MyModel
             {
                 _StartTime = value;
                 OnPropertyChanged("StartTime");
+            }
+        }
+        private bool _Finish { get; set; }
+        public bool Finish
+        {
+            get { return _Finish; }
+            set
+            {
+                _Finish = value;
+                OnPropertyChanged("Finish");
+            }
+        }
+        private bool _ParentalControl { get; set; }
+        public bool ParentalControl
+        {
+            get { return _ParentalControl; }
+            set
+            {
+                _ParentalControl = value;
+                OnPropertyChanged("ParentalControl");
             }
         }
     }

@@ -12,15 +12,13 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
             <ColumnDefinition/>
-            <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <TextBlock Grid.Column="0" Text="{Binding Path=Variables.StartTime}" VerticalAlignment="Center"/>
+        <TextBlock Grid.Column="0" Text="{Binding Path=Variables.WorkingTime, StringFormat={}{0:hh':'mm':'ss}}" VerticalAlignment="Center"/>
         <TextBlock Grid.Column="1" Text="{Binding Path=Variables.FullName}" VerticalAlignment="Center"/>
-        <TextBlock Grid.Column="2" Text="{Binding Path=Variables.WorkTime}" VerticalAlignment="Center"/>
-        <Label Grid.Column="3" Content="Отключить через:" VerticalAlignment="Center"/>
-        <TextBox Grid.Column="4" Text="{Binding Path=Variables.TimeRun}" TextChanged="TextBox_TextChanged" VerticalAlignment="Center"/>
+        <CheckBox Grid.Column="2" IsChecked="{Binding Path=Variables.ParentalControl}" VerticalAlignment="Center"/>
+        <ComboBox Grid.Column="3" ItemsSource="{Binding Path=WorkingTime}" SelectedItem="{Binding Path=SelectedWorkingTime}" VerticalAlignment="Center"/>
     </Grid>
 </UserControl>

@@ -10,13 +10,25 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
-            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <TextBox Grid.Row="0" Text="{Binding Path=VariablesName.ProgramName}"/>
         <Button Grid.Row="1" Content="Start" Click="Button_Click"/>
-        <ScrollViewer Grid.Row="2">
-            <Grid x:Name="ListProgram">
-            </Grid>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="0" Text="Время работы"/>
+            <TextBlock Grid.Column="1" Text="Имя программы"/>
+            <TextBlock Grid.Column="2" Text="Родительский контроль"/>
+            <TextBlock Grid.Column="3" Text="Макс время работы (Минут)"/>
+        </Grid>
+        <ScrollViewer Grid.Row="3">
+            <Grid x:Name="ListProgram"/>
         </ScrollViewer>
     </Grid>
 </Window>
