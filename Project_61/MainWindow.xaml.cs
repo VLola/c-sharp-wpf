@@ -30,9 +30,7 @@ namespace Project_61
         private RegistryKey _registryCurrentUser = Registry.CurrentUser;
         private RegistryKey _registryLocalMachine = Registry.LocalMachine;
         private DispatcherTimer _dispatcherTimer = new DispatcherTimer();
-        public Variables VariablesName { get; set; } = new Variables();
         private List<string> _list = new List<string>();
-        private List<Process> _programs = new List<Process>();
         private int _row { get; set; } = 0;
         public MainWindow()
         {
@@ -49,33 +47,37 @@ namespace Project_61
             Start(_registryLocalMachine);
         }
 
-        private void Start(RegistryKey registry)
+        private async void Start(RegistryKey registry)
         {
-            RegistryKey myAppKey = registry.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall");
-            foreach (var item in myAppKey.GetSubKeyNames())
-            {
-                RegistryKey AppKey = registry.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\" + item);
-                string _path = (string)AppKey.GetValue("DisplayIcon");
-                string _fullName = (string)AppKey.GetValue("DisplayName");
-                if (_path != null && _fullName != null && _path.Contains(".exe"))
+            await Task.Run(()=> {
+                RegistryKey myAppKey = registry.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall");
+                foreach (var item in myAppKey.GetSubKeyNames())
                 {
-                    string _name = Regex.Match(_path, @".*\\(.*)\.exe").Groups[1].Value;
-                    if (_name != "")
+                    RegistryKey AppKey = registry.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\" + item);
+                    string _path = (string)AppKey.GetValue("DisplayIcon");
+                    string _fullName = (string)AppKey.GetValue("DisplayName");
+                    if (_path != null && _fullName != null && _path.Contains(".exe"))
                     {
-                        foreach (var it in Process.GetProcesses())
+                        string _name = Regex.Match(_path, @".*\\(.*)\.exe").Groups[1].Value;
+                        if (_name != "")
                         {
-                            if (it.ProcessName == _name && !_list.Contains(_name))
+                            foreach (var it in Process.GetProcesses())
                             {
-                                _list.Add(_name);
-                                ProgramControl programmControl = new ProgramControl(_name, _fullName, it.StartTime);
-                                ListProgram.RowDefinitions.Add(new RowDefinition());
-                                Grid.SetRow(programmControl, _row++);
-                                ListProgram.Children.Add(programmControl);
+                                if (it.ProcessName == _name && !_list.Contains(_name))
+                                {
+                                    _list.Add(_name);
+                                    Dispatcher.Invoke(new Action(()=> {
+                                        ProgramControl programmControl = new ProgramControl(_name, _fullName, it.StartTime);
+                                        ListProgram.RowDefinitions.Add(new RowDefinition());
+                                        Grid.SetRow(programmControl, _row++);
+                                        ListProgram.Children.Add(programmControl);
+                                    }));
+                                }
                             }
                         }
                     }
                 }
-            }
+            });
         }
     }
 }

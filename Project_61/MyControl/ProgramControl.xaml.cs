@@ -2,6 +2,7 @@
 using System;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Threading;
 using static Project_61.MainWindow;
@@ -13,6 +14,8 @@ namespace Project_61.MyControl
     /// </summary>
     public partial class ProgramControl : UserControl
     {
+        private bool _timeControl = true;
+        private TimeSpan _oneSecond = TimeSpan.FromSeconds(1);
         public Variables Variables { get; set; } = new Variables();
         private DispatcherTimer _dispatcherTimer = new DispatcherTimer();
         public ObservableCollection<double> WorkingTime { get; set; } = new ObservableCollection<double>();
@@ -20,10 +23,9 @@ namespace Project_61.MyControl
         {
             InitializeComponent();
             this.DataContext = this;
-            Variables.PropertyChanged += Variables_PropertyChanged;
             Variables.ProgramName = name;
             Variables.FullName = fullname;
-            Variables.StartTime = startTime;
+            Variables.WorkingTime = DateTime.Now - startTime;
             WorkingTime.Add(1);
             WorkingTime.Add(5);
             WorkingTime.Add(10);
@@ -41,26 +43,23 @@ namespace Project_61.MyControl
             _dispatcherTimer.Start();
         }
 
-        private void Variables_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
-        {
-            if (e.PropertyName == "ParentalControl" && !Variables.ParentalControl) Variables.SelectedWorkingTime = 720;
-        }
-
         private void DispatcherTimer_Tick(object sender, EventArgs e)
         {
-            if (!Variables.Finish)
+            if (_timeControl)
             {
-                Variables.WorkingTime = DateTime.Now - Variables.StartTime;
+                Variables.WorkingTime += _oneSecond;
             }
-            if (Variables.ParentalControl && Variables.WorkingTime.TotalMinutes > Variables.SelectedWorkingTime)
+            if (Variables.ParentalControl && Variables.WorkingTime.TotalMinutes >= Variables.SelectedWorkingTime)
             {
                 Variables.Finish = true;
                 ProcessKill(Variables.ProgramName);
             }
-            else if (Variables.Finish && Variables.WorkingTime.TotalMinutes <= Variables.SelectedWorkingTime)
+            else if (Variables.Finish && Variables.WorkingTime.TotalMinutes < Variables.SelectedWorkingTime)
             {
                 Variables.Finish = false;
             }
+
+            TimeControl();
         }
         private void ProcessKill(string name)
         {
@@ -68,6 +67,22 @@ namespace Project_61.MyControl
             {
                 if (item.ProcessName == name) item.Kill();
             }
+        }
+        private async void TimeControl()
+        {
+            await Task.Run(() =>
+            {
+                bool Working = false;
+                foreach (var it in Process.GetProcesses())
+                {
+                    if (it.ProcessName == Variables.ProgramName)
+                    {
+                        Working = true;
+                    }
+                }
+                if (Working) _timeControl = true;
+                else _timeControl = false;
+            });
         }
     }
 }

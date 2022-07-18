@@ -51,16 +51,6 @@ namespace Project_61.MyModel
                 OnPropertyChanged("SelectedWorkingTime");
             }
         }
-        private DateTime _StartTime { get; set; } = DateTime.Now;
-        public DateTime StartTime
-        {
-            get { return _StartTime; }
-            set
-            {
-                _StartTime = value;
-                OnPropertyChanged("StartTime");
-            }
-        }
         private bool _Finish { get; set; }
         public bool Finish
         {
