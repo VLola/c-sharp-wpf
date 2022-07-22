@@ -69,6 +69,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MyModel\MyProcess.cs" />
+    <Compile Include="MyModel\Variables.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
