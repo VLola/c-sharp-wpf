@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace Project_61
+namespace Project_61_ParentalControl
 {
     /// <summary>
     /// Логика взаимодействия для App.xaml
