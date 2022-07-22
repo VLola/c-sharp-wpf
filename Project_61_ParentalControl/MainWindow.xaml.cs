@@ -18,9 +18,8 @@ namespace Project_61_ParentalControl
         private RegistryKey _registryCurrentUser = Registry.CurrentUser;
         private RegistryKey _registryLocalMachine = Registry.LocalMachine;
         private DispatcherTimer _dispatcherTimer = new DispatcherTimer();
-        public ObservableCollection<MyProcess> MyProcesses { get; set; } = new ObservableCollection<MyProcess>();
+        private ObservableCollection<MyProcess> _myProcesses { get; set; } = new ObservableCollection<MyProcess>();
         public Variables MainVariables { get; set; } = new Variables();
-        public string Password { get; set; }
         public MainWindow()
         {
             InitializeComponent();
@@ -71,7 +70,7 @@ namespace Project_61_ParentalControl
                                 if (it.ProcessName == _name && !_processNames.Contains(_name))
                                 {
                                     _processNames.Add(_name);
-                                    MyProcesses.Add(new MyProcess(_name, _fullName, it.StartTime, Domain));
+                                    _myProcesses.Add(new MyProcess(_name, _fullName, it.StartTime, Domain));
                                 }
                             }
                         }
@@ -82,7 +81,7 @@ namespace Project_61_ParentalControl
         private void LaunchGUI_Click(object sender, RoutedEventArgs e)
         {
             Domain = AppDomain.CreateDomain("Second Domain");
-            foreach (var item in MyProcesses)
+            foreach (var item in _myProcesses)
             {
                 item.Domain = Domain;
             }

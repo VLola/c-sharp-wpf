@@ -13,7 +13,7 @@ namespace Project_61_GUI
     {
         private int _row = 0;
         private AppDomain _domain;
-        private ObservableCollection<MyProgram> _list { get; set; } = new ObservableCollection<MyProgram>();
+        private ObservableCollection<MyProgram> _myPrograms { get; set; } = new ObservableCollection<MyProgram>();
         private DispatcherTimer _dispatcherTimer = new DispatcherTimer();
         public MainWindow()
         {
@@ -29,6 +29,7 @@ namespace Project_61_GUI
             _dispatcherTimer.Tick += DispatcherTimer_Tick;
             _dispatcherTimer.Start();
         }
+
         private void DispatcherTimer_Tick(object sender, EventArgs e)
         {
             List<string> list = (List<string>)_domain.GetData("parameter");
@@ -37,7 +38,7 @@ namespace Project_61_GUI
                 {
                     int i = 0;
                     bool check = false;
-                    foreach (var it in _list)
+                    foreach (var it in _myPrograms)
                     {
                         if (item == it.ProgramName)
                         {
@@ -49,9 +50,9 @@ namespace Project_61_GUI
                     if (check)
                     {
                         TimeSpan WorkingTime = (TimeSpan)_domain.GetData("WorkingTime:" + item);
-                        if (WorkingTime != null) _list[i].WorkingTime = WorkingTime;
+                        if (WorkingTime != null) _myPrograms[i].WorkingTime = WorkingTime;
                         string FullName = (string)_domain.GetData("FullName:" + item);
-                        if (FullName != null) _list[i].FullName = FullName;
+                        if (FullName != null) _myPrograms[i].FullName = FullName;
                     }
                     else
                     {
@@ -63,7 +64,7 @@ namespace Project_61_GUI
                         if (FullName != null) myProgram.FullName = FullName;
                         bool? TimeControl = (bool?)_domain.GetData("TimeControl:" + item);
                         if (TimeControl != null) myProgram.TimeControl = (bool)TimeControl;
-                        _list.Add(myProgram);
+                        _myPrograms.Add(myProgram);
                         Programs.RowDefinitions.Add(new RowDefinition());
                         ProgramControl control = new ProgramControl(ref myProgram);
                         Grid.SetRow(control, _row++);
