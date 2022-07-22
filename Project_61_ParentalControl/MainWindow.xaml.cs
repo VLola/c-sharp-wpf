@@ -99,7 +99,7 @@ namespace Project_61_ParentalControl
             {
                 item.Domain = Domain;
             }
-            Domain.ExecuteAssembly("InterfaceParentControl.exe");
+            Domain.ExecuteAssembly("Project_61_GUI.exe");
         }
     }
 }
