@@ -41,14 +41,24 @@ namespace Project_61_GUI.MyModels
                 OnPropertyChanged("WorkingTime");
             }
         }
-        private bool _TimeControl { get; set; }
-        public bool TimeControl
+        private bool _isParentalControl;
+        public bool isParentalControl
         {
-            get { return _TimeControl; }
+            get { return _isParentalControl; }
             set
             {
-                _TimeControl = value;
-                OnPropertyChanged("TimeControl");
+                _isParentalControl = value;
+                OnPropertyChanged("isParentalControl");
+            }
+        }
+        private double _SelectedWorkingTime { get; set; }
+        public double SelectedWorkingTime
+        {
+            get { return _SelectedWorkingTime; }
+            set
+            {
+                _SelectedWorkingTime = value;
+                OnPropertyChanged("SelectedWorkingTime");
             }
         }
     }

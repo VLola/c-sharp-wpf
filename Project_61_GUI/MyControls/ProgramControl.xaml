@@ -11,9 +11,11 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
             <ColumnDefinition/>
+            <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <TextBlock Grid.Column="0" Text="{Binding Path=myProgram.WorkingTime, StringFormat={}{0:hh':'mm':'ss}}"/>
         <TextBlock Grid.Column="1" Text="{Binding Path=myProgram.FullName}"/>
-        <CheckBox Grid.Column="2" IsChecked="{Binding Path=myProgram.TimeControl}"/>
+        <CheckBox Grid.Column="2" IsChecked="{Binding Path=myProgram.isParentalControl}"/>
+        <ComboBox Grid.Column="3" ItemsSource="{Binding Path=WorkingTime}" SelectedItem="{Binding Path=myProgram.SelectedWorkingTime}"/>
     </Grid>
 </UserControl>

@@ -63,34 +63,14 @@ namespace Project_61_ParentalControl.MyModel
                 OnPropertyChanged("SelectedWorkingTime");
             }
         }
-        private bool _Finish { get; set; }
-        public bool Finish
+        private bool _isParentalControl;
+        public bool isParentalControl
         {
-            get { return _Finish; }
+            get { return _isParentalControl; }
             set
             {
-                _Finish = value;
-                OnPropertyChanged("Finish");
-            }
-        }
-        private bool _ParentalControl { get; set; }
-        public bool ParentalControl
-        {
-            get { return _ParentalControl; }
-            set
-            {
-                _ParentalControl = value;
-                OnPropertyChanged("ParentalControl");
-            }
-        }
-        private bool _TimeControl { get; set; }
-        public bool TimeControl
-        {
-            get { return _TimeControl; }
-            set
-            {
-                _TimeControl = value;
-                OnPropertyChanged("TimeControl");
+                _isParentalControl = value;
+                OnPropertyChanged("isParentalControl");
             }
         }
         private bool _isWorkingProcess = true;

@@ -51,8 +51,10 @@ namespace Project_61_GUI
                     {
                         TimeSpan WorkingTime = (TimeSpan)_domain.GetData("WorkingTime:" + item);
                         if (WorkingTime != null) _myPrograms[i].WorkingTime = WorkingTime;
-                        string FullName = (string)_domain.GetData("FullName:" + item);
-                        if (FullName != null) _myPrograms[i].FullName = FullName;
+                        bool? isParentalControl = (bool?)_domain.GetData("isParentalControl:" + item);
+                        if (isParentalControl != null) _myPrograms[i].isParentalControl = (bool)isParentalControl;
+                        double? SelectedWorkingTime = (double?)_domain.GetData("SelectedWorkingTime:" + item);
+                        if (SelectedWorkingTime != null) _myPrograms[i].SelectedWorkingTime = (double)SelectedWorkingTime;
                     }
                     else
                     {
@@ -62,8 +64,10 @@ namespace Project_61_GUI
                         if (timeSpan != null) myProgram.WorkingTime = timeSpan;
                         string FullName = (string)_domain.GetData("FullName:" + item);
                         if (FullName != null) myProgram.FullName = FullName;
-                        bool? TimeControl = (bool?)_domain.GetData("TimeControl:" + item);
-                        if (TimeControl != null) myProgram.TimeControl = (bool)TimeControl;
+                        bool? isParentalControl = (bool?)_domain.GetData("isParentalControl:" + item);
+                        if (isParentalControl != null) myProgram.isParentalControl = (bool)isParentalControl;
+                        double? SelectedWorkingTime = (double?)_domain.GetData("SelectedWorkingTime:" + item);
+                        if (SelectedWorkingTime != null) myProgram.SelectedWorkingTime = (double)SelectedWorkingTime;
                         _myPrograms.Add(myProgram);
                         Programs.RowDefinitions.Add(new RowDefinition());
                         ProgramControl control = new ProgramControl(ref myProgram);

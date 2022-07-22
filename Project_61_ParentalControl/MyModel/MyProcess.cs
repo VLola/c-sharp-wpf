@@ -24,14 +24,8 @@ namespace Project_61_ParentalControl.MyModel
             await Task.Run(async () => {
                 while (true)
                 {
-                    if(Domain != null)
-                    {
-                        bool? check = (bool?)Domain.GetData("GUI TimeControl:" + Variables.ProgramName);
-                        if (check != null) Variables.TimeControl = (bool)check;
-                    }
-                    
+                    if (Variables.isParentalControl && Variables.WorkingTime.TotalMinutes > Variables.SelectedWorkingTime) ProcessKillAsync();
                     if (Variables.isWorkingProcess) Variables.WorkingTime += _oneSecond;
-                    if (Variables.ParentalControl && Variables.WorkingTime.TotalMinutes >= Variables.SelectedWorkingTime) ProcessKillAsync(Variables.ProgramName);
                     TimeControlAsync();
                     if (Domain != null) SetDataAsync();
                     await Task.Delay(1000);
@@ -41,15 +35,20 @@ namespace Project_61_ParentalControl.MyModel
         private async void SetDataAsync()
         {
             await Task.Run(()=> {
+                bool? isParentalControl = (bool?)Domain.GetData("isParentalControl:" + Variables.ProgramName);
+                if (isParentalControl != null) Variables.isParentalControl = (bool)isParentalControl;
+                double? SelectedWorkingTime = (double?)Domain.GetData("SelectedWorkingTime:" + Variables.ProgramName);
+                if (SelectedWorkingTime != null) Variables.SelectedWorkingTime = (double)SelectedWorkingTime;
                 Domain.SetData("WorkingTime:" + Variables.ProgramName, Variables.WorkingTime);
                 Domain.SetData("FullName:" + Variables.ProgramName, Variables.FullName);
-                Domain.SetData("TimeControl:" + Variables.ProgramName, Variables.TimeControl);
+                Domain.SetData("isParentalControl:" + Variables.ProgramName, Variables.isParentalControl);
+                Domain.SetData("SelectedWorkingTime:" + Variables.ProgramName, Variables.SelectedWorkingTime);
             });
         }
-        private async void ProcessKillAsync(string name)
+        private async void ProcessKillAsync()
         {
             await Task.Run(() => {
-                foreach (Process item in Process.GetProcesses()) if (item.ProcessName == name) item.Kill();
+                foreach (Process item in Process.GetProcesses()) if (item.ProcessName == Variables.ProgramName) item.Kill();
             });
         }
 
