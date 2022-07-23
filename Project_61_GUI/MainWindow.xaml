@@ -5,76 +5,89 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Project_61_GUI"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Parental Control" Height="450" Width="800">
     <Window.Resources>
         <ResourceDictionary Source="/Styles/MainStyles.xaml"/>
     </Window.Resources>
     <Grid>
-        <TabControl>
-            <TabItem Header="Control">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition/>
-                    </Grid.RowDefinitions>
-                    <Grid Grid.Row="0">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="50*"/>
-                            <ColumnDefinition Width="100*"/>
-                            <ColumnDefinition Width="50*"/>
-                            <ColumnDefinition Width="50*"/>
-                        </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0" Text="Working time"/>
-                        <TextBlock Grid.Column="1" Text="Program name"/>
-                        <TextBlock Grid.Column="2" Text="Parental control"/>
-                        <TextBlock Grid.Column="3" Text="Time (minutes)"/>
-                        <Border Grid.Column="0"/>
-                        <Border Grid.Column="1"/>
-                        <Border Grid.Column="2"/>
-                        <Border Grid.Column="3"/>
+        <Grid Style="{DynamicResource styleGridNotLogin}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="100"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Column="0" Grid.Row="0" Text="Password:" Style="{DynamicResource styleTextBlock}"/>
+            <PasswordBox Grid.Column="1" Grid.Row="0" x:Name="MyPasswordBox"  PasswordChar="*" ToolTip="1111"/>
+            <Button Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Content="Login" Click="Login_Click" Style="{DynamicResource styleButtonLogin}"/>
+        </Grid>
+        <Grid Style="{DynamicResource styleGridLogin}">
+            <TabControl>
+                <TabItem Header="Control">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="0" Style="{DynamicResource styleGridLigthGray}">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="50*"/>
+                                <ColumnDefinition Width="100*"/>
+                                <ColumnDefinition Width="50*"/>
+                                <ColumnDefinition Width="50*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Text="Working time"/>
+                            <TextBlock Grid.Column="1" Text="Program name"/>
+                            <TextBlock Grid.Column="2" Text="Parental control"/>
+                            <TextBlock Grid.Column="3" Text="Time (minutes)"/>
+                            <Border Grid.Column="0"/>
+                            <Border Grid.Column="1"/>
+                            <Border Grid.Column="2"/>
+                            <Border Grid.Column="3"/>
+                        </Grid>
+                        <Grid Grid.Row="1" x:Name="Programs"/>
                     </Grid>
-                    <Grid Grid.Row="1" x:Name="Programs"/>
-                </Grid>
-            </TabItem>
-            <TabItem Header="History">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition Width="Auto"/>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition/>
-                    </Grid.RowDefinitions>
-                    <Grid Grid.Row="0" Grid.Column="0" Style="{DynamicResource styleGridLicenseNotActivated}">
+                </TabItem>
+                <TabItem Header="History">
+                    <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition/>
                             <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0" Text="License Key:" Style="{DynamicResource styleTextBlock}"/>
-                        <TextBox Grid.Column="1" Text="{Binding Path=Variables.LicenseKey}" Style="{DynamicResource styleTextBox}"/>
-                        <Button Grid.Column="2" Content="Activate license" Click="ActivateLicense_Click" Style="{DynamicResource styleButton}"/>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="10*"/>
+                            <RowDefinition Height="100*"/>
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="0" Grid.Column="0" Style="{DynamicResource styleGridLicenseNotActivated}">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Text="License Key:" Style="{DynamicResource styleTextBlock}"/>
+                            <TextBox Grid.Column="1" Text="{Binding Path=Variables.LicenseKey}"  ToolTip="lola" Style="{DynamicResource styleTextBox}"/>
+                            <Button Grid.Column="2" Content="Activate license" Click="ActivateLicense_Click" Style="{DynamicResource styleButton}"/>
+                        </Grid>
+                        <Grid Grid.Row="0" Grid.Column="1">
+                            <TextBlock Style="{DynamicResource styleTextBlockLicense}"/>
+                        </Grid>
+                        <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Style="{DynamicResource styleGridLicenseActivated}">
+                            <ListView ItemsSource="{Binding Path=History}">
+                                <ListView.View>
+                                    <GridView>
+                                        <GridViewColumn DisplayMemberBinding="{Binding Path=DateTime}" Header="Time" Width="150"/>
+                                        <GridViewColumn DisplayMemberBinding="{Binding Path=Status}" Header="Status" Width="50"/>
+                                        <GridViewColumn DisplayMemberBinding="{Binding Path=FullName}" Header="Name" Width="300"/>
+                                    </GridView>
+                                </ListView.View>
+                            </ListView>
+                        </Grid>
                     </Grid>
-                    <Grid Grid.Row="0" Grid.Column="1">
-                        <TextBlock Style="{DynamicResource styleTextBlockLicense}"/>
-                    </Grid>
-                    <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Style="{DynamicResource styleGridLicenseActivated}">
-                        <ListView ItemsSource="{Binding Path=History}">
-                            <ListView.View>
-                                <GridView>
-                                    <GridViewColumn DisplayMemberBinding="{Binding Path=DateTime}" Header="Time" Width="150"/>
-                                    <GridViewColumn DisplayMemberBinding="{Binding Path=Status}" Header="Status" Width="50"/>
-                                    <GridViewColumn DisplayMemberBinding="{Binding Path=FullName}" Header="Name" Width="Auto"/>
-                                </GridView>
-                            </ListView.View>
-                        </ListView>
-                    </Grid>
-                </Grid>
-            </TabItem>
-        </TabControl>
-        
-        
+                </TabItem>
+            </TabControl>
+        </Grid>
     </Grid>
 </Window>

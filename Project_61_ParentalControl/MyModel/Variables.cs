@@ -12,17 +12,6 @@ namespace Project_61_ParentalControl.MyModel
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
         }
 
-        private bool _isLogin;
-        public bool isLogin
-        {
-            get { return _isLogin; }
-            set
-            {
-                _isLogin = value;
-                OnPropertyChanged("isLogin");
-            }
-        }
-
         private string _ProgramName { get; set; }
         public string ProgramName
         {

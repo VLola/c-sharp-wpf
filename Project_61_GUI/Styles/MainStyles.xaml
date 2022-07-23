@@ -49,4 +49,26 @@
         <Setter Property="BorderBrush" Value="Gray"/>
         <Setter Property="BorderThickness" Value="1"/>
     </Style>
+    <Style TargetType="Grid" x:Key="styleGridLigthGray">
+        <Setter Property="Background" Value="LightGray"/>
+    </Style>
+    <Style TargetType="Grid" x:Key="styleGridLogin">
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding Variables.isLogin}" Value="False">
+                <Setter Property="Visibility" Value="Hidden"/>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="Grid" x:Key="styleGridNotLogin">
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding Variables.isLogin}" Value="True">
+                <Setter Property="Visibility" Value="Hidden"/>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="Button" x:Key="styleButtonLogin">
+        <Setter Property="Margin" Value="0 20"/>
+    </Style>
 </ResourceDictionary>

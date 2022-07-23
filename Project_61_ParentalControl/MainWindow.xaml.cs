@@ -26,25 +26,27 @@ namespace Project_61_ParentalControl
         private RegistryKey _registryLocalMachine = Registry.LocalMachine;
         private DispatcherTimer _dispatcherTimer = new DispatcherTimer();
         private ObservableCollection<MyProcess> _myProcesses { get; set; } = new ObservableCollection<MyProcess>();
-        public Variables MainVariables { get; set; } = new Variables();
         public MainWindow()
         {
             InitializeComponent();
             this.DataContext = this;
+            Loaded += MainWindow_Loaded;
+            Closed += MainWindow_Closed;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void MainWindow_Closed(object sender, EventArgs e)
         {
-            if (MyPasswordBox.Password == "1111")
-            {
-                MainVariables.isLogin = true;
-                LoadingProgramsAsync();
-                _dispatcherTimer.Tick += _dispatcherTimer_Tick;
-                _dispatcherTimer.Interval = TimeSpan.FromSeconds(1);
-                _dispatcherTimer.Start();
-            }
-            else MessageBox.Show("Error password!");
+            Process.Start(System.Reflection.Assembly.GetExecutingAssembly().Location);
         }
+
+        private void MainWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            LoadingProgramsAsync();
+            _dispatcherTimer.Tick += _dispatcherTimer_Tick;
+            _dispatcherTimer.Interval = TimeSpan.FromSeconds(1);
+            _dispatcherTimer.Start();
+        }
+
         private async void LoadingProgramsAsync()
         {
             await Task.Run(async () => {
@@ -52,10 +54,22 @@ namespace Project_61_ParentalControl
                 await StartAsync(_registryLocalMachine);
             });
         }
+
+        private void LaunchGUI_Click(object sender, RoutedEventArgs e)
+        {
+            Domain = AppDomain.CreateDomain("Second Domain");
+            foreach (var item in _myProcesses)
+            {
+                item.Domain = Domain;
+            }
+            Domain.ExecuteAssembly("Project_61_GUI.exe");
+        }
+
         private void _dispatcherTimer_Tick(object sender, EventArgs e)
         {
             if (Domain != null) AddProgram();
         }
+
         private async void AddProgram()
         {
             await Task.Run(async () => {
@@ -68,6 +82,7 @@ namespace Project_61_ParentalControl
                 }
             });
         }
+
         private async Task StartAsync(RegistryKey registry)
         {
             await Task.Run(() => {
@@ -88,6 +103,7 @@ namespace Project_61_ParentalControl
                 }
             });
         }
+
         private async Task CheckProgramStartAsync()
         {
             await Task.Run(()=> {
@@ -109,15 +125,7 @@ namespace Project_61_ParentalControl
                 }
             });
         }
-        private void LaunchGUI_Click(object sender, RoutedEventArgs e)
-        {
-            Domain = AppDomain.CreateDomain("Second Domain");
-            foreach (var item in _myProcesses)
-            {
-                item.Domain = Domain;
-            }
-            Domain.ExecuteAssembly("Project_61_GUI.exe");
-        }
+
         private async Task TimeControlAsync()
         {
             await Task.Run(() =>
@@ -136,6 +144,7 @@ namespace Project_61_ParentalControl
                 }
             });
         }
+
         private async Task FileSyncAsync()
         {
             await Task.Run(()=> {

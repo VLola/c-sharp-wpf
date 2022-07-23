@@ -11,6 +11,17 @@ namespace Project_61_GUI.MyModels
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
         }
 
+        private bool _isLogin;
+        public bool isLogin
+        {
+            get { return _isLogin; }
+            set
+            {
+                _isLogin = value;
+                OnPropertyChanged("isLogin");
+            }
+        }
+
         private bool _isLicense;
         public bool isLicense
         {
@@ -21,6 +32,7 @@ namespace Project_61_GUI.MyModels
                 OnPropertyChanged("isLicense");
             }
         }
+
         private string _LicenseKey;
         public string LicenseKey
         {

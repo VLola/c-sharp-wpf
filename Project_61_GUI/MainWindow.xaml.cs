@@ -25,15 +25,6 @@ namespace Project_61_GUI
             InitializeComponent();
             this.DataContext = this;
             Loaded += MainWindow_Loaded;
-            Programs.RowDefinitions.Add(new RowDefinition());
-            MyProgram myProgram = new MyProgram();
-            myProgram.FullName = "aergeaEARg";
-            myProgram.ProgramName = "aergeaEARGEA";
-            myProgram.WorkingTime = TimeSpan.FromMinutes(10);
-            myProgram.SelectedWorkingTime = 720;
-            ProgramControl control = new ProgramControl(ref myProgram);
-            Grid.SetRow(control, _row++);
-            Programs.Children.Add(control);
         }
 
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
@@ -50,6 +41,14 @@ namespace Project_61_GUI
             LoadingData();
         }
 
+        private void Login_Click(object sender, RoutedEventArgs e)
+        {
+            if (MyPasswordBox.Password == "1111")
+            {
+                Variables.isLogin = true;
+            }
+            else MessageBox.Show("Error password!");
+        }
         private async void LoadingData()
         {
             await Task.Run(()=> {
