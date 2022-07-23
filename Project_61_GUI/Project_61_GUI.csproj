@@ -74,6 +74,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Styles\MainStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MyControls\ProgramControl.xaml.cs">
@@ -81,6 +85,7 @@
     </Compile>
     <Compile Include="MyModels\HistoryWorking.cs" />
     <Compile Include="MyModels\MyProgram.cs" />
+    <Compile Include="MyModels\Variables.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

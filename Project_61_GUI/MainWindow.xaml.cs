@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Microsoft.Win32;
+using Newtonsoft.Json;
 using Project_61_GUI.MyControls;
 using Project_61_GUI.MyModels;
 using System;
@@ -18,6 +19,7 @@ namespace Project_61_GUI
         private ObservableCollection<MyProgram> _myPrograms { get; set; } = new ObservableCollection<MyProgram>();
         public ObservableCollection<HistoryWorking> History { get; set; } = new ObservableCollection<HistoryWorking>();
         private DispatcherTimer _dispatcherTimer = new DispatcherTimer();
+        public Variables Variables { get; set; } = new Variables();
         public MainWindow()
         {
             InitializeComponent();
@@ -27,22 +29,23 @@ namespace Project_61_GUI
 
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
+            CreateLicenseKey();
             _domain = AppDomain.CurrentDomain;
             _dispatcherTimer.Interval = TimeSpan.FromSeconds(1);
             _dispatcherTimer.Tick += DispatcherTimer_Tick;
             _dispatcherTimer.Start();
         }
-
         private void DispatcherTimer_Tick(object sender, EventArgs e)
         {
             HistoryAsync();
             LoadingData();
         }
+
         private async void LoadingData()
         {
             await Task.Run(()=> {
                 List<string> list = (List<string>)_domain.GetData("_processNames");
-                if (list != null && list.Count > 0)
+                if (list != null && list.Count > 0) {
                     foreach (var item in list)
                     {
                         int i = 0;
@@ -78,7 +81,7 @@ namespace Project_61_GUI
                             double? SelectedWorkingTime = (double?)_domain.GetData("SelectedWorkingTime:" + item);
                             if (SelectedWorkingTime != null) myProgram.SelectedWorkingTime = (double)SelectedWorkingTime;
                             _myPrograms.Add(myProgram);
-                            Dispatcher.Invoke(new Action(()=> {
+                            Dispatcher.Invoke(new Action(() => {
                                 Programs.RowDefinitions.Add(new RowDefinition());
                                 ProgramControl control = new ProgramControl(ref myProgram);
                                 Grid.SetRow(control, _row++);
@@ -86,6 +89,7 @@ namespace Project_61_GUI
                             }));
                         }
                     }
+                }
             });
         }
         private async void HistoryAsync()
@@ -109,6 +113,21 @@ namespace Project_61_GUI
                     }
                 }
             });
+        }
+        private void CreateLicenseKey()
+        {
+            using (RegistryKey registry = Registry.CurrentUser.CreateSubKey(@"Software\ParentalControl"))
+            {
+                registry.SetValue("LicenseKey", "lola");
+            }
+        }
+        private void ActivateLicense_Click(object sender, RoutedEventArgs e)
+        {
+            using (RegistryKey registry = Registry.CurrentUser.OpenSubKey(@"Software\ParentalControl"))
+            {
+                if (Variables.LicenseKey == (string)registry.GetValue("LicenseKey")) Variables.isLicense = true;
+                else MessageBox.Show("Error!");
+            }
         }
     }
 }

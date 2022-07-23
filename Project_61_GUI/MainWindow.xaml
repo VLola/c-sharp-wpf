@@ -6,6 +6,9 @@
         xmlns:local="clr-namespace:Project_61_GUI"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+    <Window.Resources>
+        <ResourceDictionary Source="/Styles/MainStyles.xaml"/>
+    </Window.Resources>
     <Grid>
         <TabControl>
             <TabItem Header="Control">
@@ -32,21 +35,28 @@
             </TabItem>
             <TabItem Header="History">
                 <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
-                    <Grid Grid.Row="0">
+                    <Grid Grid.Row="0" Grid.Column="0" Style="{DynamicResource styleGridLicenseNotActivated}">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="10*"/>
-                            <ColumnDefinition Width="100*"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition/>
                             <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0" Text="Key:"/>
-                        <TextBox Grid.Column="1"/>
-                        <Button Grid.Column="2" Content="Activate license"/>
+                        <TextBlock Grid.Column="0" Text="License Key:"/>
+                        <TextBox Grid.Column="1" Text="{Binding Path=Variables.LicenseKey}"/>
+                        <Button Grid.Column="2" Content="Activate license" Click="ActivateLicense_Click"/>
                     </Grid>
-                    <Grid Grid.Row="1">
+                    <Grid Grid.Row="0" Grid.Column="1">
+                        <TextBlock Style="{DynamicResource styleTextBlockLicense}"/>
+                    </Grid>
+                    <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Style="{DynamicResource styleGridLicenseActivated}">
                         <ListView ItemsSource="{Binding Path=History}">
                             <ListView.View>
                                 <GridView>
