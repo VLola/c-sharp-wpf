@@ -7,10 +7,60 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
-        <Grid Grid.Row="0" x:Name="Programs"/>
+        <TabControl>
+            <TabItem Header="Control">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Text="Working time"/>
+                        <TextBlock Grid.Column="1" Text="Program name"/>
+                        <TextBlock Grid.Column="2" Text="Parental control"/>
+                        <TextBlock Grid.Column="3" Text="Time (minutes)"/>
+                    </Grid>
+                    <Grid Grid.Row="1" x:Name="Programs"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="History">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="10*"/>
+                            <ColumnDefinition Width="100*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Text="Key:"/>
+                        <TextBox Grid.Column="1"/>
+                        <Button Grid.Column="2" Content="Activate license"/>
+                    </Grid>
+                    <Grid Grid.Row="1">
+                        <ListView ItemsSource="{Binding Path=History}">
+                            <ListView.View>
+                                <GridView>
+                                    <GridViewColumn DisplayMemberBinding="{Binding Path=DateTime}" Header="Time" Width="150"/>
+                                    <GridViewColumn DisplayMemberBinding="{Binding Path=Name}" Header="Name" Width="250"/>
+                                    <GridViewColumn DisplayMemberBinding="{Binding Path=Status}" Header="Status" Width="150"/>
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+                    </Grid>
+                </Grid>
+            </TabItem>
+        </TabControl>
+        
+        
     </Grid>
 </Window>

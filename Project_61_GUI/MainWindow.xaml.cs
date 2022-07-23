@@ -14,6 +14,7 @@ namespace Project_61_GUI
         private int _row = 0;
         private AppDomain _domain;
         private ObservableCollection<MyProgram> _myPrograms { get; set; } = new ObservableCollection<MyProgram>();
+        public ObservableCollection<HistoryWorking> History { get; set; } = new ObservableCollection<HistoryWorking>();
         private DispatcherTimer _dispatcherTimer = new DispatcherTimer();
         public MainWindow()
         {
@@ -58,6 +59,8 @@ namespace Project_61_GUI
                     }
                     else
                     {
+                        History.Add(new HistoryWorking(item, DateTime.Now, "Start"));
+                        
                         MyProgram myProgram = new MyProgram();
                         myProgram.ProgramName = item;
                         TimeSpan timeSpan = (TimeSpan)_domain.GetData("WorkingTime:" + item);
@@ -75,6 +78,17 @@ namespace Project_61_GUI
                         Programs.Children.Add(control);
                     }
                 }
+        }
+        public class HistoryWorking{
+            public string Name { get; set; }
+            public DateTime DateTime { get; set; }
+            public string Status { get; set; }
+            public HistoryWorking(string Name, DateTime DateTime, string Status)
+            {
+                this.Name = Name;
+                this.DateTime = DateTime;
+                this.Status = Status;
+            }
         }
     }
 }
