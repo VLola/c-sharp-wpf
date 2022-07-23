@@ -51,8 +51,8 @@
                             <ListView.View>
                                 <GridView>
                                     <GridViewColumn DisplayMemberBinding="{Binding Path=DateTime}" Header="Time" Width="150"/>
-                                    <GridViewColumn DisplayMemberBinding="{Binding Path=Name}" Header="Name" Width="250"/>
-                                    <GridViewColumn DisplayMemberBinding="{Binding Path=Status}" Header="Status" Width="150"/>
+                                    <GridViewColumn DisplayMemberBinding="{Binding Path=Status}" Header="Status" Width="50"/>
+                                    <GridViewColumn DisplayMemberBinding="{Binding Path=FullName}" Header="Name"/>
                                 </GridView>
                             </ListView.View>
                         </ListView>

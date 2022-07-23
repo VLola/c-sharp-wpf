@@ -1,9 +1,11 @@
 ﻿using Microsoft.Win32;
+using Newtonsoft.Json;
 using Project_61_ParentalControl.MyModel;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.IO;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
@@ -14,6 +16,7 @@ namespace Project_61_ParentalControl
     public partial class MainWindow : Window
     {
         public AppDomain Domain;
+        private string _path = Directory.GetCurrentDirectory() + "/history";
         private string _programsWorkingHistory;
         private List<Program> _programs = new List<Program>();
         private List<HistoryWorking> _listProgramsWorkingHistory = new List<HistoryWorking>();
@@ -58,7 +61,11 @@ namespace Project_61_ParentalControl
             await Task.Run(async () => {
                 await CheckProgramStartAsync();
                 await TimeControlAsync();
-                if (Domain != null) Domain.SetData("parameter", _processNames);
+                await FileSyncAsync();
+                if (Domain != null) {
+                    Domain.SetData("_processNames", _processNames);
+                    Domain.SetData("_programsWorkingHistory", _programsWorkingHistory);
+                }
             });
         }
         private async Task StartAsync(RegistryKey registry)
@@ -129,27 +136,25 @@ namespace Project_61_ParentalControl
                 }
             });
         }
-        public class Program
+        private async Task FileSyncAsync()
         {
-            public string Name { get; set; }
-            public string FullName { get; set; }
-            public Program(string Name, string FullName)
-            {
-                this.Name = Name;
-                this.FullName = FullName;
-            }
-        }
-        public class HistoryWorking
-        {
-            public string FullName { get; set; }
-            public DateTime DateTime { get; set; }
-            public string Status { get; set; }
-            public HistoryWorking(string FullName, DateTime DateTime, string Status)
-            {
-                this.FullName = FullName;
-                this.DateTime = DateTime;
-                this.Status = Status;
-            }
+            await Task.Run(()=> {
+                if (File.Exists(_path)) {
+                    _programsWorkingHistory = File.ReadAllText(_path);
+                    List<HistoryWorking> list = JsonConvert.DeserializeObject<List<HistoryWorking>>(_programsWorkingHistory);
+                    foreach (var item in _listProgramsWorkingHistory)
+                    {
+                        bool check = false;
+                        foreach (var it in list)
+                        {
+                            if (item.FullName == it.FullName && item.DateTime == it.DateTime && item.Status == it.Status) check = true;
+                        }
+                        if (!check) list.Add(item);
+                    }
+                    _listProgramsWorkingHistory = list;
+                }
+                File.WriteAllText(_path ,JsonConvert.SerializeObject(_listProgramsWorkingHistory));
+            });
         }
     }
 }
