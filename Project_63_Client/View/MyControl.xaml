@@ -1,0 +1,37 @@
+﻿<UserControl x:Class="Project_63_Client.View.MyControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Project_63_Client.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="200" d:DesignWidth="400">
+    <UserControl.Resources>
+        <ResourceDictionary Source="/Styles/MainStyle.xaml"/>
+    </UserControl.Resources>
+    <Grid>
+        <Grid Style="{StaticResource AccountMenu}">
+            <TextBlock Text="{Binding Path=MyModel.Email}" Style="{StaticResource accountTextBlock}"/>
+            <Button Content="Exit" Command="{Binding DisconnectCommand}" Style="{StaticResource accountButton}"/>
+        </Grid>
+        <Grid Style="{StaticResource LoginMenu}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Column="0" Grid.Row="0" Text="Email:"/>
+            <TextBlock Grid.Column="0" Grid.Row="1" Text="Password:"/>
+            <TextBox Grid.Column="1" Grid.Row="0" Text="{Binding Path=MyModel.Email}"/>
+            <TextBox Grid.Column="1" Grid.Row="1" Text="{Binding Path=MyModel.Password}"/>
+            <RadioButton Grid.Column="0" Grid.Row="2" Content="Register" IsChecked="{Binding Path=MyModel.IsRegister}"/>
+            <RadioButton Grid.Column="1" Grid.Row="2" Content="Login" IsChecked="{Binding Path=MyModel.IsLogin}"/>
+            <Button Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" Content="Click" Command="{Binding ConnectCommand}"/>
+        </Grid>
+    </Grid>
+</UserControl>

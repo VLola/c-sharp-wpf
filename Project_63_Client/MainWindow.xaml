@@ -3,40 +3,10 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Project_63_Client"
+        xmlns:local="clr-namespace:Project_63_Client" xmlns:control="clr-namespace:Project_63_Client.View"
         mc:Ignorable="d"
         Title="MainWindow" Height="200" Width="400">
-    <Window.Resources>
-        <Style TargetType="TextBlock">
-            <Setter Property="VerticalAlignment" Value="Center"/>
-            <Setter Property="HorizontalAlignment" Value="Center"/>
-        </Style>
-        <Style TargetType="RadioButton">
-            <Setter Property="VerticalAlignment" Value="Center"/>
-            <Setter Property="HorizontalAlignment" Value="Center"/>
-        </Style>
-        <Style TargetType="TextBox">
-            <Setter Property="VerticalAlignment" Value="Center"/>
-            <Setter Property="Margin" Value="20 0"/>
-        </Style>
-    </Window.Resources>
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
-        <TextBlock Grid.Column="0" Grid.Row="0" Text="Email:"/>
-        <TextBlock Grid.Column="0" Grid.Row="1" Text="Password:"/>
-        <TextBox Grid.Column="1" Grid.Row="0" x:Name="Email"/>
-        <TextBox Grid.Column="1" Grid.Row="1" x:Name="Password"/>
-        <RadioButton Grid.Column="0" Grid.Row="2" Content="Register" x:Name="IsRegister" IsChecked="True"/>
-        <RadioButton Grid.Column="1" Grid.Row="2" Content="Login" x:Name="IsLogin"/>
-        <Button Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" Content="Click" Click="Button_Click"/>
+        <control:MyControl/>
     </Grid>
 </Window>

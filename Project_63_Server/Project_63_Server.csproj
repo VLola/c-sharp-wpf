@@ -82,6 +82,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Model\Client.cs" />
+    <Compile Include="Model\ClientData.cs" />
     <Compile Include="Model\ConnectDB.cs" />
     <Compile Include="Model\Crypt.cs" />
     <Compile Include="Model\User.cs" />

@@ -12,8 +12,8 @@ namespace Project_63_Server
 {
     public partial class MainWindow : Window
     {
-        private int ClientId = 0;
-        public ObservableCollection<ConnectClient> Collection { get; set; } = new ObservableCollection<ConnectClient>();
+        private int ClientId = 1;
+        public ObservableCollection<Client> Collection { get; set; } = new ObservableCollection<Client>();
         public MainWindow()
         {
             InitializeComponent();
@@ -35,20 +35,14 @@ namespace Project_63_Server
                 serverSocket.Listen(10);
                 while (true)
                 {
-                    Socket clientSocket = serverSocket.Accept();
-                    Connect(clientSocket, ClientId++);
+                    Connect(serverSocket.Accept(), ClientId++);
                 }
             });
         }
         private void Connect(Socket clientSocket, int id)
         {
             Task.Run(() => {
-
-                ConnectClient connectClient = new ConnectClient();
-                connectClient.Id = id;
-                Dispatcher.Invoke(new Action(() => {
-                    Collection.Add(connectClient);
-                }));
+                SaveClientId(id);
                 while (true)
                 {
                     int bytes = 0;
@@ -60,21 +54,21 @@ namespace Project_63_Server
                         builder.Append(Encoding.Unicode.GetString(buffer, 0, bytes));
                     } while (clientSocket.Available > 0);
 
-                    if(builder.ToString() == "") Remove(id);
+                    if(builder.ToString() == "") RemoveClient(id);
                     else
                     {
-                        Client client = JsonConvert.DeserializeObject<Client>(builder.ToString());
+                        ClientData clientData = JsonConvert.DeserializeObject<ClientData>(builder.ToString());
 
                         User user = new User();
-                        user.Email = client.Email;
-                        user.Password = client.Password;
-                        if (client.IsLogin == true)
+                        user.Email = clientData.Email;
+                        user.Password = clientData.Password;
+                        if (clientData.IsLogin == true)
                         {
                             if (ConnectDB.LoginUser(user.Email, user.Password))
                             {
-                                byte[] data = Encoding.Unicode.GetBytes("login ok");
+                                byte[] data = Encoding.Unicode.GetBytes("ok");
                                 clientSocket.Send(data);
-                                Login(user.Email, id);
+                                SaveClient(user.Email, id);
                             }
                             else
                             {
@@ -82,39 +76,42 @@ namespace Project_63_Server
                                 clientSocket.Send(data);
                             }
                         }
-                        else if (client.IsRegister == true)
+                        else if (clientData.IsRegister == true)
                         {
                             if (ConnectDB.RegistrationUser(user.Email, user.Password))
                             {
-                                byte[] data = Encoding.Unicode.GetBytes("reg ok");
+                                byte[] data = Encoding.Unicode.GetBytes("ok");
                                 clientSocket.Send(data);
                             }
                             else
                             {
-                                byte[] data = Encoding.Unicode.GetBytes("reg error");
+                                byte[] data = Encoding.Unicode.GetBytes("register error");
                                 clientSocket.Send(data);
                             }
                         }
                     }
-                    
                 }
-                //clientSocket.Shutdown(SocketShutdown.Both);
-                //clientSocket.Close();
             });
         }
-        public void Login(string email, int id)
+        private void SaveClientId(int id)
+        {
+            Dispatcher.Invoke(new Action(() => {
+                Collection.Add(new Client(id, "No login"));
+            }));
+        }
+        private void SaveClient(string email, int id)
         {
             Dispatcher.Invoke(new Action(() => {
                 for (int i = 0; i < Collection.Count; i++)
                     if (Collection[i].Id == id)
                     {
                         Collection.RemoveAt(i);
-                        Collection.Add(new ConnectClient(id, email));
+                        Collection.Add(new Client(id, email));
                         break;
                     }
             }));
         }
-        public void Remove(int id)
+        private void RemoveClient(int id)
         {
             Dispatcher.Invoke(new Action(() => {
                 for(int i = 0; i < Collection.Count; i++)
@@ -124,16 +121,6 @@ namespace Project_63_Server
                         break;
                     }
             }));
-        }
-        public class ConnectClient
-        {
-            public int Id { get; set; }
-            public string Email { get; set; } = "No login";
-            public ConnectClient() { }
-            public ConnectClient(int Id, string Email) {
-                this.Id = Id;
-                this.Email = Email;
-            }
         }
     }
 }
