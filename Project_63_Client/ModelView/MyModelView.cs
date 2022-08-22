@@ -5,6 +5,7 @@ using System.Net.Sockets;
 using System.Text;
 using System.Text.Json;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace Project_63_Client.ModelView
 {
@@ -14,8 +15,10 @@ namespace Project_63_Client.ModelView
         private Socket _socket;
         private RelayCommand _connectCommand;
         private RelayCommand _disconnectCommand;
-        public MyModelView()
+        PasswordBox passwordBox;
+        public MyModelView(PasswordBox passwordBox)
         {
+            this.passwordBox = passwordBox;
             Load();
         }
         private void Load()
@@ -46,7 +49,7 @@ namespace Project_63_Client.ModelView
         {
             Client client = new Client();
             client.Email = MyModel.Email;
-            client.Password = MyModel.Password;
+            client.Password = passwordBox.Password;
             if (MyModel.IsRegister == true)
             {
                 client.IsRegister = true;
@@ -84,12 +87,12 @@ namespace Project_63_Client.ModelView
             string message = builder.ToString();
             if (message == "ok")
             {
+                passwordBox.Password = "";
                 MyModel.IsLoginClient = true;
-                MyModel.Password = "";
             }
             else
             {
-                MyModel.Password = "";
+                passwordBox.Password = "";
                 MessageBox.Show(message);
             }
         }

@@ -7,11 +7,12 @@ namespace Project_63_Client.View
 {
     public partial class MyControl : UserControl
     {
-        public MyModelView modelView { get; set; } = new MyModelView();
+        public MyModelView modelView { get; set; }
         public MyControl()
         {
             InitializeComponent();
             Loaded += MyControl_Loaded;
+            modelView = new MyModelView(Password);
             this.DataContext = modelView;
         }
 

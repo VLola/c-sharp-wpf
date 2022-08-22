@@ -28,7 +28,7 @@
             <TextBlock Grid.Column="0" Grid.Row="0" Text="Email:"/>
             <TextBlock Grid.Column="0" Grid.Row="1" Text="Password:"/>
             <TextBox Grid.Column="1" Grid.Row="0" Text="{Binding Path=MyModel.Email}"/>
-            <TextBox Grid.Column="1" Grid.Row="1" Text="{Binding Path=MyModel.Password}"/>
+            <PasswordBox Grid.Column="1" Grid.Row="1" x:Name="Password"/>
             <RadioButton Grid.Column="0" Grid.Row="2" Content="Register" IsChecked="{Binding Path=MyModel.IsRegister}"/>
             <RadioButton Grid.Column="1" Grid.Row="2" Content="Login" IsChecked="{Binding Path=MyModel.IsLogin}"/>
             <Button Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" Content="Click" Command="{Binding ConnectCommand}"/>

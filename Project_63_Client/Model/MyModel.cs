@@ -21,17 +21,6 @@ namespace Project_63_Client.Model
             }
 
         }
-        private string _Password { get; set; }
-        public string Password
-        {
-            get { return _Password; }
-            set
-            {
-                _Password = value;
-                OnPropertyChanged("Password");
-            }
-
-        }
         private bool _IsLogin { get; set; } = true;
         public bool IsLogin
         {

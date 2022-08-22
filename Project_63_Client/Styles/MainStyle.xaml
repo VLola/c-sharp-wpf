@@ -24,6 +24,10 @@
         <Setter Property="VerticalAlignment" Value="Center"/>
         <Setter Property="Margin" Value="20 0"/>
     </Style>
+    <Style TargetType="PasswordBox">
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Margin" Value="20 0"/>
+    </Style>
     <Style TargetType="Grid" x:Key="LoginMenu">
         <Setter Property="VerticalAlignment" Value="Stretch"/>
         <Setter Property="HorizontalAlignment" Value="Stretch"/>
