@@ -7,16 +7,73 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
-        <Style TargetType="TextBlock">
-            <Setter Property="Foreground" Value="Red"/>
-            <Style.Triggers>
-                <DataTrigger Binding="{Binding Path=IsLogin}" Value="True">
-                    <Setter Property="Foreground" Value="Green"/>
-                </DataTrigger>
-            </Style.Triggers>
-        </Style>
+        <ResourceDictionary Source="/Styles/MainStyle.xaml"/>
     </UserControl.Resources>
     <Grid>
-        <TextBlock Text="{Binding Path=FirstName}"/>
+        <Grid Style="{StaticResource styleLoginGrid}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Column="0" Grid.Row="0" Text="Email:"/>
+            <TextBlock Grid.Column="0" Grid.Row="1" Text="Password:"/>
+            <TextBox Grid.Column="1" Grid.Row="0" Text="{Binding Path=ClientModel.Email}"/>
+            <PasswordBox Grid.Column="1" Grid.Row="1" x:Name="Password"/>
+            <RadioButton Grid.Column="0" Grid.Row="2" Content="Register" IsChecked="{Binding Path=ClientModel.IsRegister}"/>
+            <RadioButton Grid.Column="1" Grid.Row="2" Content="Login" IsChecked="{Binding Path=ClientModel.IsLogin}"/>
+            <Button Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" Content="Click" Command="{Binding ConnectCommand}"/>
+        </Grid>
+        <Grid Style="{StaticResource styleUserGrid}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="4*"/>
+                <ColumnDefinition Width="10*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <DockPanel>
+                    <TextBlock Text="User name:"/>
+                    <TextBox Grid.Row="0" Text="{Binding Path=SelectedUser.AddNameUser}"/>
+                </DockPanel>
+                <Button Grid.Row="1" Content="Add user" Command="{Binding AddUserCommand}"/>
+                <ListBox Grid.Row="2" ItemsSource="{Binding Path=Users}" SelectedItem="{Binding Path=SelectedUser.User}" Style="{StaticResource styleListBoxUsers}">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <TextBlock Text="{Binding Path=FirstName}" Style="{StaticResource styleUserName}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </Grid>
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="5*"/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <ListBox Grid.Row="0" ItemsSource="{Binding Path=SelectedUser.User.Messages}" Style="{StaticResource styleListBoxMessages}">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <TextBlock Text="{Binding}" TextWrapping="Wrap"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+                <TextBox Grid.Row="1" Text="{Binding Path=SelectedUser.Message}"/>
+                <Button Grid.Row="2" Content="Send message" Command="{Binding SendMessageCommand}"/>
+            </Grid>
+        </Grid>
     </Grid>
 </UserControl>

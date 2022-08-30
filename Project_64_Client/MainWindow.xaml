@@ -6,51 +6,7 @@
         xmlns:local="clr-namespace:Project_64_Client" xmlns:control="clr-namespace:Project_64_Client.View" xmlns:model="clr-namespace:Project_64_Client.Model"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Window.Resources>
-        <Style TargetType="ListBox" x:Key="styleListBoxUsers">
-        </Style>
-    </Window.Resources>
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="4*"/>
-            <ColumnDefinition Width="10*"/>
-        </Grid.ColumnDefinitions>
-        <Grid Grid.Column="0">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
-            <TextBox Grid.Row="0" Text="{Binding Path=SelectedUser.AddNameUser}"/>
-            <Button Grid.Row="1" Content="Add user" Command="{Binding AddUserCommand}"/>
-            <ListBox Grid.Row="2" ItemsSource="{Binding Path=Users}" SelectedItem="{Binding Path=SelectedUser.User}" Style="{StaticResource styleListBoxUsers}">
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel>
-                            <control:UserView FirstName="{Binding Path=FirstName}"/>
-                        </StackPanel>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
-        </Grid>
-        <Grid Grid.Column="1">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="5*"/>
-                <RowDefinition/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
-            <ListBox Grid.Row="0" ItemsSource="{Binding Path=SelectedUser.User.Messages}">
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel>
-                            <TextBlock Text="{Binding}"/>
-                        </StackPanel>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
-            <TextBox Grid.Row="1" Text="{Binding Path=SelectedUser.Message}"/>
-            <Button Grid.Row="2" Content="Send message" Command="{Binding SendMessageCommand}"/>
-
-        </Grid>
+        <control:UserView/>
     </Grid>
 </Window>

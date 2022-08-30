@@ -1,32 +1,29 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Project_64_Client.ModelView;
+using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Project_64_Client.View
 {
     public partial class UserView : UserControl
     {
-        public string FirstName
-        {
-            get { return (string)GetValue(FirstNameProperty); }
-            set { SetValue(FirstNameProperty, value); }
-        }
-
-        public static readonly DependencyProperty FirstNameProperty = DependencyProperty.Register("FirstName", typeof(string), typeof(UserView), new PropertyMetadata(null));
+        public UserModelView modelView { get; set; }
         public UserView()
         {
             InitializeComponent();
+            Loaded += MyControl_Loaded;
+            modelView = new(Password);
+            this.DataContext = modelView;
+        }
+        private void MyControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            Window window = Window.GetWindow(this);
+            window.Closing += window_Closing;
+        }
+
+        void window_Closing(object? sender, CancelEventArgs e)
+        {
+            modelView.Close();
         }
     }
 }

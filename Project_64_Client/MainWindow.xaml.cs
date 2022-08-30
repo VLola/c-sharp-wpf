@@ -11,7 +11,6 @@ namespace Project_64_Client
         public MainWindow()
         {
             InitializeComponent();
-            this.DataContext = new UserModelView();
         }
     }
 }
