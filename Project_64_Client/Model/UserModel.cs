@@ -1,19 +1,37 @@
-﻿using System.Collections.ObjectModel;
+﻿using Project_64_Client.Object;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
 namespace Project_64_Client.Model
 {
-    public class UserModel
+    public class UserModel : INotifyPropertyChanged
     {
-        public string Email { get; set; }
+        public event PropertyChangedEventHandler? PropertyChanged;
+        public void OnPropertyChanged([CallerMemberName] string prop = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
+        }
         public string FirstName { get; set; }
         public bool IsLogin { get; set; }
-        public ObservableCollection<string> Messages { get; set; } = new();
-        public UserModel(string email, string name)
+        private ObservableCollection<ChatMessage> _messages { get; set; } = new();
+        public ObservableCollection<ChatMessage> Messages
         {
-            Email = email;
+            get { return _messages; }
+            set
+            {
+                _messages = value;
+                OnPropertyChanged("Messages");
+            }
+        }
+        public UserModel() { }
+        public UserModel(string name)
+        {
             FirstName = name;
+        }
+        public void AddMessage(ChatMessage chatMessage)
+        {
+            Messages.Add(chatMessage);
         }
     }
 }

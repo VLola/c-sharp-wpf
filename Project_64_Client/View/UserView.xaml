@@ -14,20 +14,32 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
+                <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition/>
                 <RowDefinition/>
                 <RowDefinition/>
-                <RowDefinition/>
             </Grid.RowDefinitions>
-            <TextBlock Grid.Column="0" Grid.Row="0" Text="Email:"/>
-            <TextBlock Grid.Column="0" Grid.Row="1" Text="Password:"/>
-            <TextBox Grid.Column="1" Grid.Row="0" Text="{Binding Path=ClientModel.Email}"/>
-            <PasswordBox Grid.Column="1" Grid.Row="1" x:Name="Password"/>
-            <RadioButton Grid.Column="0" Grid.Row="2" Content="Register" IsChecked="{Binding Path=ClientModel.IsRegister}"/>
-            <RadioButton Grid.Column="1" Grid.Row="2" Content="Login" IsChecked="{Binding Path=ClientModel.IsLogin}"/>
-            <Button Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" Content="Click" Command="{Binding ConnectCommand}"/>
+            <Grid Grid.Column="1" Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Column="0" Grid.Row="0" Text="Name:"/>
+                <TextBlock Grid.Column="0" Grid.Row="1" Text="Password:"/>
+                <TextBox Grid.Column="1" Grid.Row="0" Text="{Binding Path=ClientModel.FirstName}"/>
+                <PasswordBox Grid.Column="1" Grid.Row="1" x:Name="Password"/>
+                <RadioButton Grid.Column="0" Grid.Row="2" Content="Register" IsChecked="{Binding Path=ClientModel.IsRegister}"/>
+                <RadioButton Grid.Column="1" Grid.Row="2" Content="Login" IsChecked="{Binding Path=ClientModel.IsLogin}"/>
+                <Button Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" Content="Click" Command="{Binding ConnectCommand}"/>
+            </Grid>
         </Grid>
         <Grid Style="{StaticResource styleUserGrid}">
             <Grid.ColumnDefinitions>
@@ -38,14 +50,27 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-                <DockPanel>
-                    <TextBlock Text="User name:"/>
-                    <TextBox Grid.Row="0" Text="{Binding Path=SelectedUser.AddNameUser}"/>
-                </DockPanel>
-                <Button Grid.Row="1" Content="Add user" Command="{Binding AddUserCommand}"/>
-                <ListBox Grid.Row="2" ItemsSource="{Binding Path=Users}" SelectedItem="{Binding Path=SelectedUser.User}" Style="{StaticResource styleListBoxUsers}">
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" Text="{Binding Path=ClientModel.FirstName}"/>
+                    <Button Grid.Column="1" Content="Exit" Command="{Binding DisconnectCommand}"/>
+                </Grid>
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" Text="User name:"/>
+                    <TextBox Grid.Column="1" Grid.Row="0" Text="{Binding Path=SelectedUser.AddNameUser}"/>
+                </Grid>
+                <Button Grid.Row="2" Content="Add user" Command="{Binding AddUserCommand}"/>
+                <ListBox Grid.Row="3" ItemsSource="{Binding Path=Users}" SelectedItem="{Binding Path=SelectedUser.User}" Style="{StaticResource styleListBoxUsers}">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <StackPanel>
@@ -60,19 +85,26 @@
                     <RowDefinition Height="5*"/>
                     <RowDefinition/>
                     <RowDefinition/>
-                    <RowDefinition/>
                 </Grid.RowDefinitions>
-                <ListBox Grid.Row="0" ItemsSource="{Binding Path=SelectedUser.User.Messages}" Style="{StaticResource styleListBoxMessages}">
+                <ListBox Grid.Row="0" ItemsSource="{Binding Path=SelectedUser.User.Messages}" Style="{StaticResource styleListBoxMessages}" HorizontalContentAlignment="Stretch">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
-                            <StackPanel>
-                                <TextBlock Text="{Binding}" TextWrapping="Wrap"/>
-                            </StackPanel>
+                            <Grid HorizontalAlignment="Stretch">
+                                <TextBlock Text="{Binding Path=Message}" Style="{StaticResource styleTextBlockMessage}"/>
+                                <Button Content="Play" Style="{StaticResource styleButtonPlay}"/>
+                            </Grid>
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>
                 <TextBox Grid.Row="1" Text="{Binding Path=SelectedUser.Message}"/>
-                <Button Grid.Row="2" Content="Send message" Command="{Binding SendMessageCommand}"/>
+                <Grid Grid.Row="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Button Grid.Column="0" Content="Send message" Command="{Binding SendMessageCommand}"/>
+                    <Button Grid.Column="1" Content="Record" Command="{Binding RecordCommand}"/>
+                </Grid>
             </Grid>
         </Grid>
     </Grid>

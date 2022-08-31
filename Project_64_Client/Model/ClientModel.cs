@@ -12,44 +12,44 @@ namespace Project_64_Client.Model
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
         }
-        private string _Email { get; set; }
-        public string Email
+        private string _firstName { get; set; }
+        public string FirstName
         {
-            get { return _Email; }
+            get { return _firstName; }
             set
             {
-                _Email = value;
-                OnPropertyChanged("Email");
+                _firstName = value;
+                OnPropertyChanged("FirstName");
             }
 
         }
-        private bool _IsLogin { get; set; } = true;
+        private bool _isLogin { get; set; } = true;
         public bool IsLogin
         {
-            get { return _IsLogin; }
+            get { return _isLogin; }
             set
             {
-                _IsLogin = value;
+                _isLogin = value;
                 OnPropertyChanged("IsLogin");
             }
         }
-        private bool _IsRegister { get; set; }
+        private bool _isRegister { get; set; }
         public bool IsRegister
         {
-            get { return _IsRegister; }
+            get { return _isRegister; }
             set
             {
-                _IsRegister = value;
+                _isRegister = value;
                 OnPropertyChanged("IsRegister");
             }
         }
-        private bool _IsLoginClient { get; set; }
+        private bool _isLoginClient { get; set; }
         public bool IsLoginClient
         {
-            get { return _IsLoginClient; }
+            get { return _isLoginClient; }
             set
             {
-                _IsLoginClient = value;
+                _isLoginClient = value;
                 OnPropertyChanged("IsLoginClient");
             }
         }

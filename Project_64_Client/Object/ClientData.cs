@@ -1,7 +1,4 @@
-﻿using Project_64_Server.Object;
-using System.Collections.ObjectModel;
-
-namespace Project_64_Server.Model
+﻿namespace Project_64_Client.Object
 {
     internal class ClientData
     {
@@ -14,6 +11,8 @@ namespace Project_64_Server.Model
         public ChatMessage? Message { get; set; }
         public bool IsFriendChat { get; set; }
         public Chat? FriendChat { get; set; }
+        public bool IsRecord { get; set; }
+        public bool Record { get; set; }
         public ClientData() { }
     }
 }

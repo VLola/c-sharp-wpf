@@ -6,15 +6,19 @@ using System.Text;
 using System.Text.Json;
 
 string pathUsers = Directory.GetCurrentDirectory() + "/User";
+string pathChats = Directory.GetCurrentDirectory() + "/Chats";
 string pathStatusClient = Directory.GetCurrentDirectory() + "/StatusClient";
+int chatId = 0;
 
-ObservableCollection<Client> Collection = new ObservableCollection<Client>();
+ObservableCollection<ClientSocket> CollectionClientSoket = new();
 
 try
 {
     if (!Directory.Exists(pathUsers)) Directory.CreateDirectory(pathUsers);
     if (!Directory.Exists(pathStatusClient)) Directory.CreateDirectory(pathStatusClient);
+    if (!Directory.Exists(pathChats)) Directory.CreateDirectory(pathChats);
     Listen();
+    Console.Read();
 }
 catch (Exception ex) {
     Console.WriteLine(ex.Message);
@@ -38,61 +42,134 @@ void Connect(Socket clientSocket)
 {
     Task.Run(() => {
         Client client = new Client();
+
         while (true)
         {
-            int bytes = 0;
-            byte[] buffer = new byte[1024];
-            StringBuilder builder = new StringBuilder();
-            do
-            {
-                bytes = clientSocket.Receive(buffer);
-                builder.Append(Encoding.Unicode.GetString(buffer, 0, bytes));
-            } while (clientSocket.Available > 0);
+            try {
+                int bytes = 0;
+                byte[] buffer = new byte[1024];
+                StringBuilder builder = new StringBuilder();
+                do
+                {
+                    bytes = clientSocket.Receive(buffer);
+                    builder.Append(Encoding.Unicode.GetString(buffer, 0, bytes));
+                } while (clientSocket.Available > 0);
 
-            if (builder.ToString() == "") {
-                client.IsConnected = false;
-                ConnectedUser(client);
-            }
-            else
-            {
-                ClientData? clientData = JsonSerializer.Deserialize<ClientData>(builder.ToString());
-                if (clientData != null)
-                    if (clientData.IsLogin == true)
+                if (builder.ToString() == "")
+                {
+                    client.IsConnected = false;
+                    ConnectedUser(client);
+                    clientSocket.Shutdown(SocketShutdown.Both);
+                    clientSocket.Close();
+                    break;
+                }
+                else
+                {
+                    ClientData? clientData = JsonSerializer.Deserialize<ClientData>(builder.ToString());
+                    if (clientData != null)
                     {
-                        if (LoginUser(clientData.FirstName, clientData.Password))
+                        if (clientData.IsLogin && clientData.FirstName != null && clientData.FirstName != "" && clientData.Password != null && clientData.Password != "")
                         {
-                            byte[] data = Encoding.Unicode.GetBytes("ok");
-
-                            clientSocket.Send(data); 
-                            client.FirstName = clientData.FirstName;
-                            client.IsConnected = true;
-                            ConnectedUser(client);
+                            if (LoginUser(clientData.FirstName, clientData.Password))
+                            {
+                                clientData.Login = true;
+                                clientSocket.Send(Encoding.Unicode.GetBytes(JsonSerializer.Serialize(clientData)));
+                                client.FirstName = clientData.FirstName;
+                                client.IsConnected = true;
+                                ConnectedUser(client);
+                                AddClientSocket(clientData.FirstName, clientSocket);
+                            }
+                            else
+                            {
+                                clientData.Login = false;
+                                clientSocket.Send(Encoding.Unicode.GetBytes(JsonSerializer.Serialize(clientData)));
+                            }
                         }
-                        else
+                        else if (clientData.IsRegister && clientData.FirstName != null && clientData.FirstName != "" && clientData.Password != null && clientData.Password != "")
                         {
-                            byte[] data = Encoding.Unicode.GetBytes("login error");
-                            clientSocket.Send(data);
+                            if (RegistrationUser(clientData.FirstName, clientData.Password))
+                            {
+                                clientData.Login = true;
+                                clientSocket.Send(Encoding.Unicode.GetBytes(JsonSerializer.Serialize(clientData)));
+                                client.FirstName = clientData.FirstName;
+                                client.IsConnected = true;
+                                ConnectedUser(client);
+                                AddClientSocket(clientData.FirstName, clientSocket);
+                            }
+                            else
+                            {
+                                clientData.Login = false;
+                                clientSocket.Send(Encoding.Unicode.GetBytes(JsonSerializer.Serialize(clientData)));
+                            }
+                        }
+                        else if (clientData.IsFriendChat && clientData.FriendChat != null && clientData.FriendChat.FirstNameFriend != null && clientData.FirstName != null && clientData.FirstName != "")
+                        {
+                            if (clientData.FriendChat.ChatId == null)
+                            {
+                                string friendName = clientData.FriendChat.FirstNameFriend;
+                                ChatId chat = new ChatId() { Id = chatId++, Names = new string[2] { clientData.FirstName, friendName } };
+                                clientSocket.Send(Encoding.Unicode.GetBytes(JsonSerializer.Serialize(clientData)));
+                                File.WriteAllText(pathChats + "/" + chatId, JsonSerializer.Serialize(chat));
+                                clientData.FriendChat.FirstNameFriend = clientData.FirstName;
+                                AddChatFriend(friendName, clientData);
+                            }
+                        }
+                        else if (clientData.IsMessage && clientData.Message != null && clientData.FirstName != null && clientData.Message.FirstName != null)
+                        {
+                            AddMessageFriend(clientData.Message.FirstName, clientData);
+                            clientData.FirstName = clientData.Message.FirstName;
+                            clientSocket.Send(Encoding.Unicode.GetBytes(JsonSerializer.Serialize(clientData)));
                         }
                     }
-                    else if (clientData.IsRegister == true)
-                    {
-                        if (RegistrationUser(clientData.FirstName, clientData.Password))
-                        {
-                            byte[] data = Encoding.Unicode.GetBytes("ok");
-                            clientSocket.Send(data);
-                            client.FirstName = clientData.FirstName;
-                            client.IsConnected = true;
-                            ConnectedUser(client);
-                        }
-                        else
-                        {
-                            byte[] data = Encoding.Unicode.GetBytes("register error");
-                            clientSocket.Send(data);
-                        }
-                    }
-            }
+                }
+            } catch (Exception ex) { Console.WriteLine(ex.Message); }
         }
     });
+}
+
+void AddMessage(ClientData clientData, Socket socket)
+{
+    socket.Send(Encoding.Unicode.GetBytes(JsonSerializer.Serialize(clientData)));
+}
+
+void AddClientSocket(string firstName, Socket socket)
+{
+    if (!CheckClientSocket(firstName)) CollectionClientSoket.Add(new ClientSocket(firstName, socket));
+    else
+    {
+        foreach (var item in CollectionClientSoket)
+        {
+            if (item.FirstName == firstName) item.Socket = socket;
+        }
+    }
+}
+
+bool CheckClientSocket(string firstName)
+{
+    foreach (var item in CollectionClientSoket)
+    {
+        if (item.FirstName == firstName) return true;
+    }
+    return false;
+}
+
+void AddChatFriend(string firstName, ClientData clientData)
+{
+    foreach (var item in CollectionClientSoket)
+    {
+        if (item.FirstName == firstName) item.Socket.Send(Encoding.Unicode.GetBytes(JsonSerializer.Serialize(clientData)));
+    }
+}
+
+void AddMessageFriend(string firstName, ClientData clientData)
+{
+    try
+    {
+        foreach (var item in CollectionClientSoket)
+        {
+            if (item.FirstName == firstName) item.Socket.Send(Encoding.Unicode.GetBytes(JsonSerializer.Serialize(clientData)));
+        }
+    } catch { }
 }
 
 bool RegistrationUser(string firstName, string password)
@@ -110,7 +187,7 @@ bool LoginUser(string firstName, string password)
     if (File.Exists(pathUsers + "/" + firstName))
     {
         User? user = JsonSerializer.Deserialize<User>(File.ReadAllText(pathUsers + "/" + firstName));
-        if (user != null && user.Password == Crypt.Generate(password)) return true;
+        if (user != null && Crypt.Veryfy(password, user.Password)) return true;
         else return false;
     }
     else return false;
@@ -118,5 +195,5 @@ bool LoginUser(string firstName, string password)
 
 void ConnectedUser(Client client)
 {
-    if(client.FirstName != null && client.FirstName != null) File.WriteAllText(pathStatusClient + "/" + client.FirstName, JsonSerializer.Serialize(client));
+    if(client.FirstName != null) File.WriteAllText(pathStatusClient + "/" + client.FirstName, JsonSerializer.Serialize(client));
 }

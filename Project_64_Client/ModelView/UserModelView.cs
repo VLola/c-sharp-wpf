@@ -1,13 +1,16 @@
 ﻿using Project_64_Client.Command;
 using Project_64_Client.Model;
 using Project_64_Client.Object;
+using System;
 using System.Collections.ObjectModel;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Text.Json;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Threading;
 
 namespace Project_64_Client.ModelView
 {
@@ -22,9 +25,12 @@ namespace Project_64_Client.ModelView
         private RelayCommand? _addUserCommand;
         private RelayCommand? _connectCommand;
         private RelayCommand? _disconnectCommand;
+        private RelayCommand? _recordCommand;
         public UserModelView(PasswordBox passwordBox)
         {
             _passwordBox = passwordBox;
+            Load();
+            Listen();
         }
         public RelayCommand ConnectCommand
         {
@@ -42,6 +48,10 @@ namespace Project_64_Client.ModelView
         {
             get { return _addUserCommand ?? (_addUserCommand = new RelayCommand(obj => { AddUser(); })); }
         }
+        public RelayCommand RecordCommand
+        {
+            get { return _recordCommand ?? (_recordCommand = new RelayCommand(obj => { Record(); })); }
+        }
         private bool CheckUser(string name)
         {
             foreach (var user in Users)
@@ -58,18 +68,23 @@ namespace Project_64_Client.ModelView
         }
         public void Close()
         {
-            if(_socket != null)
+            _socket.Shutdown(SocketShutdown.Both);
+            _socket.Close();
+        }
+        private void Reload()
+        {
+            App.Current.Dispatcher.Invoke(new System.Action(() =>
             {
-                _socket.Shutdown(SocketShutdown.Both);
-                _socket.Close();
-            }
+                Users.Clear();
+            }));
         }
         private void AddUser()
         {
-            string name = SelectedUser.AddNameUser;
-            if (!CheckUser(name) && name != "")
+            string friendName = SelectedUser.AddNameUser;
+            if (!CheckUser(friendName) && friendName != "")
             {
-                Users.Add(new UserModel("", name));
+                ClientData clientData = new() { FirstName = ClientModel.FirstName, IsFriendChat = true, FriendChat = new() { FirstNameFriend = friendName } };
+                Send(clientData);
                 SelectedUser.AddNameUser = "";
             }
             else MessageBox.Show("Error");
@@ -79,66 +94,140 @@ namespace Project_64_Client.ModelView
             string message = SelectedUser.Message;
             if (SelectedUser.User != null && message != "")
             {
-                SelectedUser.User.Messages.Add(message);
+                ChatMessage chatMessage = new ChatMessage() { FirstName = SelectedUser.User.FirstName, Message = message };
+                ClientData clientData = new() { FirstName = ClientModel.FirstName, IsMessage = true, Message = chatMessage };
+                Send(clientData);
                 SelectedUser.Message = "";
             }
         }
+        private void Record()
+        {
+
+        }
         private void Connect()
         {
-            Client client = new Client();
-            client.Email = ClientModel.Email;
-            client.Password = _passwordBox.Password;
+            ClientData clientData = new();
+            clientData.FirstName = ClientModel.FirstName;
+            clientData.Password = _passwordBox.Password;
             if (ClientModel.IsRegister == true)
             {
-                client.IsRegister = true;
-                Send(client);
-                Recive();
+                clientData.IsRegister = true;
+                Send(clientData);
             }
             else if (ClientModel.IsLogin == true)
             {
-                client.IsLogin = true;
-                Send(client);
-                Recive();
+                clientData.IsLogin = true;
+                Send(clientData);
             }
         }
         private void Disconnect()
         {
             ClientModel.IsLoginClient = false;
             Close();
+            Reload();
             Load();
+            Listen();
         }
-        private void Send(Client client)
+        private void Send(ClientData clientData)
         {
             if (_socket != null)
             {
-                byte[] data = Encoding.Unicode.GetBytes(JsonSerializer.Serialize(client));
-                _socket.Send(data);
+                _socket.Send(Encoding.Unicode.GetBytes(JsonSerializer.Serialize(clientData)));
             }
+        }
+        private void Listen()
+        {
+            Task.Run(() =>
+            {
+                while (true)
+                {
+                    if(_socket != null)
+                    {
+                        Recive();
+                    }
+                }
+            });
         }
         private void Recive()
         {
-            if (_socket != null)
+            try
             {
                 int bytes = 0;
-                byte[] buffer = new byte[1024];
+                byte[] buffer = new byte[64000];
                 StringBuilder builder = new StringBuilder();
                 do
                 {
                     bytes = _socket.Receive(buffer);
-                    builder.Append(Encoding.Unicode.GetString(buffer, 0, bytes));
                 } while (_socket.Available > 0);
-                string message = builder.ToString();
-                if (message == "ok")
+
+                builder.Append(Encoding.Unicode.GetString(buffer, 0, bytes));
+
+                ClientData? clientData = JsonSerializer.Deserialize<ClientData>(builder.ToString());
+                if (clientData != null)
                 {
-                    _passwordBox.Password = "";
-                    ClientModel.IsLoginClient = true;
-                }
-                else
-                {
-                    _passwordBox.Password = "";
-                    MessageBox.Show(message);
+                    if (clientData.IsLogin)
+                    {
+                        if (clientData.Login)
+                        {
+                            Repassword("");
+                            ClientModel.IsLoginClient = true;
+                        }
+                        else
+                        {
+                            Repassword("");
+                            MessageBox.Show("Error login");
+                        }
+                    }
+                    else if (clientData.IsRegister)
+                    {
+                        if (clientData.Login)
+                        {
+                            Repassword("");
+                            ClientModel.IsLoginClient = true;
+                        }
+                        else
+                        {
+                            Repassword("");
+                            MessageBox.Show("Error register");
+                        }
+                    }
+                    else if (clientData.IsFriendChat && clientData.FriendChat != null && clientData.FriendChat.FirstNameFriend != null)
+                    {
+                        if (clientData.FriendChat.Messages == null) LoadCollectionUser(new UserModel(clientData.FriendChat.FirstNameFriend));
+                        else LoadCollectionUser(new UserModel(clientData.FriendChat.FirstNameFriend) { Messages = clientData.FriendChat.Messages });
+                    }
+                    else if (clientData.IsMessage)
+                    {
+                        if (clientData.Message?.FirstName == ClientModel.FirstName) clientData.Message.IsMyMessage = true;
+                        LoadCollectionMessage(clientData.FirstName, clientData.Message);
+                    }
                 }
             }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
+        }
+        private void LoadCollectionUser(UserModel userModel)
+        {
+            App.Current.Dispatcher.Invoke(new System.Action(() =>
+            {
+                Users.Add(userModel);
+            }));
+        }
+        private void LoadCollectionMessage(string firstName, ChatMessage chatMessage)
+        {
+            App.Current.Dispatcher.Invoke(new System.Action(() =>
+            {
+                foreach (var user in Users)
+                {
+                    if (user.FirstName == firstName) user.AddMessage(chatMessage);
+                }
+            }));
+        }
+        private void Repassword(string password)
+        {
+            _passwordBox.Dispatcher.Invoke(new System.Action(() =>
+            {
+                _passwordBox.Password = password;
+            }));
         }
     }
 }
