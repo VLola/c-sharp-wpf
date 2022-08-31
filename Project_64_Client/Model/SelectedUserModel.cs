@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using Project_64_Client.Object;
+using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
 namespace Project_64_Client.Model
@@ -20,6 +21,7 @@ namespace Project_64_Client.Model
                 OnPropertyChanged("User");
             }
         }
+
         private string _message { get; set; }
         public string Message
         {

@@ -53,5 +53,15 @@ namespace Project_64_Client.Model
                 OnPropertyChanged("IsLoginClient");
             }
         }
+        private bool _isRecord { get; set; }
+        public bool IsRecord
+        {
+            get { return _isRecord; }
+            set
+            {
+                _isRecord = value;
+                OnPropertyChanged("IsRecord");
+            }
+        }
     }
 }

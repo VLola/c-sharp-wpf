@@ -24,6 +24,16 @@ namespace Project_64_Client.Model
                 OnPropertyChanged("Messages");
             }
         }
+        private ChatMessage _selectMessage { get; set; }
+        public ChatMessage SelectMessage
+        {
+            get { return _selectMessage; }
+            set
+            {
+                _selectMessage = value;
+                OnPropertyChanged("SelectMessage");
+            }
+        }
         public UserModel() { }
         public UserModel(string name)
         {

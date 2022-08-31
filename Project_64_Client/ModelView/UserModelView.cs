@@ -3,19 +3,27 @@ using Project_64_Client.Model;
 using Project_64_Client.Object;
 using System;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Net;
 using System.Net.Sockets;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Threading;
 
 namespace Project_64_Client.ModelView
 {
     public class UserModelView
     {
+        [DllImport("winmm.dll", EntryPoint = "mciSendString", CharSet = CharSet.Auto)]
+        public static extern int mciSendString(
+            string lpstrCommand,
+            string lpstrReturnString,
+            int uReturnLength,
+            int hwndCallback
+        );
         private PasswordBox _passwordBox;
         private Socket? _socket;
         public ClientModel ClientModel { get; set; } = new();
@@ -25,7 +33,8 @@ namespace Project_64_Client.ModelView
         private RelayCommand? _addUserCommand;
         private RelayCommand? _connectCommand;
         private RelayCommand? _disconnectCommand;
-        private RelayCommand? _recordCommand;
+        private RelayCommand? _startRecordCommand;
+        private RelayCommand? _stopRecordCommand;
         public UserModelView(PasswordBox passwordBox)
         {
             _passwordBox = passwordBox;
@@ -48,9 +57,13 @@ namespace Project_64_Client.ModelView
         {
             get { return _addUserCommand ?? (_addUserCommand = new RelayCommand(obj => { AddUser(); })); }
         }
-        public RelayCommand RecordCommand
+        public RelayCommand StartRecordCommand
         {
-            get { return _recordCommand ?? (_recordCommand = new RelayCommand(obj => { Record(); })); }
+            get { return _startRecordCommand ?? (_startRecordCommand = new RelayCommand(obj => { StartRecord(); })); }
+        }
+        public RelayCommand StopRecordCommand
+        {
+            get { return _stopRecordCommand ?? (_stopRecordCommand = new RelayCommand(obj => { StopRecord(); })); }
         }
         private bool CheckUser(string name)
         {
@@ -100,9 +113,34 @@ namespace Project_64_Client.ModelView
                 SelectedUser.Message = "";
             }
         }
-        private void Record()
+        private void StartRecord()
         {
-
+            ClientModel.IsRecord = true;
+            mciSendString("open new type WAVEAudio alias recsound", "", 0, 0);
+            mciSendString("record recsound", "", 0, 0);
+        }
+        private void StopRecord()
+        {
+            mciSendString("stop recsound", "", 0, 0);
+            mciSendString("save recsound temp.wav", "", 0, 0);
+            mciSendString("close recsound", "", 0, 0);
+            ClientModel.IsRecord = false;
+            string message = DateTime.Now.ToString();
+            if (SelectedUser.User != null)
+            {
+                ChatMessage chatMessage = new ChatMessage() { 
+                    FirstName = SelectedUser.User.FirstName,
+                    Message = message, IsRecord = true, 
+                    Record = File.ReadAllBytes(Directory.GetCurrentDirectory() + "/temp.wav") 
+                };
+                ClientData clientData = new() { 
+                    FirstName = ClientModel.FirstName, 
+                    IsMessage = true, 
+                    Message = chatMessage 
+                };
+                Send(clientData);
+                SelectedUser.Message = "";
+            }
         }
         private void Connect()
         {

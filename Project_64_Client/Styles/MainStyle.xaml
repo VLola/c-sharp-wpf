@@ -64,9 +64,30 @@
         <Setter Property="VerticalAlignment" Value="Center"/>
         <Setter Property="Margin" Value="10 5"/>
     </Style>
+    <Style TargetType="Button" x:Key="styleStartRecordButton">
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Margin" Value="10 5"/>
+        <Setter Property="Visibility" Value="Visible"/>
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding Path=ClientModel.IsRecord}" Value="True">
+                <Setter Property="Visibility" Value="Hidden"/>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="Button" x:Key="styleStopRecordButton">
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Margin" Value="10 5"/>
+        <Setter Property="Visibility" Value="Hidden"/>
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding Path=ClientModel.IsRecord}" Value="True">
+                <Setter Property="Visibility" Value="Visible"/>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
     <Style TargetType="Button" x:Key="styleButtonPlay">
         <Setter Property="VerticalAlignment" Value="Center"/>
         <Setter Property="Margin" Value="10 5"/>
+        <Setter Property="Padding" Value="10 5"/>
         <Setter Property="HorizontalAlignment" Value="Right"/>
         <Setter Property="Visibility" Value="Hidden"/>
         <Style.Triggers>

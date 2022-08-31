@@ -86,13 +86,10 @@
                     <RowDefinition/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-                <ListBox Grid.Row="0" ItemsSource="{Binding Path=SelectedUser.User.Messages}" Style="{StaticResource styleListBoxMessages}" HorizontalContentAlignment="Stretch">
+                <ListBox Grid.Row="0" ItemsSource="{Binding Path=SelectedUser.User.Messages}" SelectedItem="{Binding Path=SelectedUser.User.SelectMessage}" Style="{StaticResource styleListBoxMessages}" HorizontalContentAlignment="Stretch">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
-                            <Grid HorizontalAlignment="Stretch">
-                                <TextBlock Text="{Binding Path=Message}" Style="{StaticResource styleTextBlockMessage}"/>
-                                <Button Content="Play" Style="{StaticResource styleButtonPlay}"/>
-                            </Grid>
+                            <local:MessageView Message="{Binding}"/>
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>
@@ -103,7 +100,8 @@
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
                     <Button Grid.Column="0" Content="Send message" Command="{Binding SendMessageCommand}"/>
-                    <Button Grid.Column="1" Content="Record" Command="{Binding RecordCommand}"/>
+                    <Button Grid.Column="1" Content="Start Record" Command="{Binding StartRecordCommand}" Style="{StaticResource styleStartRecordButton}"/>
+                    <Button Grid.Column="1" Content="Stop Record" Command="{Binding StopRecordCommand}" Style="{StaticResource styleStopRecordButton}"/>
                 </Grid>
             </Grid>
         </Grid>
