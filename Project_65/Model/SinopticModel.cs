@@ -1,5 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace Project_65.Model
 {
@@ -10,14 +12,14 @@ namespace Project_65.Model
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
         }
-        private string _firstName { get; set; }
-        public string FirstName
+        private BitmapImage _logo { get; set; }
+        public BitmapImage Logo
         {
-            get { return _firstName; }
+            get { return _logo; }
             set
             {
-                _firstName = value;
-                OnPropertyChanged("FirstName");
+                _logo = value;
+                OnPropertyChanged("Logo");
             }
 
         }

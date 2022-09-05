@@ -13,7 +13,7 @@
         </Style>
     </UserControl.Resources>
     <Grid>
-        <ListBox ItemsSource="{Binding Path=Values}" Background="AliceBlue" HorizontalContentAlignment="Stretch" IsEnabled="False">
+        <ListBox ItemsSource="{Binding Path=Values}" HorizontalContentAlignment="Stretch" IsEnabled="False">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Grid HorizontalAlignment="Stretch">
@@ -27,31 +27,36 @@
                             <ColumnDefinition/>
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0" Text="{Binding Path=Value1}" HorizontalAlignment="Stretch" Background="Beige" Margin="1"/>
-                        <TextBlock Grid.Column="1" Text="{Binding Path=Value2}" HorizontalAlignment="Stretch" Background="Beige" Margin="1"/>
-                        <TextBlock Grid.Column="2" Text="{Binding Path=Value3}" HorizontalAlignment="Stretch" Background="Beige" Margin="1"/>
-                        <TextBlock Grid.Column="3" Text="{Binding Path=Value4}" HorizontalAlignment="Stretch" Background="Beige" Margin="1"/>
-                        <TextBlock Grid.Column="4" Text="{Binding Path=Value5}" HorizontalAlignment="Stretch" Background="Beige" Margin="1"/>
-                        <TextBlock Grid.Column="5" Text="{Binding Path=Value6}" HorizontalAlignment="Stretch" Background="Beige" Margin="1"/>
-                        <TextBlock Grid.Column="6" Text="{Binding Path=Value7}" HorizontalAlignment="Stretch" Background="Beige" Margin="1"/>
-                        <TextBlock Grid.Column="7" Text="{Binding Path=Value8}" HorizontalAlignment="Stretch" Background="Beige" Margin="1"/>
+                        <DockPanel Grid.Column="0" Background="#f2f2f2" >
+                            <TextBlock Text="{Binding Path=Value1}" HorizontalAlignment="Center"/>
+                        </DockPanel>
+                        <DockPanel Grid.Column="1" Background="#f2f2f2" >
+                            <TextBlock Text="{Binding Path=Value2}" HorizontalAlignment="Center"/>
+                        </DockPanel>
+                        <DockPanel Grid.Column="2" Background="#f2f2f2" >
+                            <Grid Height="Auto" Width="1" Background="Black"/>
+                            <TextBlock Text="{Binding Path=Value3}" HorizontalAlignment="Center"/>
+                        </DockPanel>
+                        <DockPanel Grid.Column="3" Background="#f2f2f2" >
+                            <TextBlock Text="{Binding Path=Value4}" HorizontalAlignment="Center"/>
+                        </DockPanel>
+                        <DockPanel Grid.Column="4" Background="#f2f2f2" >
+                            <Grid Height="Auto" Width="1" Background="Black"/>
+                            <TextBlock Text="{Binding Path=Value5}" HorizontalAlignment="Center"/>
+                        </DockPanel>
+                        <DockPanel Grid.Column="5" Background="#f2f2f2" >
+                            <TextBlock Text="{Binding Path=Value6}" HorizontalAlignment="Center"/>
+                        </DockPanel>
+                        <DockPanel Grid.Column="6" Background="#f2f2f2" >
+                            <Grid Height="Auto" Width="1" Background="Black"/>
+                            <TextBlock Text="{Binding Path=Value7}" HorizontalAlignment="Center"/>
+                        </DockPanel>
+                        <DockPanel Grid.Column="7" Background="#f2f2f2" >
+                            <TextBlock Text="{Binding Path=Value8}" HorizontalAlignment="Center"/>
+                        </DockPanel>
                     </Grid>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <!--<ListView  ItemsSource="{Binding Path=Values}">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Width="30" DisplayMemberBinding="{Binding Path=Value1}" />
-                    <GridViewColumn Width="30" DisplayMemberBinding="{Binding Path=Value2}" />
-                    <GridViewColumn Width="30" DisplayMemberBinding="{Binding Path=Value3}" />
-                    <GridViewColumn Width="30" DisplayMemberBinding="{Binding Path=Value4}" />
-                    <GridViewColumn Width="30" DisplayMemberBinding="{Binding Path=Value5}" />
-                    <GridViewColumn Width="30" DisplayMemberBinding="{Binding Path=Value6}" />
-                    <GridViewColumn Width="30" DisplayMemberBinding="{Binding Path=Value7}" />
-                    <GridViewColumn Width="30" DisplayMemberBinding="{Binding Path=Value8}" />
-                </GridView>
-            </ListView.View>
-        </ListView>-->
     </Grid>
 </UserControl>

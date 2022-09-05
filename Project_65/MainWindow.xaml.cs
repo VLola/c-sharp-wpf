@@ -1,4 +1,4 @@
-﻿using Project_65.ModelView;
+﻿using Project_65.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,16 +16,12 @@ using System.Windows.Shapes;
 
 namespace Project_65
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
-        //public SinopticModelView SinopticModelView { get; set; } = new SinopticModelView();
         public MainWindow()
         {
             InitializeComponent();
-            this.DataContext = new SinopticModelView();
+            this.DataContext = new SinopticViewModel();
         }
     }
 }

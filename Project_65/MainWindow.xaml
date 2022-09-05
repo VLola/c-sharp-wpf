@@ -7,6 +7,105 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <control:SinopticView Values="{Binding Path=Values}"/>
+        <!--<Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Column="0" Grid.Row="0" Grid.RowSpan="8">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Column="2" Grid.Row="3" Text="Температура, °C"/>
+            <TextBlock Grid.Column="2" Grid.Row="4" Text="чувствуется как"/>
+            <TextBlock Grid.Column="2" Grid.Row="5" Text="Давление, мм"/>
+            <TextBlock Grid.Column="2" Grid.Row="6" Text="Влажность, %"/>
+            <TextBlock Grid.Column="2" Grid.Row="7" Text="Ветер, м/сек"/>
+            <TextBlock Grid.Column="2" Grid.Row="8" Text="Вероятность осадков, %"/>
+        </Grid>-->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="1.2*"/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Image Grid.RowSpan="2" Grid.ColumnSpan="2" Source="{Binding Path=SinopticModel.Logo}"/>
+        <Grid Grid.Column="3" Grid.ColumnSpan="5" Margin="7 2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <DockPanel Grid.Column="0">
+                <TextBlock Text="ночь" HorizontalAlignment="Center"/>
+            </DockPanel>
+            <DockPanel Grid.Column="1">
+                <Grid Height="Auto" Width="1" Background="Black"/>
+                <TextBlock Text="утро" HorizontalAlignment="Center"/>
+            </DockPanel>
+            <DockPanel Grid.Column="2">
+                <Grid Height="Auto" Width="1" Background="Black"/>
+                <TextBlock Text="день" HorizontalAlignment="Center"/>
+            </DockPanel>
+            <DockPanel Grid.Column="3">
+                <Grid Height="Auto" Width="1" Background="Black"/>
+                <TextBlock Text="вечер" HorizontalAlignment="Center"/>
+            </DockPanel>
+        </Grid>
+        <ListBox Grid.Column="2" Grid.Row="1" HorizontalContentAlignment="Stretch" IsEnabled="False" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+            <ListBoxItem>
+                <TextBlock Text="" HorizontalAlignment="Stretch" Margin="0"/>
+            </ListBoxItem>
+            <ListBoxItem>
+                <TextBlock Text="Температура, °C" HorizontalAlignment="Right"/>
+            </ListBoxItem>
+            <ListBoxItem>
+                <TextBlock Text="чувствуется как" HorizontalAlignment="Right"/>
+            </ListBoxItem>
+            <ListBoxItem>
+                <TextBlock Text="Давление, мм" HorizontalAlignment="Right"/>
+            </ListBoxItem>
+            <ListBoxItem>
+                <TextBlock Text="Влажность, %" HorizontalAlignment="Right"/>
+            </ListBoxItem>
+            <ListBoxItem>
+                <TextBlock Text="Ветер, м/сек" HorizontalAlignment="Right"/>
+            </ListBoxItem>
+            <ListBoxItem>
+                <TextBlock Text="Вероятность осадков, %" HorizontalAlignment="Right" TextWrapping="Wrap"/>
+            </ListBoxItem>
+        </ListBox>
+        <control:SinopticView Grid.Column="3" Grid.Row="1" Grid.ColumnSpan="5" Values="{Binding Path=Values}"/>
     </Grid>
 </Window>
