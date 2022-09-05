@@ -4,6 +4,7 @@ using System;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Net;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -32,37 +33,26 @@ namespace Project_65.ViewModel
                 i++;
             }
 
-            var imgSrc = htmlDocument.DocumentNode.SelectNodes("//div[@class='imgBlock']//div[@class='img']//img");
-            LoadingImage("https:" + imgSrc[0].Attributes[2].Value);
-
+            var temp = htmlDocument.DocumentNode.SelectNodes("//p[@class='today-temp']");
+            int temperature = Int32.Parse(temp[0].InnerText.Replace("&deg;C", ""));
+            SinopticModel.TemperatureView = temperature + 50;
+            if (temperature >= 0)SinopticModel.Temperature = $"+{temperature}°C";
+            else SinopticModel.Temperature = $"-{temperature}°C";
+            var imgLogo = htmlDocument.DocumentNode.SelectNodes("//div[@class='imgBlock']//div[@class='img']//img");
+            SinopticModel.Logo = ByteToImage(webClient.DownloadData("https:" + imgLogo[0].Attributes[2].Value));
+            
         }
-        private void LoadingImage(string html)
+        private BitmapImage ByteToImage(byte[] array)
         {
-            var image = new BitmapImage();
-            int BytesToRead = 100;
-
-            WebRequest request = WebRequest.Create(new Uri(html, UriKind.Absolute));
-            request.Timeout = -1;
-            WebResponse response = request.GetResponse();
-            Stream responseStream = response.GetResponseStream();
-            BinaryReader reader = new BinaryReader(responseStream);
-            MemoryStream memoryStream = new MemoryStream();
-
-            byte[] bytebuffer = new byte[BytesToRead];
-            int bytesRead = reader.Read(bytebuffer, 0, BytesToRead);
-
-            while (bytesRead > 0)
+            using (var ms = new MemoryStream(array))
             {
-                memoryStream.Write(bytebuffer, 0, bytesRead);
-                bytesRead = reader.Read(bytebuffer, 0, BytesToRead);
+                var image = new BitmapImage();
+                image.BeginInit();
+                image.CacheOption = BitmapCacheOption.OnLoad;
+                image.StreamSource = ms;
+                image.EndInit();
+                return image;
             }
-
-            image.BeginInit();
-            memoryStream.Seek(0, SeekOrigin.Begin);
-
-            image.StreamSource = memoryStream;
-            image.EndInit();
-            SinopticModel.Logo = image;
         }
     }
 }

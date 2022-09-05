@@ -13,7 +13,7 @@
         </Style>
     </UserControl.Resources>
     <Grid>
-        <ListBox ItemsSource="{Binding Path=Values}" HorizontalContentAlignment="Stretch" IsEnabled="False">
+        <ListBox ItemsSource="{Binding Path=Values}" HorizontalContentAlignment="Stretch" IsEnabled="False" BorderThickness="0">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Grid HorizontalAlignment="Stretch">

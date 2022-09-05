@@ -21,7 +21,26 @@ namespace Project_65.Model
                 _logo = value;
                 OnPropertyChanged("Logo");
             }
-
+        }
+        private string _temperature { get; set; }
+        public string Temperature
+        {
+            get { return _temperature; }
+            set
+            {
+                _temperature = value;
+                OnPropertyChanged("Temperature");
+            }
+        }
+        private int _temperatureView { get; set; }
+        public int TemperatureView
+        {
+            get { return _temperatureView; }
+            set
+            {
+                _temperatureView = value;
+                OnPropertyChanged("TemperatureView");
+            }
         }
     }
 }
