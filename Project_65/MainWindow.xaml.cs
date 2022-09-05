@@ -17,10 +17,11 @@ using System.Windows.Shapes;
 namespace Project_65
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
+        //public SinopticModelView SinopticModelView { get; set; } = new SinopticModelView();
         public MainWindow()
         {
             InitializeComponent();
