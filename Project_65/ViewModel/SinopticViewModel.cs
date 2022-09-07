@@ -4,9 +4,7 @@ using System;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Net;
-using System.Text.RegularExpressions;
 using System.Windows;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
 namespace Project_65.ViewModel
@@ -14,6 +12,7 @@ namespace Project_65.ViewModel
     public class SinopticViewModel
     {
         public ObservableCollection<RowModel> Values { get; set; } = new();
+        public ObservableCollection<BitmapImage> Images { get; set; } = new();
         public SinopticModel SinopticModel { get; set; } = new SinopticModel();
         public SinopticViewModel()
         {
@@ -39,8 +38,10 @@ namespace Project_65.ViewModel
             if (temperature >= 0)SinopticModel.Temperature = $"+{temperature}°C";
             else SinopticModel.Temperature = $"-{temperature}°C";
             var imgLogo = htmlDocument.DocumentNode.SelectNodes("//div[@class='imgBlock']//div[@class='img']//img");
-            SinopticModel.Logo = ByteToImage(webClient.DownloadData("https:" + imgLogo[0].Attributes[2].Value));
-            
+            SinopticModel.Logo = ByteToImage(webClient.DownloadData("https:" + imgLogo[0].GetAttributeValue("src", "")));
+
+            var weatherImg = htmlDocument.DocumentNode.SelectNodes("//tr//td//div//img[@class='weatherImg']");
+            foreach (var item in weatherImg) Images.Add(ByteToImage((webClient.DownloadData("https:" + item.GetAttributeValue("src", "")))));
         }
         private BitmapImage ByteToImage(byte[] array)
         {

@@ -20,9 +20,10 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <Image Grid.RowSpan="2" Grid.ColumnSpan="2" Source="{Binding Path=SinopticModel.Logo}"/>
-        <Grid Grid.RowSpan="2" Grid.ColumnSpan="2">
+        <Image Grid.Row="1" Grid.RowSpan="2" Grid.ColumnSpan="2" Source="{Binding Path=SinopticModel.Logo}"/>
+        <Grid Grid.Row="1" Grid.RowSpan="2" Grid.ColumnSpan="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
@@ -42,9 +43,9 @@
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <Image Grid.RowSpan="4" Grid.ColumnSpan="2" Grid.Column="1" Source="Resources\term.png" VerticalAlignment="Bottom" HorizontalAlignment="Center" Height="100" MinHeight="100"/>
+            <Image Grid.RowSpan="4" Grid.ColumnSpan="3" Grid.Column="1" Source="Resources\termometer.png" VerticalAlignment="Bottom" HorizontalAlignment="Center" MinHeight="100"/>
+            <Image Grid.RowSpan="4" Grid.ColumnSpan="3" Grid.Column="1" Source="Resources\term-line.png" VerticalAlignment="Bottom" HorizontalAlignment="Center" Height="{Binding Path=SinopticModel.TemperatureView}"/>
             <TextBlock Grid.Row="4" Grid.Column="3" Grid.ColumnSpan="4" Text="{Binding Path=SinopticModel.Temperature}" FontSize="22" HorizontalAlignment="Center"/>
-            <Image Grid.Column="2" Grid.Row="1" Grid.RowSpan="3" Source="Resources\term-line.png" VerticalAlignment="Bottom" HorizontalAlignment="Center" Height="{Binding Path=SinopticModel.TemperatureView}" Margin="1 0 0 0"/>
         </Grid>
         <Grid Grid.Column="3" Grid.ColumnSpan="5" Margin="7 2">
             <Grid.ColumnDefinitions>
@@ -69,7 +70,7 @@
                 <TextBlock Text="вечер" HorizontalAlignment="Center"/>
             </DockPanel>
         </Grid>
-        <ListBox Grid.Column="2" Grid.Row="1" HorizontalContentAlignment="Stretch" IsEnabled="False" ScrollViewer.HorizontalScrollBarVisibility="Disabled" BorderThickness="0">
+        <ListBox Grid.Column="2" Grid.Row="2" HorizontalContentAlignment="Stretch" IsEnabled="False" ScrollViewer.HorizontalScrollBarVisibility="Disabled" BorderThickness="0">
             <ListBoxItem>
                 <TextBlock Text="" HorizontalAlignment="Stretch" Margin="0"/>
             </ListBoxItem>
@@ -92,6 +93,32 @@
                 <TextBlock Text="Вероятность осадков, %" HorizontalAlignment="Right" TextWrapping="Wrap"/>
             </ListBoxItem>
         </ListBox>
-        <control:SinopticView Grid.Column="3" Grid.Row="1" Grid.ColumnSpan="5" Values="{Binding Path=Values}"/>
+        <Grid Grid.Column="3" Grid.Row="1" Grid.ColumnSpan="5" Margin="7 0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Image Grid.Column="0" Source="{Binding Path=Images[0]}" Stretch="None"/>
+            <Image Grid.Column="1" Source="{Binding Path=Images[1]}" Stretch="None"/>
+            <Grid Grid.Column="2" Background="Black" Width="1"/>
+            <Image Grid.Column="3" Source="{Binding Path=Images[2]}" Stretch="None"/>
+            <Image Grid.Column="4" Source="{Binding Path=Images[3]}" Stretch="None"/>
+            <Grid Grid.Column="5" Background="Black" Width="1"/>
+            <Image Grid.Column="6" Source="{Binding Path=Images[4]}" Stretch="None"/>
+            <Image Grid.Column="7" Source="{Binding Path=Images[5]}" Stretch="None"/>
+            <Grid Grid.Column="8" Background="Black" Width="1"/>
+            <Image Grid.Column="9" Source="{Binding Path=Images[6]}" Stretch="None"/>
+            <Image Grid.Column="10" Source="{Binding Path=Images[7]}" Stretch="None"/>
+        </Grid>
+        <control:SinopticView Grid.Column="3" Grid.Row="2" Grid.ColumnSpan="5" Values="{Binding Path=Values}"/>
     </Grid>
 </Window>

@@ -8,9 +8,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Resources\line.png" />
     <None Remove="Resources\term-line.png" />
     <None Remove="Resources\term.png" />
+    <None Remove="Resources\termometer.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -22,9 +22,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Resources\line.png" />
     <Resource Include="Resources\term-line.png" />
     <Resource Include="Resources\term.png" />
+    <Resource Include="Resources\termometer.png" />
   </ItemGroup>
 
 </Project>

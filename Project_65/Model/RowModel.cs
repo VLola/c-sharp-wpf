@@ -20,8 +20,7 @@ namespace Project_65.Model
             if (text.Contains(":")) text = text.Replace(" :", ":");
             text = text.Replace("   ", " ");
             text = text.Replace("  ", " ");
-            text = text.Replace(" ", "_");
-            var matchCollection = Regex.Match(text, "_(.*)_(.*)_(.*)_(.*)_(.*)_(.*)_(.*)_(.*)_");
+            var matchCollection = Regex.Match(text, " (.*) (.*) (.*) (.*) (.*) (.*) (.*) (.*) ");
             Value1 = matchCollection.Groups[1].Value;
             Value2 = matchCollection.Groups[2].Value;
             Value3 = matchCollection.Groups[3].Value;
