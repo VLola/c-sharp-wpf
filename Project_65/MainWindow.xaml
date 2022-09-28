@@ -119,6 +119,6 @@
             <Image Grid.Column="9" Source="{Binding Path=Images[6]}" Stretch="None"/>
             <Image Grid.Column="10" Source="{Binding Path=Images[7]}" Stretch="None"/>
         </Grid>
-        <control:SinopticView Grid.Column="3" Grid.Row="2" Grid.ColumnSpan="5" Values="{Binding Path=Values}"/>
+        <control:SinopticView Grid.Column="3" Grid.Row="2" Grid.ColumnSpan="5"/>
     </Grid>
 </Window>
