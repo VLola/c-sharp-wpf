@@ -1,14 +1,18 @@
-﻿namespace Project_79.Models
+﻿using System.Collections.ObjectModel;
+using System.IO;
+
+namespace Project_79.Models
 {
     public class Main : Changed
     {
-        private string _text = "valik";
-        public string Text { 
-            get { return _text; }
+        public ObservableCollection<FileBlob> Files { get; set; } = new();
+        private FileBlob _selectedFileBlob;
+        public FileBlob SelectedFileBlob { 
+            get { return _selectedFileBlob; }
             set
             {
-                _text = value;
-                OnPropertyChanged("Text");
+                _selectedFileBlob = value;
+                OnPropertyChanged("SelectedFileBlob");
             }
         }
     }
