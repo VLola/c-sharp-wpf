@@ -2,10 +2,6 @@
 using Microsoft.Azure.Storage.Blob;
 using Azure.Storage.Blobs;
 using Project_79.Models;
-using System.Collections.Generic;
-using Microsoft.VisualBasic;
-using System.IO;
-using System;
 using System.Linq;
 using System.Windows;
 using Azure.Storage.Blobs.Models;
@@ -20,15 +16,12 @@ namespace Project_79.ViewModels
         CloudBlobClient backupBlobClient;
         CloudBlobContainer backupContainer;
         public MainViewModel() {
-            List<string> strings = new List<string>();
-
             backupBlobClient = CloudStorageAccount.Parse(BlobStorageConnectionString).CreateCloudBlobClient();
             backupContainer = backupBlobClient.GetContainerReference(BlobStorageContainerName);
 
-            BlobServiceClient blobServiceClient = new BlobServiceClient(BlobStorageConnectionString);
-            BlobContainerClient cont = blobServiceClient.GetBlobContainerClient("fileupload");
-            //cont.GetBlobClient("image2.jpg").DeleteIfExists();
-            var container = new BlobContainerClient(BlobStorageConnectionString, BlobStorageContainerName);
+            //BlobServiceClient blobServiceClient = new BlobServiceClient(BlobStorageConnectionString);
+            //BlobContainerClient cont = blobServiceClient.GetBlobContainerClient("fileupload");
+            //var container = new BlobContainerClient(BlobStorageConnectionString, BlobStorageContainerName);
             LoadFiles();
             Main.PropertyChanged += Main_PropertyChanged;
         }
