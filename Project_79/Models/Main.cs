@@ -1,18 +1,19 @@
-﻿using System.Collections.ObjectModel;
+﻿using Project_79.ViewModels;
+using System.Collections.ObjectModel;
 using System.IO;
 
 namespace Project_79.Models
 {
     public class Main : Changed
     {
-        public ObservableCollection<FileBlob> Files { get; set; } = new();
-        private FileBlob _selectedFileBlob;
-        public FileBlob SelectedFileBlob { 
-            get { return _selectedFileBlob; }
+        public ObservableCollection<BlobViewModel> Blobs { get; set; } = new();
+        private BlobViewModel _selectedBlob;
+        public BlobViewModel SelectedBlob { 
+            get { return _selectedBlob; }
             set
             {
-                _selectedFileBlob = value;
-                OnPropertyChanged("SelectedFileBlob");
+                _selectedBlob = value;
+                OnPropertyChanged("SelectedBlob");
             }
         }
     }

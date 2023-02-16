@@ -5,6 +5,7 @@ using Project_79.Models;
 using System.Linq;
 using System.Windows;
 using Azure.Storage.Blobs.Models;
+using System.IO;
 
 namespace Project_79.ViewModels
 {
@@ -30,9 +31,9 @@ namespace Project_79.ViewModels
         {
             if(e.PropertyName == "SelectedFileBlob")
             {
-                if(Main.SelectedFileBlob.Extension == "txt")
+                if (Path.GetExtension(Main.SelectedBlob.CloudBlockBlob.Name) == "txt")
                 {
-                    MessageBox.Show(Main.SelectedFileBlob.Name);
+                    MessageBox.Show(Main.SelectedBlob.CloudBlockBlob.Name);
                 }
             }
         }
@@ -43,7 +44,7 @@ namespace Project_79.ViewModels
 
             foreach (var item in listName)
             {
-                Main.Files.Add(new FileBlob(item.Name, item.Properties.LastModified.Value.DateTime.ToString()));
+                Main.Blobs.Add(new BlobViewModel(item));
             }
         }
     }
