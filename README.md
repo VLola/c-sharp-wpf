@@ -1,15 +1,15 @@
 
 # Project 79.
 
-Используя Azure.Blob реализовать менеджер для облачного хранения файлов с возможностью
-- добавления файлов
-- удаления файлов
-- получения списка файлов
-- просмотр текстовых файлов
+Using Azure.Blob to implement a manager for cloud storage of files with the ability to
+- adding files
+- deleting files
+- getting a list of files
+- view text files
 
-Для графики использовать WPF + MVVM
-В списке файлов при клике на конкретный - скачивать его 
-Реализовать поиск с частичным вхождением
+For graphics use WPF + MVVM
+In the list of files when you click on a specific one - download it
+Implement partial match search
 
 ![Image text](https://raw.githubusercontent.com/VLola/c-sharp-wpf/master/Project_79/Resources/Menu_Main.png)
 
