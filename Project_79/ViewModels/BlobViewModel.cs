@@ -2,6 +2,7 @@
 using Project_79.Models;
 using System.IO;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace Project_79.ViewModels
 {
@@ -42,6 +43,7 @@ namespace Project_79.ViewModels
             if (Path.GetExtension(Blob.Name) == ".txt")
             {
                 CloudBlockBlob.UploadText(text);
+                Blob.DateTime = CloudBlockBlob.Properties.LastModified.Value.DateTime;
             }
         }
     }
