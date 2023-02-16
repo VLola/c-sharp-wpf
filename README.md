@@ -1,3 +1,20 @@
+
+# Project 79.
+
+Используя Azure.Blob реализовать менеджер для облачного хранения файлов с возможностью
+- добавления файлов
+- удаления файлов
+- получения списка файлов
+- просмотр текстовых файлов
+
+Для графики использовать WPF + MVVM
+В списке файлов при клике на конкретный - скачивать его 
+Реализовать поиск с частичным вхождением
+
+![Image text](https://raw.githubusercontent.com/VLola/c-sharp-wpf/master/Project_79/Resources/Menu_Main.png)
+
+___
+
 # Project 53.
 
 In accordance with the layout, implement the layout of the Telegram.
