@@ -10,11 +10,23 @@
         <ResourceDictionary Source="/Styles/StyleMain.xaml"/>
     </UserControl.Resources>
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="6*"/>
             <ColumnDefinition Width="2*"/>
         </Grid.ColumnDefinitions>
-        <ListBox ItemsSource="{Binding Path=Main.Blobs}" SelectedItem="{Binding Path=Main.SelectedBlob}" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+        <Grid Grid.Row="0" Grid.Column="0" Margin="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <TextBox Grid.Column="0" Text="{Binding Path=Main.Search}"/>
+            <Button Grid.Column="1" Content="Search" Command="{Binding Path=SearchCommand}"/>
+        </Grid>
+        <ListBox Grid.Row="1" Grid.Column="0" ItemsSource="{Binding Path=Main.Blobs}" SelectedItem="{Binding Path=Main.SelectedBlob}" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <local:BlobView/>
@@ -27,12 +39,13 @@
             </ListBox.ItemsPanel>
         </ListBox>
 
-        <Grid Grid.Column="1">
+        <Grid Grid.Row="0" Grid.Column="1" Grid.RowSpan="2">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <Grid>
+            <Border BorderThickness="1" BorderBrush="LightGray" Margin="5"/>
+            <Grid Margin="5">
                 <Grid.RowDefinitions>
                     <RowDefinition/>
                     <RowDefinition/>

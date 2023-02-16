@@ -33,6 +33,11 @@ namespace Project_79.ViewModels
         {
             get { return _saveCommand ?? (_saveCommand = new RelayCommand(obj => { Save(); })); }
         }
+        private RelayCommand? _searchCommand;
+        public RelayCommand SearchCommand
+        {
+            get { return _searchCommand ?? (_searchCommand = new RelayCommand(obj => { Search(); })); }
+        }
         string BlobStorageConnectionString = "DefaultEndpointsProtocol=https;AccountName=valik;AccountKey=KMcTOADr+UnVoRIBTMkQNGj1DkmzIJW1f2CMbiaIQN9W8jhabvoYNIrvxtsa1OVLkwi0BItQvElx+AStWdlqTQ==;EndpointSuffix=core.windows.net";
         string BlobStorageContainerName = "blob";
         public Main Main { get; set; } = new();
@@ -60,7 +65,7 @@ namespace Project_79.ViewModels
             }
         }
 
-        private async void LoadFilesAsync()
+        private async void LoadFilesAsync(string? search = null)
         {
             await Task.Run(() =>
             {
@@ -75,7 +80,11 @@ namespace Project_79.ViewModels
                 {
                     foreach (var item in listName)
                     {
-                        Main.Blobs.Add(new BlobViewModel(item));
+                        if(search == null)
+                        {
+                            Main.Blobs.Add(new BlobViewModel(item));
+                        }
+                        else if(item.Name.Contains(search)) Main.Blobs.Add(new BlobViewModel(item));
                     }
                 });
             });
@@ -118,6 +127,10 @@ namespace Project_79.ViewModels
         private void Save()
         {
             if (Main.SelectedBlob != null) Main.SelectedBlob.UploadText(Main.Text);
+        }
+        private void Search()
+        {
+            LoadFilesAsync(Main.Search);
         }
     }
 }

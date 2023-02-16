@@ -25,5 +25,15 @@ namespace Project_79.Models
                 OnPropertyChanged("Text");
             }
         }
+        private string _search = "";
+        public string Search
+        {
+            get { return _search; }
+            set
+            {
+                _search = value;
+                OnPropertyChanged("Search");
+            }
+        }
     }
 }
