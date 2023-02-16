@@ -26,7 +26,7 @@
             <TextBox Grid.Column="0" Text="{Binding Path=Main.Search}"/>
             <Button Grid.Column="1" Content="Search" Command="{Binding Path=SearchCommand}"/>
         </Grid>
-        <ListBox Grid.Row="1" Grid.Column="0" ItemsSource="{Binding Path=Main.Blobs}" SelectedItem="{Binding Path=Main.SelectedBlob}" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+        <ListBox Grid.Row="1" Grid.Column="0" ItemsSource="{Binding Path=Main.Blobs}" SelectedItem="{Binding Path=Main.SelectedBlob}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Margin="5">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <local:BlobView/>
