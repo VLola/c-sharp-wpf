@@ -2,12 +2,9 @@
 using Microsoft.Azure.Storage.Blob;
 using Project_79.Models;
 using System.Linq;
-using System.Windows;
 using System.IO;
 using Project_79.Command;
 using Microsoft.Win32;
-using System.ComponentModel;
-using System;
 using Azure.Storage.Blobs;
 using System.Threading.Tasks;
 
@@ -15,15 +12,26 @@ namespace Project_79.ViewModels
 {
     internal class MainViewModel
     {
+        string pathDownload = Directory.GetCurrentDirectory() + "/download/";
         private RelayCommand? _deleteCommand;
         public RelayCommand DeleteCommand
         {
-            get { return _deleteCommand ?? (_deleteCommand = new RelayCommand(obj => { Delete(); })); }
+            get { return _deleteCommand ?? (_deleteCommand = new RelayCommand(obj => { DeleteAsync(); })); }
         }
         private RelayCommand? _addCommand;
         public RelayCommand AddCommand
         {
             get { return _addCommand ?? (_addCommand = new RelayCommand(obj => { Add(); })); }
+        }
+        private RelayCommand? _downloadCommand;
+        public RelayCommand DownloadCommand
+        {
+            get { return _downloadCommand ?? (_downloadCommand = new RelayCommand(obj => { Download(); })); }
+        }
+        private RelayCommand? _saveCommand;
+        public RelayCommand SaveCommand
+        {
+            get { return _saveCommand ?? (_saveCommand = new RelayCommand(obj => { Save(); })); }
         }
         string BlobStorageConnectionString = "DefaultEndpointsProtocol=https;AccountName=valik;AccountKey=KMcTOADr+UnVoRIBTMkQNGj1DkmzIJW1f2CMbiaIQN9W8jhabvoYNIrvxtsa1OVLkwi0BItQvElx+AStWdlqTQ==;EndpointSuffix=core.windows.net";
         string BlobStorageContainerName = "blob";
@@ -32,6 +40,7 @@ namespace Project_79.ViewModels
         CloudBlobContainer backupContainer;
         BlobContainerClient container;
         public MainViewModel() {
+            if(!Directory.Exists(pathDownload)) Directory.CreateDirectory(pathDownload);
             backupBlobClient = CloudStorageAccount.Parse(BlobStorageConnectionString).CreateCloudBlobClient();
             backupContainer = backupBlobClient.GetContainerReference(BlobStorageContainerName);
 
@@ -39,7 +48,7 @@ namespace Project_79.ViewModels
             BlobContainerClient cont = blobServiceClient.GetBlobContainerClient("fileupload");
             container = new BlobContainerClient(BlobStorageConnectionString, BlobStorageContainerName);
 
-            LoadFiles();
+            LoadFilesAsync();
             Main.PropertyChanged += Main_PropertyChanged;
         }
 
@@ -47,38 +56,39 @@ namespace Project_79.ViewModels
         {
             if(e.PropertyName == "SelectedBlob")
             {
-                if (Path.GetExtension(Main.SelectedBlob.CloudBlockBlob.Name) == ".txt")
-                {
-                    MessageBox.Show(Main.SelectedBlob.CloudBlockBlob.Name);
-                }
+                Main.Text = Main.SelectedBlob.DownloadText();
             }
         }
 
-        private void LoadFiles()
+        private async void LoadFilesAsync()
         {
-            App.Current.Dispatcher.Invoke(() =>
+            await Task.Run(() =>
             {
-                Main.Blobs.Clear();
-            });
-
-            var listName = backupContainer.ListBlobs().OfType<CloudBlockBlob>().Where(b => b.BlobType == Microsoft.Azure.Storage.Blob.BlobType.BlockBlob).ToList();
-            
-            App.Current.Dispatcher.Invoke(() =>
-            {
-                foreach (var item in listName)
+                App.Current.Dispatcher.Invoke(() =>
                 {
-                    Main.Blobs.Add(new BlobViewModel(item));
+                    Main.Blobs.Clear();
+                });
+
+                var listName = backupContainer.ListBlobs().OfType<CloudBlockBlob>().Where(b => b.BlobType == Microsoft.Azure.Storage.Blob.BlobType.BlockBlob).ToList();
+
+                App.Current.Dispatcher.Invoke(() =>
+                {
+                    foreach (var item in listName)
+                    {
+                        Main.Blobs.Add(new BlobViewModel(item));
+                    }
+                });
+            });
+        }
+        private async void DeleteAsync()
+        {
+            await Task.Run(async () => {
+                if (Main.SelectedBlob != null)
+                {
+                    await Main.SelectedBlob.DeleteAsync();
+                    LoadFilesAsync();
                 }
             });
-            
-        }
-        private void Delete()
-        {
-            if (Main.SelectedBlob != null)
-            {
-                Main.SelectedBlob.Delete();
-                LoadFiles();
-            }
         }
         private async void Add()
         {
@@ -96,10 +106,18 @@ namespace Project_79.ViewModels
                     var stream = File.OpenRead(path);
                     await blob.UploadAsync(stream, overwrite: true);
 
-                    LoadFiles();
+                    LoadFilesAsync();
                 }
             });
-            
+
+        }
+        private void Download()
+        {
+            if (Main.SelectedBlob != null) Main.SelectedBlob.DownloadToFileAsync();
+        }
+        private void Save()
+        {
+            if (Main.SelectedBlob != null) Main.SelectedBlob.UploadText(Main.Text);
         }
     }
 }

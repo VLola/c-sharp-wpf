@@ -15,5 +15,15 @@ namespace Project_79.Models
                 OnPropertyChanged("SelectedBlob");
             }
         }
+        private string _text;
+        public string Text
+        {
+            get { return _text; }
+            set
+            {
+                _text = value;
+                OnPropertyChanged("Text");
+            }
+        }
     }
 }
