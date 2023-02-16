@@ -45,9 +45,9 @@ namespace Project_79.ViewModels
 
         private void Main_PropertyChanged(object? sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
-            if(e.PropertyName == "SelectedFileBlob")
+            if(e.PropertyName == "SelectedBlob")
             {
-                if (Path.GetExtension(Main.SelectedBlob.CloudBlockBlob.Name) == "txt")
+                if (Path.GetExtension(Main.SelectedBlob.CloudBlockBlob.Name) == ".txt")
                 {
                     MessageBox.Show(Main.SelectedBlob.CloudBlockBlob.Name);
                 }
@@ -88,12 +88,13 @@ namespace Project_79.ViewModels
                 fileDialog.ShowDialog();
                 if (fileDialog.FileName != "")
                 {
+
                     string path = fileDialog.FileName;
                     string name = Path.GetFileName(path);
                     var blob = container.GetBlobClient(name);
 
                     var stream = File.OpenRead(path);
-                    await blob.UploadAsync(stream);
+                    await blob.UploadAsync(stream, overwrite: true);
 
                     LoadFiles();
                 }
