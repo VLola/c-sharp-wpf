@@ -8,7 +8,9 @@ Using Azure.Blob to implement a manager for cloud storage of files with the abil
 - view text files
 
 For graphics use WPF + MVVM
+
 In the list of files when you click on a specific one - download it
+
 Implement partial match search
 
 ![Image text](https://raw.githubusercontent.com/VLola/c-sharp-wpf/master/Project_79/Resources/Menu_Main.png)
