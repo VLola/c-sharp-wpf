@@ -21,6 +21,6 @@
         <TextBlock Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0" Text="Name:"/>
         <TextBlock Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1" Text="{Binding Path=CloudBlockBlob.Name}" FontWeight="Bold"/>
         <TextBlock Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="2" Text="LastModified:"/>
-        <TextBlock Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="3" Text="{Binding Path=DateTime}" FontWeight="Bold"/>
+        <TextBlock Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="3" Text="{Binding Path=Blob.DateTime}" FontWeight="Bold"/>
     </Grid>
 </UserControl>

@@ -1,10 +1,8 @@
 ﻿using Microsoft.Azure.Storage;
 using Microsoft.Azure.Storage.Blob;
-using Azure.Storage.Blobs;
 using Project_79.Models;
 using System.Linq;
 using System.Windows;
-using Azure.Storage.Blobs.Models;
 using System.IO;
 
 namespace Project_79.ViewModels
