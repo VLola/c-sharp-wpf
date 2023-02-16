@@ -6,6 +6,9 @@
              xmlns:local="clr-namespace:Project_79.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <ResourceDictionary Source="/Styles/StyleBlob.xaml"/>
+    </UserControl.Resources>
     <Grid Margin="10">
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -14,8 +17,8 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <TextBlock Grid.Row="0" Text="Name:"/>
-        <TextBlock Grid.Row="1" Text="{Binding Path=Blob.Name}" FontWeight="Bold"/>
+        <TextBlock Grid.Row="1" Text="{Binding Path=Blob.Name}" Style="{StaticResource styleBold}"/>
         <TextBlock Grid.Row="2" Text="LastModified:"/>
-        <TextBlock Grid.Row="3" Text="{Binding Path=Blob.DateTime}" FontWeight="Bold"/>
+        <TextBlock Grid.Row="3" Text="{Binding Path=Blob.DateTime}" Style="{StaticResource styleBold}"/>
     </Grid>
 </UserControl>
