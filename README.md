@@ -1,8 +1,9 @@
 
 # Project 122.
 
-Реализовать программу для распознования лица на фото
-Пользователь выбирает фото на компе и получает ответ есть ли на нем лица людей
+Implement a program for face recognition in a photo.
+
+The user selects a photo on the computer and gets an answer if it contains people's faces.
 
 ![Image text](https://raw.githubusercontent.com/VLola/c-sharp-wpf/master/Project_122/Images/main.png)
 
