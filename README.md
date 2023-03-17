@@ -1,4 +1,13 @@
 
+# Project 122.
+
+Реализовать программу для распознования лица на фото
+Пользователь выбирает фото на компе и получает ответ есть ли на нем лица людей
+
+![Image text](https://raw.githubusercontent.com/VLola/c-sharp-wpf/master/Project_122/Images/main.png)
+
+___
+
 # Project 79.
 
 Using Azure.Blob to implement a manager for cloud storage of files with the ability to
