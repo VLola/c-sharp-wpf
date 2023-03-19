@@ -1,6 +1,7 @@
 ﻿using Amazon.Rekognition.Model;
 using Amazon.S3.Model;
 using System.Collections.Generic;
+using System.Windows;
 
 namespace Project_122.Models
 {
@@ -45,6 +46,36 @@ namespace Project_122.Models
             {
                 _text = value;
                 OnPropertyChanged("Text");
+            }
+        }
+        private System.Windows.Controls.Image _image;
+        public System.Windows.Controls.Image Image
+        {
+            get { return _image; }
+            set
+            {
+                _image = value;
+                OnPropertyChanged("Image");
+            }
+        }
+        private double _width;
+        public double Width
+        {
+            get { return _width; }
+            set
+            {
+                _width = value;
+                OnPropertyChanged("Width");
+            }
+        }
+        private double _height;
+        public double Height
+        {
+            get { return _height; }
+            set
+            {
+                _height = value;
+                OnPropertyChanged("Height");
             }
         }
 
