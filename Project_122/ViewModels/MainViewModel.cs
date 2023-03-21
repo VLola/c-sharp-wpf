@@ -1,5 +1,4 @@
 ﻿using Amazon;
-using Amazon.Auth.AccessControlPolicy;
 using Amazon.Rekognition;
 using Amazon.Rekognition.Model;
 using Amazon.S3;
@@ -10,16 +9,10 @@ using Project_122.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Net;
-using System.Net.Sockets;
-using System.Security.Cryptography.Xml;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using static System.Net.WebRequestMethods;
 
 namespace Project_122.ViewModels
 {
@@ -133,11 +126,9 @@ namespace Project_122.ViewModels
                     img.Height = bitmap.Height;
                     Main.Image = img;
 
-
                     foreach (var item in Main.FaceDetails)
                     {
                         circle((double)(item.BoundingBox.Left * img.Width), (double)(item.BoundingBox.Top * img.Height), (int)(item.BoundingBox.Width * img.Width), (int)(item.BoundingBox.Height * img.Height), img);
-
                     }
                 }
             }
